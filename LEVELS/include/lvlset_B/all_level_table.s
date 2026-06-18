@@ -10,7 +10,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_xmaschallenge)
 	.byte .lobyte(level_data_ninox)
-	.byte .lobyte(level_data_somewhereinaforest)
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_ajollyretrochristmas)
 	.byte .lobyte(level_data_ultiatedestruction)
@@ -48,7 +47,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_xmaschallenge)
 	.byte .hibyte(level_data_ninox)
-	.byte .hibyte(level_data_somewhereinaforest)
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_ajollyretrochristmas)
 	.byte .hibyte(level_data_ultiatedestruction)
@@ -86,7 +84,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_xmaschallenge))
 	.byte .lobyte(.bank(level_data_ninox))
-	.byte .lobyte(.bank(level_data_somewhereinaforest))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_ajollyretrochristmas))
 	.byte .lobyte(.bank(level_data_ultiatedestruction))
@@ -119,37 +116,34 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_highlife))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_somewhereinaforest_0)
-	.byte .lobyte(level_data_ajollyretrochristmas_1)
-	.byte .lobyte(level_data_cryogenic_2)
-	.byte .lobyte(level_data_thesteamworks_3)
-	.byte .lobyte(level_data_subtleoddities_4)
-	.byte .lobyte(level_data_newdashcity_5)
-	.byte .lobyte(level_data_birdbrain_6)
-	.byte .lobyte(level_data_tetrix_7)
-	.byte .lobyte(level_data_highlife_8)
+	.byte .lobyte(level_data_ajollyretrochristmas_0)
+	.byte .lobyte(level_data_cryogenic_1)
+	.byte .lobyte(level_data_thesteamworks_2)
+	.byte .lobyte(level_data_subtleoddities_3)
+	.byte .lobyte(level_data_newdashcity_4)
+	.byte .lobyte(level_data_birdbrain_5)
+	.byte .lobyte(level_data_tetrix_6)
+	.byte .lobyte(level_data_highlife_7)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_somewhereinaforest_0)
-	.byte .hibyte(level_data_ajollyretrochristmas_1)
-	.byte .hibyte(level_data_cryogenic_2)
-	.byte .hibyte(level_data_thesteamworks_3)
-	.byte .hibyte(level_data_subtleoddities_4)
-	.byte .hibyte(level_data_newdashcity_5)
-	.byte .hibyte(level_data_birdbrain_6)
-	.byte .hibyte(level_data_tetrix_7)
-	.byte .hibyte(level_data_highlife_8)
+	.byte .hibyte(level_data_ajollyretrochristmas_0)
+	.byte .hibyte(level_data_cryogenic_1)
+	.byte .hibyte(level_data_thesteamworks_2)
+	.byte .hibyte(level_data_subtleoddities_3)
+	.byte .hibyte(level_data_newdashcity_4)
+	.byte .hibyte(level_data_birdbrain_5)
+	.byte .hibyte(level_data_tetrix_6)
+	.byte .hibyte(level_data_highlife_7)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_somewhereinaforest_0))
-	.byte .lobyte(.bank(level_data_ajollyretrochristmas_1))
-	.byte .lobyte(.bank(level_data_cryogenic_2))
-	.byte .lobyte(.bank(level_data_thesteamworks_3))
-	.byte .lobyte(.bank(level_data_subtleoddities_4))
-	.byte .lobyte(.bank(level_data_newdashcity_5))
-	.byte .lobyte(.bank(level_data_birdbrain_6))
-	.byte .lobyte(.bank(level_data_tetrix_7))
-	.byte .lobyte(.bank(level_data_highlife_8))
+	.byte .lobyte(.bank(level_data_ajollyretrochristmas_0))
+	.byte .lobyte(.bank(level_data_cryogenic_1))
+	.byte .lobyte(.bank(level_data_thesteamworks_2))
+	.byte .lobyte(.bank(level_data_subtleoddities_3))
+	.byte .lobyte(.bank(level_data_newdashcity_4))
+	.byte .lobyte(.bank(level_data_birdbrain_5))
+	.byte .lobyte(.bank(level_data_tetrix_6))
+	.byte .lobyte(.bank(level_data_highlife_7))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -160,7 +154,6 @@ _level_lengths_lo:
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000018)		; xmaschallenge
 	.byte .lobyte($00007A)		; ninox
-	.byte .lobyte($00009D)		; somewhereinaforest
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006D)		; ultiatedestruction
@@ -200,7 +193,6 @@ _level_lengths_md:
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000018)		; xmaschallenge
 	.byte .hibyte($00007A)		; ninox
-	.byte .hibyte($00009D)		; somewhereinaforest
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006D)		; ultiatedestruction
@@ -240,7 +232,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000018)		; xmaschallenge
 	.byte .bankbyte($00007A)		; ninox
-	.byte .bankbyte($00009D)		; somewhereinaforest
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006D)		; ultiatedestruction

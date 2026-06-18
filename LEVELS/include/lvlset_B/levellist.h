@@ -7,7 +7,6 @@ const uint8_t difficulty_list[] = {
 	EASY,	// darkparadise
 	EASY,	// xmaschallenge
 	NORMAL,	// ninox
-	NORMAL,	// somewhereinaforest
 	HARD,	// lookatthislevel
 	HARD,	// ajollyretrochristmas
 	HARD,	// ultiatedestruction
@@ -46,7 +45,6 @@ const uint8_t stars_list[] = {
 	2,	// darkparadise
 	2,	// xmaschallenge
 	3,	// ninox
-	3,	// somewhereinaforest
 	4,	// lookatthislevel
 	5,	// ajollyretrochristmas
 	5,	// ultiatedestruction

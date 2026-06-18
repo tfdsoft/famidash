@@ -141,6 +141,12 @@
 			originalArtistText: "JUMPER",
 		},
 		{
+			fmsSongName: "Somewhere in a Forest",
+			upperText: "SOMEWHERE",
+			lowerText: "IN A FOREST",
+			originalArtistText: "CAM TOBY TEM",
+		},	
+		{
 			fmsSongName: "Sunslammer",
 			lowerText: "SUNSLAMMER",
 			originalArtistText: "SETH PEELLE"

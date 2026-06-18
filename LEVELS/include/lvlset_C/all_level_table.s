@@ -13,8 +13,10 @@ _level_list_lo:
 	.byte .lobyte(level_data_short_kings)
 	.byte .lobyte(level_data_nicktoons)
 	.byte .lobyte(level_data_cosmicdolphin)
+	.byte .lobyte(level_data_somewhereinaforest)
 	.byte .lobyte(level_data_hungrymanadventures)
 	.byte .lobyte(level_data_dorabaebasic7)
+	.byte .lobyte(level_data_chromaticexpedition)
 	.byte .lobyte(level_data_endgame)
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
@@ -38,8 +40,10 @@ _level_list_hi:
 	.byte .hibyte(level_data_short_kings)
 	.byte .hibyte(level_data_nicktoons)
 	.byte .hibyte(level_data_cosmicdolphin)
+	.byte .hibyte(level_data_somewhereinaforest)
 	.byte .hibyte(level_data_hungrymanadventures)
 	.byte .hibyte(level_data_dorabaebasic7)
+	.byte .hibyte(level_data_chromaticexpedition)
 	.byte .hibyte(level_data_endgame)
 	.byte .hibyte(level_data_astronomicalexpedition)
 	.byte .hibyte(level_data_ninecircleseasy)
@@ -63,8 +67,10 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_short_kings))
 	.byte .lobyte(.bank(level_data_nicktoons))
 	.byte .lobyte(.bank(level_data_cosmicdolphin))
+	.byte .lobyte(.bank(level_data_somewhereinaforest))
 	.byte .lobyte(.bank(level_data_hungrymanadventures))
 	.byte .lobyte(.bank(level_data_dorabaebasic7))
+	.byte .lobyte(.bank(level_data_chromaticexpedition))
 	.byte .lobyte(.bank(level_data_endgame))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
 	.byte .lobyte(.bank(level_data_ninecircleseasy))
@@ -80,28 +86,31 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_futurefunkfix))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_astronomicalexpedition_0)
+	.byte .lobyte(level_data_somewhereinaforest_0)
 	.byte .lobyte(level_data_astronomicalexpedition_1)
 	.byte .lobyte(level_data_astronomicalexpedition_2)
-	.byte .lobyte(level_data_carefreevictory_3)
-	.byte .lobyte(level_data_futurefunkfix_4)
+	.byte .lobyte(level_data_astronomicalexpedition_3)
+	.byte .lobyte(level_data_carefreevictory_4)
 	.byte .lobyte(level_data_futurefunkfix_5)
+	.byte .lobyte(level_data_futurefunkfix_6)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_astronomicalexpedition_0)
+	.byte .hibyte(level_data_somewhereinaforest_0)
 	.byte .hibyte(level_data_astronomicalexpedition_1)
 	.byte .hibyte(level_data_astronomicalexpedition_2)
-	.byte .hibyte(level_data_carefreevictory_3)
-	.byte .hibyte(level_data_futurefunkfix_4)
+	.byte .hibyte(level_data_astronomicalexpedition_3)
+	.byte .hibyte(level_data_carefreevictory_4)
 	.byte .hibyte(level_data_futurefunkfix_5)
+	.byte .hibyte(level_data_futurefunkfix_6)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_astronomicalexpedition_0))
+	.byte .lobyte(.bank(level_data_somewhereinaforest_0))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_1))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_2))
-	.byte .lobyte(.bank(level_data_carefreevictory_3))
-	.byte .lobyte(.bank(level_data_futurefunkfix_4))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_3))
+	.byte .lobyte(.bank(level_data_carefreevictory_4))
 	.byte .lobyte(.bank(level_data_futurefunkfix_5))
+	.byte .lobyte(.bank(level_data_futurefunkfix_6))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -115,8 +124,10 @@ _level_lengths_lo:
 	.byte .lobyte($000039)		; short_kings
 	.byte .lobyte($000059)		; nicktoons
 	.byte .lobyte($00008F)		; cosmicdolphin
+	.byte .lobyte($00009D)		; somewhereinaforest
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000F7)		; dorabaebasic7
+	.byte .lobyte($000060)		; chromaticexpedition
 	.byte .lobyte($00009F)		; endgame
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
@@ -142,8 +153,10 @@ _level_lengths_md:
 	.byte .hibyte($000039)		; short_kings
 	.byte .hibyte($000059)		; nicktoons
 	.byte .hibyte($00008F)		; cosmicdolphin
+	.byte .hibyte($00009D)		; somewhereinaforest
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000F7)		; dorabaebasic7
+	.byte .hibyte($000060)		; chromaticexpedition
 	.byte .hibyte($00009F)		; endgame
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
@@ -169,8 +182,10 @@ _level_lengths_hi:
 	.byte .bankbyte($000039)		; short_kings
 	.byte .bankbyte($000059)		; nicktoons
 	.byte .bankbyte($00008F)		; cosmicdolphin
+	.byte .bankbyte($00009D)		; somewhereinaforest
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000F7)		; dorabaebasic7
+	.byte .bankbyte($000060)		; chromaticexpedition
 	.byte .bankbyte($00009F)		; endgame
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy

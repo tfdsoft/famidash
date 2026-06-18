@@ -179,12 +179,6 @@
 			originalArtistText: "WATERFLAME"
 		},
 		{
-			fmsSongName: "Somewhere in a Forest",
-			upperText: "SOMEWHERE",
-			lowerText: "IN A FOREST",
-			originalArtistText: "CAM TOBY TEM",
-		},	
-		{
 			fmsSongName: "Stereo madness 2",
 			upperText: "STEREO ",
 			lowerText: "MADNESS 2",
