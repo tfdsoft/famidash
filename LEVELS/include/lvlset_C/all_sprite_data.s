@@ -3323,7 +3323,7 @@ sprite_data_dorabaebasic7:
   .byte $30,$60,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_16"
+.segment "DAT_BANK_0B"
 sprite_data_chromaticexpedition:
   .byte $00,$00,$70,$03,$14
   .byte $60,$00,$30,$03,$33
@@ -8506,7 +8506,7 @@ sprite_data_unity:
   .byte $70,$29,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_19"
+.segment "DAT_BANK_16"
 sprite_data_dastardly:
   .byte $00,$00,$70,$02,$18
   .byte $00,$00,$80,$02,$c0
@@ -9021,7 +9021,7 @@ sprite_data_thetripletrial:
   .byte $20,$18,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_19"
 sprite_data_trolledfix:
   .byte $00,$00,$60,$03,$bd
   .byte $00,$00,$70,$03,$8f
@@ -9170,7 +9170,7 @@ sprite_data_trolledfix:
   .byte $90,$17,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_13"
+.segment "DAT_BANK_16"
 sprite_data_supercycles:
   .byte $00,$00,$60,$03,$93
   .byte $00,$00,$80,$03,$d3

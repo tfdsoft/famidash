@@ -149,7 +149,7 @@
 		.incbin "EXPORTS/ninecircleseasy.lz.bin" ; Size: 7077
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 7757 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8147 bytes
 	.export level_data_endgame
 	level_data_endgame:
 	; Header
@@ -417,7 +417,7 @@
 		.incbin "EXPORTS/carefreevictory.lz.1.bin" ; Size: 5066
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8109 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8184 bytes
 	.export level_data_chromaticexpedition
 	level_data_chromaticexpedition:
 	; Header
@@ -435,22 +435,8 @@
 		.byte $0C ;_________________________________________ Starting ground color
 		.byte 27 ;__________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/chromaticexpedition.lz.bin" ; Size: 4795
+		.incbin "EXPORTS/chromaticexpedition.lz.bin" ; Size: 4783
 
-
-.segment "DAT_BANK_15"	; Total bank size: 8187 bytes
-	.export level_data_futurefunkfix_6
-	level_data_futurefunkfix_6:
-	; Level data
-		.incbin "EXPORTS/futurefunkfix.lz.2.bin" ; Size: 3847
-
-	.export level_data_astronomicalexpedition_3
-	level_data_astronomicalexpedition_3:
-	; Level data
-		.incbin "EXPORTS/astronomicalexpedition.lz.3.bin" ; Size: 359
-
-
-.segment "DAT_BANK_16"	; Total bank size: 8150 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -469,6 +455,18 @@
 		.byte 27 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3375
+
+
+.segment "DAT_BANK_15"	; Total bank size: 8187 bytes
+	.export level_data_futurefunkfix_6
+	level_data_futurefunkfix_6:
+	; Level data
+		.incbin "EXPORTS/futurefunkfix.lz.2.bin" ; Size: 3847
+
+	.export level_data_astronomicalexpedition_3
+	level_data_astronomicalexpedition_3:
+	; Level data
+		.incbin "EXPORTS/astronomicalexpedition.lz.3.bin" ; Size: 359
 
 
 .segment "DAT_BANK_17"	; Total bank size: 7946 bytes
@@ -537,7 +535,7 @@
 		.incbin "EXPORTS/trolledfix.lz.bin" ; Size: 1315
 
 
-.segment "DAT_BANK_19"	; Total bank size: 5605 bytes
+.segment "DAT_BANK_19"	; Total bank size: 5095 bytes
 	.export level_data_madness
 	level_data_madness:
 	; Header

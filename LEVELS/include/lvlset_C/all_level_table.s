@@ -127,7 +127,7 @@ _level_lengths_lo:
 	.byte .lobyte($00009D)		; somewhereinaforest
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000F7)		; dorabaebasic7
-	.byte .lobyte($000060)		; chromaticexpedition
+	.byte .lobyte($000056)		; chromaticexpedition
 	.byte .lobyte($00009F)		; endgame
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
@@ -156,7 +156,7 @@ _level_lengths_md:
 	.byte .hibyte($00009D)		; somewhereinaforest
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000F7)		; dorabaebasic7
-	.byte .hibyte($000060)		; chromaticexpedition
+	.byte .hibyte($000056)		; chromaticexpedition
 	.byte .hibyte($00009F)		; endgame
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
@@ -185,7 +185,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00009D)		; somewhereinaforest
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000F7)		; dorabaebasic7
-	.byte .bankbyte($000060)		; chromaticexpedition
+	.byte .bankbyte($000056)		; chromaticexpedition
 	.byte .bankbyte($00009F)		; endgame
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy
