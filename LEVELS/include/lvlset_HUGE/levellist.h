@@ -61,6 +61,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// selectpaymenttype
 	HARDER,	// pyrophoric
 	HARDER,	// cryogenic
+	HARDER,	// chromaticexpedition
 	HARDER,	// oceane
 	HARDER,	// endgame
 	HARDER,	// generationretro
@@ -223,6 +224,7 @@ const uint8_t stars_list[] = {
 	5,	// selectpaymenttype
 	6,	// pyrophoric
 	6,	// cryogenic
+	6,	// chromaticexpedition
 	6,	// oceane
 	6,	// endgame
 	6,	// generationretro
