@@ -30,6 +30,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_thetower)
 	.byte .lobyte(level_data_thesewers)
 	.byte .lobyte(level_data_thecellar)
+	.byte .lobyte(level_data_thesecrethollow)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_leveleasy)
@@ -45,7 +46,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_bloodbathbutno)
 	.byte .lobyte(level_data_rainbowtylenol)
-	.byte .lobyte(level_data_greif)
 	.byte .lobyte(level_data_extraordinaryexcitement)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
@@ -77,6 +77,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_thetower)
 	.byte .hibyte(level_data_thesewers)
 	.byte .hibyte(level_data_thecellar)
+	.byte .hibyte(level_data_thesecrethollow)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_leveleasy)
@@ -92,7 +93,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_lostinthewoods)
 	.byte .hibyte(level_data_bloodbathbutno)
 	.byte .hibyte(level_data_rainbowtylenol)
-	.byte .hibyte(level_data_greif)
 	.byte .hibyte(level_data_extraordinaryexcitement)
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
@@ -124,6 +124,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thetower))
 	.byte .lobyte(.bank(level_data_thesewers))
 	.byte .lobyte(.bank(level_data_thecellar))
+	.byte .lobyte(.bank(level_data_thesecrethollow))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_leveleasy))
@@ -139,7 +140,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_lostinthewoods))
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
 	.byte .lobyte(.bank(level_data_rainbowtylenol))
-	.byte .lobyte(.bank(level_data_greif))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
@@ -189,6 +189,7 @@ _level_lengths_lo:
 	.byte .lobyte($00002F)		; thetower
 	.byte .lobyte($00001B)		; thesewers
 	.byte .lobyte($000027)		; thecellar
+	.byte .lobyte($000052)		; thesecrethollow
 	.byte .lobyte($00002F)		; thechallenge
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($000090)		; leveleasy
@@ -204,7 +205,6 @@ _level_lengths_lo:
 	.byte .lobyte($000065)		; lostinthewoods
 	.byte .lobyte($00008B)		; bloodbathbutno
 	.byte .lobyte($0000B5)		; rainbowtylenol
-	.byte .lobyte($000069)		; greif
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
@@ -238,6 +238,7 @@ _level_lengths_md:
 	.byte .hibyte($00002F)		; thetower
 	.byte .hibyte($00001B)		; thesewers
 	.byte .hibyte($000027)		; thecellar
+	.byte .hibyte($000052)		; thesecrethollow
 	.byte .hibyte($00002F)		; thechallenge
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($000090)		; leveleasy
@@ -253,7 +254,6 @@ _level_lengths_md:
 	.byte .hibyte($000065)		; lostinthewoods
 	.byte .hibyte($00008B)		; bloodbathbutno
 	.byte .hibyte($0000B5)		; rainbowtylenol
-	.byte .hibyte($000069)		; greif
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
@@ -287,6 +287,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00002F)		; thetower
 	.byte .bankbyte($00001B)		; thesewers
 	.byte .bankbyte($000027)		; thecellar
+	.byte .bankbyte($000052)		; thesecrethollow
 	.byte .bankbyte($00002F)		; thechallenge
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($000090)		; leveleasy
@@ -302,7 +303,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000065)		; lostinthewoods
 	.byte .bankbyte($00008B)		; bloodbathbutno
 	.byte .bankbyte($0000B5)		; rainbowtylenol
-	.byte .bankbyte($000069)		; greif
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare

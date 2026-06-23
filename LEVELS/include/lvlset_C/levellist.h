@@ -19,6 +19,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// ninecircleseasy
 	HARDER,	// carefreevictory
 	INSANE,	// overawed
+	INSANE,	// greif
 	INSANE,	// unity
 	INSANE,	// dastardly
 	INSANE,	// thetripletrial
@@ -47,6 +48,7 @@ const uint8_t stars_list[] = {
 	7,	// ninecircleseasy
 	7,	// carefreevictory
 	8,	// overawed
+	8,	// greif
 	8,	// unity
 	8,	// dastardly
 	8,	// thetripletrial

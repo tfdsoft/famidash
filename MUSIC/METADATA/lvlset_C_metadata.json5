@@ -145,7 +145,13 @@
 			upperText: "SOMEWHERE",
 			lowerText: "IN A FOREST",
 			originalArtistText: "CAM TOBY TEM",
-		},	
+		},
+		{
+			fmsSongName: "stalemate greif cut",
+			upperText: "STALEMATE",
+			lowerText: "GREIF CUT",
+			originalArtistText: "KAYOSZX",
+		},
 		{
 			fmsSongName: "Sunslammer",
 			lowerText: "SUNSLAMMER",

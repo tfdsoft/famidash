@@ -22,6 +22,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_ninecircleseasy)
 	.byte .lobyte(level_data_carefreevictory)
 	.byte .lobyte(level_data_overawed)
+	.byte .lobyte(level_data_greif)
 	.byte .lobyte(level_data_unity)
 	.byte .lobyte(level_data_dastardly)
 	.byte .lobyte(level_data_thetripletrial)
@@ -49,6 +50,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_ninecircleseasy)
 	.byte .hibyte(level_data_carefreevictory)
 	.byte .hibyte(level_data_overawed)
+	.byte .hibyte(level_data_greif)
 	.byte .hibyte(level_data_unity)
 	.byte .hibyte(level_data_dastardly)
 	.byte .hibyte(level_data_thetripletrial)
@@ -76,6 +78,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_ninecircleseasy))
 	.byte .lobyte(.bank(level_data_carefreevictory))
 	.byte .lobyte(.bank(level_data_overawed))
+	.byte .lobyte(.bank(level_data_greif))
 	.byte .lobyte(.bank(level_data_unity))
 	.byte .lobyte(.bank(level_data_dastardly))
 	.byte .lobyte(.bank(level_data_thetripletrial))
@@ -133,6 +136,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B9)		; ninecircleseasy
 	.byte .lobyte($0000D5)		; carefreevictory
 	.byte .lobyte($0000A7)		; overawed
+	.byte .lobyte($000069)		; greif
 	.byte .lobyte($00006B)		; unity
 	.byte .lobyte($0000B2)		; dastardly
 	.byte .lobyte($00003E)		; thetripletrial
@@ -162,6 +166,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B9)		; ninecircleseasy
 	.byte .hibyte($0000D5)		; carefreevictory
 	.byte .hibyte($0000A7)		; overawed
+	.byte .hibyte($000069)		; greif
 	.byte .hibyte($00006B)		; unity
 	.byte .hibyte($0000B2)		; dastardly
 	.byte .hibyte($00003E)		; thetripletrial
@@ -191,6 +196,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B9)		; ninecircleseasy
 	.byte .bankbyte($0000D5)		; carefreevictory
 	.byte .bankbyte($0000A7)		; overawed
+	.byte .bankbyte($000069)		; greif
 	.byte .bankbyte($00006B)		; unity
 	.byte .bankbyte($0000B2)		; dastardly
 	.byte .bankbyte($00003E)		; thetripletrial

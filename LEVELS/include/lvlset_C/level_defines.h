@@ -4,7 +4,7 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 25
+#define COMMUNITY_LEVEL_COUNT 26
 
 #define level_movie 0
 #define level_groundtoretray 1
@@ -23,11 +23,12 @@
 #define level_ninecircleseasy 14
 #define level_carefreevictory 15
 #define level_overawed 16
-#define level_unity 17
-#define level_dastardly 18
-#define level_thetripletrial 19
-#define level_trolledfix 20
-#define level_supercycles 21
-#define level_chaozimpact 22
-#define level_solarcircles 23
-#define level_futurefunkfix 24
+#define level_greif 17
+#define level_unity 18
+#define level_dastardly 19
+#define level_thetripletrial 20
+#define level_trolledfix 21
+#define level_supercycles 22
+#define level_chaozimpact 23
+#define level_solarcircles 24
+#define level_futurefunkfix 25
