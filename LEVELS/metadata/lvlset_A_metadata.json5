@@ -1556,7 +1556,6 @@
 		},
 		{
 			level: "thecellar",
-			upperText: "",
 			lowerText: "THE CELLAR",
 			decoType: "DECO1",
 			spikeSet: "A",
@@ -1593,8 +1592,8 @@
 			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "NORMAL",
-			stars: 3,
+			difficulty: "HARDER",
+			stars: 7,
 			songID: "song_scheming_weasel",
 			startingGameMode: 4,
 			startingSpeed: 0,

@@ -27,7 +27,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// thetower
 	HARD,	// thesewers
 	HARDER,	// thecellar
-	NORMAL,	// thesecrethollow
+	HARDER,	// thesecrethollow
 	HARD,	// thechallenge
 	EASY,	// retray
 	NORMAL,	// leveleasy
@@ -75,7 +75,7 @@ const uint8_t stars_list[] = {
 	5,	// thetower
 	6,	// thesewers
 	7,	// thecellar
-	3,	// thesecrethollow
+	7,	// thesecrethollow
 	3,	// thechallenge
 	2,	// retray
 	3,	// leveleasy
