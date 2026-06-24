@@ -295,7 +295,7 @@
 		.byte <sprite_data_thesecrethollow ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_thesecrethollow ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_thesecrethollow)) ;___ Sprite data bank
-		.byte song_scheming_weasel ;____________________ Song ID
+		.byte song_casual_game_music_09 ;_______________ Song ID
 		.byte (0 << 4) | 4 ;____________________________ Starting game mode and speed
 		.byte ($40) ;___________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)

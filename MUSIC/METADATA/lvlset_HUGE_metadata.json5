@@ -207,6 +207,13 @@
 		},
 		/*
 		{
+			fmsSongName: "Casual Game Music 09",
+			upperText: "CASUAL GAME",
+			lowerText: "MUSIC 09",
+			originalArtist: "Ostinarium",
+			coveringArtist: "NerdBoy628",
+		},
+		{
 			fmsSongName: "2NES",
 			lowerText: "2NES",
 			originalArtist: "Ranedom",

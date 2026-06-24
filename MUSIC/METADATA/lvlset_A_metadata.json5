@@ -308,6 +308,12 @@
 			vsSystemEnabled: false
 		},
 		{
+			fmsSongName: "Casual Game Music 09",
+			upperText: "CASUAL GAME",
+			lowerText: "MUSIC 09",
+			originalArtistText: "OSTINARIUM",
+		},
+		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 1",
