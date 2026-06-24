@@ -31,6 +31,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_thetower)
 	.byte .lobyte(level_data_thesewers)
 	.byte .lobyte(level_data_thecellar)
+	.byte .lobyte(level_data_thesecrethollow)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_bestautomaticlvl)
 	.byte .lobyte(level_data_movie)
@@ -193,6 +194,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_thetower)
 	.byte .hibyte(level_data_thesewers)
 	.byte .hibyte(level_data_thecellar)
+	.byte .hibyte(level_data_thesecrethollow)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_bestautomaticlvl)
 	.byte .hibyte(level_data_movie)
@@ -355,6 +357,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thetower))
 	.byte .lobyte(.bank(level_data_thesewers))
 	.byte .lobyte(.bank(level_data_thecellar))
+	.byte .lobyte(.bank(level_data_thesecrethollow))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_bestautomaticlvl))
 	.byte .lobyte(.bank(level_data_movie))
@@ -625,6 +628,7 @@ _level_lengths_lo:
 	.byte .lobyte($00002F)		; thetower
 	.byte .lobyte($00001B)		; thesewers
 	.byte .lobyte($000027)		; thecellar
+	.byte .lobyte($000052)		; thesecrethollow
 	.byte .lobyte($00002F)		; thechallenge
 	.byte .lobyte($00006F)		; bestautomaticlvl
 	.byte .lobyte($0000B8)		; movie
@@ -789,6 +793,7 @@ _level_lengths_md:
 	.byte .hibyte($00002F)		; thetower
 	.byte .hibyte($00001B)		; thesewers
 	.byte .hibyte($000027)		; thecellar
+	.byte .hibyte($000052)		; thesecrethollow
 	.byte .hibyte($00002F)		; thechallenge
 	.byte .hibyte($00006F)		; bestautomaticlvl
 	.byte .hibyte($0000B8)		; movie
@@ -953,6 +958,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00002F)		; thetower
 	.byte .bankbyte($00001B)		; thesewers
 	.byte .bankbyte($000027)		; thecellar
+	.byte .bankbyte($000052)		; thesecrethollow
 	.byte .bankbyte($00002F)		; thechallenge
 	.byte .bankbyte($00006F)		; bestautomaticlvl
 	.byte .bankbyte($0000B8)		; movie

@@ -51,7 +51,7 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     _irqTable:   .res 32
     .export _irqTable
 
-.segment "CODE_2"
+.segment "RODATA_2"
     _mmc3_pop_prg_bank_1:
         LDA #MMC3_REG_SEL_PRG_BANK_1
         ora mmc3ChrInversionSetting
@@ -359,7 +359,7 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     .export _write_irq_table
 
 
-.segment "CODE_2"
+.segment "RODATA_2"
     edit_irq_table:
     __edit_irq_table:
        ; a = byte

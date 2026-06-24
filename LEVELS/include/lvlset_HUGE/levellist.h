@@ -28,6 +28,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// thetower
 	HARD,	// thesewers
 	HARDER,	// thecellar
+	HARDER,	// thesecrethollow
 	HARD,	// thechallenge
 	AUTO,	// bestautomaticlvl
 	AUTO,	// movie
@@ -191,6 +192,7 @@ const uint8_t stars_list[] = {
 	5,	// thetower
 	6,	// thesewers
 	7,	// thecellar
+	7,	// thesecrethollow
 	3,	// thechallenge
 	1,	// bestautomaticlvl
 	1,	// movie

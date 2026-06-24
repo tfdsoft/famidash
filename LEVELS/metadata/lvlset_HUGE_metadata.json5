@@ -1613,6 +1613,57 @@
 			]
 		},
 		{
+			level: "thesecrethollow",
+			upperText: "THE SECRET",
+			lowerText: "HOLLOW",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_scheming_weasel",
+			startingGameMode: 4,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x03,
+			startingGroundColor: 0x0f,
+			maxFallSpeed_is_7: 0x01,
+			parallaxDisable: true,
+			forcePlatformer: true,
+			spawnYPositionHi: 0x40,
+			spawnYPositionLow: 0x00,
+			scrollYPositionHi: 0x02,
+			scrollYPositionLow: 0xef,
+			objectOffsets: [
+				{
+					coordinates: [41,44],
+					offsetX: 8,
+				},
+				{
+					coordinates: [48,44],
+					offsetX: 8,
+				},
+				{
+					coordinates: [55,44],
+					offsetX: 8,
+				},
+				{
+					coordinates: [93,42],
+					offsetX: 8,
+				},
+				{
+					coordinates: [318,20],
+					offsetX: 8,
+					offsetY: 8,
+				},
+				{
+					coordinates: [453,38],
+					offsetX: 8,
+					offsetY: 8,
+				},
+			]
+		},		
+		{
 			level: "thechallenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",
