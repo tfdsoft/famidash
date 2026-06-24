@@ -140,7 +140,7 @@
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
+		.byte _DECO1 | ($01 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
 		.byte (_SPIKESA << 4) | _BLOCKSD ;______________ Block Set, Spike Set
 		.byte $0F ;_____________________________________ Starting background color
 		.byte $0F ;_____________________________________ Starting ground color

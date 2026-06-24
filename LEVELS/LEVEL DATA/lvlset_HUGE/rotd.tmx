@@ -5,15 +5,15 @@
   <export target="../LEVELS/LEVEL DATA/lvlset_C/overawed.csv" format="csv"/>
  </editorsettings>
  <tileset firstgid="1" name="famidash" tilewidth="16" tileheight="16" tilecount="256" columns="16">
-  <image source="../../../../../Famidash_repo/famidash/GRAPHICS/famidash.bmp" width="256" height="256"/>
+  <image source="../../../GRAPHICS/famidash.bmp" width="256" height="256"/>
  </tileset>
  <tileset firstgid="257" name="sprites" tilewidth="16" tileheight="16" tilecount="256" columns="16">
-  <image source="../../../../../Famidash_repo/famidash/GRAPHICS/sprites.png" width="256" height="256"/>
+  <image source="../../../GRAPHICS/sprites.png" width="256" height="256"/>
  </tileset>
- <imagelayer id="3" name="Image Layer 1" visible="0" parallaxx="0.9" parallaxy="0.9" repeatx="1" repeaty="1">
+ <imagelayer id="3" name="Image Layer 1" parallaxx="0.9" parallaxy="0.9" repeatx="1" repeaty="1">
   <image source="../../../GRAPHICS/Old/parallax Blue.bmp" width="144" height="72"/>
  </imagelayer>
- <imagelayer id="4" name="Image Layer 2" visible="0" offsetx="0" offsety="432" repeatx="1">
+ <imagelayer id="4" name="Image Layer 2" offsetx="0" offsety="432" repeatx="1">
   <image source="../../../GRAPHICS/ground.bmp" width="64" height="128"/>
  </imagelayer>
  <layer id="1" width="1273" height="27">
