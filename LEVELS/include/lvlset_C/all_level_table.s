@@ -18,6 +18,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_dorabaebasic7)
 	.byte .lobyte(level_data_chromaticexpedition)
 	.byte .lobyte(level_data_endgame)
+	.byte .lobyte(level_data_rotd)
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
 	.byte .lobyte(level_data_carefreevictory)
@@ -46,6 +47,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_dorabaebasic7)
 	.byte .hibyte(level_data_chromaticexpedition)
 	.byte .hibyte(level_data_endgame)
+	.byte .hibyte(level_data_rotd)
 	.byte .hibyte(level_data_astronomicalexpedition)
 	.byte .hibyte(level_data_ninecircleseasy)
 	.byte .hibyte(level_data_carefreevictory)
@@ -74,6 +76,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_dorabaebasic7))
 	.byte .lobyte(.bank(level_data_chromaticexpedition))
 	.byte .lobyte(.bank(level_data_endgame))
+	.byte .lobyte(.bank(level_data_rotd))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
 	.byte .lobyte(.bank(level_data_ninecircleseasy))
 	.byte .lobyte(.bank(level_data_carefreevictory))
@@ -132,6 +135,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000F7)		; dorabaebasic7
 	.byte .lobyte($000056)		; chromaticexpedition
 	.byte .lobyte($00009F)		; endgame
+	.byte .lobyte($0000CC)		; rotd
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
 	.byte .lobyte($0000D5)		; carefreevictory
@@ -162,6 +166,7 @@ _level_lengths_md:
 	.byte .hibyte($0000F7)		; dorabaebasic7
 	.byte .hibyte($000056)		; chromaticexpedition
 	.byte .hibyte($00009F)		; endgame
+	.byte .hibyte($0000CC)		; rotd
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
 	.byte .hibyte($0000D5)		; carefreevictory
@@ -192,6 +197,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000F7)		; dorabaebasic7
 	.byte .bankbyte($000056)		; chromaticexpedition
 	.byte .bankbyte($00009F)		; endgame
+	.byte .bankbyte($0000CC)		; rotd
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy
 	.byte .bankbyte($0000D5)		; carefreevictory

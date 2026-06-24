@@ -494,6 +494,64 @@
 			]
 		},
 		{
+			level: "rotd",
+			lowerText: "ROTD",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_mario_kart_7__rainbow_road_remix",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[37, 25], [110, 17], [181, 17], [298, 19], [341, 17], [454, 17], [558, 17], [721, 17], [845, 18], [962, 18], [976, 18], [1002, 17],
+						[1126, 25], [1133, 25], [1135, 25], [1142, 25], [1148, 25], [1156, 25], [1159, 25], [1246, 25],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[181, 16], [220, 19], [261, 16], [262, 16], [342, 16], [559, 16], [920, 17], [1002, 21], [1103, 18], [1109, 18], [1117, 18], [1118, 18],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[109, 16], [252, 13], [261, 16], [1043, 18], [1044, 18],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[182, 17], [253, 13], [342, 16], [1117, 18], [1118, 18],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[181, 17], [220, 19], [558, 17], [1043, 18],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [831, 18],
+					offsetY: -4
+				},
+				{
+					coordinates: [1044, 19],
+					offsetY: -16
+				},
+			]
+		},
+		{
 			level: "astronomicalexpedition",
 			upperText: "ASTRONOMICAL",
 			lowerText: "EXPEDITION",

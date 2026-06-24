@@ -15,6 +15,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// dorabaebasic7
 	HARDER,	// chromaticexpedition
 	HARDER,	// endgame
+	HARDER,	// rotd
 	HARDER,	// astronomicalexpedition
 	HARDER,	// ninecircleseasy
 	HARDER,	// carefreevictory
@@ -44,6 +45,7 @@ const uint8_t stars_list[] = {
 	4,	// dorabaebasic7
 	6,	// chromaticexpedition
 	6,	// endgame
+	7,	// rotd
 	7,	// astronomicalexpedition
 	7,	// ninecircleseasy
 	7,	// carefreevictory

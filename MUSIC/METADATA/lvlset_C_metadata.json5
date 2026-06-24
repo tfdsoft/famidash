@@ -131,6 +131,12 @@
 			originalArtistText: "KIYNARIA"
 		},
 		{
+			fmsSongName: "Mario Kart 7 - Rainbow Road (Remix)",
+			upperText: "MARIO KART 7",
+			lowerText: "RAINBOW ROAD",
+			originalArtistText: "ACKATOS",
+		},
+		{
 			fmsSongName: "Nine Circles",
 			lowerText: "NINE CIRCLES",
 			originalArtistText: "RUKKUS",
