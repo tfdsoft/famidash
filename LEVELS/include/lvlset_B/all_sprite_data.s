@@ -1030,7 +1030,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1F"
+.segment "DAT_BANK_24"
 sprite_data_xmaschallenge:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$70,$03,$ba
@@ -1822,7 +1822,7 @@ sprite_data_lookatthislevel:
   .byte $90,$23,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_16"
+.segment "DAT_BANK_18"
 sprite_data_ajollyretrochristmas:
   .byte $00,$00,$70,$03,$bf
   .byte $00,$00,$88,$03,$fd
@@ -2751,7 +2751,7 @@ sprite_data_ultiatedestruction:
   .byte $70,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_09"
+.segment "DAT_BANK_24"
 sprite_data_chippe:
   .byte $30,$01,$80,$03,$30
   .byte $40,$01,$50,$03,$2c
@@ -3302,7 +3302,7 @@ sprite_data_moonlight:
   .byte $20,$2f,$d0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_0E"
+.segment "DAT_BANK_22"
 sprite_data_fofii_fofii_fofii:
   .byte $00,$00,$70,$03,$bf
   .byte $00,$00,$88,$03,$fd
@@ -6687,7 +6687,7 @@ sprite_data_cryogenic:
   .byte $90,$3b,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0D"
+.segment "DAT_BANK_0F"
 sprite_data_oceane:
   .byte $00,$00,$d0,$02,$80
   .byte $00,$00,$e0,$02,$b6
@@ -8660,7 +8660,7 @@ sprite_data_scarletsurge:
   .byte $80,$57,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_13"
+.segment "DAT_BANK_12"
 sprite_data_tinytunes:
   .byte $00,$00,$80,$03,$bf
   .byte $a0,$00,$88,$03,$0a
@@ -9226,7 +9226,7 @@ sprite_data_tinytunes:
   .byte $70,$32,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1B"
+.segment "DAT_BANK_1C"
 sprite_data_fireaura:
   .byte $00,$00,$70,$03,$86
   .byte $00,$00,$80,$03,$b6
@@ -9990,7 +9990,7 @@ sprite_data_fireaura:
   .byte $40,$4a,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_11"
+.segment "DAT_BANK_13"
 sprite_data_rainbowdust:
   .byte $00,$00,$60,$03,$ee
   .byte $00,$00,$70,$03,$80
@@ -11666,7 +11666,7 @@ sprite_data_thesteamworks:
   .byte $60,$4f,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_15"
+.segment "DAT_BANK_16"
 sprite_data_rainingtacos:
   .byte $00,$00,$c0,$02,$ee
   .byte $00,$00,$f0,$02,$b6
@@ -12333,7 +12333,7 @@ sprite_data_rainingtacos:
   .byte $e0,$48,$70,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_14"
+.segment "DAT_BANK_15"
 sprite_data_dorabaebasic10:
   .byte $00,$00,$80,$03,$98
   .byte $d0,$00,$80,$03,$0b
@@ -13266,7 +13266,7 @@ sprite_data_offtomars:
   .byte $e0,$3a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_1A"
 sprite_data_akrile:
   .byte $00,$00,$d0,$02,$8f
   .byte $00,$00,$e0,$02,$cf
