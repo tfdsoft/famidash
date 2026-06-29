@@ -14,8 +14,8 @@
 		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;___________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;____________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;_____________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;____________ Spike Set, Block Set
 		.byte $06 ;___________________________________ Starting background color
 		.byte $0F ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
@@ -35,8 +35,8 @@
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;______________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;______________ Spike Set, Block Set
 		.byte $06 ;_____________________________________ Starting background color
 		.byte $0F ;_____________________________________ Starting ground color
 		.byte 27 ;______________________________________ Level height
@@ -56,8 +56,8 @@
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
@@ -77,8 +77,8 @@
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
@@ -98,8 +98,8 @@
 		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_________________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;___________________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Spike Set, Block Set
 		.byte $07 ;_________________________________________ Starting background color
 		.byte $0F ;_________________________________________ Starting ground color
 		.byte 27 ;__________________________________________ Level height
@@ -119,8 +119,8 @@
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;__________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Spike Set, Block Set
 		.byte $0A ;________________________________ Starting background color
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
@@ -140,8 +140,8 @@
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 | ($01 << 7) ;_______ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSD ;________ Block Set, Spike Set
+		.byte (1 << 7) | _EXTRASPRITES1 ;_________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSD ;________ Spike Set, Block Set
 		.byte $0F ;_______________________________ Starting background color
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
@@ -168,8 +168,8 @@
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
@@ -196,8 +196,8 @@
 		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;____________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;______________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;_____ Spike Set, Block Set
 		.byte $0F ;____________________________ Starting background color
 		.byte $0F ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
@@ -217,8 +217,8 @@
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;__________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;_________ Spike Set, Block Set
 		.byte $17 ;________________________________ Starting background color
 		.byte $17 ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
@@ -238,8 +238,8 @@
 		.byte ($B0) ;________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;__________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;__________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;___ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;____________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;___ Spike Set, Block Set
 		.byte $00 ;__________________________ Starting background color
 		.byte $0F ;__________________________ Starting ground color
 		.byte 40 ;___________________________ Level height
@@ -259,8 +259,8 @@
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;__________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Spike Set, Block Set
 		.byte $01 ;________________________________ Starting background color
 		.byte $01 ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
@@ -285,8 +285,8 @@
 		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 | ($00 << 7) ;_________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Block Set, Spike Set
+		.byte (0 << 7) | _EXTRASPRITES1 ;___________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Spike Set, Block Set
 		.byte $12 ;_________________________________ Starting background color
 		.byte $02 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
@@ -306,8 +306,8 @@
 		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_____________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;______ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;_______________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;______ Spike Set, Block Set
 		.byte $01 ;_____________________________ Starting background color
 		.byte $01 ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
@@ -332,8 +332,8 @@
 		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;__________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;___________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;____________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;___________ Spike Set, Block Set
 		.byte $0F ;__________________________________ Starting background color
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 27 ;___________________________________ Level height
@@ -353,8 +353,8 @@
 		.byte ($B0) ;________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;__________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;__________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;___ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;____________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;___ Spike Set, Block Set
 		.byte $11 ;__________________________ Starting background color
 		.byte $11 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
@@ -374,8 +374,8 @@
 		.byte ($B0) ;________________________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;________________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;__________________________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;__________________________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;___________________________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;____________________________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;___________________________ Spike Set, Block Set
 		.byte $1C ;__________________________________________________ Starting background color
 		.byte $0F ;__________________________________________________ Starting ground color
 		.byte 27 ;___________________________________________________ Level height
@@ -393,8 +393,8 @@
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;_________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Spike Set, Block Set
 		.byte $03 ;_______________________________ Starting background color
 		.byte $03 ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
@@ -414,8 +414,8 @@
 		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________ Force platformer, Disable parallax
-		.byte _DECOCLOUD | ($00 << 7) ;________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESB << 4) | _BLOCKSB ;_____ Block Set, Spike Set
+		.byte (0 << 7) | _DECOCLOUD ;__________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESB << 4) | _BLOCKSB ;_____ Spike Set, Block Set
 		.byte $16 ;____________________________ Starting background color
 		.byte $06 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
@@ -433,8 +433,8 @@
 		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;___________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Spike Set, Block Set
 		.byte $30 ;_________________________________ Starting background color
 		.byte $0F ;_________________________________ Starting ground color
 		.byte 57 ;__________________________________ Level height
@@ -454,8 +454,8 @@
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;_________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Spike Set, Block Set
 		.byte $00 ;_______________________________ Starting background color
 		.byte $00 ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
@@ -475,8 +475,8 @@
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 | ($00 << 7) ;________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte (0 << 7) | _EXTRASPRITES1 ;__________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Spike Set, Block Set
 		.byte $0F ;________________________________ Starting background color
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
@@ -496,8 +496,8 @@
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 57 ;_____________________________________ Level height
@@ -524,8 +524,8 @@
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;_______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSA ;________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;_________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSA ;________ Spike Set, Block Set
 		.byte $16 ;_______________________________ Starting background color
 		.byte $06 ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
@@ -552,8 +552,8 @@
 		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 | ($01 << 7) ;___________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;____________ Block Set, Spike Set
+		.byte (1 << 7) | _EXTRASPRITES1 ;_____________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;____________ Spike Set, Block Set
 		.byte $02 ;___________________________________ Starting background color
 		.byte $02 ;___________________________________ Starting ground color
 		.byte 30 ;____________________________________ Level height
@@ -573,8 +573,8 @@
 		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;__________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESB << 4) | _BLOCKSB ;___________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;____________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESB << 4) | _BLOCKSB ;___________ Spike Set, Block Set
 		.byte $0F ;__________________________________ Starting background color
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 27 ;___________________________________ Level height
@@ -592,8 +592,8 @@
 		.byte ($B0) ;____________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_______ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;_______ Spike Set, Block Set
 		.byte $0F ;______________________________ Starting background color
 		.byte $0F ;______________________________ Starting ground color
 		.byte 27 ;_______________________________ Level height
@@ -613,8 +613,8 @@
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;______________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;______________ Spike Set, Block Set
 		.byte $0F ;_____________________________________ Starting background color
 		.byte $0F ;_____________________________________ Starting ground color
 		.byte 57 ;______________________________________ Level height
@@ -632,8 +632,8 @@
 		.byte ($FF) ;______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte (0 << 7) | _DECO1 ;__________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Spike Set, Block Set
 		.byte $0F ;________________________________ Starting background color
 		.byte $0F ;________________________________ Starting ground color
 		.byte 57 ;_________________________________ Level height
@@ -653,8 +653,8 @@
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Block Set, Spike Set
+		.byte (1 << 7) | _DECO1 ;_________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Spike Set, Block Set
 		.byte $0F ;_______________________________ Starting background color
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height

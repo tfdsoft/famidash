@@ -225,28 +225,20 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			f"<(.bank(sprite_data_{level}))",
 			metadata.get('songID', 0),
 			f"({metadata.get('startingSpeed', 0)} << 4) | {metadata.get('startingGameMode', 0)}",
-			f"(${metadata.get('spawnYPositionHi', 0xB0):02X})",  # <- spawn position here
-			f"(${metadata.get('scrollYPositionLow', 0xEF):02X})",  # <- scroll position here
+			f"(${metadata.get('spawnYPositionHi', 0xB0):02X})",
+			f"(${metadata.get('scrollYPositionLow', 0xEF):02X})",
 			" | ".join([
 				f"({int(bool(metadata.get(name)))} << {idx})"
 				for idx, name in enumerate(['forcePlatformer', 'parallaxDisable'])
-			]),  # <- bitfield separate line
-
+			]),
 			" | ".join([
+				f"({metadata.get('maxFallSpeed_is_7', 0)} << 7)",
 				f"_{metadata.get('decoType', 'NONE')}",			
-				f"(${metadata.get('maxFallSpeed_is_7', 0x00):02X} << 7)",  # <- max fall speed here
-			]),  # <- bitfield separate line
-
-
-			" << 4) | ".join([
-				getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "(_"),
+			]),
+			" | ".join([
+				f"({getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_")} << 4)",
 				getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
-			]),  # <- bitfield separate line
-
-			#f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here
-			#f"_{metadata.get('decoType', 'NONE')}",
-			#getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
-			#getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
+			]),
 			f"${metadata.get('startingBackgroundColor', 0):02X}",
 			f"${metadata.get('startingGroundColor', 0):02X}",
 			str(len(lines)),
@@ -260,9 +252,9 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			"Starting game mode and speed",
 			"Spawn Y Position (high byte)",
 			"Y Scroll Position (low byte)",
-			", ".join(["Disable parallax", "Force platformer"][::-1]),
-			", ".join(["Max Fall Speed is 7?", "Deco type"][::-1]),
-			", ".join(["Spike Set", "Block Set"][::-1]),
+			", ".join(["Force platformer", "Disable parallax"]),
+			", ".join(["Max Fall Speed is 7?", "Deco type"]),
+			", ".join(["Spike Set", "Block Set"]),
 			"Starting background color",
 			"Starting ground color",
 			"Level height"
