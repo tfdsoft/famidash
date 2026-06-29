@@ -188,8 +188,12 @@
 	; Level data
 		.incbin "EXPORTS/level/geometricaldominator.lz.bin" ; Size: 6383
 
+	sprite_data_hexagonforce:	; Size: 1631
+		.incbin "EXPORTS/sprite/hexagonforce.bin"
 
 .segment "DAT_BANK_08"	; Total bank size: 8086 bytes
+	sprite_data_rainbowtylenol:	; Size: 6171
+		.incbin "EXPORTS/sprite/rainbowtylenol.bin"
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -230,6 +234,8 @@
 	; Level data
 		.incbin "EXPORTS/level/lostinthewoods.lz.bin" ; Size: 6130
 
+	sprite_data_bloodbathbutno:	; Size: 2021
+		.incbin "EXPORTS/sprite/bloodbathbutno.bin"
 
 .segment "DAT_BANK_0A"	; Total bank size: 8167 bytes
 	.export level_data_sunshine
@@ -291,6 +297,8 @@
 	; Level data
 		.incbin "EXPORTS/level/toe2.lz.bin" ; Size: 6041
 
+	sprite_data_blastprocessing:	; Size: 2131
+		.incbin "EXPORTS/sprite/blastprocessing.bin"
 
 .segment "DAT_BANK_0C"	; Total bank size: 8170 bytes
 	.export level_data_bloodbathbutno
@@ -332,6 +340,12 @@
 		.incbin "EXPORTS/level/thesecrethollow.lz.bin" ; Size: 2121
 
 
+.segment "DAT_BANK_0D"	; Total bank size: 8027 bytes
+	sprite_data_extraordinaryexcitement:	; Size: 5781
+		.incbin "EXPORTS/sprite/extraordinaryexcitement.bin"
+	sprite_data_nightmare:	; Size: 2246
+		.incbin "EXPORTS/sprite/nightmare.bin"
+
 .segment "DAT_BANK_0E"	; Total bank size: 8020 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
@@ -352,6 +366,8 @@
 	; Level data
 		.incbin "EXPORTS/level/electrodynamix.lz.bin" ; Size: 5726
 
+	sprite_data_theoryofeverything:	; Size: 2281
+		.incbin "EXPORTS/sprite/theoryofeverything.bin"
 
 .segment "DAT_BANK_0F"	; Total bank size: 8010 bytes
 	.export level_data_clubstep
@@ -373,6 +389,8 @@
 	; Level data
 		.incbin "EXPORTS/level/clubstep.lz.bin" ; Size: 5676
 
+	sprite_data_timemachine:	; Size: 2321
+		.incbin "EXPORTS/sprite/timemachine.bin"
 
 .segment "DAT_BANK_10"	; Total bank size: 8054 bytes
 	.export level_data_revolution
@@ -394,6 +412,8 @@
 	; Level data
 		.incbin "EXPORTS/level/revolution.lz.bin" ; Size: 5425
 
+	sprite_data_xstep:	; Size: 2616
+		.incbin "EXPORTS/sprite/xstep.bin"
 
 .segment "DAT_BANK_11"	; Total bank size: 8092 bytes
 	.export level_data_blastprocessing
@@ -415,6 +435,8 @@
 	; Level data
 		.incbin "EXPORTS/level/blastprocessing.lz.bin" ; Size: 5293
 
+	sprite_data_clubstep:	; Size: 2786
+		.incbin "EXPORTS/sprite/clubstep.bin"
 
 .segment "DAT_BANK_12"	; Total bank size: 8085 bytes
 	.export level_data_kappaclysm
@@ -622,6 +644,8 @@
 	; Level data
 		.incbin "EXPORTS/level/nightmare.lz.bin" ; Size: 4272
 
+	sprite_data_revolution:	; Size: 3906
+		.incbin "EXPORTS/sprite/revolution.bin"
 
 .segment "DAT_BANK_18"	; Total bank size: 8095 bytes
 	.export level_data_theoryofeverything
@@ -643,6 +667,8 @@
 	; Level data
 		.incbin "EXPORTS/level/theoryofeverything.lz.bin" ; Size: 4136
 
+	sprite_data_funnygameholiday:	; Size: 3946
+		.incbin "EXPORTS/sprite/funnygameholiday.bin"
 
 .segment "DAT_BANK_19"	; Total bank size: 7260 bytes
 	.export level_data_rainbowtylenol_1
@@ -650,6 +676,8 @@
 	; Level data
 		.incbin "EXPORTS/level/rainbowtylenol.lz.1.bin" ; Size: 3694
 
+	sprite_data_electrodynamix:	; Size: 3566
+		.incbin "EXPORTS/sprite/electrodynamix.bin"
 
 .segment "DAT_BANK_1A"	; Total bank size: 8091 bytes
 	.export level_data_timemachine
@@ -690,6 +718,16 @@
 	; Level data
 		.incbin "EXPORTS/level/dorabaebasic6.lz.bin" ; Size: 3027
 
+	sprite_data_sunshine:	; Size: 1901
+		.incbin "EXPORTS/sprite/sunshine.bin"
+
+.segment "DAT_BANK_1B"	; Total bank size: 8113 bytes
+	sprite_data_toe2:	; Size: 2891
+		.incbin "EXPORTS/sprite/toe2.bin"
+	sprite_data_dreamer:	; Size: 2791
+		.incbin "EXPORTS/sprite/dreamer.bin"
+	sprite_data_geometricaldominator:	; Size: 2431
+		.incbin "EXPORTS/sprite/geometricaldominator.bin"
 
 .segment "DAT_BANK_1C"	; Total bank size: 8086 bytes
 	.export level_data_thelightningroad
@@ -730,8 +768,12 @@
 	; Level data
 		.incbin "EXPORTS/level/retray.lz.bin" ; Size: 2684
 
+	sprite_data_dorabaebasic4:	; Size: 2611
+		.incbin "EXPORTS/sprite/dorabaebasic4.bin"
 
 .segment "DAT_BANK_1D"	; Total bank size: 7753 bytes
+	sprite_data_electromanadventures:	; Size: 2601
+		.incbin "EXPORTS/sprite/electromanadventures.bin"
 	.export level_data_subzero
 	level_data_subzero:
 	; Header
@@ -751,8 +793,12 @@
 	; Level data
 		.incbin "EXPORTS/level/subzero.lz.bin" ; Size: 2563
 
+	sprite_data_clutterfunk:	; Size: 2576
+		.incbin "EXPORTS/sprite/clutterfunk.bin"
 
 .segment "DAT_BANK_1E"	; Total bank size: 7579 bytes
+	sprite_data_dash:	; Size: 2571
+		.incbin "EXPORTS/sprite/dash.bin"
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -772,6 +818,8 @@
 	; Level data
 		.incbin "EXPORTS/level/thechallenge.lz.bin" ; Size: 2509
 
+	sprite_data_groundtospace:	; Size: 2486
+		.incbin "EXPORTS/sprite/groundtospace.bin"
 
 .segment "DAT_BANK_1F"	; Total bank size: 8106 bytes
 	.export level_data_leveleasy
@@ -793,6 +841,8 @@
 	; Level data
 		.incbin "EXPORTS/level/leveleasy.lz.bin" ; Size: 2099
 
+	sprite_data_cycles:	; Size: 2086
+		.incbin "EXPORTS/sprite/cycles.bin"
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -833,6 +883,8 @@
 
 
 .segment "DAT_BANK_20"	; Total bank size: 8060 bytes
+	sprite_data_deadlocked:	; Size: 1846
+		.incbin "EXPORTS/sprite/deadlocked.bin"
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -852,8 +904,18 @@
 	; Level data
 		.incbin "EXPORTS/level/polargeist.lz.bin" ; Size: 1743
 
+	sprite_data_thelightningroad:	; Size: 1721
+		.incbin "EXPORTS/sprite/thelightningroad.bin"
+	sprite_data_lostinthewoods:	; Size: 1671
+		.incbin "EXPORTS/sprite/lostinthewoods.bin"
+	sprite_data_kappaclysm:	; Size: 1066
+		.incbin "EXPORTS/sprite/kappaclysm.bin"
 
 .segment "DAT_BANK_21"	; Total bank size: 7137 bytes
+	sprite_data_subzero:	; Size: 1496
+		.incbin "EXPORTS/sprite/subzero.bin"
+	sprite_data_fingerdash:	; Size: 1491
+		.incbin "EXPORTS/sprite/fingerdash.bin"
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -873,6 +935,8 @@
 	; Level data
 		.incbin "EXPORTS/level/backontrack.lz.bin" ; Size: 1399
 
+	sprite_data_dorabaebasic6:	; Size: 1401
+		.incbin "EXPORTS/sprite/dorabaebasic6.bin"
 	.export level_data_thetower
 	level_data_thetower:
 	; Header
@@ -894,6 +958,10 @@
 
 
 .segment "DAT_BANK_22"	; Total bank size: 8053 bytes
+	sprite_data_jumper:	; Size: 1246
+		.incbin "EXPORTS/sprite/jumper.bin"
+	sprite_data_polargeist:	; Size: 1211
+		.incbin "EXPORTS/sprite/polargeist.bin"
 	.export level_data_thecellar
 	level_data_thecellar:
 	; Header
@@ -913,8 +981,18 @@
 	; Level data
 		.incbin "EXPORTS/level/thecellar.lz.bin" ; Size: 1134
 
+	sprite_data_baseafterbase:	; Size: 1146
+		.incbin "EXPORTS/sprite/baseafterbase.bin"
+	sprite_data_stereomadness:	; Size: 1111
+		.incbin "EXPORTS/sprite/stereomadness.bin"
+	sprite_data_firetemple:	; Size: 1111
+		.incbin "EXPORTS/sprite/firetemple.bin"
+	sprite_data_leveleasy:	; Size: 1081
+		.incbin "EXPORTS/sprite/leveleasy.bin"
 
 .segment "DAT_BANK_23"	; Total bank size: 6251 bytes
+	sprite_data_dryout:	; Size: 1061
+		.incbin "EXPORTS/sprite/dryout.bin"
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header
@@ -934,6 +1012,22 @@
 	; Level data
 		.incbin "EXPORTS/level/thesewers.lz.bin" ; Size: 940
 
+	sprite_data_backontrack:	; Size: 911
+		.incbin "EXPORTS/sprite/backontrack.bin"
+	sprite_data_retray:	; Size: 861
+		.incbin "EXPORTS/sprite/retray.bin"
+	sprite_data_cantletgo:	; Size: 856
+		.incbin "EXPORTS/sprite/cantletgo.bin"
+	sprite_data_thechallenge:	; Size: 466
+		.incbin "EXPORTS/sprite/thechallenge.bin"
+	sprite_data_thesewers:	; Size: 341
+		.incbin "EXPORTS/sprite/thesewers.bin"
+	sprite_data_thesecrethollow:	; Size: 281
+		.incbin "EXPORTS/sprite/thesecrethollow.bin"
+	sprite_data_thetower:	; Size: 216
+		.incbin "EXPORTS/sprite/thetower.bin"
+	sprite_data_thecellar:	; Size: 211
+		.incbin "EXPORTS/sprite/thecellar.bin"
 	.export level_data_dash_0
 	level_data_dash_0:
 	; Level data

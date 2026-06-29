@@ -480,8 +480,9 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], include_path : 
 	banked_data = []
 	for (id, length, output_data_path, num) in all_data:
 		out_str = [
-			f"sprite_data_{id}:\t; Size: {length}",
-			f'\t.incbin "{output_data_path.relative_to(include_path).as_posix()}"'
+			f"\tsprite_data_{id}:\t; Size: {length}",
+			f'\t\t.incbin "{output_data_path.relative_to(include_path).as_posix()}"'
+			""
 		]
 		banked_data.append((length, "\n".join(out_str), f"sprite_data_{id}", "sprite", [num, ]))
 
@@ -503,15 +504,11 @@ def binpack_and_write_data(bg_exp_data : tuple, spr_exp_data : tuple, include_pa
 	for i, bank in enumerate(banked_data):
 		real_sum_size = sum(list(zip(*bank))[0])
 		print(f"Bank DAT_BANK_{i:02X}: {real_sum_size}/8192 bytes")
-		if (any([i[3] == "level" for i in bank])):
-			lvl_file.append("")
-			lvl_file.append(f'.segment "DAT_BANK_{i:02X}"\t; Total bank size: {real_sum_size} bytes')
+		lvl_file.append("")
+		lvl_file.append(f'.segment "DAT_BANK_{i:02X}"\t; Total bank size: {real_sum_size} bytes')
 		for size, data, label, data_type, metadata in bank:
 			print(f"\t{label}: {size}")
-			if (data_type == "level"):
-				lvl_file.append(data)
-			elif (data_type == "sprite"):
-				spr_data.append((metadata[0], i, data))
+			lvl_file.append(data)
 	
 	# Write the level data
 	(include_path / "all_level_data.s").write_text("\n".join(lvl_file))
