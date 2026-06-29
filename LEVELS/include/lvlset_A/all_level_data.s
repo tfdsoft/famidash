@@ -351,7 +351,7 @@
 		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5726
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8175 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header

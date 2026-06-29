@@ -1817,7 +1817,7 @@
 		.incbin "EXPORTS/dorabaebasic7.lz.bin" ; Size: 5709
 
 
-.segment "DAT_BANK_5A"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_5A"	; Total bank size: 8175 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
