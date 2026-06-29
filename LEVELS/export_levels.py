@@ -187,7 +187,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			inputFileType = "CSV"
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
-		cached_data_path = (include_path / "EXPORTS" / f"{level}.lz.bin")
+		cached_data_path = (include_path / "EXPORTS" / "level" / f"{level}.lz.bin")
 		if (level in size_cache):
 			level_cache = size_cache[level]
 		else:
