@@ -328,6 +328,8 @@
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 7384 bytes
+	sprite_data_eon:	; Size: 6571
+		.incbin "EXPORTS/sprite/eon.bin"
 	.export level_data_eon_3
 	level_data_eon_3:
 	; Level data
@@ -354,6 +356,8 @@
 	; Level data
 		.incbin "EXPORTS/level/endorphinrush.lz.bin" ; Size: 6525
 
+	sprite_data_stalemate:	; Size: 1026
+		.incbin "EXPORTS/sprite/stalemate.bin"
 
 .segment "DAT_BANK_11"	; Total bank size: 7793 bytes
 	.export level_data_thermodynamix
@@ -375,6 +379,8 @@
 	; Level data
 		.incbin "EXPORTS/level/thermodynamix.lz.bin" ; Size: 6524
 
+	sprite_data_everymadness:	; Size: 1256
+		.incbin "EXPORTS/sprite/everymadness.bin"
 
 .segment "DAT_BANK_12"	; Total bank size: 7649 bytes
 	.export level_data_hell
@@ -422,6 +428,8 @@
 	; Level data
 		.incbin "EXPORTS/level/xx.lz.bin" ; Size: 6190
 
+	sprite_data_xx:	; Size: 1396
+		.incbin "EXPORTS/sprite/xx.bin"
 
 .segment "DAT_BANK_14"	; Total bank size: 7969 bytes
 	.export level_data_eighto
@@ -443,6 +451,8 @@
 	; Level data
 		.incbin "EXPORTS/level/eighto.lz.bin" ; Size: 5730
 
+	sprite_data_hell:	; Size: 2226
+		.incbin "EXPORTS/sprite/hell.bin"
 
 .segment "DAT_BANK_15"	; Total bank size: 8075 bytes
 	.export level_data_deadlyclubstep
@@ -464,6 +474,8 @@
 	; Level data
 		.incbin "EXPORTS/level/deadlyclubstep.lz.bin" ; Size: 5276
 
+	sprite_data_fairydust:	; Size: 2786
+		.incbin "EXPORTS/sprite/fairydust.bin"
 
 .segment "DAT_BANK_16"	; Total bank size: 8049 bytes
 	.export level_data_stalemate
@@ -485,6 +497,8 @@
 	; Level data
 		.incbin "EXPORTS/level/stalemate.lz.bin" ; Size: 5195
 
+	sprite_data_pgclubstep:	; Size: 2841
+		.incbin "EXPORTS/sprite/pgclubstep.bin"
 
 .segment "DAT_BANK_17"	; Total bank size: 7882 bytes
 	.export level_data_problematic
@@ -506,6 +520,8 @@
 	; Level data
 		.incbin "EXPORTS/level/problematic.lz.bin" ; Size: 4873
 
+	sprite_data_eighto:	; Size: 2996
+		.incbin "EXPORTS/sprite/eighto.bin"
 
 .segment "DAT_BANK_18"	; Total bank size: 7803 bytes
 	.export level_data_everyend_6
@@ -513,6 +529,8 @@
 	; Level data
 		.incbin "EXPORTS/level/everyend.lz.2.bin" ; Size: 4772
 
+	sprite_data_trythisgd:	; Size: 3031
+		.incbin "EXPORTS/sprite/trythisgd.bin"
 
 .segment "DAT_BANK_19"	; Total bank size: 7793 bytes
 	.export level_data_hi
@@ -534,13 +552,29 @@
 	; Level data
 		.incbin "EXPORTS/level/hi.lz.bin" ; Size: 4709
 
+	sprite_data_invisiblelight:	; Size: 3071
+		.incbin "EXPORTS/sprite/invisiblelight.bin"
+
+.segment "DAT_BANK_1A"	; Total bank size: 7792 bytes
+	sprite_data_sonicwave:	; Size: 4706
+		.incbin "EXPORTS/sprite/sonicwave.bin"
+	sprite_data_thermodynamix:	; Size: 3086
+		.incbin "EXPORTS/sprite/thermodynamix.bin"
 
 .segment "DAT_BANK_1B"	; Total bank size: 7898 bytes
+	sprite_data_endorphinrush:	; Size: 4526
+		.incbin "EXPORTS/sprite/endorphinrush.bin"
 	.export level_data_deathmoon_0
 	level_data_deathmoon_0:
 	; Level data
 		.incbin "EXPORTS/level/deathmoon.lz.1.bin" ; Size: 3372
 
+
+.segment "DAT_BANK_1C"	; Total bank size: 8177 bytes
+	sprite_data_ninecircles:	; Size: 4146
+		.incbin "EXPORTS/sprite/ninecircles.bin"
+	sprite_data_luckydraw:	; Size: 4031
+		.incbin "EXPORTS/sprite/luckydraw.bin"
 
 .segment "DAT_BANK_1D"	; Total bank size: 7279 bytes
 	.export level_data_sonicwave_4
@@ -548,8 +582,20 @@
 	; Level data
 		.incbin "EXPORTS/level/sonicwave.lz.1.bin" ; Size: 3763
 
+	sprite_data_sonicblaster:	; Size: 3516
+		.incbin "EXPORTS/sprite/sonicblaster.bin"
+
+.segment "DAT_BANK_1E"	; Total bank size: 8063 bytes
+	sprite_data_hi:	; Size: 2706
+		.incbin "EXPORTS/sprite/hi.bin"
+	sprite_data_deadlyclubstep:	; Size: 2696
+		.incbin "EXPORTS/sprite/deadlyclubstep.bin"
+	sprite_data_bloodbath:	; Size: 2661
+		.incbin "EXPORTS/sprite/bloodbath.bin"
 
 .segment "DAT_BANK_1F"	; Total bank size: 7695 bytes
+	sprite_data_motion:	; Size: 2641
+		.incbin "EXPORTS/sprite/motion.bin"
 	.export level_data_everymadness
 	level_data_everymadness:
 	; Header
@@ -568,3 +614,16 @@
 		.byte 27 ;___________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/everymadness.lz.bin" ; Size: 2615
+
+	sprite_data_deathmoon:	; Size: 2426
+		.incbin "EXPORTS/sprite/deathmoon.bin"
+
+.segment "DAT_BANK_20"	; Total bank size: 7104 bytes
+	sprite_data_problematic:	; Size: 2121
+		.incbin "EXPORTS/sprite/problematic.bin"
+	sprite_data_cataclysm:	; Size: 1781
+		.incbin "EXPORTS/sprite/cataclysm.bin"
+	sprite_data_everyend:	; Size: 1701
+		.incbin "EXPORTS/sprite/everyend.bin"
+	sprite_data_aftermath:	; Size: 1501
+		.incbin "EXPORTS/sprite/aftermath.bin"

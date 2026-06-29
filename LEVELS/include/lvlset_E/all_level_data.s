@@ -246,6 +246,8 @@
 	; Level data
 		.incbin "EXPORTS/level/icdx.lz.bin" ; Size: 7132
 
+	sprite_data_acropolis:	; Size: 311
+		.incbin "EXPORTS/sprite/acropolis.bin"
 
 .segment "DAT_BANK_0D"	; Total bank size: 7306 bytes
 	.export level_data_jawbreaker
@@ -267,6 +269,8 @@
 	; Level data
 		.incbin "EXPORTS/level/jawbreaker.lz.bin" ; Size: 6877
 
+	sprite_data_foresttemple:	; Size: 416
+		.incbin "EXPORTS/sprite/foresttemple.bin"
 
 .segment "DAT_BANK_0E"	; Total bank size: 8096 bytes
 	.export level_data_azuronxolax
@@ -288,6 +292,8 @@
 	; Level data
 		.incbin "EXPORTS/level/azuronxolax.lz.bin" ; Size: 6672
 
+	sprite_data_explorers:	; Size: 1411
+		.incbin "EXPORTS/sprite/explorers.bin"
 
 .segment "DAT_BANK_0F"	; Total bank size: 8130 bytes
 	.export level_data_toeiiv2
@@ -315,6 +321,12 @@
 		.incbin "EXPORTS/level/demoncryogenic.lz.1.bin" ; Size: 1495
 
 
+.segment "DAT_BANK_10"	; Total bank size: 7877 bytes
+	sprite_data_respitev2:	; Size: 6266
+		.incbin "EXPORTS/sprite/respitev2.bin"
+	sprite_data_gameover:	; Size: 1611
+		.incbin "EXPORTS/sprite/gameover.bin"
+
 .segment "DAT_BANK_11"	; Total bank size: 7908 bytes
 	.export level_data_styx
 	level_data_styx:
@@ -335,6 +347,8 @@
 	; Level data
 		.incbin "EXPORTS/level/styx.lz.bin" ; Size: 6129
 
+	sprite_data_demonpark:	; Size: 1766
+		.incbin "EXPORTS/sprite/demonpark.bin"
 
 .segment "DAT_BANK_12"	; Total bank size: 8156 bytes
 	.export level_data_element111rg_with_secret_way
@@ -356,8 +370,12 @@
 	; Level data
 		.incbin "EXPORTS/level/element111rg_with_secret_way.lz.bin" ; Size: 6037
 
+	sprite_data_silentcircles:	; Size: 2106
+		.incbin "EXPORTS/sprite/silentcircles.bin"
 
 .segment "DAT_BANK_13"	; Total bank size: 7976 bytes
+	sprite_data_aftercatabath:	; Size: 5756
+		.incbin "EXPORTS/sprite/aftercatabath.bin"
 	.export level_data_shardscapes
 	level_data_shardscapes:
 	; Header
@@ -398,6 +416,8 @@
 	; Level data
 		.incbin "EXPORTS/level/acropolis.lz.bin" ; Size: 5638
 
+	sprite_data_toeiiv2:	; Size: 2321
+		.incbin "EXPORTS/sprite/toeiiv2.bin"
 
 .segment "DAT_BANK_15"	; Total bank size: 8012 bytes
 	.export level_data_speedracer
@@ -419,6 +439,8 @@
 	; Level data
 		.incbin "EXPORTS/level/speedracer.lz.bin" ; Size: 5628
 
+	sprite_data_icdx:	; Size: 2371
+		.incbin "EXPORTS/sprite/icdx.bin"
 
 .segment "DAT_BANK_16"	; Total bank size: 7979 bytes
 	.export level_data_silentclubstep
@@ -440,6 +462,8 @@
 	; Level data
 		.incbin "EXPORTS/level/silentclubstep.lz.bin" ; Size: 5545
 
+	sprite_data_goldenhaze:	; Size: 2421
+		.incbin "EXPORTS/sprite/goldenhaze.bin"
 
 .segment "DAT_BANK_17"	; Total bank size: 7986 bytes
 	.export level_data_demonpark
@@ -461,6 +485,8 @@
 	; Level data
 		.incbin "EXPORTS/level/demonpark.lz.bin" ; Size: 4692
 
+	sprite_data_heliopolis:	; Size: 3281
+		.incbin "EXPORTS/sprite/heliopolis.bin"
 
 .segment "DAT_BANK_18"	; Total bank size: 7894 bytes
 	.export level_data_aftercatabath_6
@@ -468,6 +494,8 @@
 	; Level data
 		.incbin "EXPORTS/level/aftercatabath.lz.2.bin" ; Size: 4553
 
+	sprite_data_windylandscape:	; Size: 3341
+		.incbin "EXPORTS/sprite/windylandscape.bin"
 
 .segment "DAT_BANK_19"	; Total bank size: 8135 bytes
 	.export level_data_silentcircles
@@ -595,6 +623,8 @@
 	; Level data
 		.incbin "EXPORTS/level/wcropolix.lz.bin" ; Size: 4154
 
+	sprite_data_demonpyrophoric:	; Size: 3931
+		.incbin "EXPORTS/sprite/demonpyrophoric.bin"
 
 .segment "DAT_BANK_1D"	; Total bank size: 8105 bytes
 	.export level_data_denouement
@@ -616,15 +646,31 @@
 	; Level data
 		.incbin "EXPORTS/level/denouement.lz.bin" ; Size: 4146
 
+	sprite_data_infinitecircles:	; Size: 3946
+		.incbin "EXPORTS/sprite/infinitecircles.bin"
+
+.segment "DAT_BANK_1E"	; Total bank size: 8053 bytes
+	sprite_data_demoncryogenic:	; Size: 3116
+		.incbin "EXPORTS/sprite/demoncryogenic.bin"
+	sprite_data_skeletalshenanigans:	; Size: 2751
+		.incbin "EXPORTS/sprite/skeletalshenanigans.bin"
+	sprite_data_azuronxolax:	; Size: 2186
+		.incbin "EXPORTS/sprite/azuronxolax.bin"
 
 .segment "DAT_BANK_1F"	; Total bank size: 7803 bytes
+	sprite_data_speedracer:	; Size: 2646
+		.incbin "EXPORTS/sprite/speedracer.bin"
 	.export level_data_skeletalshenanigans_1
 	level_data_skeletalshenanigans_1:
 	; Level data
 		.incbin "EXPORTS/level/skeletalshenanigans.lz.1.bin" ; Size: 2586
 
+	sprite_data_jawbreaker:	; Size: 2571
+		.incbin "EXPORTS/sprite/jawbreaker.bin"
 
 .segment "DAT_BANK_20"	; Total bank size: 7760 bytes
+	sprite_data_element111rg_with_secret_way:	; Size: 2086
+		.incbin "EXPORTS/sprite/element111rg_with_secret_way.bin"
 	.export level_data_explorers
 	level_data_explorers:
 	; Header
@@ -644,8 +690,24 @@
 	; Level data
 		.incbin "EXPORTS/level/explorers.lz.bin" ; Size: 2029
 
+	sprite_data_silentclubstep:	; Size: 1851
+		.incbin "EXPORTS/sprite/silentclubstep.bin"
+	sprite_data_styx:	; Size: 1781
+		.incbin "EXPORTS/sprite/styx.bin"
 
 .segment "DAT_BANK_21"	; Total bank size: 7451 bytes
+	sprite_data_slaughterhouse:	; Size: 1336
+		.incbin "EXPORTS/sprite/slaughterhouse.bin"
+	sprite_data_nullscapes:	; Size: 1101
+		.incbin "EXPORTS/sprite/nullscapes.bin"
+	sprite_data_wcropolix:	; Size: 1026
+		.incbin "EXPORTS/sprite/wcropolix.bin"
+	sprite_data_shardscapes:	; Size: 986
+		.incbin "EXPORTS/sprite/shardscapes.bin"
+	sprite_data_denouement:	; Size: 956
+		.incbin "EXPORTS/sprite/denouement.bin"
+	sprite_data_kratos:	; Size: 906
+		.incbin "EXPORTS/sprite/kratos.bin"
 	.export level_data_demonpyrophoric_2
 	level_data_demonpyrophoric_2:
 	; Level data
