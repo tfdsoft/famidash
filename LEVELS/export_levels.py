@@ -363,7 +363,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 
 	return (banked_level_data, level_widths, level_chunk_list)
 		
-def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSettings: Iterable[dict]):
+def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], include_path : pathlib.Path, globalOffsetSettings: Iterable[dict]):
 	all_data = []
 	overflows = []
 
@@ -427,6 +427,8 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 			with open(*filter(lambda x : x.name.lower() == f"{level}_SP.csv".lower(), all_level_files)) as f:
 				lines = list(csv.reader(f))
 			inputFileType = "CSV"
+		output_data_path = (include_path / "EXPORTS" / "sprite" / f"{level}.bin")
+
 		level_data = []
 		rows = len(lines)
 		columns = len(lines[0])
@@ -459,24 +461,28 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 						x += offsetA[0] + offsetB[0]
 						y += offsetA[1] + offsetB[1]
 					
-					level_data.append(
+					level_data += \
 						[x & 0xFF, (x >> 8) & 0xFF,
 						 y & 0xFF, (y >> 8) & 0xFF,
-						 obj_id])
+						 obj_id]
 			
 		if overflowStart > 0:
 			overflows.append([level, overflowStart, -1])
             
-		level_data.append([0xff]) # add terminator byte
-		all_data.append((level, len(level_data) * 5 - 4, level_data, num))
-		print(f"Sprite data for {level} from {inputFileType} is {len(level_data) * 5 - 4} bytes long")
+		level_data.append(0xff) # add terminator byte
+		length = len(level_data)
+
+		output_data_path.write_bytes(bytearray(level_data))
+
+		all_data.append((level, length, output_data_path, num))
+		print(f"Sprite data for {level} from {inputFileType} is {length} bytes long")
 
 	banked_data = []
-	for (id, length, data, num) in all_data:
-		out_str = []
-		out_str.append(f"sprite_data_{id}:")
-		for sprite in data:
-			out_str.append(f"  .byte {','.join([f'${x:02x}' for x in sprite])}")
+	for (id, length, output_data_path, num) in all_data:
+		out_str = [
+			f"sprite_data_{id}:\t; Size: {length}",
+			f'\t.incbin "{output_data_path.relative_to(include_path).as_posix()}"'
+		]
 		banked_data.append((length, "\n".join(out_str), f"sprite_data_{id}", "sprite", [num, ]))
 
 	if (len(overflows) > 0):
@@ -718,7 +724,7 @@ def main():
 
 	if len(levels) > 0:
 		bg_exp_data = export_bg(args.csvFolder, filteredMetadata, include_path)
-		spr_exp_data = export_spr(args.csvFolder, filteredMetadata, globalObjectOffsetSettings)
+		spr_exp_data = export_spr(args.csvFolder, filteredMetadata, include_path, globalObjectOffsetSettings)
 	else:
 		bg_exp_data = [[], [], []]
 		spr_exp_data = [[], None]
