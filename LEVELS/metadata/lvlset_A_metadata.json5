@@ -1362,8 +1362,8 @@
 			songID: "song_dash",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
+			startingBackgroundColor: 0x07,
+			startingGroundColor: 0x06,
 			parallaxDisable: true,
 			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
