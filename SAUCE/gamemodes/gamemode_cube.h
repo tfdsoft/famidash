@@ -16,7 +16,7 @@ void cube_movement(){
 	tmpfallspeed = CUBE_MAX_FALLSPEED(currplayer_table_idx);
 	tmpgravity = CUBE_GRAVITY(currplayer_table_idx);
 
-	if (max_fallspeed_7 == 0x01) {
+	if (max_fallspeed_7) {
 			tmpfallspeed += DASH_END_VEL_RESET(currplayer_table_idx);
 	}
 

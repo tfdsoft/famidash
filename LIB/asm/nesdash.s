@@ -235,7 +235,8 @@ _init_rld:
 	JSR mmc3_set_prg_bank_1
 
 	LDY #$00			;-  For both (zp),y addressing and rld_column
-	STY	_no_parallax	;__	Reset bit-value variables
+	STY	_no_parallax	;	Reset bit-value variables
+	STY	_max_fallspeed_7;__
 	STY rld_column		;__ Reset scrolling
 
 	; Read header
@@ -267,21 +268,18 @@ _init_rld:
 	STA	_gamemode		;	Get just the gamemode
 	INY					;__
 
-	LDA (ptr1),y		;spawn y position high byte
-	sta _spawn_y_pos+1
-	iny	
-;	LDA (ptr1),y		;spawn y position low byte
-;	sta _spawn_y_pos
-;	iny
+	LDA (ptr1),y		;
+	STA _spawn_y_pos+1	;	Spawn Y position (high byte)
+	INY					;__
 	
-;	LDA (ptr1),y		;spawn scroll y position high byte
-	LDA #$02		;no levels need this setting
-	sta _spawn_scroll_y_pos+1
-;	iny	
+;	LDA (ptr1),y		;	Spawn scroll Y position, high byte
+	LDA #$02			;	(no levels need this setting, at least yet)
+	STA _spawn_scroll_y_pos+1
+;	INY					;__
 
-	LDA (ptr1),y		;spawn scroll y position low byte
-	sta _spawn_scroll_y_pos
-	iny
+	LDA (ptr1),y		;	Spawn scroll Y position,  low byte
+	STA _spawn_scroll_y_pos
+	INY					;__
 	
 	LDA (ptr1),y		;__	Force platformer, Parallax disable
 	LSR					;__	Parallax disable in carry
@@ -289,43 +287,24 @@ _init_rld:
 	STA _no_parallax	;	The rest is force platformer, store it
 	INY					;__
 
-	LDA (ptr1),y		;max fall speed high byte
-	and #$80
-	lsr
-	lsr
-	lsr
-	lsr
-	lsr
-	lsr
-	lsr
-	sta _max_fallspeed_7
-
-	LDA (ptr1),y		
-	and #$7F
-	sta _current_deco_type	;	Deco Type
-
-	iny
-
-	;LDA (ptr1),y			;
-	;STA _current_deco_type	;	Deco type
-	;INY						;__
+	LDA (ptr1),y		;__	Max Fall Speed is 7?, Deco type
+	ASL					;__	Max Fall Speed switch in carry
+	ROL _max_fallspeed_7;__	Store where it needs to go
+	LSR					;	The rest is Deco Type, store it
+	STA _current_deco_type;__
+	INY
 	
-	LDA (ptr1),y			;
-	and #$F0
-	lsr
-	lsr
-	lsr
-	lsr
-	STA _current_spike_set	;	Spike set
-;	INY						;__
+	LDA (ptr1),y			;	Spike Set, Block Set
+	TAX						;__
+	LSR						;
+	LSR						;
+	LSR						;	Spike set
+	LSR						;
+	STA _current_spike_set	;__
 
-	LDA (ptr1),y			;
-	and #$0F
-	STA _current_block_set	;	Block set
-;	INY						;__
-
-;	LDA (ptr1),y			;
-;	STA _current_saw_set	;__	Saw set
+	TXA						;
+	AND #$0F				;	Block set
+	STA _current_block_set	;__
 
 	TYA						;
 	SEC						;
