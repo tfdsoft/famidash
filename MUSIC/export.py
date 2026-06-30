@@ -297,8 +297,12 @@ def exportMusicBank(bin_, fsCmd, modulePath, exportPath, dpcmidx, dpcmAlignerNam
         output = proc.stdout.decode()
         checkErr(proc)
 
+        bank_size_rgx = re.search(totalSizeRegex, output)
+        bank_size = int(bank_size_rgx['totalSize'])
+        bank_size_string = bank_size_rgx.group()
+
         print(f"== Info on bank {bank}:")
-        print("\t" + re.search(totalSizeRegex, output).group())
+        print("\t" + bank_size_string)
 
         # Run the asm file through a few regexes:
         captData = []
@@ -327,7 +331,8 @@ def exportMusicBank(bin_, fsCmd, modulePath, exportPath, dpcmidx, dpcmAlignerNam
         return [
             list(exportPath.glob(f"{asmExportStem}*.dmc")),   # 0: dpcmFiles
             list(re.findall(youMustSetRegex, output)),        # 1: optionsToSet
-            list(names)                                       # 2: masterSonglist
+            list(names),                                      # 2: masterSonglist
+            (bank, bank_size)                                 # 3: bankSize
         ]
 
 if __name__ == "__main__":
@@ -413,10 +418,8 @@ if __name__ == "__main__":
 
     songNames = [song['Name'] for song in fsTxtData['Song']]
     if dpcmAlignerName == "dpcm_BIG":
-    # special case if aligner is dpcm_BIG
         lastDatBank = 0x73    
     elif dpcmAlignerName == "dpcm_HUGE":
-    # special case if aligner is dpcm_BIG
         lastDatBank = 0xEF
     elif dpcmAlignerName == "dpcm_ALBUM":
         lastDatBank = 0x3B
@@ -493,13 +496,14 @@ if __name__ == "__main__":
     timeStart = time.time_ns()
 
     with multiprocessing.Pool() as pool:
-        dpcmFiles, optionsToSet, masterSonglist = zip(*pool.starmap(exportMusicBank, 
+        dpcmFiles, optionsToSet, masterSonglist, bankSizes = zip(*pool.starmap(exportMusicBank, 
             [[bins[bank], fsCmd, modulePath, exportPath, dpcmidx, dpcmAlignerName, bank] for bank in range(len(bins))]))
 
     # Flatten lists
     dpcmFiles = list(itertools.chain.from_iterable(dpcmFiles))
     optionsToSet = list(itertools.chain.from_iterable(optionsToSet))
     masterSonglist = list(itertools.chain.from_iterable(masterSonglist))
+    bankSizes = dict(bankSizes)
 
     masterSonglist.append(finalSongInListName)
 
@@ -507,13 +511,13 @@ if __name__ == "__main__":
 
     # Check the DPCM files for being identical
     print("\n==== Checking if the DPCM files are identical...")
-    
     dpcmFiles = [{
         "path": i,
         **re.search(dpcmFileNameRegex, i.name).groupdict()
     } for i in dpcmFiles]
     dpcmError = False
     dpcmBanks = list(set([i['dpcmBank'] for i in dpcmFiles]))
+    dpcmBankSizes = dict()
     for bank in dpcmBanks:
         bankDpcmError = False
         dpcmFilesOfBank = [file for file in dpcmFiles if file['dpcmBank'] == bank]
@@ -523,8 +527,10 @@ if __name__ == "__main__":
                 bankDpcmError = True
                 dpcmError = True
         if not bankDpcmError:
-            (exportPath / f"{exportStemPrefix}_bank{bank}.dmc").unlink(missing_ok = True)
-            dpcmFilesOfBank[0]['path'].rename(exportPath / f"{exportStemPrefix}_bank{bank}.dmc")
+            new_file_location = exportPath / f"{exportStemPrefix}_bank{bank}.dmc"
+            new_file_location.unlink(missing_ok = True)
+            dpcmFilesOfBank[0]['path'].rename(new_file_location)
+            dpcmBankSizes[bank] = new_file_location.stat().st_size
             dpcmFilesOfBank.pop(0)
         [i['path'].unlink(missing_ok = True) for i in dpcmFilesOfBank]
 
@@ -533,7 +539,8 @@ if __name__ == "__main__":
         exit(4)    
 
     dpcmBanks = sorted(list(map(int, dpcmBanks)))
-    
+    dpcmBankSizes = {int(k) : v for k, v in dpcmBankSizes.items()}
+
     print("\n==== Exporting miscellaneous files...")
     print("== musicPlayRoutines.s")
     # Export bank lengths table
@@ -572,7 +579,7 @@ if __name__ == "__main__":
     for i in range(1, len(bins)):   # The first music bank is special
         header_music_bank_data += [
             f'.segment "{datBankSegPrefix}{i+firstMusBank:02X}"',
-            f'\t.include "{exportStemPrefix}_{i}.s"'
+            f'\t.include "{exportStemPrefix}_{i}.s"\t; Approx. size: {bankSizes[i]} bytes',
         ]
 
     if (len(dpcmBanks)):
@@ -580,13 +587,13 @@ if __name__ == "__main__":
             '', '; DMC banks',
             f'.segment "{datBankSegPrefix}{firstDmcBank:02X}"',
             '\tfirstDMCBankPtr := *',
-            f'\t.incbin "{exportStemPrefix}_bank{dpcmBanks[0]}.dmc"',
+            f'\t.incbin "{exportStemPrefix}_bank{dpcmBanks[0]}.dmc"\t; Size: {dpcmBankSizes[dpcmBanks[0]]} bytes',
         ]
         for i, bank in enumerate(dpcmBanks[1:], 1):
             if bank != dmcBankMetaUnused:
                 header_dmc_bank_data += [
                     f'.segment "{datBankSegPrefix}{i+firstDmcBank:02X}"',
-                    f'\t.incbin "{exportStemPrefix}_bank{bank}.dmc"'
+                    f'\t.incbin "{exportStemPrefix}_bank{bank}.dmc"\t; Size: {dpcmBankSizes[bank]} bytes',
                 ]
         header_dmc_bank_constant = ['FIRST_DMC_BANK = .bank(firstDMCBankPtr)']
     else:
@@ -598,7 +605,7 @@ if __name__ == "__main__":
         '', '; Music data banks',
         f'.segment "{datBankSegPrefix}{firstMusBank:02X}"',
         '\tfirstMusicBankPtr := *',
-        f'\t.include "{exportStemPrefix}_0.s"',
+        f'\t.include "{exportStemPrefix}_0.s"\t; Approx. size: {bankSizes[0]} bytes',
         *header_music_bank_data,
         *header_dmc_bank_data,
         *processed_metadata['pcmMetadata']['headerData'],
