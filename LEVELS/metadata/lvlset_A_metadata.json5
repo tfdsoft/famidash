@@ -2674,6 +2674,37 @@
 					
 			],
 		},
+		{
+            level: "watertemple",
+			lowerText: "WATER TEMPLE",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "DEMON",
+            stars: 10,
+            songID: "song_cant_let_go",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x00,
+            startingGroundColor: 0x0F,
+            parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [
+						[132, 9], [246, 45], [254, 54], [344, 51], [399, 50], [408, 51], [417, 52], [447, 50], [550, 51], [551, 51], [552, 51], [605, 49], [605, 53], [627, 51], [782, 54],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[223, 16], [254, 54], [270, 52], [342, 51], [343, 51], [344, 51], [376, 53], [495, 51], [521, 51], [550, 51], [551, 51], [595, 51], [627, 51],
+					],
+					offsetY: -8
+				},
+			]
+        },
 /*		{
 			level: "test9",
 			lowerText: "TEST8",

@@ -50,6 +50,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_firetemple)
+	.byte .lobyte(level_data_watertemple)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -97,6 +98,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
 	.byte .hibyte(level_data_firetemple)
+	.byte .hibyte(level_data_watertemple)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -144,6 +146,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
 	.byte .lobyte(.bank(level_data_firetemple))
+	.byte .lobyte(.bank(level_data_watertemple))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_rainbowtylenol_0)
@@ -206,6 +209,7 @@ _level_lengths_lo:
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($00008D)		; firetemple
+	.byte .lobyte($000080)		; watertemple
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -255,6 +259,7 @@ _level_lengths_md:
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($00008D)		; firetemple
+	.byte .hibyte($000080)		; watertemple
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -304,6 +309,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($00008D)		; firetemple
+	.byte .bankbyte($000080)		; watertemple
 
 .endif
 .endif

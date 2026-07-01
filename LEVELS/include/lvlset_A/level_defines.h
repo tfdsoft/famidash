@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 27
-#define COMMUNITY_LEVEL_COUNT 18
+#define COMMUNITY_LEVEL_COUNT 19
 
 #define level_stereomadness 0
 #define level_backontrack 1
@@ -51,3 +51,4 @@
 #define level_thelightningroad 42
 #define level_nightmare 43
 #define level_firetemple 44
+#define level_watertemple 45
