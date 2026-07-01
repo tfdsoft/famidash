@@ -190,7 +190,7 @@ banked(sound_test_bank.func) void state_soundtest(){
             //    se_sfx_play(sfx_counter003,0);
             //    saved_menu_theme = xbgmlookuptable[lo(index)];
             //}
-            se_play_sample((samples_0+0x2000),sample_bank_0,1);
+            se_play_sample((pcm_quitsound_01+0x2000),sample_bank_0,1);
         }
         
 

@@ -66,7 +66,8 @@ banked(startup_bank.func) void state_startup(){
     se_set_palette_brightness_all(0);
     se_turn_on_rendering();
 
-    
+    __asm__("cli");
+
     // fade in, play boot sound, wait, fade out
     se_wait_frames(8);
     se_fade_palette_to(0,4);
@@ -127,7 +128,7 @@ banked(startup_bank.func) void state_startup(){
             se_music_play(song);
         }
         if(joypad1.press_a){
-            se_sfx_play(sfx_quitsound_01,0);
+            se_play_sample((pcm_quitsound_01+0x2000),sample_bank_0,1);
             se_fade_palette_to(4,0);
 
             gamestate = 0x01;

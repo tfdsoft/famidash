@@ -181,11 +181,8 @@ const u8 * const chr_g[] = {
 
 
 // samples n such
-file(samples_0, sample_bank_0) = {
-    #embed "./samples/geometryDash0.pcm"
-};
-file(samples_1, sample_bank_1) = {
-    #embed "./samples/geometryDash1.pcm"
+file(pcm_quitsound_01, sample_bank_0) = {
+    #embed "./samples/quitSound_01.pcm"
 };
 file(pcm_playsound_01, sample_bank_2) = {
     #embed "./samples/playSound_01.pcm"

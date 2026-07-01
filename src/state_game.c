@@ -175,6 +175,9 @@ banked(startup_bank.func) void game_pause_menu(){
     se_draw_metasprite(0,0,mspr_pausemenu);
 
     se_turn_on_rendering();
+
+    __asm__("cli");
+
     while(1){
         se_clear_sprites();
         se_draw_metasprite(0,0,mspr_pausemenu);
@@ -185,6 +188,9 @@ banked(startup_bank.func) void game_pause_menu(){
         if(joypad1.press_b) {
             gamestate = 0x10;
             Player.properties.is_dead = 1;
+            se_play_sample(pcm_quitsound_01+0x2000, sample_bank_0, 1);
+            se_fade_palette_to(4,0);
+            se_wait_frames(20);
             break;
         }
 
@@ -312,9 +318,13 @@ banked(fixed.func) void state_game() {
 
             // re-use a player property since it counts
             // as an attempt anyway
-            if(Player.properties.is_dead) break;
+            if(Player.properties.is_dead) {
+                break;
+            }
         }
-        if(joypad1.press_b) {break;}
+        if(joypad1.press_b) {
+            break;
+        }
     }
 
     se_post_nmi_ptr = se_music_update;
