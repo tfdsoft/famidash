@@ -644,7 +644,7 @@
 		.incbin "EXPORTS/denouement.lz.bin" ; Size: 4145
 
 
-.segment "DAT_BANK_21"	; Total bank size: 4097 bytes
+.segment "DAT_BANK_21"	; Total bank size: 4147 bytes
 	.export level_data_demonpyrophoric_2
 	level_data_demonpyrophoric_2:
 	; Level data

@@ -7527,7 +7527,7 @@ sprite_data_jawbreaker:
   .byte $f0,$33,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_21"
 sprite_data_denouement:
   .byte $00,$00,$60,$03,$18
   .byte $10,$00,$70,$03,$36
@@ -7607,6 +7607,7 @@ sprite_data_denouement:
   .byte $e0,$08,$00,$03,$33
   .byte $50,$09,$f0,$02,$c3
   .byte $50,$09,$00,$03,$93
+  .byte $70,$09,$b0,$02,$07
   .byte $80,$09,$f0,$02,$cf
   .byte $80,$09,$00,$03,$83
   .byte $10,$0a,$f0,$02,$33
@@ -7713,9 +7714,11 @@ sprite_data_denouement:
   .byte $10,$1a,$00,$03,$33
   .byte $90,$1b,$f0,$02,$33
   .byte $a0,$1b,$f0,$02,$33
+  .byte $20,$1c,$c0,$02,$1a
   .byte $c0,$1c,$00,$03,$33
   .byte $d0,$1c,$00,$03,$33
   .byte $60,$1e,$f0,$02,$18
+  .byte $b0,$1f,$30,$03,$1b
   .byte $70,$20,$00,$03,$0f
   .byte $ff
 
@@ -11926,7 +11929,7 @@ sprite_data_slaughterhouse:
   .byte $a0,$3a,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_20"
 sprite_data_kratos:
   .byte $00,$00,$10,$03,$bf
   .byte $00,$00,$88,$03,$56
