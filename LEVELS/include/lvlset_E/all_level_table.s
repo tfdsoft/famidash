@@ -21,6 +21,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_azuronxolax)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_jawbreaker)
+	.byte .lobyte(level_data_denouement)
 	.byte .lobyte(level_data_acropolis)
 	.byte .lobyte(level_data_windylandscape)
 	.byte .lobyte(level_data_icdx)
@@ -53,6 +54,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_azuronxolax)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_jawbreaker)
+	.byte .hibyte(level_data_denouement)
 	.byte .hibyte(level_data_acropolis)
 	.byte .hibyte(level_data_windylandscape)
 	.byte .hibyte(level_data_icdx)
@@ -85,6 +87,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_azuronxolax))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_jawbreaker))
+	.byte .lobyte(.bank(level_data_denouement))
 	.byte .lobyte(.bank(level_data_acropolis))
 	.byte .lobyte(.bank(level_data_windylandscape))
 	.byte .lobyte(.bank(level_data_icdx))
@@ -150,6 +153,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000C1)		; azuronxolax
 	.byte .lobyte($00008F)		; foresttemple
 	.byte .lobyte($000086)		; jawbreaker
+	.byte .lobyte($000054)		; denouement
 	.byte .lobyte($000064)		; acropolis
 	.byte .lobyte($00009A)		; windylandscape
 	.byte .lobyte($000092)		; icdx
@@ -184,6 +188,7 @@ _level_lengths_md:
 	.byte .hibyte($0000C1)		; azuronxolax
 	.byte .hibyte($00008F)		; foresttemple
 	.byte .hibyte($000086)		; jawbreaker
+	.byte .hibyte($000054)		; denouement
 	.byte .hibyte($000064)		; acropolis
 	.byte .hibyte($00009A)		; windylandscape
 	.byte .hibyte($000092)		; icdx
@@ -218,6 +223,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000C1)		; azuronxolax
 	.byte .bankbyte($00008F)		; foresttemple
 	.byte .bankbyte($000086)		; jawbreaker
+	.byte .bankbyte($000054)		; denouement
 	.byte .bankbyte($000064)		; acropolis
 	.byte .bankbyte($00009A)		; windylandscape
 	.byte .bankbyte($000092)		; icdx

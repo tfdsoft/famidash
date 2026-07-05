@@ -4,7 +4,7 @@
 #define LEVELSET 'E'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 30
+#define COMMUNITY_LEVEL_COUNT 31
 
 #define level_demonpark 0
 #define level_infinitecircles 1
@@ -22,17 +22,18 @@
 #define level_azuronxolax 13
 #define level_foresttemple 14
 #define level_jawbreaker 15
-#define level_acropolis 16
-#define level_windylandscape 17
-#define level_icdx 18
-#define level_styx 19
-#define level_wcropolix 20
-#define level_silentclubstep 21
-#define level_aftercatabath 22
-#define level_shardscapes 23
-#define level_element111rg_with_secret_way 24
-#define level_slaughterhouse 25
-#define level_kratos 26
-#define level_nullscapes 27
-#define level_heliopolis 28
-#define level_silentcircles 29
+#define level_denouement 16
+#define level_acropolis 17
+#define level_windylandscape 18
+#define level_icdx 19
+#define level_styx 20
+#define level_wcropolix 21
+#define level_silentclubstep 22
+#define level_aftercatabath 23
+#define level_shardscapes 24
+#define level_element111rg_with_secret_way 25
+#define level_slaughterhouse 26
+#define level_kratos 27
+#define level_nullscapes 28
+#define level_heliopolis 29
+#define level_silentcircles 30

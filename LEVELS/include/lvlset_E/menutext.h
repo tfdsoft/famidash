@@ -24,20 +24,21 @@ const char levelText13[15] = "DEMON CRYOGENIC";
 const char levelText14[11] = "AZURONXOLAX";
 const char levelText15[13] = "FOREST TEMPLE";
 const char levelText16[10] = "JAWBREAKER";
-const char levelText17[ 9] = "ACROPOLIS";
-const char levelText18[ 9] = "LANDSCAPE";
-const char levelText19[ 8] = "DIABLO X";
-const char levelText1A[ 4] = "STYX";
-const char levelText1B[ 9] = "WCROPOLIX";
-const char levelText1C[ 8] = "CLUBSTEP";
-const char levelText1D[13] = "AFTERCATABATH";
-const char levelText1E[11] = "SHARDSCAPES";
-const char levelText1F[ 6] = "111 RG";
-const char levelText20[14] = "SLAUGHTERHOUSE";
-const char levelText21[ 6] = "KRATOS";
-const char levelText22[10] = "NULLSCAPES";
-const char levelText23[10] = "HELIOPOLIS";
-const char levelText24[14] = "SILENT CIRCLES";
+const char levelText17[10] = "DENOUEMENT";
+const char levelText18[ 9] = "ACROPOLIS";
+const char levelText19[ 9] = "LANDSCAPE";
+const char levelText1A[ 8] = "DIABLO X";
+const char levelText1B[ 4] = "STYX";
+const char levelText1C[ 9] = "WCROPOLIX";
+const char levelText1D[ 8] = "CLUBSTEP";
+const char levelText1E[13] = "AFTERCATABATH";
+const char levelText1F[11] = "SHARDSCAPES";
+const char levelText20[ 6] = "111 RG";
+const char levelText21[14] = "SLAUGHTERHOUSE";
+const char levelText22[ 6] = "KRATOS";
+const char levelText23[10] = "NULLSCAPES";
+const char levelText24[10] = "HELIOPOLIS";
+const char levelText25[14] = "SILENT CIRCLES";
 
 
 const char* const levelTextsUpper[] = {
@@ -51,6 +52,7 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	NULL,
 	levelText02,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -84,6 +86,7 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	sizeof(levelText02),
+	0,
 	0,
 	0,
 	0,
@@ -138,6 +141,7 @@ const char* const levelTextsLower[] = {
 	levelText22,
 	levelText23,
 	levelText24,
+	levelText25,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -171,4 +175,5 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText22),
 	sizeof(levelText23),
 	sizeof(levelText24),
+	sizeof(levelText25),
 };

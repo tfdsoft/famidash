@@ -666,6 +666,37 @@
 			maxFallSpeed_is_7: 0x01,
 		},
 		{
+            level: "denouement",
+			lowerText: "DENOUEMENT",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "INSANEDEMON",
+            stars: 10,
+            songID: "song_cryogenic",
+            startingGameMode: 6,
+            startingSpeed: 4,
+            startingBackgroundColor: 0x03,
+            startingGroundColor: 0x0F,
+            parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [
+						[23, 18], [23, 21], [59, 20], [184, 16],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[24, 19], [24, 22],
+					],
+					offsetY: -8
+				},
+			]
+        },
+		{
 			level: "acropolis",
 			lowerText: "ACROPOLIS",
 			decoType: "DECO1",

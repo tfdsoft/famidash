@@ -18,6 +18,7 @@ const uint8_t difficulty_list[] = {
 	HARDDEMON,	// azuronxolax
 	HARDDEMON,	// foresttemple
 	HARDDEMON,	// jawbreaker
+	INSANEDEMON,	// denouement
 	INSANEDEMON,	// acropolis
 	EXTREMEDEMON,	// windylandscape
 	EXTREMEDEMON,	// icdx
@@ -51,6 +52,7 @@ const uint8_t stars_list[] = {
 	10,	// azuronxolax
 	10,	// foresttemple
 	10,	// jawbreaker
+	10,	// denouement
 	10,	// acropolis
 	10,	// windylandscape
 	10,	// icdx
