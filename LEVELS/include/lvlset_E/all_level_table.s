@@ -7,8 +7,6 @@
 _level_list_lo:
 	.byte .lobyte(level_data_demonpark)
 	.byte .lobyte(level_data_infinitecircles)
-	.byte .lobyte(level_data_decode)
-	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_respitev2)
 	.byte .lobyte(level_data_skeletalshenanigans)
@@ -40,8 +38,6 @@ _level_list_lo:
 _level_list_hi:
 	.byte .hibyte(level_data_demonpark)
 	.byte .hibyte(level_data_infinitecircles)
-	.byte .hibyte(level_data_decode)
-	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_respitev2)
 	.byte .hibyte(level_data_skeletalshenanigans)
@@ -73,8 +69,6 @@ _level_list_hi:
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_demonpark))
 	.byte .lobyte(.bank(level_data_infinitecircles))
-	.byte .lobyte(.bank(level_data_decode))
-	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_respitev2))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
@@ -139,8 +133,6 @@ _level_chunk_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($0000A0)		; demonpark
 	.byte .lobyte($00006F)		; infinitecircles
-	.byte .lobyte($000089)		; decode
-	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($00007F)		; speedracer
 	.byte .lobyte($0000E4)		; respitev2
 	.byte .lobyte($0000D5)		; skeletalshenanigans
@@ -174,8 +166,6 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($0000A0)		; demonpark
 	.byte .hibyte($00006F)		; infinitecircles
-	.byte .hibyte($000089)		; decode
-	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($00007F)		; speedracer
 	.byte .hibyte($0000E4)		; respitev2
 	.byte .hibyte($0000D5)		; skeletalshenanigans
@@ -209,8 +199,6 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($0000A0)		; demonpark
 	.byte .bankbyte($00006F)		; infinitecircles
-	.byte .bankbyte($000089)		; decode
-	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($00007F)		; speedracer
 	.byte .bankbyte($0000E4)		; respitev2
 	.byte .bankbyte($0000D5)		; skeletalshenanigans

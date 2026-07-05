@@ -83,6 +83,12 @@
 			originalArtistText: "WATERFLAME",
 		},
 		{
+			fmsSongName: "clutterfunk 2",
+			lowerText: "CLUTTERFUNK 2",
+			originalArtistText: "WATERFLAME",
+			/* no vs system to speak of */
+		},
+		{
 			fmsSongName: "Cosmic Dolphin",
 			lowerText: "COSMIC DOLPHIN",
 			originalArtistText: "MEGAWOLF77",

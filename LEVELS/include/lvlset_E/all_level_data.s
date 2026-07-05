@@ -315,28 +315,7 @@
 		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6622
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8077 bytes
-	.export level_data_clutterfunk2
-	level_data_clutterfunk2:
-	; Header
-		.byte <sprite_data_clutterfunk2 ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_clutterfunk2 ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_clutterfunk2)) ;___ Sprite data bank
-		.byte song_clutterfunk_2 ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;__________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;___________ Block Set, Spike Set
-		.byte $0F ;__________________________________ Starting background color
-		.byte $0F ;__________________________________ Starting ground color
-		.byte 27 ;___________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6453
-
-
-.segment "DAT_BANK_12"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8184 bytes
 	.export level_data_styx
 	level_data_styx:
 	; Header
@@ -376,7 +355,7 @@
 		.incbin "EXPORTS/explorers.lz.bin" ; Size: 2029
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8156 bytes
+.segment "DAT_BANK_12"	; Total bank size: 8156 bytes
 	.export level_data_element111rg_with_secret_way
 	level_data_element111rg_with_secret_way:
 	; Header
@@ -397,47 +376,7 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6037
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8102 bytes
-	.export level_data_decode
-	level_data_decode:
-	; Header
-		.byte <sprite_data_decode ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_decode ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_decode)) ;___ Sprite data bank
-		.byte song_endgame ;___________________ Song ID
-		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
-		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;____________ Force platformer, Disable parallax
-		.byte _DECOCLOUD | ($00 << 7) ;________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESB << 4) | _BLOCKSB ;_____ Block Set, Spike Set
-		.byte $16 ;____________________________ Starting background color
-		.byte $06 ;____________________________ Starting ground color
-		.byte 27 ;_____________________________ Level height
-	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5869
-
-	.export level_data_shardscapes
-	level_data_shardscapes:
-	; Header
-		.byte <sprite_data_shardscapes ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_shardscapes ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_shardscapes)) ;___ Sprite data bank
-		.byte song_slow_down ;______________________ Song ID
-		.byte (1 << 4) | 4 ;________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Block Set, Spike Set
-		.byte $30 ;_________________________________ Starting background color
-		.byte $0F ;_________________________________ Starting ground color
-		.byte 57 ;__________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2207
-
-
-.segment "DAT_BANK_16"	; Total bank size: 8022 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8022 bytes
 	.export level_data_acropolis
 	level_data_acropolis:
 	; Header
@@ -458,7 +397,7 @@
 		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5638
 
 
-.segment "DAT_BANK_17"	; Total bank size: 7827 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8132 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -478,8 +417,32 @@
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5628
 
+	.export level_data_shardscapes
+	level_data_shardscapes:
+	; Header
+		.byte <sprite_data_shardscapes ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_shardscapes ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_shardscapes)) ;___ Sprite data bank
+		.byte song_slow_down ;______________________ Song ID
+		.byte (1 << 4) | 4 ;________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;_________________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Block Set, Spike Set
+		.byte $30 ;_________________________________ Starting background color
+		.byte $0F ;_________________________________ Starting ground color
+		.byte 57 ;__________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2207
 
-.segment "DAT_BANK_18"	; Total bank size: 8144 bytes
+	.export level_data_windylandscape_4
+	level_data_windylandscape_4:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 271
+
+
+.segment "DAT_BANK_16"	; Total bank size: 8144 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -505,7 +468,7 @@
 		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2586
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8046 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8046 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -526,19 +489,14 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4692
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8105 bytes
+.segment "DAT_BANK_18"	; Total bank size: 7834 bytes
 	.export level_data_aftercatabath_6
 	level_data_aftercatabath_6:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4553
 
-	.export level_data_windylandscape_4
-	level_data_windylandscape_4:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 271
 
-
-.segment "DAT_BANK_1C"	; Total bank size: 8135 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8135 bytes
 	.export level_data_silentcircles
 	level_data_silentcircles:
 	; Header
@@ -578,7 +536,7 @@
 		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3661
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8161 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -618,7 +576,7 @@
 		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3746
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 8169 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8169 bytes
 	.export level_data_infinitecircles
 	level_data_infinitecircles:
 	; Header
@@ -644,7 +602,7 @@
 		.incbin "EXPORTS/respitev2.lz.1.bin" ; Size: 3836
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8113 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8113 bytes
 	.export level_data_wcropolix
 	level_data_wcropolix:
 	; Header
@@ -665,14 +623,14 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4154
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8089 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8089 bytes
 	.export level_data_denouement
 	level_data_denouement:
 	; Header
 		.byte <sprite_data_denouement ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_denouement ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_denouement)) ;___ Sprite data bank
-		.byte song_cryogenic ;_____________________ Song ID
+		.byte song_glory ;_________________________ Song ID
 		.byte (4 << 4) | 6 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
@@ -686,7 +644,7 @@
 		.incbin "EXPORTS/denouement.lz.bin" ; Size: 4145
 
 
-.segment "DAT_BANK_24"	; Total bank size: 869 bytes
+.segment "DAT_BANK_21"	; Total bank size: 4097 bytes
 	.export level_data_demonpyrophoric_2
 	level_data_demonpyrophoric_2:
 	; Level data

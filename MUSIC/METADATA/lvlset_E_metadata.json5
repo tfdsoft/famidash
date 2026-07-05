@@ -80,12 +80,6 @@
 			originalArtistText: "PARAGONX9",
 		},
 		{
-			fmsSongName: "clutterfunk 2",
-			lowerText: "CLUTTERFUNK 2",
-			originalArtistText: "WATERFLAME",
-			/* no vs system to speak of */
-		},
-		{
 			fmsSongName: "Cryogenic",
 			lowerText: "CRYOGENIC",
 			originalArtistText: "NERDBOY628",
@@ -120,6 +114,11 @@
 			upperText: "FRACTURE",
 			lowerText: "WCROPOLIX CUT",
 			originalArtistText: "RUKKUS",
+		},
+		{
+			fmsSongName: "Glory",
+			lowerText: "GLORY",
+			originalArtistText: "FYREMANMUSIC",
 		},
 		{
 			fmsSongName: "Golden Haze NOT RETRAY",
