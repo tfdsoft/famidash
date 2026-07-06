@@ -623,7 +623,7 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4154
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 8089 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8090 bytes
 	.export level_data_denouement
 	level_data_denouement:
 	; Header
@@ -641,7 +641,7 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/denouement.lz.bin" ; Size: 4145
+		.incbin "EXPORTS/denouement.lz.bin" ; Size: 4146
 
 
 .segment "DAT_BANK_21"	; Total bank size: 4147 bytes
