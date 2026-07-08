@@ -1,5 +1,6 @@
 {
 	songModule: "the album.fms",
+	linkerConfig: "mmc3-huge.cfg",
 	extendedMetadata: true,
 	songs: [
 		{

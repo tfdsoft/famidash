@@ -7,6 +7,14 @@ import subprocess
 import re
 from collections.abc import Iterable
 
+# same as in UTILS/cmpdbgfiles.py
+cfgCommentRemoveRegex = [re.compile(r'(?m:^(.*?)(#.*?)$)'), r'\0']
+cfgPartsRegex = re.compile(r'(?ms:^(?P<name>\w+) \{$(?P<data>.*?)^\})')
+cfgLineRegex = re.compile(r'(?P<name>\w+):\s*(?P<data>(?:\s*(?:\w+)\s*=\s*(?:\S+?)\s*(?:,|))+);')
+cfgDataRegex = re.compile(r'(?:(\w+)\s*=\s*(\S+?)(?:\s*,|\s*$))')
+
+cfgDataBankRegex = re.compile(r'DAT_BANK_([\dA-F]+)')
+
 famistudioHelpRegex = r"FamiStudio (?P<version>.+) Command-Line Usage"
 
 instSizeRegex = "Info: Instruments size : (?P<instSize>.+) bytes\\."
@@ -35,6 +43,7 @@ datBankSegPrefix = "DAT_BANK_"
 dmcBankMetaUnused = 63  # a special dmc bank for shit to go unused
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
+cfgFolder = (musicFolder.parent / "CONFIG").resolve()
 
 # Because itertools is old af sometimes
 def batched(iterable, n, *, strict=False):
@@ -105,6 +114,35 @@ def processNSFTrackAuthorMetadata(author : str | dict) -> str:
         return f"Original by {author['original']}, covered by {author['cover']}"
     print(f"Warning: Invalid NSF author metadata structure '{author}'")
     return "[ERROR]"
+
+# same as in UTILS/cmpdbgfiles.py
+def readCfgFile (filename : pathlib.Path) -> dict:
+    outdict = {}
+    text = filename.read_text()
+
+    text = re.sub(*cfgCommentRemoveRegex, text)
+
+    for i in re.finditer(cfgPartsRegex, text):
+        part = {}
+        
+        for line in re.finditer(cfgLineRegex, i['data']):
+            lineData = {}
+            for statement in re.finditer(cfgDataRegex, line['data']):
+                lineData[statement[1]] = statement[2]
+            part[line['name']] = lineData
+
+        outdict[i['name']] = part
+
+    return outdict
+
+def ld65ProcessNumeral (string : str) -> int:
+    if len(string) == 0:
+        return 0
+    elif string[0] == "$":
+        return int(string[1:], base=16)
+    elif string[0] == "0":
+        return int(string, base=8)
+    return int(string, base=10)
 
 def processMetadata(metadata : dict) -> dict:
     songlist = [i for i in metadata['songs'] if 'fmsSongName' in i.keys()] # filter out commented out songs
@@ -207,6 +245,16 @@ def processMetadata(metadata : dict) -> dict:
     durationNTSCList = [i['durationNTSC'] * (2 if loopList[idx] else 1) if 'durationNTSC' in i.keys() else defTime for idx, i in enumerate(nsfMetaList)]
     durationPALList = [i['durationPAL'] * (2 if loopList[idx] else 1) if 'durationPAL' in i.keys() else defTime  for idx, i in enumerate(nsfMetaList)]
 
+    # Get the total amount of DAT banks
+    cfgData = readCfgFile(cfgFolder / metadata['linkerConfig'])
+    segments = cfgData.get('SEGMENTS', {})
+    datSegmentNames = [i for i in segments.keys() if re.match(cfgDataBankRegex, i)]
+    datBankNames = {i: segments[i]['load'] for i in datSegmentNames}
+    banks = cfgData.get('MEMORY', {})
+    datBankBankProperties = {k : banks[v].get('bank', 0) for k, v in datBankNames.items()}
+    datBankProcessedBankProps = {k : ld65ProcessNumeral(v) for k, v in datBankBankProperties.items()}
+    lastDatBank = max(datBankProcessedBankProps.values())
+
     return {
         'filteredSongList': songlist,
         'soundTestData': {
@@ -237,7 +285,9 @@ def processMetadata(metadata : dict) -> dict:
         },
         'dpcmAlignerName': metadata['dpcmAligner'],
         'songModule': metadata['songModule'],
-        'extendedMetadata': extMeta
+        'extendedMetadata': extMeta,
+        'lastDatBank': lastDatBank,
+        'datBankBankInfo': datBankProcessedBankProps
     }
 
 def parseFSTextFile(file : pathlib.Path | list[str], indent = 0, indentArr = None):
@@ -417,14 +467,6 @@ if __name__ == "__main__":
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
     songNames = [song['Name'] for song in fsTxtData['Song']]
-    if dpcmAlignerName == "dpcm_BIG":
-        lastDatBank = 0x73    
-    elif dpcmAlignerName == "dpcm_HUGE":
-        lastDatBank = 0xEF
-    elif dpcmAlignerName == "dpcm_ALBUM":
-        lastDatBank = 0x3B
-    else:
-        lastDatBank = 0x33
     
     neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
     if any(i not in songNames for i in neededSongNames):
@@ -571,7 +613,7 @@ if __name__ == "__main__":
 
     # Export segment assignment
     print("== music_data_header.s")
-    lastAfterDatBank = lastDatBank + 1
+    lastAfterDatBank = processed_metadata['lastDatBank'] + 1
     firstDmcBank = lastAfterDatBank - len([i for i in dpcmBanks if i != dmcBankMetaUnused])
     firstMusBank = firstDmcBank - len(bins)
 
