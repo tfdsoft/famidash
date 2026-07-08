@@ -3,14 +3,13 @@
 
 
 
-const char* const levelTextsUpper[] = {
-};
+extern const uint8_t levelTextsUpper_lo[];
+extern const uint8_t levelTextsUpper_hi[];
+extern const uint8_t levelTextsLower_lo[];
+extern const uint8_t levelTextsLower_hi[];
+
 
 const uint8_t levelTextsUpperSize[] = {
-};
-
-
-const char* const levelTextsLower[] = {
 };
 
 const uint8_t levelTextsLowerSize[] = {

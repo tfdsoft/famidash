@@ -390,6 +390,8 @@ finish:
 			.res 8192
 		.endrepeat
 	.endif
+
+	.include "menutext.s"
 	
 	.include "mapper.s"
 	.include "neslib.s"

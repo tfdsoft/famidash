@@ -39,11 +39,10 @@ CODE_BANK("XCD_BANK_08")
 #else
 #if !__THE_ALBUM
 CODE_BANK("XCD_BANK_06")
-
 #include "defines/nametable/menunametable_XCD06.c"
+#endif
+#endif
 
-#endif
-#endif
 #if OFFICIAL_LEVEL_COUNT == 0 && TOTAL_LEVEL_COUNT != 0	// A levelset has levels but no official ones
 CODE_BANK("XCD_BANK_06")
 #include "menustates/playmain.c"

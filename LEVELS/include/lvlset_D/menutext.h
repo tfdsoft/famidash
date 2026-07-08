@@ -33,33 +33,11 @@ const char levelText1C[ 9] = "EVERY END";
 const char levelText1D[10] = "LUCKY DRAW";
 
 
-const char* const levelTextsUpper[] = {
-	NULL,
-	NULL,
-	levelText00,
-	NULL,
-	NULL,
-	levelText01,
-	levelText02,
-	NULL,
-	NULL,
-	levelText03,
-	NULL,
-	levelText04,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-};
+extern const uint8_t levelTextsUpper_lo[];
+extern const uint8_t levelTextsUpper_hi[];
+extern const uint8_t levelTextsLower_lo[];
+extern const uint8_t levelTextsLower_hi[];
+
 
 const uint8_t levelTextsUpperSize[] = {
 	0,
@@ -87,35 +65,6 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	0,
-};
-
-
-const char* const levelTextsLower[] = {
-	levelText05,
-	levelText06,
-	levelText07,
-	levelText08,
-	levelText09,
-	levelText0A,
-	levelText0B,
-	levelText0C,
-	levelText0D,
-	levelText0E,
-	levelText0F,
-	levelText10,
-	levelText11,
-	levelText12,
-	levelText13,
-	levelText14,
-	levelText15,
-	levelText16,
-	levelText17,
-	levelText18,
-	levelText19,
-	levelText1A,
-	levelText1B,
-	levelText1C,
-	levelText1D,
 };
 
 const uint8_t levelTextsLowerSize[] = {

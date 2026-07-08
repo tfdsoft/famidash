@@ -42,37 +42,11 @@ const char levelText25[13] = "SOLAR CIRCLES";
 const char levelText26[11] = "FUTURE FUNK";
 
 
-const char* const levelTextsUpper[] = {
-	levelText00,
-	levelText01,
-	NULL,
-	NULL,
-	levelText02,
-	NULL,
-	NULL,
-	levelText03,
-	levelText04,
-	levelText05,
-	levelText06,
-	levelText07,
-	NULL,
-	NULL,
-	levelText08,
-	levelText09,
-	levelText0A,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	levelText00,
-	levelText0B,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-};
+extern const uint8_t levelTextsUpper_lo[];
+extern const uint8_t levelTextsUpper_hi[];
+extern const uint8_t levelTextsLower_lo[];
+extern const uint8_t levelTextsLower_hi[];
+
 
 const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText00),
@@ -104,39 +78,6 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	0,
-};
-
-
-const char* const levelTextsLower[] = {
-	levelText0C,
-	levelText0D,
-	levelText0E,
-	levelText0F,
-	levelText10,
-	levelText11,
-	levelText12,
-	levelText13,
-	levelText14,
-	levelText15,
-	levelText16,
-	levelText17,
-	levelText18,
-	levelText19,
-	levelText17,
-	levelText1A,
-	levelText1B,
-	levelText1C,
-	levelText1D,
-	levelText1E,
-	levelText1F,
-	levelText10,
-	levelText20,
-	levelText21,
-	levelText22,
-	levelText23,
-	levelText24,
-	levelText25,
-	levelText26,
 };
 
 const uint8_t levelTextsLowerSize[] = {

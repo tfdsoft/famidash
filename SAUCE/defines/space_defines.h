@@ -67,6 +67,8 @@
 #define GROUND_BANK "XCD_BANK_06"
 #if !__HUGE_ROM
 #define LVLDONE_BANK "XCD_BANK_06"
+#define LVL_NAME_BANK "XCD_BANK_06"
 #else
 #define LVLDONE_BANK "XCD_BANK_08"
+#define LVL_NAME_BANK "XCD_BANK_08"
 #endif	

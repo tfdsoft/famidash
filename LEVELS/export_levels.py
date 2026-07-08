@@ -526,11 +526,15 @@ def generate_menutext(filteredMetadata : dict, include_path : pathlib.Path):
 	upperIdxList = [totalTextSet.index(i) if i else None for i in upperTextList]
 	lowerIdxList = [totalTextSet.index(i) if i else None for i in lowerTextList]
 
+	# Convert to asm
+	upperLoArrayList = [f'.byte\t<_levelText{i:02X}' if i != None else '.byte\t0' for i in upperIdxList]
+	upperHiArrayList = [f'.byte\t>_levelText{i:02X}' if i != None else '.byte\t0' for i in upperIdxList]
+	lowerLoArrayList = [f'.byte\t<_levelText{i:02X}' if i != None else '.byte\t0' for i in lowerIdxList]
+	lowerHiArrayList = [f'.byte\t>_levelText{i:02X}' if i != None else '.byte\t0' for i in lowerIdxList]
+
 	# Convert to C
 	outputStringsList = [f'const char levelText{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(totalTextSet)]
-	upperArrayList = [f'\tlevelText{i:02X},' if i != None else '\tNULL,' for i in upperIdxList]
 	upperSizeArrayList = [f'\tsizeof(levelText{i:02X}),' if i != None else '\t0,' for i in upperIdxList]
-	lowerArrayList = [f'\tlevelText{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
 	lowerSizeArrayList = [f'\tsizeof(levelText{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
 
 	(include_path / 'menutext.h').write_text("\n".join([
@@ -539,22 +543,37 @@ def generate_menutext(filteredMetadata : dict, include_path : pathlib.Path):
 		'',
 		*outputStringsList,
 		'', '',
-		'const char* const levelTextsUpper[] = {',
-		*upperArrayList,
-		'};',
-		'',
+		'extern const uint8_t levelTextsUpper_lo[];',
+		'extern const uint8_t levelTextsUpper_hi[];',
+		'extern const uint8_t levelTextsLower_lo[];',
+		'extern const uint8_t levelTextsLower_hi[];',
+		'', '',
 		'const uint8_t levelTextsUpperSize[] = {',
 		*upperSizeArrayList,
-		'};',
-		'', '',
-		'const char* const levelTextsLower[] = {',
-		*lowerArrayList,
 		'};',
 		'',
 		'const uint8_t levelTextsLowerSize[] = {',
 		*lowerSizeArrayList,
 		'};',
 		''
+		]))
+
+	(include_path / "menutext.s").write_text("\n".join([
+		'',
+		';;; Exported by export_levels.py',
+		'',
+		'.segment _LVL_NAME_BANK',
+		'',
+		'.export _levelTextsUpper_lo, _levelTextsUpper_hi, _levelTextsLower_lo, _levelTextsLower_hi',
+		'',
+		f'.repeat {len(totalTextSet)}, I',
+		'.import .ident(.sprintf("_levelText%02X", I))',
+		'.endrepeat'
+		'', '',
+		'_levelTextsUpper_lo:', *upperLoArrayList, '',
+		'_levelTextsUpper_hi:', *upperHiArrayList, '',
+		'_levelTextsLower_lo:', *lowerLoArrayList, '',
+		'_levelTextsLower_hi:', *lowerHiArrayList, '',
 		]))
 
 def generate_level_list(filteredMetadata : dict, include_path : pathlib.Path):
