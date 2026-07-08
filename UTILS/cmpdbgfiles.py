@@ -5,7 +5,7 @@ import sys, argparse, pathlib, re
 cfgCommentRemoveRegex = [re.compile(r'(?m:^(.*?)(#.*?)$)'), r'\0']
 cfgPartsRegex = re.compile(r'(?ms:^(?P<name>\w+) \{$(?P<data>.*?)^\})')
 cfgLineRegex = re.compile(r'(?P<name>\w+):\s*(?P<data>(?:\s*(?:\w+)\s*=\s*(?:\S+?)\s*(?:,|))+);')
-cfgDataRegex = re.compile(r'(?:(\w+)\s*=\s*(\S+?)(?:\s*,|\s+))')
+cfgDataRegex = re.compile(r'(?:(\w+)\s*=\s*(\S+?)(?:\s*,|\s*$))')
 
 dbgLineRegex = r'(?ms:^(?P<name>\w+)[\t ](?P<data>(?:\w+=(?:"[^"]*?"|[^,\n]+)(?:,|$))+))'
 specDbgLineRegex = lambda x : re.compile(r'(?ms:^(?P<name>' + x + r')[\t ](?P<data>(?:\w+=(?:"[^"]*?"|[^,\n]+)(?:,|$))+))')
