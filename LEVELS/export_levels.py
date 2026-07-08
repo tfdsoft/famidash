@@ -508,6 +508,7 @@ def binpack_and_write_data(bg_exp_data : tuple, spr_exp_data : tuple, include_pa
 		for size, data, label, data_type, metadata in bank:
 			print(f"\t{label}: {size}")
 			lvl_file.append(data)
+		lvl_file += ("\t.align 8192", "")
 
 	# Write the level data
 	(include_path / "all_level_data.s").write_text("\n".join(lvl_file))

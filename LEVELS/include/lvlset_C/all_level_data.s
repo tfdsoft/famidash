@@ -22,6 +22,8 @@
 	; Level data
 		.incbin "EXPORTS/level/futurefunkfix.lz.0.bin" ; Size: 8175
 
+	.align 8192
+
 
 .segment "DAT_BANK_01"	; Total bank size: 8165 bytes
 	.export level_data_astronomicalexpedition_1
@@ -29,12 +31,16 @@
 	; Level data
 		.incbin "EXPORTS/level/astronomicalexpedition.lz.1.bin" ; Size: 8165
 
+	.align 8192
+
 
 .segment "DAT_BANK_02"	; Total bank size: 8147 bytes
 	.export level_data_futurefunkfix_5
 	level_data_futurefunkfix_5:
 	; Level data
 		.incbin "EXPORTS/level/futurefunkfix.lz.1.bin" ; Size: 8147
+
+	.align 8192
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8132 bytes
@@ -57,6 +63,8 @@
 	; Level data
 		.incbin "EXPORTS/level/carefreevictory.lz.0.bin" ; Size: 8119
 
+	.align 8192
+
 
 .segment "DAT_BANK_04"	; Total bank size: 8131 bytes
 	.export level_data_somewhereinaforest
@@ -78,12 +86,16 @@
 	; Level data
 		.incbin "EXPORTS/level/somewhereinaforest.lz.0.bin" ; Size: 8118
 
+	.align 8192
+
 
 .segment "DAT_BANK_05"	; Total bank size: 8119 bytes
 	.export level_data_astronomicalexpedition_2
 	level_data_astronomicalexpedition_2:
 	; Level data
 		.incbin "EXPORTS/level/astronomicalexpedition.lz.2.bin" ; Size: 8119
+
+	.align 8192
 
 
 .segment "DAT_BANK_06"	; Total bank size: 8109 bytes
@@ -106,10 +118,14 @@
 	; Level data
 		.incbin "EXPORTS/level/astronomicalexpedition.lz.0.bin" ; Size: 8096
 
+	.align 8192
+
 
 .segment "DAT_BANK_07"	; Total bank size: 8071 bytes
 	sprite_data_futurefunkfix:	; Size: 8071
 		.incbin "EXPORTS/sprite/futurefunkfix.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_08"	; Total bank size: 7844 bytes
 	sprite_data_astronomicalexpedition:	; Size: 7531
@@ -132,6 +148,8 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/thetripletrial.lz.bin" ; Size: 300
+
+	.align 8192
 
 
 .segment "DAT_BANK_09"	; Total bank size: 7974 bytes
@@ -156,6 +174,8 @@
 
 	sprite_data_movie:	; Size: 716
 		.incbin "EXPORTS/sprite/movie.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_0A"	; Total bank size: 7916 bytes
 	.export level_data_rotd
@@ -179,6 +199,8 @@
 
 	sprite_data_trolledfix:	; Size: 726
 		.incbin "EXPORTS/sprite/trolledfix.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_0B"	; Total bank size: 7906 bytes
 	.export level_data_ninecircleseasy
@@ -202,6 +224,8 @@
 
 	sprite_data_short_kings:	; Size: 816
 		.incbin "EXPORTS/sprite/short_kings.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_0C"	; Total bank size: 8072 bytes
 	.export level_data_endgame
@@ -225,6 +249,8 @@
 
 	sprite_data_groundtoretray:	; Size: 1041
 		.incbin "EXPORTS/sprite/groundtoretray.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_0D"	; Total bank size: 7835 bytes
 	.export level_data_dastardly
@@ -251,6 +277,8 @@
 	; Level data
 		.incbin "EXPORTS/level/somewhereinaforest.lz.1.bin" ; Size: 1352
 
+	.align 8192
+
 
 .segment "DAT_BANK_0E"	; Total bank size: 7877 bytes
 	.export level_data_clutterfunk2
@@ -274,6 +302,8 @@
 
 	sprite_data_unity:	; Size: 1411
 		.incbin "EXPORTS/sprite/unity.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_0F"	; Total bank size: 7889 bytes
 	.export level_data_solarcircles
@@ -313,6 +343,8 @@
 		.byte 32 ;____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/movie.lz.bin" ; Size: 1428
+
+	.align 8192
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8075 bytes
@@ -356,6 +388,8 @@
 
 	sprite_data_doubletripletrial:	; Size: 676
 		.incbin "EXPORTS/sprite/doubletripletrial.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_11"	; Total bank size: 7836 bytes
 	.export level_data_overawed
@@ -415,6 +449,8 @@
 	; Level data
 		.incbin "EXPORTS/level/doubletripletrial.lz.bin" ; Size: 251
 
+	.align 8192
+
 
 .segment "DAT_BANK_12"	; Total bank size: 7964 bytes
 	.export level_data_dorabaebasic7
@@ -440,12 +476,16 @@
 		.incbin "EXPORTS/sprite/greif.bin"
 	sprite_data_madness:	; Size: 526
 		.incbin "EXPORTS/sprite/madness.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_13"	; Total bank size: 7647 bytes
 	sprite_data_clutterfunk2:	; Size: 5546
 		.incbin "EXPORTS/sprite/clutterfunk2.bin"
 	sprite_data_somewhereinaforest:	; Size: 2101
 		.incbin "EXPORTS/sprite/somewhereinaforest.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_14"	; Total bank size: 7800 bytes
 	sprite_data_carefreevictory:	; Size: 5521
@@ -469,6 +509,8 @@
 	; Level data
 		.incbin "EXPORTS/level/unity.lz.bin" ; Size: 2266
 
+	.align 8192
+
 
 .segment "DAT_BANK_15"	; Total bank size: 8019 bytes
 	sprite_data_rotd:	; Size: 5506
@@ -491,6 +533,8 @@
 		.byte 27 ;__________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/hungrymanadventures.lz.bin" ; Size: 2500
+
+	.align 8192
 
 
 .segment "DAT_BANK_16"	; Total bank size: 7924 bytes
@@ -532,6 +576,8 @@
 	; Level data
 		.incbin "EXPORTS/level/nicktoons.lz.bin" ; Size: 2506
 
+	.align 8192
+
 
 .segment "DAT_BANK_17"	; Total bank size: 8137 bytes
 	.export level_data_carefreevictory_4
@@ -541,6 +587,8 @@
 
 	sprite_data_chaozimpact:	; Size: 3071
 		.incbin "EXPORTS/sprite/chaozimpact.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_18"	; Total bank size: 8184 bytes
 	.export level_data_chromaticexpedition
@@ -581,12 +629,16 @@
 	; Level data
 		.incbin "EXPORTS/level/supercycles.lz.bin" ; Size: 3375
 
+	.align 8192
+
 
 .segment "DAT_BANK_19"	; Total bank size: 8042 bytes
 	sprite_data_endgame:	; Size: 4396
 		.incbin "EXPORTS/sprite/endgame.bin"
 	sprite_data_cosmicdolphin:	; Size: 3646
 		.incbin "EXPORTS/sprite/cosmicdolphin.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_1A"	; Total bank size: 7997 bytes
 	.export level_data_greif
@@ -610,6 +662,8 @@
 
 	sprite_data_dorabaebasic7:	; Size: 3751
 		.incbin "EXPORTS/sprite/dorabaebasic7.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_1B"	; Total bank size: 7828 bytes
 	sprite_data_ninecircleseasy:	; Size: 3981
@@ -618,6 +672,8 @@
 	level_data_futurefunkfix_6:
 	; Level data
 		.incbin "EXPORTS/level/futurefunkfix.lz.2.bin" ; Size: 3847
+
+	.align 8192
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 7838 bytes
@@ -661,6 +717,8 @@
 	; Level data
 		.incbin "EXPORTS/level/trolledfix.lz.bin" ; Size: 1315
 
+	.align 8192
+
 
 .segment "DAT_BANK_1D"	; Total bank size: 7812 bytes
 	sprite_data_solarcircles:	; Size: 2911
@@ -673,6 +731,8 @@
 	level_data_astronomicalexpedition_3:
 	; Level data
 		.incbin "EXPORTS/level/astronomicalexpedition.lz.3.bin" ; Size: 359
+
+	.align 8192
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 7996 bytes
@@ -707,3 +767,4 @@
 		.incbin "EXPORTS/sprite/chromaticexpedition.bin"
 	sprite_data_nicktoons:	; Size: 571
 		.incbin "EXPORTS/sprite/nicktoons.bin"
+	.align 8192

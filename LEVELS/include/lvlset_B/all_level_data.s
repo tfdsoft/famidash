@@ -22,6 +22,8 @@
 	; Level data
 		.incbin "EXPORTS/level/highlife.lz.0.bin" ; Size: 8175
 
+	.align 8192
+
 
 .segment "DAT_BANK_01"	; Total bank size: 8163 bytes
 	.export level_data_subtleoddities
@@ -42,6 +44,8 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/subtleoddities.lz.0.bin" ; Size: 8150
+
+	.align 8192
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8142 bytes
@@ -64,6 +68,8 @@
 	; Level data
 		.incbin "EXPORTS/level/birdbrain.lz.0.bin" ; Size: 8129
 
+	.align 8192
+
 
 .segment "DAT_BANK_03"	; Total bank size: 8136 bytes
 	.export level_data_thesteamworks
@@ -84,6 +90,8 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/thesteamworks.lz.0.bin" ; Size: 8123
+
+	.align 8192
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8135 bytes
@@ -106,6 +114,8 @@
 	; Level data
 		.incbin "EXPORTS/level/tetrix.lz.0.bin" ; Size: 8122
 
+	.align 8192
+
 
 .segment "DAT_BANK_05"	; Total bank size: 8106 bytes
 	.export level_data_newdashcity
@@ -126,6 +136,8 @@
 		.byte 27 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/newdashcity.lz.0.bin" ; Size: 8093
+
+	.align 8192
 
 
 .segment "DAT_BANK_06"	; Total bank size: 8092 bytes
@@ -148,6 +160,8 @@
 	; Level data
 		.incbin "EXPORTS/level/ajollyretrochristmas.lz.0.bin" ; Size: 8079
 
+	.align 8192
+
 
 .segment "DAT_BANK_07"	; Total bank size: 8077 bytes
 	.export level_data_cryogenic
@@ -169,10 +183,14 @@
 	; Level data
 		.incbin "EXPORTS/level/cryogenic.lz.0.bin" ; Size: 8064
 
+	.align 8192
+
 
 .segment "DAT_BANK_08"	; Total bank size: 7831 bytes
 	sprite_data_cryogenic:	; Size: 7831
 		.incbin "EXPORTS/sprite/cryogenic.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_09"	; Total bank size: 7660 bytes
 	.export level_data_rainingtacos
@@ -194,6 +212,8 @@
 	; Level data
 		.incbin "EXPORTS/level/rainingtacos.lz.bin" ; Size: 7647
 
+	.align 8192
+
 
 .segment "DAT_BANK_0A"	; Total bank size: 7568 bytes
 	.export level_data_scarletsurge
@@ -214,6 +234,8 @@
 		.byte 27 ;___________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/scarletsurge.lz.bin" ; Size: 7555
+
+	.align 8192
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 8117 bytes
@@ -237,6 +259,8 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/xmaschallenge.lz.bin" ; Size: 1263
+
+	.align 8192
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 8124 bytes
@@ -264,6 +288,8 @@
 	; Level data
 		.incbin "EXPORTS/level/cryogenic.lz.1.bin" ; Size: 1676
 
+	.align 8192
+
 
 .segment "DAT_BANK_0D"	; Total bank size: 7916 bytes
 	.export level_data_dorabaebasic10
@@ -290,6 +316,8 @@
 	; Level data
 		.incbin "EXPORTS/level/tetrix.lz.1.bin" ; Size: 1792
 
+	.align 8192
+
 
 .segment "DAT_BANK_0E"	; Total bank size: 7852 bytes
 	sprite_data_danceofviolins:	; Size: 6021
@@ -313,6 +341,8 @@
 	; Level data
 		.incbin "EXPORTS/level/bestautomaticlvl.lz.bin" ; Size: 1818
 
+	.align 8192
+
 
 .segment "DAT_BANK_0F"	; Total bank size: 7989 bytes
 	.export level_data_newdashcity_4
@@ -322,6 +352,8 @@
 
 	sprite_data_oceane:	; Size: 1981
 		.incbin "EXPORTS/sprite/oceane.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_10"	; Total bank size: 8095 bytes
 	.export level_data_fofii_fofii_fofii
@@ -345,6 +377,8 @@
 
 	sprite_data_powertrip:	; Size: 2651
 		.incbin "EXPORTS/sprite/powertrip.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_11"	; Total bank size: 8122 bytes
 	.export level_data_danceofviolins
@@ -371,12 +405,16 @@
 	; Level data
 		.incbin "EXPORTS/level/thesteamworks.lz.1.bin" ; Size: 2797
 
+	.align 8192
+
 
 .segment "DAT_BANK_12"	; Total bank size: 8037 bytes
 	sprite_data_scarletsurge:	; Size: 5226
 		.incbin "EXPORTS/sprite/scarletsurge.bin"
 	sprite_data_tinytunes:	; Size: 2811
 		.incbin "EXPORTS/sprite/tinytunes.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_13"	; Total bank size: 8055 bytes
 	.export level_data_generationretro
@@ -400,6 +438,8 @@
 
 	sprite_data_rainbowdust:	; Size: 2851
 		.incbin "EXPORTS/sprite/rainbowdust.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_14"	; Total bank size: 7983 bytes
 	sprite_data_newdashcity:	; Size: 5066
@@ -423,12 +463,16 @@
 	; Level data
 		.incbin "EXPORTS/level/oceane.lz.bin" ; Size: 2904
 
+	.align 8192
+
 
 .segment "DAT_BANK_15"	; Total bank size: 7857 bytes
 	sprite_data_highlife:	; Size: 4861
 		.incbin "EXPORTS/sprite/highlife.bin"
 	sprite_data_dorabaebasic10:	; Size: 2996
 		.incbin "EXPORTS/sprite/dorabaebasic10.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_16"	; Total bank size: 8126 bytes
 	.export level_data_tinytunes
@@ -452,6 +496,8 @@
 
 	sprite_data_rainingtacos:	; Size: 3316
 		.incbin "EXPORTS/sprite/rainingtacos.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_17"	; Total bank size: 8071 bytes
 	sprite_data_pyrophoric:	; Size: 4736
@@ -474,6 +520,8 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/wintherace.lz.bin" ; Size: 3322
+
+	.align 8192
 
 
 .segment "DAT_BANK_18"	; Total bank size: 8020 bytes
@@ -498,6 +546,8 @@
 
 	sprite_data_ajollyretrochristmas:	; Size: 3381
 		.incbin "EXPORTS/sprite/ajollyretrochristmas.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_19"	; Total bank size: 8129 bytes
 	.export level_data_rainbowdust
@@ -538,6 +588,8 @@
 	; Level data
 		.incbin "EXPORTS/level/sonar.lz.bin" ; Size: 3525
 
+	.align 8192
+
 
 .segment "DAT_BANK_1A"	; Total bank size: 8075 bytes
 	.export level_data_ajollyretrochristmas_0
@@ -547,6 +599,8 @@
 
 	sprite_data_akrile:	; Size: 3636
 		.incbin "EXPORTS/sprite/akrile.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_1B"	; Total bank size: 8002 bytes
 	.export level_data_darkparadise
@@ -587,6 +641,8 @@
 	; Level data
 		.incbin "EXPORTS/level/aprettyeasylevel.lz.bin" ; Size: 3648
 
+	.align 8192
+
 
 .segment "DAT_BANK_1C"	; Total bank size: 8034 bytes
 	.export level_data_moonlight
@@ -610,6 +666,8 @@
 
 	sprite_data_fireaura:	; Size: 3801
 		.incbin "EXPORTS/sprite/fireaura.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_1D"	; Total bank size: 8081 bytes
 	.export level_data_powertrip
@@ -649,6 +707,8 @@
 		.byte 57 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/offtomars.lz.bin" ; Size: 3860
+
+	.align 8192
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 8017 bytes
@@ -690,6 +750,8 @@
 	; Level data
 		.incbin "EXPORTS/level/pyrophoric.lz.bin" ; Size: 3866
 
+	.align 8192
+
 
 .segment "DAT_BANK_1F"	; Total bank size: 7713 bytes
 	sprite_data_generationretro:	; Size: 2601
@@ -700,6 +762,8 @@
 	level_data_highlife_7:
 	; Level data
 		.incbin "EXPORTS/level/highlife.lz.1.bin" ; Size: 2551
+
+	.align 8192
 
 
 .segment "DAT_BANK_20"	; Total bank size: 8176 bytes
@@ -748,6 +812,8 @@
 	; Level data
 		.incbin "EXPORTS/level/birdbrain.lz.1.bin" ; Size: 1241
 
+	.align 8192
+
 
 .segment "DAT_BANK_21"	; Total bank size: 8175 bytes
 	.export level_data_subtleoddities_3
@@ -761,6 +827,8 @@
 		.incbin "EXPORTS/sprite/thesteamworks.bin"
 	sprite_data_bestautomaticlvl:	; Size: 1396
 		.incbin "EXPORTS/sprite/bestautomaticlvl.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_22"	; Total bank size: 8156 bytes
 	sprite_data_birdbrain:	; Size: 2201
@@ -787,6 +855,8 @@
 		.byte 27 ;______________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/lookatthislevel.lz.bin" ; Size: 1660
+
+	.align 8192
 
 
 .segment "DAT_BANK_23"	; Total bank size: 7813 bytes
@@ -817,6 +887,8 @@
 
 	sprite_data_subtleoddities:	; Size: 1426
 		.incbin "EXPORTS/sprite/subtleoddities.bin"
+	.align 8192
+
 
 .segment "DAT_BANK_24"	; Total bank size: 6674 bytes
 	sprite_data_ultiatedestruction:	; Size: 1226
@@ -850,3 +922,4 @@
 		.incbin "EXPORTS/sprite/xmaschallenge.bin"
 	sprite_data_chippe:	; Size: 466
 		.incbin "EXPORTS/sprite/chippe.bin"
+	.align 8192
