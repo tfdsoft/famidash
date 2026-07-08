@@ -6143,7 +6143,7 @@
             spikeSet: "A",
             blockSet: "B",
             sawSet: "A",
-            difficulty: "DEMON",
+            difficulty: "HARDDEMON",
             stars: 10,
             songID: "song_cant_let_go",
             startingGameMode: 0,

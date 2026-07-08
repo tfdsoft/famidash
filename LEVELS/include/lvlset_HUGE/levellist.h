@@ -130,7 +130,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// firetemple
 	MEDIUMDEMON,	// demonpyrophoric
 	HARDDEMON,	// toeiiv2
-	DEMON,	// watertemple
+	HARDDEMON,	// watertemple
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
 	HARDDEMON,	// thermodynamix
