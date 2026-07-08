@@ -62,6 +62,9 @@
 	pcmData1:
 		.incbin "MUSIC/PCM/SSDPCM2-fire.pcm"
 
-; Constants
+; "Constants"
 FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)
 FIRST_DMC_BANK = .bank(firstDMCBankPtr)
+
+; Constant
+MUSIC_DAT_BANKS_USED = 16
