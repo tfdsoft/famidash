@@ -580,6 +580,7 @@ if __name__ == "__main__":
         header_music_bank_data += [
             f'.segment "{datBankSegPrefix}{i+firstMusBank:02X}"',
             f'\t.include "{exportStemPrefix}_{i}.s"\t; Approx. size: {bankSizes[i]} bytes',
+            f'\t.align 8192',
         ]
 
     if (len(dpcmBanks)):
@@ -588,12 +589,14 @@ if __name__ == "__main__":
             f'.segment "{datBankSegPrefix}{firstDmcBank:02X}"',
             '\tfirstDMCBankPtr := *',
             f'\t.incbin "{exportStemPrefix}_bank{dpcmBanks[0]}.dmc"\t; Size: {dpcmBankSizes[dpcmBanks[0]]} bytes',
+            f'\t.align 8192',
         ]
         for i, bank in enumerate(dpcmBanks[1:], 1):
             if bank != dmcBankMetaUnused:
                 header_dmc_bank_data += [
                     f'.segment "{datBankSegPrefix}{i+firstDmcBank:02X}"',
                     f'\t.incbin "{exportStemPrefix}_bank{bank}.dmc"\t; Size: {dpcmBankSizes[bank]} bytes',
+                    f'\t.align 8192',
                 ]
         header_dmc_bank_constant = ['FIRST_DMC_BANK = .bank(firstDMCBankPtr)']
     else:
@@ -606,6 +609,7 @@ if __name__ == "__main__":
         f'.segment "{datBankSegPrefix}{firstMusBank:02X}"',
         '\tfirstMusicBankPtr := *',
         f'\t.include "{exportStemPrefix}_0.s"\t; Approx. size: {bankSizes[0]} bytes',
+        f'\t.align 8192',
         *header_music_bank_data,
         *header_dmc_bank_data,
         *processed_metadata['pcmMetadata']['headerData'],
