@@ -42,78 +42,78 @@ _level_list_lo:
 	.byte .lobyte(level_data_highlife)
 
 _level_list_hi:
-	.byte .hibyte(level_data_bestautomaticlvl)
-	.byte .hibyte(level_data_sonar)
-	.byte .hibyte(level_data_darkparadise)
-	.byte .hibyte(level_data_xmaschallenge)
-	.byte .hibyte(level_data_ninox)
-	.byte .hibyte(level_data_lookatthislevel)
-	.byte .hibyte(level_data_ajollyretrochristmas)
-	.byte .hibyte(level_data_ultiatedestruction)
-	.byte .hibyte(level_data_chippe)
-	.byte .hibyte(level_data_moonlight)
-	.byte .hibyte(level_data_fofii_fofii_fofii)
-	.byte .hibyte(level_data_selectpaymenttype)
-	.byte .hibyte(level_data_pyrophoric)
-	.byte .hibyte(level_data_cryogenic)
-	.byte .hibyte(level_data_oceane)
-	.byte .hibyte(level_data_generationretro)
-	.byte .hibyte(level_data_scarletsurge)
-	.byte .hibyte(level_data_tinytunes)
-	.byte .hibyte(level_data_fireaura)
-	.byte .hibyte(level_data_rainbowdust)
-	.byte .hibyte(level_data_wintherace)
-	.byte .hibyte(level_data_factorytime)
-	.byte .hibyte(level_data_thesteamworks)
-	.byte .hibyte(level_data_rainingtacos)
-	.byte .hibyte(level_data_dorabaebasic10)
-	.byte .hibyte(level_data_offtomars)
-	.byte .hibyte(level_data_akrile)
-	.byte .hibyte(level_data_subtleoddities)
-	.byte .hibyte(level_data_powertrip)
-	.byte .hibyte(level_data_danceofviolins)
-	.byte .hibyte(level_data_newdashcity)
-	.byte .hibyte(level_data_birdbrain)
-	.byte .hibyte(level_data_aprettyeasylevel)
-	.byte .hibyte(level_data_tetrix)
-	.byte .hibyte(level_data_highlife)
+	.byte .hibyte(level_data_bestautomaticlvl) & $1F | $A0
+	.byte .hibyte(level_data_sonar) & $1F | $A0
+	.byte .hibyte(level_data_darkparadise) & $1F | $A0
+	.byte .hibyte(level_data_xmaschallenge) & $1F | $A0
+	.byte .hibyte(level_data_ninox) & $1F | $A0
+	.byte .hibyte(level_data_lookatthislevel) & $1F | $A0
+	.byte .hibyte(level_data_ajollyretrochristmas) & $1F | $A0
+	.byte .hibyte(level_data_ultiatedestruction) & $1F | $A0
+	.byte .hibyte(level_data_chippe) & $1F | $A0
+	.byte .hibyte(level_data_moonlight) & $1F | $A0
+	.byte .hibyte(level_data_fofii_fofii_fofii) & $1F | $A0
+	.byte .hibyte(level_data_selectpaymenttype) & $1F | $A0
+	.byte .hibyte(level_data_pyrophoric) & $1F | $A0
+	.byte .hibyte(level_data_cryogenic) & $1F | $A0
+	.byte .hibyte(level_data_oceane) & $1F | $A0
+	.byte .hibyte(level_data_generationretro) & $1F | $A0
+	.byte .hibyte(level_data_scarletsurge) & $1F | $A0
+	.byte .hibyte(level_data_tinytunes) & $1F | $A0
+	.byte .hibyte(level_data_fireaura) & $1F | $A0
+	.byte .hibyte(level_data_rainbowdust) & $1F | $A0
+	.byte .hibyte(level_data_wintherace) & $1F | $A0
+	.byte .hibyte(level_data_factorytime) & $1F | $A0
+	.byte .hibyte(level_data_thesteamworks) & $1F | $A0
+	.byte .hibyte(level_data_rainingtacos) & $1F | $A0
+	.byte .hibyte(level_data_dorabaebasic10) & $1F | $A0
+	.byte .hibyte(level_data_offtomars) & $1F | $A0
+	.byte .hibyte(level_data_akrile) & $1F | $A0
+	.byte .hibyte(level_data_subtleoddities) & $1F | $A0
+	.byte .hibyte(level_data_powertrip) & $1F | $A0
+	.byte .hibyte(level_data_danceofviolins) & $1F | $A0
+	.byte .hibyte(level_data_newdashcity) & $1F | $A0
+	.byte .hibyte(level_data_birdbrain) & $1F | $A0
+	.byte .hibyte(level_data_aprettyeasylevel) & $1F | $A0
+	.byte .hibyte(level_data_tetrix) & $1F | $A0
+	.byte .hibyte(level_data_highlife) & $1F | $A0
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_bestautomaticlvl))
-	.byte .lobyte(.bank(level_data_sonar))
-	.byte .lobyte(.bank(level_data_darkparadise))
-	.byte .lobyte(.bank(level_data_xmaschallenge))
-	.byte .lobyte(.bank(level_data_ninox))
-	.byte .lobyte(.bank(level_data_lookatthislevel))
-	.byte .lobyte(.bank(level_data_ajollyretrochristmas))
-	.byte .lobyte(.bank(level_data_ultiatedestruction))
-	.byte .lobyte(.bank(level_data_chippe))
-	.byte .lobyte(.bank(level_data_moonlight))
-	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
-	.byte .lobyte(.bank(level_data_selectpaymenttype))
-	.byte .lobyte(.bank(level_data_pyrophoric))
-	.byte .lobyte(.bank(level_data_cryogenic))
-	.byte .lobyte(.bank(level_data_oceane))
-	.byte .lobyte(.bank(level_data_generationretro))
-	.byte .lobyte(.bank(level_data_scarletsurge))
-	.byte .lobyte(.bank(level_data_tinytunes))
-	.byte .lobyte(.bank(level_data_fireaura))
-	.byte .lobyte(.bank(level_data_rainbowdust))
-	.byte .lobyte(.bank(level_data_wintherace))
-	.byte .lobyte(.bank(level_data_factorytime))
-	.byte .lobyte(.bank(level_data_thesteamworks))
-	.byte .lobyte(.bank(level_data_rainingtacos))
-	.byte .lobyte(.bank(level_data_dorabaebasic10))
-	.byte .lobyte(.bank(level_data_offtomars))
-	.byte .lobyte(.bank(level_data_akrile))
-	.byte .lobyte(.bank(level_data_subtleoddities))
-	.byte .lobyte(.bank(level_data_powertrip))
-	.byte .lobyte(.bank(level_data_danceofviolins))
-	.byte .lobyte(.bank(level_data_newdashcity))
-	.byte .lobyte(.bank(level_data_birdbrain))
-	.byte .lobyte(.bank(level_data_aprettyeasylevel))
-	.byte .lobyte(.bank(level_data_tetrix))
-	.byte .lobyte(.bank(level_data_highlife))
+	.byte .lobyte(level_data_bestautomaticlvl >> 13)
+	.byte .lobyte(level_data_sonar >> 13)
+	.byte .lobyte(level_data_darkparadise >> 13)
+	.byte .lobyte(level_data_xmaschallenge >> 13)
+	.byte .lobyte(level_data_ninox >> 13)
+	.byte .lobyte(level_data_lookatthislevel >> 13)
+	.byte .lobyte(level_data_ajollyretrochristmas >> 13)
+	.byte .lobyte(level_data_ultiatedestruction >> 13)
+	.byte .lobyte(level_data_chippe >> 13)
+	.byte .lobyte(level_data_moonlight >> 13)
+	.byte .lobyte(level_data_fofii_fofii_fofii >> 13)
+	.byte .lobyte(level_data_selectpaymenttype >> 13)
+	.byte .lobyte(level_data_pyrophoric >> 13)
+	.byte .lobyte(level_data_cryogenic >> 13)
+	.byte .lobyte(level_data_oceane >> 13)
+	.byte .lobyte(level_data_generationretro >> 13)
+	.byte .lobyte(level_data_scarletsurge >> 13)
+	.byte .lobyte(level_data_tinytunes >> 13)
+	.byte .lobyte(level_data_fireaura >> 13)
+	.byte .lobyte(level_data_rainbowdust >> 13)
+	.byte .lobyte(level_data_wintherace >> 13)
+	.byte .lobyte(level_data_factorytime >> 13)
+	.byte .lobyte(level_data_thesteamworks >> 13)
+	.byte .lobyte(level_data_rainingtacos >> 13)
+	.byte .lobyte(level_data_dorabaebasic10 >> 13)
+	.byte .lobyte(level_data_offtomars >> 13)
+	.byte .lobyte(level_data_akrile >> 13)
+	.byte .lobyte(level_data_subtleoddities >> 13)
+	.byte .lobyte(level_data_powertrip >> 13)
+	.byte .lobyte(level_data_danceofviolins >> 13)
+	.byte .lobyte(level_data_newdashcity >> 13)
+	.byte .lobyte(level_data_birdbrain >> 13)
+	.byte .lobyte(level_data_aprettyeasylevel >> 13)
+	.byte .lobyte(level_data_tetrix >> 13)
+	.byte .lobyte(level_data_highlife >> 13)
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_ajollyretrochristmas_0)
@@ -126,24 +126,24 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_highlife_7)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_ajollyretrochristmas_0)
-	.byte .hibyte(level_data_cryogenic_1)
-	.byte .hibyte(level_data_thesteamworks_2)
-	.byte .hibyte(level_data_subtleoddities_3)
-	.byte .hibyte(level_data_newdashcity_4)
-	.byte .hibyte(level_data_birdbrain_5)
-	.byte .hibyte(level_data_tetrix_6)
-	.byte .hibyte(level_data_highlife_7)
+	.byte .hibyte(level_data_ajollyretrochristmas_0) & $1F | $A0
+	.byte .hibyte(level_data_cryogenic_1) & $1F | $A0
+	.byte .hibyte(level_data_thesteamworks_2) & $1F | $A0
+	.byte .hibyte(level_data_subtleoddities_3) & $1F | $A0
+	.byte .hibyte(level_data_newdashcity_4) & $1F | $A0
+	.byte .hibyte(level_data_birdbrain_5) & $1F | $A0
+	.byte .hibyte(level_data_tetrix_6) & $1F | $A0
+	.byte .hibyte(level_data_highlife_7) & $1F | $A0
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_ajollyretrochristmas_0))
-	.byte .lobyte(.bank(level_data_cryogenic_1))
-	.byte .lobyte(.bank(level_data_thesteamworks_2))
-	.byte .lobyte(.bank(level_data_subtleoddities_3))
-	.byte .lobyte(.bank(level_data_newdashcity_4))
-	.byte .lobyte(.bank(level_data_birdbrain_5))
-	.byte .lobyte(.bank(level_data_tetrix_6))
-	.byte .lobyte(.bank(level_data_highlife_7))
+	.byte .lobyte(level_data_ajollyretrochristmas_0 >> 13)
+	.byte .lobyte(level_data_cryogenic_1 >> 13)
+	.byte .lobyte(level_data_thesteamworks_2 >> 13)
+	.byte .lobyte(level_data_subtleoddities_3 >> 13)
+	.byte .lobyte(level_data_newdashcity_4 >> 13)
+	.byte .lobyte(level_data_birdbrain_5 >> 13)
+	.byte .lobyte(level_data_tetrix_6 >> 13)
+	.byte .lobyte(level_data_highlife_7 >> 13)
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0

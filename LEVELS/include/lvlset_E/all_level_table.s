@@ -36,66 +36,66 @@ _level_list_lo:
 	.byte .lobyte(level_data_silentcircles)
 
 _level_list_hi:
-	.byte .hibyte(level_data_demonpark)
-	.byte .hibyte(level_data_infinitecircles)
-	.byte .hibyte(level_data_speedracer)
-	.byte .hibyte(level_data_respitev2)
-	.byte .hibyte(level_data_skeletalshenanigans)
-	.byte .hibyte(level_data_goldenhaze)
-	.byte .hibyte(level_data_gameover)
-	.byte .hibyte(level_data_demonpyrophoric)
-	.byte .hibyte(level_data_explorers)
-	.byte .hibyte(level_data_toeiiv2)
-	.byte .hibyte(level_data_demoncryogenic)
-	.byte .hibyte(level_data_azuronxolax)
-	.byte .hibyte(level_data_foresttemple)
-	.byte .hibyte(level_data_jawbreaker)
-	.byte .hibyte(level_data_denouement)
-	.byte .hibyte(level_data_acropolis)
-	.byte .hibyte(level_data_windylandscape)
-	.byte .hibyte(level_data_icdx)
-	.byte .hibyte(level_data_styx)
-	.byte .hibyte(level_data_wcropolix)
-	.byte .hibyte(level_data_silentclubstep)
-	.byte .hibyte(level_data_aftercatabath)
-	.byte .hibyte(level_data_shardscapes)
-	.byte .hibyte(level_data_element111rg_with_secret_way)
-	.byte .hibyte(level_data_slaughterhouse)
-	.byte .hibyte(level_data_kratos)
-	.byte .hibyte(level_data_nullscapes)
-	.byte .hibyte(level_data_heliopolis)
-	.byte .hibyte(level_data_silentcircles)
+	.byte .hibyte(level_data_demonpark) & $1F | $A0
+	.byte .hibyte(level_data_infinitecircles) & $1F | $A0
+	.byte .hibyte(level_data_speedracer) & $1F | $A0
+	.byte .hibyte(level_data_respitev2) & $1F | $A0
+	.byte .hibyte(level_data_skeletalshenanigans) & $1F | $A0
+	.byte .hibyte(level_data_goldenhaze) & $1F | $A0
+	.byte .hibyte(level_data_gameover) & $1F | $A0
+	.byte .hibyte(level_data_demonpyrophoric) & $1F | $A0
+	.byte .hibyte(level_data_explorers) & $1F | $A0
+	.byte .hibyte(level_data_toeiiv2) & $1F | $A0
+	.byte .hibyte(level_data_demoncryogenic) & $1F | $A0
+	.byte .hibyte(level_data_azuronxolax) & $1F | $A0
+	.byte .hibyte(level_data_foresttemple) & $1F | $A0
+	.byte .hibyte(level_data_jawbreaker) & $1F | $A0
+	.byte .hibyte(level_data_denouement) & $1F | $A0
+	.byte .hibyte(level_data_acropolis) & $1F | $A0
+	.byte .hibyte(level_data_windylandscape) & $1F | $A0
+	.byte .hibyte(level_data_icdx) & $1F | $A0
+	.byte .hibyte(level_data_styx) & $1F | $A0
+	.byte .hibyte(level_data_wcropolix) & $1F | $A0
+	.byte .hibyte(level_data_silentclubstep) & $1F | $A0
+	.byte .hibyte(level_data_aftercatabath) & $1F | $A0
+	.byte .hibyte(level_data_shardscapes) & $1F | $A0
+	.byte .hibyte(level_data_element111rg_with_secret_way) & $1F | $A0
+	.byte .hibyte(level_data_slaughterhouse) & $1F | $A0
+	.byte .hibyte(level_data_kratos) & $1F | $A0
+	.byte .hibyte(level_data_nullscapes) & $1F | $A0
+	.byte .hibyte(level_data_heliopolis) & $1F | $A0
+	.byte .hibyte(level_data_silentcircles) & $1F | $A0
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_demonpark))
-	.byte .lobyte(.bank(level_data_infinitecircles))
-	.byte .lobyte(.bank(level_data_speedracer))
-	.byte .lobyte(.bank(level_data_respitev2))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans))
-	.byte .lobyte(.bank(level_data_goldenhaze))
-	.byte .lobyte(.bank(level_data_gameover))
-	.byte .lobyte(.bank(level_data_demonpyrophoric))
-	.byte .lobyte(.bank(level_data_explorers))
-	.byte .lobyte(.bank(level_data_toeiiv2))
-	.byte .lobyte(.bank(level_data_demoncryogenic))
-	.byte .lobyte(.bank(level_data_azuronxolax))
-	.byte .lobyte(.bank(level_data_foresttemple))
-	.byte .lobyte(.bank(level_data_jawbreaker))
-	.byte .lobyte(.bank(level_data_denouement))
-	.byte .lobyte(.bank(level_data_acropolis))
-	.byte .lobyte(.bank(level_data_windylandscape))
-	.byte .lobyte(.bank(level_data_icdx))
-	.byte .lobyte(.bank(level_data_styx))
-	.byte .lobyte(.bank(level_data_wcropolix))
-	.byte .lobyte(.bank(level_data_silentclubstep))
-	.byte .lobyte(.bank(level_data_aftercatabath))
-	.byte .lobyte(.bank(level_data_shardscapes))
-	.byte .lobyte(.bank(level_data_element111rg_with_secret_way))
-	.byte .lobyte(.bank(level_data_slaughterhouse))
-	.byte .lobyte(.bank(level_data_kratos))
-	.byte .lobyte(.bank(level_data_nullscapes))
-	.byte .lobyte(.bank(level_data_heliopolis))
-	.byte .lobyte(.bank(level_data_silentcircles))
+	.byte .lobyte(level_data_demonpark >> 13)
+	.byte .lobyte(level_data_infinitecircles >> 13)
+	.byte .lobyte(level_data_speedracer >> 13)
+	.byte .lobyte(level_data_respitev2 >> 13)
+	.byte .lobyte(level_data_skeletalshenanigans >> 13)
+	.byte .lobyte(level_data_goldenhaze >> 13)
+	.byte .lobyte(level_data_gameover >> 13)
+	.byte .lobyte(level_data_demonpyrophoric >> 13)
+	.byte .lobyte(level_data_explorers >> 13)
+	.byte .lobyte(level_data_toeiiv2 >> 13)
+	.byte .lobyte(level_data_demoncryogenic >> 13)
+	.byte .lobyte(level_data_azuronxolax >> 13)
+	.byte .lobyte(level_data_foresttemple >> 13)
+	.byte .lobyte(level_data_jawbreaker >> 13)
+	.byte .lobyte(level_data_denouement >> 13)
+	.byte .lobyte(level_data_acropolis >> 13)
+	.byte .lobyte(level_data_windylandscape >> 13)
+	.byte .lobyte(level_data_icdx >> 13)
+	.byte .lobyte(level_data_styx >> 13)
+	.byte .lobyte(level_data_wcropolix >> 13)
+	.byte .lobyte(level_data_silentclubstep >> 13)
+	.byte .lobyte(level_data_aftercatabath >> 13)
+	.byte .lobyte(level_data_shardscapes >> 13)
+	.byte .lobyte(level_data_element111rg_with_secret_way >> 13)
+	.byte .lobyte(level_data_slaughterhouse >> 13)
+	.byte .lobyte(level_data_kratos >> 13)
+	.byte .lobyte(level_data_nullscapes >> 13)
+	.byte .lobyte(level_data_heliopolis >> 13)
+	.byte .lobyte(level_data_silentcircles >> 13)
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_respitev2_0)
@@ -108,24 +108,24 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_heliopolis_7)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_respitev2_0)
-	.byte .hibyte(level_data_skeletalshenanigans_1)
-	.byte .hibyte(level_data_demonpyrophoric_2)
-	.byte .hibyte(level_data_demoncryogenic_3)
-	.byte .hibyte(level_data_windylandscape_4)
-	.byte .hibyte(level_data_aftercatabath_5)
-	.byte .hibyte(level_data_aftercatabath_6)
-	.byte .hibyte(level_data_heliopolis_7)
+	.byte .hibyte(level_data_respitev2_0) & $1F | $A0
+	.byte .hibyte(level_data_skeletalshenanigans_1) & $1F | $A0
+	.byte .hibyte(level_data_demonpyrophoric_2) & $1F | $A0
+	.byte .hibyte(level_data_demoncryogenic_3) & $1F | $A0
+	.byte .hibyte(level_data_windylandscape_4) & $1F | $A0
+	.byte .hibyte(level_data_aftercatabath_5) & $1F | $A0
+	.byte .hibyte(level_data_aftercatabath_6) & $1F | $A0
+	.byte .hibyte(level_data_heliopolis_7) & $1F | $A0
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_respitev2_0))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_1))
-	.byte .lobyte(.bank(level_data_demonpyrophoric_2))
-	.byte .lobyte(.bank(level_data_demoncryogenic_3))
-	.byte .lobyte(.bank(level_data_windylandscape_4))
-	.byte .lobyte(.bank(level_data_aftercatabath_5))
-	.byte .lobyte(.bank(level_data_aftercatabath_6))
-	.byte .lobyte(.bank(level_data_heliopolis_7))
+	.byte .lobyte(level_data_respitev2_0 >> 13)
+	.byte .lobyte(level_data_skeletalshenanigans_1 >> 13)
+	.byte .lobyte(level_data_demonpyrophoric_2 >> 13)
+	.byte .lobyte(level_data_demoncryogenic_3 >> 13)
+	.byte .lobyte(level_data_windylandscape_4 >> 13)
+	.byte .lobyte(level_data_aftercatabath_5 >> 13)
+	.byte .lobyte(level_data_aftercatabath_6 >> 13)
+	.byte .lobyte(level_data_heliopolis_7 >> 13)
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0

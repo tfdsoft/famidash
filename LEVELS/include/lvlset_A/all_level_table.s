@@ -53,112 +53,112 @@ _level_list_lo:
 	.byte .lobyte(level_data_watertemple)
 
 _level_list_hi:
-	.byte .hibyte(level_data_stereomadness)
-	.byte .hibyte(level_data_backontrack)
-	.byte .hibyte(level_data_polargeist)
-	.byte .hibyte(level_data_dryout)
-	.byte .hibyte(level_data_baseafterbase)
-	.byte .hibyte(level_data_cantletgo)
-	.byte .hibyte(level_data_jumper)
-	.byte .hibyte(level_data_timemachine)
-	.byte .hibyte(level_data_cycles)
-	.byte .hibyte(level_data_xstep)
-	.byte .hibyte(level_data_clutterfunk)
-	.byte .hibyte(level_data_theoryofeverything)
-	.byte .hibyte(level_data_electromanadventures)
-	.byte .hibyte(level_data_clubstep)
-	.byte .hibyte(level_data_electrodynamix)
-	.byte .hibyte(level_data_hexagonforce)
-	.byte .hibyte(level_data_blastprocessing)
-	.byte .hibyte(level_data_toe2)
-	.byte .hibyte(level_data_geometricaldominator)
-	.byte .hibyte(level_data_deadlocked)
-	.byte .hibyte(level_data_fingerdash)
-	.byte .hibyte(level_data_dash)
-	.byte .hibyte(level_data_thetower)
-	.byte .hibyte(level_data_thesewers)
-	.byte .hibyte(level_data_thecellar)
-	.byte .hibyte(level_data_thesecrethollow)
-	.byte .hibyte(level_data_thechallenge)
-	.byte .hibyte(level_data_retray)
-	.byte .hibyte(level_data_leveleasy)
-	.byte .hibyte(level_data_dorabaebasic4)
-	.byte .hibyte(level_data_dorabaebasic6)
-	.byte .hibyte(level_data_dreamer)
-	.byte .hibyte(level_data_groundtospace)
-	.byte .hibyte(level_data_subzero)
-	.byte .hibyte(level_data_kappaclysm)
-	.byte .hibyte(level_data_sunshine)
-	.byte .hibyte(level_data_revolution)
-	.byte .hibyte(level_data_funnygameholiday)
-	.byte .hibyte(level_data_lostinthewoods)
-	.byte .hibyte(level_data_bloodbathbutno)
-	.byte .hibyte(level_data_rainbowtylenol)
-	.byte .hibyte(level_data_extraordinaryexcitement)
-	.byte .hibyte(level_data_thelightningroad)
-	.byte .hibyte(level_data_nightmare)
-	.byte .hibyte(level_data_firetemple)
-	.byte .hibyte(level_data_watertemple)
+	.byte .hibyte(level_data_stereomadness) & $1F | $A0
+	.byte .hibyte(level_data_backontrack) & $1F | $A0
+	.byte .hibyte(level_data_polargeist) & $1F | $A0
+	.byte .hibyte(level_data_dryout) & $1F | $A0
+	.byte .hibyte(level_data_baseafterbase) & $1F | $A0
+	.byte .hibyte(level_data_cantletgo) & $1F | $A0
+	.byte .hibyte(level_data_jumper) & $1F | $A0
+	.byte .hibyte(level_data_timemachine) & $1F | $A0
+	.byte .hibyte(level_data_cycles) & $1F | $A0
+	.byte .hibyte(level_data_xstep) & $1F | $A0
+	.byte .hibyte(level_data_clutterfunk) & $1F | $A0
+	.byte .hibyte(level_data_theoryofeverything) & $1F | $A0
+	.byte .hibyte(level_data_electromanadventures) & $1F | $A0
+	.byte .hibyte(level_data_clubstep) & $1F | $A0
+	.byte .hibyte(level_data_electrodynamix) & $1F | $A0
+	.byte .hibyte(level_data_hexagonforce) & $1F | $A0
+	.byte .hibyte(level_data_blastprocessing) & $1F | $A0
+	.byte .hibyte(level_data_toe2) & $1F | $A0
+	.byte .hibyte(level_data_geometricaldominator) & $1F | $A0
+	.byte .hibyte(level_data_deadlocked) & $1F | $A0
+	.byte .hibyte(level_data_fingerdash) & $1F | $A0
+	.byte .hibyte(level_data_dash) & $1F | $A0
+	.byte .hibyte(level_data_thetower) & $1F | $A0
+	.byte .hibyte(level_data_thesewers) & $1F | $A0
+	.byte .hibyte(level_data_thecellar) & $1F | $A0
+	.byte .hibyte(level_data_thesecrethollow) & $1F | $A0
+	.byte .hibyte(level_data_thechallenge) & $1F | $A0
+	.byte .hibyte(level_data_retray) & $1F | $A0
+	.byte .hibyte(level_data_leveleasy) & $1F | $A0
+	.byte .hibyte(level_data_dorabaebasic4) & $1F | $A0
+	.byte .hibyte(level_data_dorabaebasic6) & $1F | $A0
+	.byte .hibyte(level_data_dreamer) & $1F | $A0
+	.byte .hibyte(level_data_groundtospace) & $1F | $A0
+	.byte .hibyte(level_data_subzero) & $1F | $A0
+	.byte .hibyte(level_data_kappaclysm) & $1F | $A0
+	.byte .hibyte(level_data_sunshine) & $1F | $A0
+	.byte .hibyte(level_data_revolution) & $1F | $A0
+	.byte .hibyte(level_data_funnygameholiday) & $1F | $A0
+	.byte .hibyte(level_data_lostinthewoods) & $1F | $A0
+	.byte .hibyte(level_data_bloodbathbutno) & $1F | $A0
+	.byte .hibyte(level_data_rainbowtylenol) & $1F | $A0
+	.byte .hibyte(level_data_extraordinaryexcitement) & $1F | $A0
+	.byte .hibyte(level_data_thelightningroad) & $1F | $A0
+	.byte .hibyte(level_data_nightmare) & $1F | $A0
+	.byte .hibyte(level_data_firetemple) & $1F | $A0
+	.byte .hibyte(level_data_watertemple) & $1F | $A0
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_stereomadness))
-	.byte .lobyte(.bank(level_data_backontrack))
-	.byte .lobyte(.bank(level_data_polargeist))
-	.byte .lobyte(.bank(level_data_dryout))
-	.byte .lobyte(.bank(level_data_baseafterbase))
-	.byte .lobyte(.bank(level_data_cantletgo))
-	.byte .lobyte(.bank(level_data_jumper))
-	.byte .lobyte(.bank(level_data_timemachine))
-	.byte .lobyte(.bank(level_data_cycles))
-	.byte .lobyte(.bank(level_data_xstep))
-	.byte .lobyte(.bank(level_data_clutterfunk))
-	.byte .lobyte(.bank(level_data_theoryofeverything))
-	.byte .lobyte(.bank(level_data_electromanadventures))
-	.byte .lobyte(.bank(level_data_clubstep))
-	.byte .lobyte(.bank(level_data_electrodynamix))
-	.byte .lobyte(.bank(level_data_hexagonforce))
-	.byte .lobyte(.bank(level_data_blastprocessing))
-	.byte .lobyte(.bank(level_data_toe2))
-	.byte .lobyte(.bank(level_data_geometricaldominator))
-	.byte .lobyte(.bank(level_data_deadlocked))
-	.byte .lobyte(.bank(level_data_fingerdash))
-	.byte .lobyte(.bank(level_data_dash))
-	.byte .lobyte(.bank(level_data_thetower))
-	.byte .lobyte(.bank(level_data_thesewers))
-	.byte .lobyte(.bank(level_data_thecellar))
-	.byte .lobyte(.bank(level_data_thesecrethollow))
-	.byte .lobyte(.bank(level_data_thechallenge))
-	.byte .lobyte(.bank(level_data_retray))
-	.byte .lobyte(.bank(level_data_leveleasy))
-	.byte .lobyte(.bank(level_data_dorabaebasic4))
-	.byte .lobyte(.bank(level_data_dorabaebasic6))
-	.byte .lobyte(.bank(level_data_dreamer))
-	.byte .lobyte(.bank(level_data_groundtospace))
-	.byte .lobyte(.bank(level_data_subzero))
-	.byte .lobyte(.bank(level_data_kappaclysm))
-	.byte .lobyte(.bank(level_data_sunshine))
-	.byte .lobyte(.bank(level_data_revolution))
-	.byte .lobyte(.bank(level_data_funnygameholiday))
-	.byte .lobyte(.bank(level_data_lostinthewoods))
-	.byte .lobyte(.bank(level_data_bloodbathbutno))
-	.byte .lobyte(.bank(level_data_rainbowtylenol))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
-	.byte .lobyte(.bank(level_data_thelightningroad))
-	.byte .lobyte(.bank(level_data_nightmare))
-	.byte .lobyte(.bank(level_data_firetemple))
-	.byte .lobyte(.bank(level_data_watertemple))
+	.byte .lobyte(level_data_stereomadness >> 13)
+	.byte .lobyte(level_data_backontrack >> 13)
+	.byte .lobyte(level_data_polargeist >> 13)
+	.byte .lobyte(level_data_dryout >> 13)
+	.byte .lobyte(level_data_baseafterbase >> 13)
+	.byte .lobyte(level_data_cantletgo >> 13)
+	.byte .lobyte(level_data_jumper >> 13)
+	.byte .lobyte(level_data_timemachine >> 13)
+	.byte .lobyte(level_data_cycles >> 13)
+	.byte .lobyte(level_data_xstep >> 13)
+	.byte .lobyte(level_data_clutterfunk >> 13)
+	.byte .lobyte(level_data_theoryofeverything >> 13)
+	.byte .lobyte(level_data_electromanadventures >> 13)
+	.byte .lobyte(level_data_clubstep >> 13)
+	.byte .lobyte(level_data_electrodynamix >> 13)
+	.byte .lobyte(level_data_hexagonforce >> 13)
+	.byte .lobyte(level_data_blastprocessing >> 13)
+	.byte .lobyte(level_data_toe2 >> 13)
+	.byte .lobyte(level_data_geometricaldominator >> 13)
+	.byte .lobyte(level_data_deadlocked >> 13)
+	.byte .lobyte(level_data_fingerdash >> 13)
+	.byte .lobyte(level_data_dash >> 13)
+	.byte .lobyte(level_data_thetower >> 13)
+	.byte .lobyte(level_data_thesewers >> 13)
+	.byte .lobyte(level_data_thecellar >> 13)
+	.byte .lobyte(level_data_thesecrethollow >> 13)
+	.byte .lobyte(level_data_thechallenge >> 13)
+	.byte .lobyte(level_data_retray >> 13)
+	.byte .lobyte(level_data_leveleasy >> 13)
+	.byte .lobyte(level_data_dorabaebasic4 >> 13)
+	.byte .lobyte(level_data_dorabaebasic6 >> 13)
+	.byte .lobyte(level_data_dreamer >> 13)
+	.byte .lobyte(level_data_groundtospace >> 13)
+	.byte .lobyte(level_data_subzero >> 13)
+	.byte .lobyte(level_data_kappaclysm >> 13)
+	.byte .lobyte(level_data_sunshine >> 13)
+	.byte .lobyte(level_data_revolution >> 13)
+	.byte .lobyte(level_data_funnygameholiday >> 13)
+	.byte .lobyte(level_data_lostinthewoods >> 13)
+	.byte .lobyte(level_data_bloodbathbutno >> 13)
+	.byte .lobyte(level_data_rainbowtylenol >> 13)
+	.byte .lobyte(level_data_extraordinaryexcitement >> 13)
+	.byte .lobyte(level_data_thelightningroad >> 13)
+	.byte .lobyte(level_data_nightmare >> 13)
+	.byte .lobyte(level_data_firetemple >> 13)
+	.byte .lobyte(level_data_watertemple >> 13)
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_rainbowtylenol_0)
 	.byte .lobyte(level_data_extraordinaryexcitement_1)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_rainbowtylenol_0)
-	.byte .hibyte(level_data_extraordinaryexcitement_1)
+	.byte .hibyte(level_data_rainbowtylenol_0) & $1F | $A0
+	.byte .hibyte(level_data_extraordinaryexcitement_1) & $1F | $A0
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_rainbowtylenol_0))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement_1))
+	.byte .lobyte(level_data_rainbowtylenol_0 >> 13)
+	.byte .lobyte(level_data_extraordinaryexcitement_1 >> 13)
 
 .define MID_LEVEL_LENGTHS_ENABLED 0
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
