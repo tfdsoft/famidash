@@ -509,6 +509,9 @@ def binpack_and_write_data(bg_exp_data : tuple, spr_exp_data : tuple, include_pa
 			print(f"\t{label}: {size}")
 			lvl_file.append(data)
 
+	# Write the level data
+	(include_path / "all_level_data.s").write_text("\n".join(lvl_file))
+
 
 def generate_menutext(filteredMetadata : dict, include_path : pathlib.Path):
 	upperTextList = [i.get('upperText') for i in filteredMetadata]
