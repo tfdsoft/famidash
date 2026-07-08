@@ -2009,7 +2009,7 @@ early_exit:
 .endproc
 
 ; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
@@ -2153,7 +2153,7 @@ doit:
 .endif
 
 ; void check_spr_objects();
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .import _activesprites_active, _scroll_x, _scroll_y, _animating
 
@@ -3506,7 +3506,7 @@ drawplayer_common := _drawplayerone::common
 .endproc
 
 ; char bg_collision_sub();
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
 
@@ -3554,7 +3554,7 @@ drawplayer_common := _drawplayerone::common
 
 .endif
 
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .export crossPRGBankJump
 .proc crossPRGBankJump
@@ -3788,7 +3788,7 @@ SSDPCM_getbyte:
 
 .endif
 ; uint16_t hexToDec (uint16_t input)
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .export _hexToDec
 .proc _hexToDec
@@ -3842,7 +3842,7 @@ SSDPCM_getbyte:
 
 
 ; void printDecimal (uintptr_t ppu_address, uint16_t value, uint8_t digits, uint8_t zeroChr, uint8_t spaceChr)
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .export __printDecimal
 .proc __printDecimal
@@ -3908,10 +3908,10 @@ SSDPCM_getbyte:
 
 .endproc
 
-.segment "RODATA_2"
+.segment "CODE_2"
 
 ; void update_level_completeness();
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .import _level, _practice_point_count, _make_cube_jump_higher, _minicoins, _wrap_mode, _forced_trails
 .import _level_completeness_normal, _invisible_level_completeness_normal, _invisblocks
@@ -4426,7 +4426,7 @@ vert_skip:
 
 
 ; void init_sprites();
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .importzp _sprite_data	
 .import _sprite_data_bank
@@ -4580,7 +4580,7 @@ vert_skip:
 
 
 ; void update_currplayer_table_idx();
-.segment "RODATA_2"
+.segment "CODE_2"
 
 .importzp _currplayer_mini, _currplayer_gravity, _currplayer_table_idx
 
