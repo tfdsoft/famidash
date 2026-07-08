@@ -24,22 +24,23 @@ const char levelText13[ 7] = "DOLPHIN";
 const char levelText14[11] = "IN A FOREST";
 const char levelText15[10] = "ADVENTURES";
 const char levelText16[ 6] = "BASIC7";
-const char levelText17[10] = "EXPEDITION";
-const char levelText18[ 7] = "ENDGAME";
-const char levelText19[ 4] = "ROTD";
-const char levelText1A[ 4] = "EASY";
-const char levelText1B[ 7] = "VICTORY";
-const char levelText1C[ 8] = "OVERAWED";
-const char levelText1D[ 5] = "GREIF";
-const char levelText1E[ 5] = "UNITY";
-const char levelText1F[ 9] = "DASTARDLY";
-const char levelText20[ 7] = "TROLLED";
-const char levelText21[12] = "SUPER CYCLES";
-const char levelText22[ 6] = "DECODE";
-const char levelText23[13] = "CLUTTERFUNK 2";
-const char levelText24[12] = "CHAOZ IMPACT";
-const char levelText25[13] = "SOLAR CIRCLES";
-const char levelText26[11] = "FUTURE FUNK";
+const char levelText17[13] = "STORY MADNESS";
+const char levelText18[10] = "EXPEDITION";
+const char levelText19[ 7] = "ENDGAME";
+const char levelText1A[ 4] = "ROTD";
+const char levelText1B[ 4] = "EASY";
+const char levelText1C[ 7] = "VICTORY";
+const char levelText1D[ 8] = "OVERAWED";
+const char levelText1E[ 5] = "GREIF";
+const char levelText1F[ 5] = "UNITY";
+const char levelText20[ 9] = "DASTARDLY";
+const char levelText21[ 7] = "TROLLED";
+const char levelText22[12] = "SUPER CYCLES";
+const char levelText23[ 6] = "DECODE";
+const char levelText24[13] = "CLUTTERFUNK 2";
+const char levelText25[12] = "CHAOZ IMPACT";
+const char levelText26[13] = "SOLAR CIRCLES";
+const char levelText27[11] = "FUTURE FUNK";
 
 
 extern const uint8_t levelTextsUpper_lo[];
@@ -60,6 +61,7 @@ const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText04),
 	sizeof(levelText05),
 	sizeof(levelText06),
+	0,
 	sizeof(levelText07),
 	0,
 	0,
@@ -95,19 +97,20 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText17),
 	sizeof(levelText18),
 	sizeof(levelText19),
-	sizeof(levelText17),
 	sizeof(levelText1A),
+	sizeof(levelText18),
 	sizeof(levelText1B),
 	sizeof(levelText1C),
 	sizeof(levelText1D),
 	sizeof(levelText1E),
 	sizeof(levelText1F),
-	sizeof(levelText10),
 	sizeof(levelText20),
+	sizeof(levelText10),
 	sizeof(levelText21),
 	sizeof(levelText22),
 	sizeof(levelText23),
 	sizeof(levelText24),
 	sizeof(levelText25),
 	sizeof(levelText26),
+	sizeof(levelText27),
 };

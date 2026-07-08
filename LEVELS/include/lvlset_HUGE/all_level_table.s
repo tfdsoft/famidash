@@ -55,6 +55,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_hungrymanadventures)
 	.byte .lobyte(level_data_dorabaebasic7)
+	.byte .lobyte(level_data_storymadness)
 	.byte .lobyte(level_data_groundtospace)
 	.byte .lobyte(level_data_ajollyretrochristmas)
 	.byte .lobyte(level_data_ultiatedestruction)
@@ -221,6 +222,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_lookatthislevel) & $1F | $A0
 	.byte .hibyte(level_data_hungrymanadventures) & $1F | $A0
 	.byte .hibyte(level_data_dorabaebasic7) & $1F | $A0
+	.byte .hibyte(level_data_storymadness) & $1F | $A0
 	.byte .hibyte(level_data_groundtospace) & $1F | $A0
 	.byte .hibyte(level_data_ajollyretrochristmas) & $1F | $A0
 	.byte .hibyte(level_data_ultiatedestruction) & $1F | $A0
@@ -387,6 +389,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_lookatthislevel >> 13)
 	.byte .lobyte(level_data_hungrymanadventures >> 13)
 	.byte .lobyte(level_data_dorabaebasic7 >> 13)
+	.byte .lobyte(level_data_storymadness >> 13)
 	.byte .lobyte(level_data_groundtospace >> 13)
 	.byte .lobyte(level_data_ajollyretrochristmas >> 13)
 	.byte .lobyte(level_data_ultiatedestruction >> 13)
@@ -658,6 +661,7 @@ _level_lengths_lo:
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000F7)		; dorabaebasic7
+	.byte .lobyte($00009C)		; storymadness
 	.byte .lobyte($0000A1)		; groundtospace
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006D)		; ultiatedestruction
@@ -826,6 +830,7 @@ _level_lengths_md:
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000F7)		; dorabaebasic7
+	.byte .hibyte($00009C)		; storymadness
 	.byte .hibyte($0000A1)		; groundtospace
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006D)		; ultiatedestruction
@@ -994,6 +999,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000F7)		; dorabaebasic7
+	.byte .bankbyte($00009C)		; storymadness
 	.byte .bankbyte($0000A1)		; groundtospace
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006D)		; ultiatedestruction
