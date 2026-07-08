@@ -2,130 +2,187 @@
 
 ; Music data banks
 .segment "DAT_BANK_01"
-	firstMusicBankPtr := *
 	.include "music_0.s"
+	.align 8192
 .segment "DAT_BANK_02"
 	.include "music_1.s"
+	.align 8192
 .segment "DAT_BANK_03"
 	.include "music_2.s"
+	.align 8192
 .segment "DAT_BANK_04"
 	.include "music_3.s"
+	.align 8192
 .segment "DAT_BANK_05"
 	.include "music_4.s"
+	.align 8192
 .segment "DAT_BANK_06"
 	.include "music_5.s"
+	.align 8192
 .segment "DAT_BANK_07"
 	.include "music_6.s"
+	.align 8192
 .segment "DAT_BANK_08"
 	.include "music_7.s"
+	.align 8192
 .segment "DAT_BANK_09"
 	.include "music_8.s"
+	.align 8192
 .segment "DAT_BANK_0A"
 	.include "music_9.s"
+	.align 8192
 .segment "DAT_BANK_0B"
 	.include "music_10.s"
+	.align 8192
 .segment "DAT_BANK_0C"
 	.include "music_11.s"
+	.align 8192
 .segment "DAT_BANK_0D"
 	.include "music_12.s"
+	.align 8192
 .segment "DAT_BANK_0E"
 	.include "music_13.s"
+	.align 8192
 .segment "DAT_BANK_0F"
 	.include "music_14.s"
+	.align 8192
 .segment "DAT_BANK_10"
 	.include "music_15.s"
+	.align 8192
 .segment "DAT_BANK_11"
 	.include "music_16.s"
+	.align 8192
 .segment "DAT_BANK_12"
 	.include "music_17.s"
+	.align 8192
 .segment "DAT_BANK_13"
 	.include "music_18.s"
+	.align 8192
 .segment "DAT_BANK_14"
 	.include "music_19.s"
+	.align 8192
 .segment "DAT_BANK_15"
 	.include "music_20.s"
+	.align 8192
 .segment "DAT_BANK_16"
 	.include "music_21.s"
+	.align 8192
 .segment "DAT_BANK_17"
 	.include "music_22.s"
+	.align 8192
 .segment "DAT_BANK_18"
 	.include "music_23.s"
+	.align 8192
 .segment "DAT_BANK_19"
 	.include "music_24.s"
+	.align 8192
 .segment "DAT_BANK_1A"
 	.include "music_25.s"
+	.align 8192
 .segment "DAT_BANK_1B"
 	.include "music_26.s"
+	.align 8192
 .segment "DAT_BANK_1C"
 	.include "music_27.s"
+	.align 8192
 .segment "DAT_BANK_1D"
 	.include "music_28.s"
+	.align 8192
 .segment "DAT_BANK_1E"
 	.include "music_29.s"
+	.align 8192
 .segment "DAT_BANK_1F"
 	.include "music_30.s"
+	.align 8192
 .segment "DAT_BANK_20"
 	.include "music_31.s"
+	.align 8192
 .segment "DAT_BANK_21"
 	.include "music_32.s"
+	.align 8192
 .segment "DAT_BANK_22"
 	.include "music_33.s"
+	.align 8192
 .segment "DAT_BANK_23"
 	.include "music_34.s"
+	.align 8192
 .segment "DAT_BANK_24"
 	.include "music_35.s"
+	.align 8192
 .segment "DAT_BANK_25"
 	.include "music_36.s"
+	.align 8192
 .segment "DAT_BANK_26"
 	.include "music_37.s"
+	.align 8192
 .segment "DAT_BANK_27"
 	.include "music_38.s"
+	.align 8192
 .segment "DAT_BANK_28"
 	.include "music_39.s"
+	.align 8192
 .segment "DAT_BANK_29"
 	.include "music_40.s"
+	.align 8192
 .segment "DAT_BANK_2A"
 	.include "music_41.s"
+	.align 8192
 .segment "DAT_BANK_2B"
 	.include "music_42.s"
+	.align 8192
 .segment "DAT_BANK_2C"
 	.include "music_43.s"
+	.align 8192
 .segment "DAT_BANK_2D"
 	.include "music_44.s"
+	.align 8192
 .segment "DAT_BANK_2E"
 	.include "music_45.s"
+	.align 8192
 .segment "DAT_BANK_2F"
 	.include "music_46.s"
+	.align 8192
 
 ; DMC banks
 .segment "DAT_BANK_30"
-	firstDMCBankPtr := *
 	.incbin "music_bank0.dmc"
+	.align 8192
 .segment "DAT_BANK_31"
 	.incbin "music_bank1.dmc"
+	.align 8192
 .segment "DAT_BANK_32"
 	.incbin "music_bank2.dmc"
+	.align 8192
 .segment "DAT_BANK_33"
 	.incbin "music_bank3.dmc"
+	.align 8192
 .segment "DAT_BANK_34"
 	.incbin "music_bank4.dmc"
+	.align 8192
 .segment "DAT_BANK_35"
 	.incbin "music_bank5.dmc"
+	.align 8192
 .segment "DAT_BANK_36"
 	.incbin "music_bank6.dmc"
+	.align 8192
 .segment "DAT_BANK_37"
 	.incbin "music_bank7.dmc"
+	.align 8192
 .segment "DAT_BANK_38"
 	.incbin "music_bank8.dmc"
+	.align 8192
 .segment "DAT_BANK_39"
 	.incbin "music_bank9.dmc"
+	.align 8192
 .segment "DAT_BANK_3A"
 	.incbin "music_bank10.dmc"
+	.align 8192
 .segment "DAT_BANK_3B"
 	.incbin "music_bank11.dmc"
+	.align 8192
 
 ; PCM includes
 
-; Constants
-FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)
-FIRST_DMC_BANK = .bank(firstDMCBankPtr)
+; Constants fetched automatically from linker config
+FIRST_MUSIC_BANK = 1
+FIRST_DMC_BANK = 48

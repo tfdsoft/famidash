@@ -2,37 +2,49 @@
 
 ; Music data banks
 .segment "DAT_BANK_26"
-	firstMusicBankPtr := *
 	.include "music_0.s"
+	.align 8192
 .segment "DAT_BANK_27"
 	.include "music_1.s"
+	.align 8192
 .segment "DAT_BANK_28"
 	.include "music_2.s"
+	.align 8192
 .segment "DAT_BANK_29"
 	.include "music_3.s"
+	.align 8192
 .segment "DAT_BANK_2A"
 	.include "music_4.s"
+	.align 8192
 .segment "DAT_BANK_2B"
 	.include "music_5.s"
+	.align 8192
 .segment "DAT_BANK_2C"
 	.include "music_6.s"
+	.align 8192
 .segment "DAT_BANK_2D"
 	.include "music_7.s"
+	.align 8192
 .segment "DAT_BANK_2E"
 	.include "music_8.s"
+	.align 8192
 .segment "DAT_BANK_2F"
 	.include "music_9.s"
+	.align 8192
 .segment "DAT_BANK_30"
 	.include "music_10.s"
+	.align 8192
 .segment "DAT_BANK_31"
 	.include "music_11.s"
+	.align 8192
 
 ; DMC banks
 .segment "DAT_BANK_32"
-	firstDMCBankPtr := *
 	.incbin "music_bank0.dmc"
+	.align 8192
 .segment "DAT_BANK_33"
 	.incbin "music_bank1.dmc"
+	.align 8192
 
 ; PCM includes
 .segment "PCM_BANK"
@@ -42,6 +54,6 @@
 	pcmData1:
 		.incbin "MUSIC/PCM/SSDPCM2-fire.pcm"
 
-; Constants
-FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)
-FIRST_DMC_BANK = .bank(firstDMCBankPtr)
+; Constants fetched automatically from linker config
+FIRST_MUSIC_BANK = 38
+FIRST_DMC_BANK = 50
