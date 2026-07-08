@@ -36,66 +36,66 @@ _level_list_lo:
 	.byte .lobyte(level_data_futurefunkfix)
 
 _level_list_hi:
-	.byte .hibyte(level_data_movie)
-	.byte .hibyte(level_data_groundtoretray)
-	.byte .hibyte(level_data_madness)
-	.byte .hibyte(level_data_feather)
-	.byte .hibyte(level_data_doubletripletrial)
-	.byte .hibyte(level_data_short_kings)
-	.byte .hibyte(level_data_nicktoons)
-	.byte .hibyte(level_data_cosmicdolphin)
-	.byte .hibyte(level_data_somewhereinaforest)
-	.byte .hibyte(level_data_hungrymanadventures)
-	.byte .hibyte(level_data_dorabaebasic7)
-	.byte .hibyte(level_data_chromaticexpedition)
-	.byte .hibyte(level_data_endgame)
-	.byte .hibyte(level_data_rotd)
-	.byte .hibyte(level_data_astronomicalexpedition)
-	.byte .hibyte(level_data_ninecircleseasy)
-	.byte .hibyte(level_data_carefreevictory)
-	.byte .hibyte(level_data_overawed)
-	.byte .hibyte(level_data_greif)
-	.byte .hibyte(level_data_unity)
-	.byte .hibyte(level_data_dastardly)
-	.byte .hibyte(level_data_thetripletrial)
-	.byte .hibyte(level_data_trolledfix)
-	.byte .hibyte(level_data_supercycles)
-	.byte .hibyte(level_data_decode)
-	.byte .hibyte(level_data_clutterfunk2)
-	.byte .hibyte(level_data_chaozimpact)
-	.byte .hibyte(level_data_solarcircles)
-	.byte .hibyte(level_data_futurefunkfix)
+	.byte .hibyte(level_data_movie) & $1F | $A0
+	.byte .hibyte(level_data_groundtoretray) & $1F | $A0
+	.byte .hibyte(level_data_madness) & $1F | $A0
+	.byte .hibyte(level_data_feather) & $1F | $A0
+	.byte .hibyte(level_data_doubletripletrial) & $1F | $A0
+	.byte .hibyte(level_data_short_kings) & $1F | $A0
+	.byte .hibyte(level_data_nicktoons) & $1F | $A0
+	.byte .hibyte(level_data_cosmicdolphin) & $1F | $A0
+	.byte .hibyte(level_data_somewhereinaforest) & $1F | $A0
+	.byte .hibyte(level_data_hungrymanadventures) & $1F | $A0
+	.byte .hibyte(level_data_dorabaebasic7) & $1F | $A0
+	.byte .hibyte(level_data_chromaticexpedition) & $1F | $A0
+	.byte .hibyte(level_data_endgame) & $1F | $A0
+	.byte .hibyte(level_data_rotd) & $1F | $A0
+	.byte .hibyte(level_data_astronomicalexpedition) & $1F | $A0
+	.byte .hibyte(level_data_ninecircleseasy) & $1F | $A0
+	.byte .hibyte(level_data_carefreevictory) & $1F | $A0
+	.byte .hibyte(level_data_overawed) & $1F | $A0
+	.byte .hibyte(level_data_greif) & $1F | $A0
+	.byte .hibyte(level_data_unity) & $1F | $A0
+	.byte .hibyte(level_data_dastardly) & $1F | $A0
+	.byte .hibyte(level_data_thetripletrial) & $1F | $A0
+	.byte .hibyte(level_data_trolledfix) & $1F | $A0
+	.byte .hibyte(level_data_supercycles) & $1F | $A0
+	.byte .hibyte(level_data_decode) & $1F | $A0
+	.byte .hibyte(level_data_clutterfunk2) & $1F | $A0
+	.byte .hibyte(level_data_chaozimpact) & $1F | $A0
+	.byte .hibyte(level_data_solarcircles) & $1F | $A0
+	.byte .hibyte(level_data_futurefunkfix) & $1F | $A0
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_movie))
-	.byte .lobyte(.bank(level_data_groundtoretray))
-	.byte .lobyte(.bank(level_data_madness))
-	.byte .lobyte(.bank(level_data_feather))
-	.byte .lobyte(.bank(level_data_doubletripletrial))
-	.byte .lobyte(.bank(level_data_short_kings))
-	.byte .lobyte(.bank(level_data_nicktoons))
-	.byte .lobyte(.bank(level_data_cosmicdolphin))
-	.byte .lobyte(.bank(level_data_somewhereinaforest))
-	.byte .lobyte(.bank(level_data_hungrymanadventures))
-	.byte .lobyte(.bank(level_data_dorabaebasic7))
-	.byte .lobyte(.bank(level_data_chromaticexpedition))
-	.byte .lobyte(.bank(level_data_endgame))
-	.byte .lobyte(.bank(level_data_rotd))
-	.byte .lobyte(.bank(level_data_astronomicalexpedition))
-	.byte .lobyte(.bank(level_data_ninecircleseasy))
-	.byte .lobyte(.bank(level_data_carefreevictory))
-	.byte .lobyte(.bank(level_data_overawed))
-	.byte .lobyte(.bank(level_data_greif))
-	.byte .lobyte(.bank(level_data_unity))
-	.byte .lobyte(.bank(level_data_dastardly))
-	.byte .lobyte(.bank(level_data_thetripletrial))
-	.byte .lobyte(.bank(level_data_trolledfix))
-	.byte .lobyte(.bank(level_data_supercycles))
-	.byte .lobyte(.bank(level_data_decode))
-	.byte .lobyte(.bank(level_data_clutterfunk2))
-	.byte .lobyte(.bank(level_data_chaozimpact))
-	.byte .lobyte(.bank(level_data_solarcircles))
-	.byte .lobyte(.bank(level_data_futurefunkfix))
+	.byte .lobyte(level_data_movie >> 13)
+	.byte .lobyte(level_data_groundtoretray >> 13)
+	.byte .lobyte(level_data_madness >> 13)
+	.byte .lobyte(level_data_feather >> 13)
+	.byte .lobyte(level_data_doubletripletrial >> 13)
+	.byte .lobyte(level_data_short_kings >> 13)
+	.byte .lobyte(level_data_nicktoons >> 13)
+	.byte .lobyte(level_data_cosmicdolphin >> 13)
+	.byte .lobyte(level_data_somewhereinaforest >> 13)
+	.byte .lobyte(level_data_hungrymanadventures >> 13)
+	.byte .lobyte(level_data_dorabaebasic7 >> 13)
+	.byte .lobyte(level_data_chromaticexpedition >> 13)
+	.byte .lobyte(level_data_endgame >> 13)
+	.byte .lobyte(level_data_rotd >> 13)
+	.byte .lobyte(level_data_astronomicalexpedition >> 13)
+	.byte .lobyte(level_data_ninecircleseasy >> 13)
+	.byte .lobyte(level_data_carefreevictory >> 13)
+	.byte .lobyte(level_data_overawed >> 13)
+	.byte .lobyte(level_data_greif >> 13)
+	.byte .lobyte(level_data_unity >> 13)
+	.byte .lobyte(level_data_dastardly >> 13)
+	.byte .lobyte(level_data_thetripletrial >> 13)
+	.byte .lobyte(level_data_trolledfix >> 13)
+	.byte .lobyte(level_data_supercycles >> 13)
+	.byte .lobyte(level_data_decode >> 13)
+	.byte .lobyte(level_data_clutterfunk2 >> 13)
+	.byte .lobyte(level_data_chaozimpact >> 13)
+	.byte .lobyte(level_data_solarcircles >> 13)
+	.byte .lobyte(level_data_futurefunkfix >> 13)
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_somewhereinaforest_0)
@@ -107,22 +107,22 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_futurefunkfix_6)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_somewhereinaforest_0)
-	.byte .hibyte(level_data_astronomicalexpedition_1)
-	.byte .hibyte(level_data_astronomicalexpedition_2)
-	.byte .hibyte(level_data_astronomicalexpedition_3)
-	.byte .hibyte(level_data_carefreevictory_4)
-	.byte .hibyte(level_data_futurefunkfix_5)
-	.byte .hibyte(level_data_futurefunkfix_6)
+	.byte .hibyte(level_data_somewhereinaforest_0) & $1F | $A0
+	.byte .hibyte(level_data_astronomicalexpedition_1) & $1F | $A0
+	.byte .hibyte(level_data_astronomicalexpedition_2) & $1F | $A0
+	.byte .hibyte(level_data_astronomicalexpedition_3) & $1F | $A0
+	.byte .hibyte(level_data_carefreevictory_4) & $1F | $A0
+	.byte .hibyte(level_data_futurefunkfix_5) & $1F | $A0
+	.byte .hibyte(level_data_futurefunkfix_6) & $1F | $A0
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_somewhereinaforest_0))
-	.byte .lobyte(.bank(level_data_astronomicalexpedition_1))
-	.byte .lobyte(.bank(level_data_astronomicalexpedition_2))
-	.byte .lobyte(.bank(level_data_astronomicalexpedition_3))
-	.byte .lobyte(.bank(level_data_carefreevictory_4))
-	.byte .lobyte(.bank(level_data_futurefunkfix_5))
-	.byte .lobyte(.bank(level_data_futurefunkfix_6))
+	.byte .lobyte(level_data_somewhereinaforest_0 >> 13)
+	.byte .lobyte(level_data_astronomicalexpedition_1 >> 13)
+	.byte .lobyte(level_data_astronomicalexpedition_2 >> 13)
+	.byte .lobyte(level_data_astronomicalexpedition_3 >> 13)
+	.byte .lobyte(level_data_carefreevictory_4 >> 13)
+	.byte .lobyte(level_data_futurefunkfix_5 >> 13)
+	.byte .lobyte(level_data_futurefunkfix_6 >> 13)
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0

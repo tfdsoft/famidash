@@ -32,58 +32,58 @@ _level_list_lo:
 	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
-	.byte .hibyte(level_data_xx)
-	.byte .hibyte(level_data_problematic)
-	.byte .hibyte(level_data_sonicblaster)
-	.byte .hibyte(level_data_deathmoon)
-	.byte .hibyte(level_data_motion)
-	.byte .hibyte(level_data_endorphinrush)
-	.byte .hibyte(level_data_everymadness)
-	.byte .hibyte(level_data_trythisgd)
-	.byte .hibyte(level_data_hell)
-	.byte .hibyte(level_data_invisiblelight)
-	.byte .hibyte(level_data_pgclubstep)
-	.byte .hibyte(level_data_deadlyclubstep)
-	.byte .hibyte(level_data_thermodynamix)
-	.byte .hibyte(level_data_ninecircles)
-	.byte .hibyte(level_data_fairydust)
-	.byte .hibyte(level_data_stalemate)
-	.byte .hibyte(level_data_eighto)
-	.byte .hibyte(level_data_hi)
-	.byte .hibyte(level_data_eon)
-	.byte .hibyte(level_data_sonicwave)
-	.byte .hibyte(level_data_bloodbath)
-	.byte .hibyte(level_data_cataclysm)
-	.byte .hibyte(level_data_aftermath)
-	.byte .hibyte(level_data_everyend)
-	.byte .hibyte(level_data_luckydraw)
+	.byte .hibyte(level_data_xx) & $1F | $A0
+	.byte .hibyte(level_data_problematic) & $1F | $A0
+	.byte .hibyte(level_data_sonicblaster) & $1F | $A0
+	.byte .hibyte(level_data_deathmoon) & $1F | $A0
+	.byte .hibyte(level_data_motion) & $1F | $A0
+	.byte .hibyte(level_data_endorphinrush) & $1F | $A0
+	.byte .hibyte(level_data_everymadness) & $1F | $A0
+	.byte .hibyte(level_data_trythisgd) & $1F | $A0
+	.byte .hibyte(level_data_hell) & $1F | $A0
+	.byte .hibyte(level_data_invisiblelight) & $1F | $A0
+	.byte .hibyte(level_data_pgclubstep) & $1F | $A0
+	.byte .hibyte(level_data_deadlyclubstep) & $1F | $A0
+	.byte .hibyte(level_data_thermodynamix) & $1F | $A0
+	.byte .hibyte(level_data_ninecircles) & $1F | $A0
+	.byte .hibyte(level_data_fairydust) & $1F | $A0
+	.byte .hibyte(level_data_stalemate) & $1F | $A0
+	.byte .hibyte(level_data_eighto) & $1F | $A0
+	.byte .hibyte(level_data_hi) & $1F | $A0
+	.byte .hibyte(level_data_eon) & $1F | $A0
+	.byte .hibyte(level_data_sonicwave) & $1F | $A0
+	.byte .hibyte(level_data_bloodbath) & $1F | $A0
+	.byte .hibyte(level_data_cataclysm) & $1F | $A0
+	.byte .hibyte(level_data_aftermath) & $1F | $A0
+	.byte .hibyte(level_data_everyend) & $1F | $A0
+	.byte .hibyte(level_data_luckydraw) & $1F | $A0
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_xx))
-	.byte .lobyte(.bank(level_data_problematic))
-	.byte .lobyte(.bank(level_data_sonicblaster))
-	.byte .lobyte(.bank(level_data_deathmoon))
-	.byte .lobyte(.bank(level_data_motion))
-	.byte .lobyte(.bank(level_data_endorphinrush))
-	.byte .lobyte(.bank(level_data_everymadness))
-	.byte .lobyte(.bank(level_data_trythisgd))
-	.byte .lobyte(.bank(level_data_hell))
-	.byte .lobyte(.bank(level_data_invisiblelight))
-	.byte .lobyte(.bank(level_data_pgclubstep))
-	.byte .lobyte(.bank(level_data_deadlyclubstep))
-	.byte .lobyte(.bank(level_data_thermodynamix))
-	.byte .lobyte(.bank(level_data_ninecircles))
-	.byte .lobyte(.bank(level_data_fairydust))
-	.byte .lobyte(.bank(level_data_stalemate))
-	.byte .lobyte(.bank(level_data_eighto))
-	.byte .lobyte(.bank(level_data_hi))
-	.byte .lobyte(.bank(level_data_eon))
-	.byte .lobyte(.bank(level_data_sonicwave))
-	.byte .lobyte(.bank(level_data_bloodbath))
-	.byte .lobyte(.bank(level_data_cataclysm))
-	.byte .lobyte(.bank(level_data_aftermath))
-	.byte .lobyte(.bank(level_data_everyend))
-	.byte .lobyte(.bank(level_data_luckydraw))
+	.byte .lobyte(level_data_xx >> 13)
+	.byte .lobyte(level_data_problematic >> 13)
+	.byte .lobyte(level_data_sonicblaster >> 13)
+	.byte .lobyte(level_data_deathmoon >> 13)
+	.byte .lobyte(level_data_motion >> 13)
+	.byte .lobyte(level_data_endorphinrush >> 13)
+	.byte .lobyte(level_data_everymadness >> 13)
+	.byte .lobyte(level_data_trythisgd >> 13)
+	.byte .lobyte(level_data_hell >> 13)
+	.byte .lobyte(level_data_invisiblelight >> 13)
+	.byte .lobyte(level_data_pgclubstep >> 13)
+	.byte .lobyte(level_data_deadlyclubstep >> 13)
+	.byte .lobyte(level_data_thermodynamix >> 13)
+	.byte .lobyte(level_data_ninecircles >> 13)
+	.byte .lobyte(level_data_fairydust >> 13)
+	.byte .lobyte(level_data_stalemate >> 13)
+	.byte .lobyte(level_data_eighto >> 13)
+	.byte .lobyte(level_data_hi >> 13)
+	.byte .lobyte(level_data_eon >> 13)
+	.byte .lobyte(level_data_sonicwave >> 13)
+	.byte .lobyte(level_data_bloodbath >> 13)
+	.byte .lobyte(level_data_cataclysm >> 13)
+	.byte .lobyte(level_data_aftermath >> 13)
+	.byte .lobyte(level_data_everyend >> 13)
+	.byte .lobyte(level_data_luckydraw >> 13)
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_0)
@@ -95,22 +95,22 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_everyend_6)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_deathmoon_0)
-	.byte .hibyte(level_data_motion_1)
-	.byte .hibyte(level_data_trythisgd_2)
-	.byte .hibyte(level_data_eon_3)
-	.byte .hibyte(level_data_sonicwave_4)
-	.byte .hibyte(level_data_everyend_5)
-	.byte .hibyte(level_data_everyend_6)
+	.byte .hibyte(level_data_deathmoon_0) & $1F | $A0
+	.byte .hibyte(level_data_motion_1) & $1F | $A0
+	.byte .hibyte(level_data_trythisgd_2) & $1F | $A0
+	.byte .hibyte(level_data_eon_3) & $1F | $A0
+	.byte .hibyte(level_data_sonicwave_4) & $1F | $A0
+	.byte .hibyte(level_data_everyend_5) & $1F | $A0
+	.byte .hibyte(level_data_everyend_6) & $1F | $A0
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_deathmoon_0))
-	.byte .lobyte(.bank(level_data_motion_1))
-	.byte .lobyte(.bank(level_data_trythisgd_2))
-	.byte .lobyte(.bank(level_data_eon_3))
-	.byte .lobyte(.bank(level_data_sonicwave_4))
-	.byte .lobyte(.bank(level_data_everyend_5))
-	.byte .lobyte(.bank(level_data_everyend_6))
+	.byte .lobyte(level_data_deathmoon_0 >> 13)
+	.byte .lobyte(level_data_motion_1 >> 13)
+	.byte .lobyte(level_data_trythisgd_2 >> 13)
+	.byte .lobyte(level_data_eon_3 >> 13)
+	.byte .lobyte(level_data_sonicwave_4 >> 13)
+	.byte .lobyte(level_data_everyend_5 >> 13)
+	.byte .lobyte(level_data_everyend_6 >> 13)
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
