@@ -53,13 +53,13 @@
 			upperText: "BASE AFTER",
 			lowerText: "BASE",
 			originalArtist: "DJVI",
-			coveringArtist: ["Vikrinox", "UserSniper", "Zenith302", "alexmush"]
+			coveringArtist: ["Vikrinox", "UserSniper", "Zenith302", "dajinkosa"]
 		},
 		{
 			fmsSongName: "Can't Let Go",
 			lowerText: "CANT LET GO",
 			originalArtist: "DJVI",
-			coveringArtist: ["UserSniper", "alexmush"]
+			coveringArtist: ["UserSniper", "dajinkosa"]
 		},
 		{
 			fmsSongName: "Jumper Full",
@@ -71,19 +71,19 @@
 			fmsSongName: "Time Machine Full",
 			lowerText: "TIME MACHINE",
 			originalArtist: "Waterflame",
-			coveringArtist: ["Zenith302", "Vikrinox", "alexmush", "SeaGlowingPro"]
+			coveringArtist: ["Zenith302", "Vikrinox", "dajinkosa", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
 			originalArtist: "DJVI",
-			coveringArtist: ["aquamarine.gay", "alexmush"]
+			coveringArtist: ["aquamarine.gay", "dajinkosa"]
 		},
 		{
 			fmsSongName: "xStep",
 			lowerText: "XSTEP",
 			originalArtist: "DJVI",
-			coveringArtist: ["Vikrinox", "alexmush"]
+			coveringArtist: ["Vikrinox", "dajinkosa"]
 		},
 		{
 			fmsSongName: "Clutterfunk",
@@ -103,7 +103,7 @@
 			upperText: "ELECTROMAN",
 			lowerText: "ADVENTURES",
 			originalArtist: "Waterflame",
-			coveringArtist: ["cloud54", "UserSniper", "alexmush", "Crafty Jumper"]
+			coveringArtist: ["cloud54", "UserSniper", "dajinkosa", "Crafty Jumper"]
 		},
 		{
 			fmsSongName: "Clubstep",
@@ -122,7 +122,7 @@
 			upperText: "HEXAGON",
 			lowerText: "FORCE",
 			originalArtist: "Waterflame",
-			coveringArtist: ["Vikrinox", "alexmush"]
+			coveringArtist: ["Vikrinox", "dajinkosa"]
 		},
 		{
 			fmsSongName: "Blast Processing",
@@ -660,7 +660,7 @@
 			upperText: "PYROPHORIC",
 			lowerText: "LEGACY REMIX",
 			originalArtist: "NerdBoy628",
-			coveringArtist: ["NerdBoy628","alexmush","SeaGlowingPro"],
+			coveringArtist: ["NerdBoy628","dajinkosa","SeaGlowingPro"],
 		},
 		/*
 		{
@@ -668,7 +668,7 @@
 			upperText: "PYROPHORIC",
             lowerText: "REMIX",
 			originalArtist: "NerdBoy628",
-			coveringArtist: ["NerdBoy628","alexmush"],
+			coveringArtist: ["NerdBoy628","dajinkosa"],
 		},
 		*/
 		{
@@ -734,7 +734,7 @@
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES",
 			originalArtist: "Lemon Demon",
-			coveringArtist: ["alexmush", "SeaGlowingPro"]
+			coveringArtist: ["dajinkosa", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Supernova",
