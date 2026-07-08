@@ -613,9 +613,12 @@ if __name__ == "__main__":
         *header_music_bank_data,
         *header_dmc_bank_data,
         *processed_metadata['pcmMetadata']['headerData'],
-        '', '; Constants',
+        '', '; "Constants"',
         'FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)',
         *header_dmc_bank_constant,
+        '',
+        '; Constant',
+        f'MUSIC_DAT_BANKS_USED = {len(bins) + len(dpcmBanks)}',
         ''
     ]
 
