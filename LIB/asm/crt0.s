@@ -379,6 +379,7 @@ finish:
 	.include "METATILES/metatiles.s"
 .endif
 	.include "music_data_header.s"
+	.include "music_soundTestTables.s"
 
 	.include "all_level_data.s"
 	.include "all_level_table.s"
@@ -392,7 +393,7 @@ finish:
 	.endif
 
 	.include "menutext.s"
-	
+
 	.include "mapper.s"
 	.include "neslib.s"
 	.include "nesdash.s"

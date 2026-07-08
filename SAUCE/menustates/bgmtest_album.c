@@ -80,17 +80,17 @@ void state_soundtest() {
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 		if (tmp4) refresh_queue_screen();
 		if (tmp5) {
-			__A__ = idx16_load_hi(xbgmtextsCoveringArtist1, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist1[tempsong], xbgmtextsCoveringArtist1Size[tempsong], 14, NTADR_A(9, 19));
+			__A__ = xbgmtextsCoveringArtist1_hi[tempsong];
+			if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsCoveringArtist1, tempsong), xbgmtextsCoveringArtist1Size[tempsong], 14, NTADR_A(9, 19));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 19));
-			__A__ = idx16_load_hi(xbgmtextsCoveringArtist2, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist2[tempsong], xbgmtextsCoveringArtist2Size[tempsong], 14, NTADR_A(9, 20));
+			__A__ = xbgmtextsCoveringArtist2_hi[tempsong];
+			if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsCoveringArtist2, tempsong), xbgmtextsCoveringArtist2Size[tempsong], 14, NTADR_A(9, 20));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 20));
-			__A__ = idx16_load_hi(xbgmtextsCoveringArtist3, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist3[tempsong], xbgmtextsCoveringArtist3Size[tempsong], 14, NTADR_A(9, 21));
+			__A__ = xbgmtextsCoveringArtist3_hi[tempsong];
+			if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsCoveringArtist3, tempsong), xbgmtextsCoveringArtist3Size[tempsong], 14, NTADR_A(9, 21));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 21));
-			__A__ = idx16_load_hi(xbgmtextsCoveringArtist4, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist4[tempsong], xbgmtextsCoveringArtist4Size[tempsong], 14, NTADR_A(9, 22));
+			__A__ = xbgmtextsCoveringArtist4_hi[tempsong];
+			if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsCoveringArtist4, tempsong), xbgmtextsCoveringArtist4Size[tempsong], 14, NTADR_A(9, 22));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 22));
 			tmp5 = 0;
 		}
@@ -198,12 +198,12 @@ void refresh_queue_screen() {
 				one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));		
 				if (music_queue[tmp1] != 0xFF) {
 					tmp3 = music_queue[tmp1];
-					__A__ = idx16_load_hi(xbgmtextsUpper, tmp3);
+					__A__ = xbgmtextsUpper_hi[tmp3];
 					if (__A__) { 
-						multi_vram_buffer_horz(xbgmtextsUpper[tmp3], xbgmtextsUpperSize[tmp3], NTADR_A(3, (13 + (tmp1))));
-						multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A((4 + xbgmtextsUpperSize[tmp3]), (13 + (tmp1))));
+						multi_vram_buffer_horz((void *)lohi_arr16_load(xbgmtextsUpper, tmp3), xbgmtextsUpperSize[tmp3], NTADR_A(3, (13 + (tmp1))));
+						multi_vram_buffer_horz((void *)lohi_arr16_load(xbgmtextsLower, tmp3), xbgmtextsLowerSize[tmp3], NTADR_A((4 + xbgmtextsUpperSize[tmp3]), (13 + (tmp1))));
 					} else {
-						multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A(3, (13 + (tmp1))));
+						multi_vram_buffer_horz((void *)lohi_arr16_load(xbgmtextsLower, tmp3), xbgmtextsLowerSize[tmp3], NTADR_A(3, (13 + (tmp1))));
 						one_vram_buffer_horz_repeat('$', 7, NTADR_A((3 + xbgmtextsLowerSize[tmp3]), (13 + (tmp1))));
 					}				
 				} else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
@@ -250,29 +250,29 @@ void refresh_queue_screen() {
 
 
 void update_text1() {
-	__A__ = idx16_load_hi(xbgmtextsUpper, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsUpper[tempsong], xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
+	__A__ = xbgmtextsUpper_hi[tempsong];
+	if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsUpper, tempsong), xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
-	__A__ = idx16_load_hi(xbgmtextsLower, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsLower[tempsong], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
+	__A__ = xbgmtextsLower_hi[tempsong];
+	if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsLower, tempsong), xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 	
-	__A__ = idx16_load_hi(xbgmtextsLowerOrigArtist, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsLowerOrigArtist[tempsong], xbgmtextsLowerOrigArtistSize[tempsong], 14, NTADR_A(9, 14));
+	__A__ = xbgmtextsLowerOrigArtist_hi[tempsong];
+	if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsLowerOrigArtist, tempsong), xbgmtextsLowerOrigArtistSize[tempsong], 14, NTADR_A(9, 14));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 14));
-	__A__ = idx16_load_hi(xbgmtextsUpperOrigArtist, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsUpperOrigArtist[tempsong], xbgmtextsUpperOrigArtistSize[tempsong], 14, NTADR_A(9, 13));
+	__A__ = xbgmtextsUpperOrigArtist_hi[tempsong];
+	if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsUpperOrigArtist, tempsong), xbgmtextsUpperOrigArtistSize[tempsong], 14, NTADR_A(9, 13));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 13));
 
 	tmp5 = 1;
 }	
 
 void update_text3() {
-	__A__ = idx16_load_hi(xbgmtextsUpper, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsUpper[tempsong], xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
+	__A__ = xbgmtextsUpper_hi[tempsong];
+	if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsUpper, tempsong), xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
-	__A__ = idx16_load_hi(xbgmtextsLower, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsLower[tempsong], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
+	__A__ = xbgmtextsLower_hi[tempsong];
+	if (__A__) draw_padded_text((void *)lohi_arr16_load(xbgmtextsLower, tempsong), xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 }
 void update_text2() {
@@ -323,16 +323,13 @@ void check_if_music_stopped() {
 
 void text_stuff() {
 				tmp3 = music_queue[tmp1];
-				__A__ = idx16_load_hi(xbgmtextsUpper, tmp3);
+				__A__ = xbgmtextsUpper_hi[tmp3];
 				if (__A__) { 
-					multi_vram_buffer_horz(xbgmtextsUpper[tmp3], xbgmtextsUpperSize[tmp3], NTADR_A(3, (13 + (tmp1))));
-					__A__ = idx16_load_hi(xbgmtextsLower, tmp3);
-					multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A((4 + xbgmtextsUpperSize[tmp3]), (13 + (tmp1))));
+					multi_vram_buffer_horz((void *)lohi_arr16_load(xbgmtextsUpper, tmp3), xbgmtextsUpperSize[tmp3], NTADR_A(3, (13 + (tmp1))));
+					multi_vram_buffer_horz((void *)lohi_arr16_load(xbgmtextsLower, tmp3), xbgmtextsLowerSize[tmp3], NTADR_A((4 + xbgmtextsUpperSize[tmp3]), (13 + (tmp1))));
 				}
 				else {
-					__A__ = idx16_load_hi(xbgmtextsLower, tmp3);
-					multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A(3, (13 + (tmp1))));
+					multi_vram_buffer_horz((void *)lohi_arr16_load(xbgmtextsLower, tmp3), xbgmtextsLowerSize[tmp3], NTADR_A(3, (13 + (tmp1))));
 					one_vram_buffer_horz_repeat('$', 7, NTADR_A((3 + xbgmtextsLowerSize[tmp3]), (13 + (tmp1))));
-
 				}	
 }				

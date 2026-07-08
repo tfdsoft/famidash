@@ -72,3 +72,13 @@
 #define LVLDONE_BANK "XCD_BANK_08"
 #define LVL_NAME_BANK "XCD_BANK_08"
 #endif	
+
+#if __THE_ALBUM
+#define BGMTEST_BANK "XCD_BANK_06"
+#else
+#if __HUGE_ROM
+#define BGMTEST_BANK "XCD_BANK_09"
+#else
+#define BGMTEST_BANK "XCD_BANK_05"
+#endif
+#endif
