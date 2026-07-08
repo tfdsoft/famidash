@@ -2,7 +2,6 @@
 
 ; Music data banks
 .segment "DAT_BANK_24"
-	firstMusicBankPtr := *
 	.include "music_0.s"	; Approx. size: 7305 bytes
 	.align 8192
 .segment "DAT_BANK_25"
@@ -44,7 +43,6 @@
 
 ; DMC banks
 .segment "DAT_BANK_31"
-	firstDMCBankPtr := *
 	.incbin "music_bank0.dmc"	; Size: 7552 bytes
 	.align 8192
 .segment "DAT_BANK_32"
@@ -62,9 +60,6 @@
 	pcmData1:
 		.incbin "MUSIC/PCM/SSDPCM2-fire.pcm"
 
-; "Constants"
-FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)
-FIRST_DMC_BANK = .bank(firstDMCBankPtr)
-
-; Constant
-MUSIC_DAT_BANKS_USED = 16
+; Constants fetched automatically from linker config
+FIRST_MUSIC_BANK = 36
+FIRST_DMC_BANK = 49
