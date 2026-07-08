@@ -4,39 +4,55 @@
 .segment "DAT_BANK_24"
 	firstMusicBankPtr := *
 	.include "music_0.s"	; Approx. size: 7305 bytes
+	.align 8192
 .segment "DAT_BANK_25"
 	.include "music_1.s"	; Approx. size: 7286 bytes
+	.align 8192
 .segment "DAT_BANK_26"
 	.include "music_2.s"	; Approx. size: 7309 bytes
+	.align 8192
 .segment "DAT_BANK_27"
 	.include "music_3.s"	; Approx. size: 7212 bytes
+	.align 8192
 .segment "DAT_BANK_28"
 	.include "music_4.s"	; Approx. size: 7164 bytes
+	.align 8192
 .segment "DAT_BANK_29"
 	.include "music_5.s"	; Approx. size: 6886 bytes
+	.align 8192
 .segment "DAT_BANK_2A"
 	.include "music_6.s"	; Approx. size: 7377 bytes
+	.align 8192
 .segment "DAT_BANK_2B"
 	.include "music_7.s"	; Approx. size: 7713 bytes
+	.align 8192
 .segment "DAT_BANK_2C"
 	.include "music_8.s"	; Approx. size: 7654 bytes
+	.align 8192
 .segment "DAT_BANK_2D"
 	.include "music_9.s"	; Approx. size: 7416 bytes
+	.align 8192
 .segment "DAT_BANK_2E"
 	.include "music_10.s"	; Approx. size: 7635 bytes
+	.align 8192
 .segment "DAT_BANK_2F"
 	.include "music_11.s"	; Approx. size: 7527 bytes
+	.align 8192
 .segment "DAT_BANK_30"
 	.include "music_12.s"	; Approx. size: 4652 bytes
+	.align 8192
 
 ; DMC banks
 .segment "DAT_BANK_31"
 	firstDMCBankPtr := *
 	.incbin "music_bank0.dmc"	; Size: 7552 bytes
+	.align 8192
 .segment "DAT_BANK_32"
 	.incbin "music_bank1.dmc"	; Size: 8064 bytes
+	.align 8192
 .segment "DAT_BANK_33"
 	.incbin "music_bank2.dmc"	; Size: 8064 bytes
+	.align 8192
 
 ; PCM includes
 .segment "PCM_BANK"
