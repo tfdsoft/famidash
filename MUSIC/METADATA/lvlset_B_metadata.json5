@@ -1,5 +1,6 @@
 {
 	songModule: "music_master.fms",
+	linkerConfig: "mmc3.cfg",
 	songs: [
 		{
 			fmsSongName: "Menu Theme (2.2)",
