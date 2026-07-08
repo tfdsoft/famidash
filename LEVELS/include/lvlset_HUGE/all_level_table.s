@@ -77,6 +77,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_funnygameholiday)
 	.byte .lobyte(level_data_fireaura)
 	.byte .lobyte(level_data_rainbowdust)
+	.byte .lobyte(level_data_rotd)
 	.byte .lobyte(level_data_wintherace)
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
@@ -132,6 +133,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_demonpyrophoric)
 	.byte .lobyte(level_data_toeiiv2)
+	.byte .lobyte(level_data_watertemple)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
@@ -142,6 +144,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_fairydust)
 	.byte .lobyte(level_data_jawbreaker)
 	.byte .lobyte(level_data_futurefunkfix)
+	.byte .lobyte(level_data_denouement)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_acropolis)
@@ -240,6 +243,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_funnygameholiday) & $1F | $A0
 	.byte .hibyte(level_data_fireaura) & $1F | $A0
 	.byte .hibyte(level_data_rainbowdust) & $1F | $A0
+	.byte .hibyte(level_data_rotd) & $1F | $A0
 	.byte .hibyte(level_data_wintherace) & $1F | $A0
 	.byte .hibyte(level_data_factorytime) & $1F | $A0
 	.byte .hibyte(level_data_thesteamworks) & $1F | $A0
@@ -295,6 +299,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_firetemple) & $1F | $A0
 	.byte .hibyte(level_data_demonpyrophoric) & $1F | $A0
 	.byte .hibyte(level_data_toeiiv2) & $1F | $A0
+	.byte .hibyte(level_data_watertemple) & $1F | $A0
 	.byte .hibyte(level_data_pgclubstep) & $1F | $A0
 	.byte .hibyte(level_data_deadlyclubstep) & $1F | $A0
 	.byte .hibyte(level_data_thermodynamix) & $1F | $A0
@@ -305,6 +310,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_fairydust) & $1F | $A0
 	.byte .hibyte(level_data_jawbreaker) & $1F | $A0
 	.byte .hibyte(level_data_futurefunkfix) & $1F | $A0
+	.byte .hibyte(level_data_denouement) & $1F | $A0
 	.byte .hibyte(level_data_stalemate) & $1F | $A0
 	.byte .hibyte(level_data_eighto) & $1F | $A0
 	.byte .hibyte(level_data_acropolis) & $1F | $A0
@@ -403,6 +409,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_funnygameholiday >> 13)
 	.byte .lobyte(level_data_fireaura >> 13)
 	.byte .lobyte(level_data_rainbowdust >> 13)
+	.byte .lobyte(level_data_rotd >> 13)
 	.byte .lobyte(level_data_wintherace >> 13)
 	.byte .lobyte(level_data_factorytime >> 13)
 	.byte .lobyte(level_data_thesteamworks >> 13)
@@ -458,6 +465,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_firetemple >> 13)
 	.byte .lobyte(level_data_demonpyrophoric >> 13)
 	.byte .lobyte(level_data_toeiiv2 >> 13)
+	.byte .lobyte(level_data_watertemple >> 13)
 	.byte .lobyte(level_data_pgclubstep >> 13)
 	.byte .lobyte(level_data_deadlyclubstep >> 13)
 	.byte .lobyte(level_data_thermodynamix >> 13)
@@ -468,6 +476,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_fairydust >> 13)
 	.byte .lobyte(level_data_jawbreaker >> 13)
 	.byte .lobyte(level_data_futurefunkfix >> 13)
+	.byte .lobyte(level_data_denouement >> 13)
 	.byte .lobyte(level_data_stalemate >> 13)
 	.byte .lobyte(level_data_eighto >> 13)
 	.byte .lobyte(level_data_acropolis >> 13)
@@ -671,6 +680,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A4)		; funnygameholiday
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000A6)		; rainbowdust
+	.byte .lobyte($0000CC)		; rotd
 	.byte .lobyte($00008F)		; wintherace
 	.byte .lobyte($00008F)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
@@ -726,6 +736,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000097)		; demonpyrophoric
 	.byte .lobyte($0000A1)		; toeiiv2
+	.byte .lobyte($000080)		; watertemple
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008D)		; thermodynamix
@@ -736,6 +747,7 @@ _level_lengths_lo:
 	.byte .lobyte($000082)		; fairydust
 	.byte .lobyte($000086)		; jawbreaker
 	.byte .lobyte($0001DD)		; futurefunkfix
+	.byte .lobyte($000054)		; denouement
 	.byte .lobyte($000091)		; stalemate
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($000064)		; acropolis
@@ -836,6 +848,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A4)		; funnygameholiday
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000A6)		; rainbowdust
+	.byte .hibyte($0000CC)		; rotd
 	.byte .hibyte($00008F)		; wintherace
 	.byte .hibyte($00008F)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
@@ -891,6 +904,7 @@ _level_lengths_md:
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000097)		; demonpyrophoric
 	.byte .hibyte($0000A1)		; toeiiv2
+	.byte .hibyte($000080)		; watertemple
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008D)		; thermodynamix
@@ -901,6 +915,7 @@ _level_lengths_md:
 	.byte .hibyte($000082)		; fairydust
 	.byte .hibyte($000086)		; jawbreaker
 	.byte .hibyte($0001DD)		; futurefunkfix
+	.byte .hibyte($000054)		; denouement
 	.byte .hibyte($000091)		; stalemate
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($000064)		; acropolis
@@ -1001,6 +1016,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A4)		; funnygameholiday
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000A6)		; rainbowdust
+	.byte .bankbyte($0000CC)		; rotd
 	.byte .bankbyte($00008F)		; wintherace
 	.byte .bankbyte($00008F)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
@@ -1056,6 +1072,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000097)		; demonpyrophoric
 	.byte .bankbyte($0000A1)		; toeiiv2
+	.byte .bankbyte($000080)		; watertemple
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008D)		; thermodynamix
@@ -1066,6 +1083,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000082)		; fairydust
 	.byte .bankbyte($000086)		; jawbreaker
 	.byte .bankbyte($0001DD)		; futurefunkfix
+	.byte .bankbyte($000054)		; denouement
 	.byte .bankbyte($000091)		; stalemate
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($000064)		; acropolis

@@ -74,6 +74,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// funnygameholiday
 	HARDER,	// fireaura
 	HARDER,	// rainbowdust
+	HARDER,	// rotd
 	HARDER,	// wintherace
 	HARDER,	// factorytime
 	HARDER,	// thesteamworks
@@ -129,6 +130,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// firetemple
 	MEDIUMDEMON,	// demonpyrophoric
 	HARDDEMON,	// toeiiv2
+	DEMON,	// watertemple
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
 	HARDDEMON,	// thermodynamix
@@ -139,6 +141,7 @@ const uint8_t difficulty_list[] = {
 	HARDDEMON,	// fairydust
 	HARDDEMON,	// jawbreaker
 	HARDDEMON,	// futurefunkfix
+	INSANEDEMON,	// denouement
 	INSANEDEMON,	// stalemate
 	INSANEDEMON,	// eighto
 	INSANEDEMON,	// acropolis
@@ -238,6 +241,7 @@ const uint8_t stars_list[] = {
 	7,	// funnygameholiday
 	7,	// fireaura
 	7,	// rainbowdust
+	7,	// rotd
 	7,	// wintherace
 	7,	// factorytime
 	7,	// thesteamworks
@@ -293,6 +297,7 @@ const uint8_t stars_list[] = {
 	10,	// firetemple
 	10,	// demonpyrophoric
 	10,	// toeiiv2
+	10,	// watertemple
 	10,	// pgclubstep
 	10,	// deadlyclubstep
 	10,	// thermodynamix
@@ -303,6 +308,7 @@ const uint8_t stars_list[] = {
 	10,	// fairydust
 	10,	// jawbreaker
 	10,	// futurefunkfix
+	10,	// denouement
 	10,	// stalemate
 	10,	// eighto
 	10,	// acropolis

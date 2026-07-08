@@ -318,6 +318,7 @@
 			originalArtist: ["Jamie Paige", "OK GLASS"],
 			coveringArtist: "SeaGlowingPro",
 		},
+		/*
 		{
 			fmsSongName: "Bit Of A Vibe",
 			upperText: "BIT OF",
@@ -325,6 +326,7 @@
 			originalArtist: "Clickerty",
 			coveringArtist: "Clickerty",
 		},
+		*/
 		{
 			fmsSongName: "Blacklight",
 			lowerText: "BLACKLIGHT",
@@ -607,6 +609,12 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Glory",
+			lowerText: "GLORY",
+			originalArtist: "FyremanMusic",
+			coveringArtist: ["BobAJoeJoe", "SeaGlowingPro"],
+		},
+		{
 			fmsSongName: "Golden Haze",
 			upperText: "GOLDEN HAZE",
 			lowerText: "CUT",
@@ -757,14 +765,14 @@
 			originalArtist: "Romos",
 			coveringArtist: "SeaGlowingPro",
 		},
-		/*
-		
+		{
 			fmsSongName: "Mario Kart 7 - Rainbow Road (Remix)",
 			upperText: "MARIO KART 7",
 			lowerText: "RAINBOW ROAD",
 			originalArtist: "Ackatos",
 			coveringArtist: "SeaGlowingPro",
 		},
+		/*
 		{
 			fmsSongName: "Mayhem Re-NES",
 			lowerText: "MAYHEM",
