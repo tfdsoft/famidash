@@ -294,7 +294,6 @@ uint8_t practice_outline_color[MAX_PRACTICE_POINTS];
 uint8_t practice_g_color_type[MAX_PRACTICE_POINTS];
 uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
-//uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
 uint8_t practice_nullscapes_active[MAX_PRACTICE_POINTS];
 uint8_t practice_nullscapes_orb_type[MAX_PRACTICE_POINTS];
@@ -499,7 +498,7 @@ uint8_t iconbank;
 uint8_t dblocked[2];
 
 
-uint8_t player_old_posy[9];
+uint8_t player_old_rely[9];
 uint8_t discorefreshrate;
 uint8_t discoframe;
 uint8_t no_parallax;

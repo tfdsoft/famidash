@@ -185,17 +185,17 @@ void draw_sprites(){
 			tmpB = player_rely[0];
 
 			high_byte(player_relx[0]) -= high_byte(tmp6);
-			high_byte(player_rely[0]) = player_old_posy[0];
+			high_byte(player_rely[0]) = player_old_rely[0];
 
 			crossPRGBankJump0(drawplayerone);
 			
 			high_byte(player_relx[0]) -= high_byte(tmp6);
-			high_byte(player_rely[0]) = player_old_posy[1];
+			high_byte(player_rely[0]) = player_old_rely[1];
 
 			crossPRGBankJump0(drawplayerone);
 
 			high_byte(player_relx[0]) -= high_byte(tmp6);
-			high_byte(player_rely[0]) = player_old_posy[2];
+			high_byte(player_rely[0]) = player_old_rely[2];
 
 			if (gamemode == GAMEMODE_CUBE) {
 				tmp9 = currplayer_mini;
@@ -227,7 +227,7 @@ void trail_loop() {
 			if (trail_sprites_visible[tmp1]) {	
 				oam_spr(
 					high_byte(tmp5) + Trail_Circ_X,
-					player_old_posy[tmp1] + Trail_Circ_Y,
+					player_old_rely[tmp1] + Trail_Circ_Y,
 					Trail_Circ_CHR, Trail_Circ_Attr);
 			}
 			
@@ -243,7 +243,7 @@ void trail_loop() {
 			if (trail_sprites_visible[tmp1]) {
 				oam_spr(
 					high_byte(tmp5) + Trail_Circ_X,
-					player_old_posy[tmp1] + Trail_Circ_Y,
+					player_old_rely[tmp1] + Trail_Circ_Y,
 					Trail_Circ_CHR, Trail_Circ_Attr);
 			}
 			
