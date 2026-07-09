@@ -287,7 +287,7 @@ char bg_coll_top_bottom_slabs() {
 			
 
 char bg_coll_mini_blocks() {
-	if (collision != COL_FLOOR_CEIL && high_byte(currplayer_x) < 0x10) return 0;
+	if (collision != COL_FLOOR_CEIL && high_byte(currplayer_relx) < 0x10) return 0;
 	switch (collision) {
 		case COL_UP_LEFT:
 			tmp2 = (uint8_t)(temp_y & 0x0f);	
@@ -444,7 +444,7 @@ char bg_side_coll_common() {
 			}	
 		} else {
 			if (!currplayer_was_on_slope_counter && bg_coll_slope()) {
-				high_byte(currplayer_y) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
+				high_byte(currplayer_rely) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
 			}
 		}
 
@@ -488,7 +488,7 @@ char bg_coll_U_D_checks() {
 		case COL_NO_SIDE:
 			return 1;		
 		case COL_ALL: 
-			if (high_byte(currplayer_x) < 0x10) return 0;
+			if (high_byte(currplayer_relx) < 0x10) return 0;
 			else return 1;
 		case COL_DEATH_TOP:
 			col_death_top_routine();
@@ -887,7 +887,7 @@ char bg_coll_U() {
 	
 	// Slopes
 
-	if (high_byte(currplayer_x) >= 0x10) {
+	if (high_byte(currplayer_relx) >= 0x10) {
 		storeWordSeparately(
 			add_scroll_y(
 				Generic.y + (byte(0x10 - Generic.height) >> 1) + (currplayer_mini ? 1 : 2) + (gamemode == GAMEMODE_SHIP ? 1 : 0),
@@ -944,7 +944,7 @@ char bg_coll_U() {
 char bg_coll_D() {
 
 	// Slopes
-	if (high_byte(currplayer_x) >= 0x10) {
+	if (high_byte(currplayer_relx) >= 0x10) {
 		storeWordSeparately(
 			add_scroll_y(
 				Generic.y + Generic.height - 2 + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0), scroll_y

@@ -2036,8 +2036,8 @@ early_exit:
 ; void cap_scroll_y_at_top();
 .segment _SCROLL_BANK
 
-.importzp _currplayer_y
-.import _scroll_y, _player_y, _scroll_y_subpx
+.importzp _currplayer_rely
+.import _scroll_y, _player_rely, _scroll_y_subpx
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
@@ -2050,7 +2050,7 @@ check:
 	rts
 
 doit:
-	; compensate currplayer_y and player_y
+	; compensate currplayer_rely and player_rely
 	lda     _scroll_y
 	ldx     _scroll_y+1
 	sta     sreg
@@ -2064,23 +2064,23 @@ doit:
 	eor     #$FF			;__	Make the ADCs into SBCs
 	tay
 
-	lda     _currplayer_y	;
-	sec						;
-	sbc     _scroll_y_subpx	;
-	sta     _currplayer_y	;	Compensate currplayer_y
-	sta		_player_y+1		;	(Apparently guaranteed to be 0)
-	tya						;
-	adc     _currplayer_y+1	;
-	sta     _currplayer_y+1	;
-	sta     _player_y+1		;__
+	lda     _currplayer_rely	;
+	sec							;
+	sbc     _scroll_y_subpx		;
+	sta     _currplayer_rely	;	Compensate currplayer_rely
+	sta		_player_rely+1		;	(Apparently guaranteed to be 0)
+	tya							;
+	adc     _currplayer_rely+1	;
+	sta     _currplayer_rely+1	;
+	sta     _player_rely+1		;__
 
-	lda     _player_y+2		;
-	sec						;
-	sbc     _scroll_y_subpx	;
-	sta     _player_y+2		;	Compensate player_y[1]
-	tya						;
-	adc     _player_y+2+1	;
-	sta     _player_y+2+1	;__
+	lda     _player_rely+2		;
+	sec							;
+	sbc     _scroll_y_subpx		;
+	sta     _player_rely+2		;	Compensate player_rely[1]
+	tya							;
+	adc     _player_rely+2+1	;
+	sta     _player_rely+2+1	;__
 
 	lda     #0
 	sta     _scroll_y_subpx
@@ -2094,8 +2094,8 @@ doit:
 ; void cap_scroll_y_at_bottom();
 .segment _SCROLL_BANK
 
-.importzp _currplayer_y
-.import _scroll_y, _player_y, _scroll_y_subpx
+.importzp _currplayer_rely
+.import _scroll_y, _player_rely, _scroll_y_subpx
 
 .export _cap_scroll_y_at_bottom
 .proc _cap_scroll_y_at_bottom
@@ -2110,7 +2110,7 @@ check:
 	rts
 
 doit:
-	; compensate currplayer_y
+	; compensate currplayer_rely
 	ldx     _scroll_y
 	ldy     _scroll_y+1
 
@@ -2126,23 +2126,23 @@ doit:
 	jsr     _calculate_linear_scroll_y	;__
 	tay
 
-	lda     _currplayer_y	;
-	clc						;
-	adc     _scroll_y_subpx	;
-	sta     _currplayer_y	;	Compensate currplayer_y
-	sta		_player_y+1		;	(Apparently guaranteed to be 0)
-	tya						;
-	adc     _currplayer_y+1	;
-	sta     _currplayer_y+1	;
-	sta     _player_y+1		;__
+	lda     _currplayer_rely	;
+	clc							;
+	adc     _scroll_y_subpx		;
+	sta     _currplayer_rely	;	Compensate currplayer_rely
+	sta		_player_rely+1		;	(Apparently guaranteed to be 0)
+	tya							;
+	adc     _currplayer_rely+1	;
+	sta     _currplayer_rely+1	;
+	sta     _player_rely+1		;__
 
-	lda     _player_y+2		;
-	clc						;
-	adc     _scroll_y_subpx	;
-	sta     _player_y+2		;	Compensate player_y[1]
-	tya						;
-	adc     _player_y+2+1	;
-	sta     _player_y+2+1	;__
+	lda     _player_rely+2		;
+	clc							;
+	adc     _scroll_y_subpx		;
+	sta     _player_rely+2		;	Compensate player_rely[1]
+	tya							;
+	adc     _player_rely+2+1	;
+	sta     _player_rely+2+1	;__
 
 	lda     #0
 	sta     _scroll_y_subpx
@@ -2252,7 +2252,7 @@ end:
 
 .segment _PLAYER_RENDER_BANK
 
-.import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
+.import _player_relx, _player_rely, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _orbed
 .import _retro_mode, _icon, _gameState, _titleicon, _skipProcessingCubeRotationLogic
 .import _CUBE_GRAVITY_lo, _chargepower
@@ -2344,8 +2344,8 @@ drawplayer_center_offsets:
 		LDA #$80
 	: STA xargs+0
 
-	LDX _player_y+1		;
-	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
+	LDX _player_rely+1	;
+	DEX					;	The Y of oam_meta_spr is high_byte(player_rely[0])-1
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
@@ -2368,7 +2368,7 @@ drawplayer_center_offsets:
 	PLA				;	Get pure gamemode number
 	TAX				;__
 
-	LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
+	LDY _player_relx+1     ;__ temp_x = high_byte(player_relx[0]);
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;
@@ -2924,7 +2924,7 @@ drawplayer_center_offsets:
 		LDA (ptr1), Y		;	Load high byte
 		TAX					;__
 		PLA
-		JMP __oam_meta_spr_flipped ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
+		JMP __oam_meta_spr_flipped ;__	oam_meta_spr(temp_x, high_byte(player_rely[0])-1, [whatever the fuck we set here]);
 
     sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE, <_SWING, <_CUBE, <_POGO, <_SNAKE, <_CUBE
@@ -2974,8 +2974,8 @@ drawplayer_common := _drawplayerone::common
 		LDA #$80
 	: STA xargs+0	; flip
 
-	LDX _player_y+3		;
-	DEX					;	The Y of oam_meta_spr is high_byte(player_y[1])-1
+	LDX _player_rely+3	;
+	DEX					;	The Y of oam_meta_spr is high_byte(player_rely[1])-1
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
@@ -2998,7 +2998,7 @@ drawplayer_common := _drawplayerone::common
 	PLA				;	Get pure gamemode number
 	TAX				;__
 
-	LDY _player_x+3     ;__ temp_x = high_byte(player_x[1]);
+	LDY _player_relx+3     ;__ temp_x = high_byte(player_relx[1]);
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;

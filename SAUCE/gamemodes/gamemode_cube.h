@@ -22,16 +22,16 @@ void cube_movement(){
 
 	common_gravity_routine();
 
-	Generic.x = high_byte(currplayer_x);
-	Generic.y = high_byte(currplayer_y);
+	Generic.x = high_byte(currplayer_relx);
+	Generic.y = high_byte(currplayer_rely);
 	
 	
 	cube_eject();
 	
 
 	// check collision down a little lower than CUBE
-	Generic.x = high_byte(currplayer_x); // the rest should be the same
-	Generic.y = high_byte(currplayer_y); // the rest should be the same
+	Generic.x = high_byte(currplayer_relx); // the rest should be the same
+	Generic.y = high_byte(currplayer_rely); // the rest should be the same
 
 	update_currplayer_table_idx();
 
@@ -188,7 +188,7 @@ void common_gravity_routine() {
 		currplayer_vel_y = currplayer_vel_x;
 	} else if (tmp1 == 4) {
 		currplayer_vel_y = currplayer_vel_x*2;
-		currplayer_y -= currplayer_vel_y;
+		currplayer_rely -= currplayer_vel_y;
 		return;
 	} else if (tmp1 == 5) {
 		currplayer_vel_y = currplayer_vel_x*2;
@@ -196,7 +196,7 @@ void common_gravity_routine() {
 		currplayer_vel_y = currplayer_gravity ? -1 : 1;
 		return;
 	}
-	currplayer_y += currplayer_vel_y;
+	currplayer_rely += currplayer_vel_y;
 }
 
 
@@ -204,8 +204,8 @@ void cube_eject() {
 	//if (!currplayer_was_on_slope_counter || currplayer_slope_type & SLOPE_UPSIDEDOWN) {
 		if(!currplayer_gravity || (currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))){
 			if(bg_coll_D()){ // check collision below
-				high_byte(currplayer_y) -= eject_D;
-				low_byte(currplayer_y) = 0;
+				high_byte(currplayer_rely) -= eject_D;
+				low_byte(currplayer_rely) = 0;
 				if (!hblocked[currplayer]) {
 					currplayer_vel_y = 0;
 				} else {
@@ -222,8 +222,8 @@ void cube_eject() {
 	//if (!currplayer_was_on_slope_counter || !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
 		if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
 			if(bg_coll_U()){ // check collision above
-				high_byte(currplayer_y) -= eject_U;
-				low_byte(currplayer_y) = 0;
+				high_byte(currplayer_rely) -= eject_U;
+				low_byte(currplayer_rely) = 0;
 				if (!hblocked[currplayer]) {
 					currplayer_vel_y = 0;
 				} else {

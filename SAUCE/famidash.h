@@ -111,8 +111,8 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma zpsym ("VRAM_UPDATE")
 
 uint8_t currplayer_mini;
-uint16_t currplayer_x;
-uint16_t currplayer_y;
+uint16_t currplayer_relx;
+uint16_t currplayer_rely;
 int16_t currplayer_vel_x;
 int16_t currplayer_vel_y;
 uint8_t currplayer_gravity;
@@ -323,8 +323,8 @@ extern uint8_t trueFullRegion;
 
 uint8_t last_gameState;
 
-uint16_t player_x[2];
-uint16_t player_y[2];
+uint16_t player_relx[2];
+uint16_t player_rely[2];
 int16_t player_vel_x[2];
 int16_t player_vel_y[2];
 uint8_t player_gravity[2];

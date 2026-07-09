@@ -106,9 +106,9 @@ void state_game(){
 	seam_scroll_y = (spawn_scroll_y_pos - 0x78); // [temp]	
 	set_scroll_y(scroll_y);
 
-	player_y[0] = spawn_y_pos;
-	player_y[1] = spawn_y_pos;
-	currplayer_y = spawn_y_pos;	
+	player_rely[0] = spawn_y_pos;
+	player_rely[1] = spawn_y_pos;
+	currplayer_rely = spawn_y_pos;
 	
 	update_currplayer_table_idx();
 
@@ -189,7 +189,7 @@ void state_game(){
 					(&player_old_posy[1])[tmp3] = tmp5;
 					--tmp3;
 				} while ((int8_t)tmp3 >= 0);
-				player_old_posy[0] = high_byte(player_y[0]);
+				player_old_posy[0] = high_byte(player_rely[0]);
 				old_trail_scroll_y = scroll_y;
 			}
 		}
@@ -247,7 +247,7 @@ void state_game(){
 
 		if ((DEBUG_MODE == 1) || (DEBUG_MODE == 2)) gray_line();
 		if (!DEBUG_MODE && kandodebugmode != 2) {
-		if (high_byte(player_x[0]) > 0x20) {
+		if (high_byte(player_relx[0]) > 0x20) {
 			if (cube_data[0] & 1 || cube_data[1] & 1) {
 				death_animation();
 				mmc3_set_prg_bank_1(GET_BANK(reset_level));
@@ -381,12 +381,12 @@ void everything_else() {
 				
 				if (mouse.left) {
 					kandodebugmode = 2;
-					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
+					//high_byte(currplayer_relx) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
 					curr_x_scroll_stop = 0xE000;
-					high_byte(currplayer_y) = (mouse.y + high_byte(scroll_y)) - 10;
-					high_byte(currplayer_x) = mouse.x - 10 < 0 ? mouse.x : mouse.x - 10;
-					if (high_byte(currplayer_x) > 226) high_byte(currplayer_x) = 226;
+					high_byte(currplayer_rely) = (mouse.y + high_byte(scroll_y)) - 10;
+					high_byte(currplayer_relx) = mouse.x - 10 < 0 ? mouse.x : mouse.x - 10;
+					if (high_byte(currplayer_relx) > 226) high_byte(currplayer_relx) = 226;
 					
 				}
 				else {
@@ -591,8 +591,8 @@ void everything_else() {
 
 		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 		{	// always store it back for practice mode
-			player_x[0] = currplayer_x;
-			player_y[0] = currplayer_y;
+			player_relx[0] = currplayer_relx;
+			player_rely[0] = currplayer_rely;
 			player_vel_x[0] = currplayer_vel_x;
 			player_vel_y[0] = currplayer_vel_y;
 			player_gravity[0] = currplayer_gravity;
@@ -614,8 +614,8 @@ void everything_else() {
 
 
 			{	
-				currplayer_x = player_x[1];
-				currplayer_y = player_y[1];
+				currplayer_relx = player_relx[1];
+				currplayer_rely = player_rely[1];
 				currplayer_vel_x = player_vel_x[1];
 				currplayer_vel_y = player_vel_y[1];
 				currplayer_gravity = player_gravity[1];
@@ -644,8 +644,8 @@ void everything_else() {
 			#endif
 			crossPRGBankJump0(movement);
 
-			if (dual && ((options & platformer) || force_platformer) && !twoplayer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
-			else if (dual && !(options & platformer) && !force_platformer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
+			if (dual && ((options & platformer) || force_platformer) && !twoplayer) { currplayer_relx = player_relx[0]; currplayer_vel_x = player_vel_x[0]; }
+			else if (dual && !(options & platformer) && !force_platformer) { currplayer_relx = player_relx[0]; currplayer_vel_x = player_vel_x[0]; }
 
 			processXMovement = 0;
 			runthecolls();
@@ -657,8 +657,8 @@ void everything_else() {
 			controllingplayer = &joypad1;		//give back controls
 
 			{
-				player_x[1] = currplayer_x;
-				player_y[1] = currplayer_y;
+				player_relx[1] = currplayer_relx;
+				player_rely[1] = currplayer_rely;
 				player_vel_x[1] = currplayer_vel_x;
 				player_vel_y[1] = currplayer_vel_y;
 				player_gravity[1] = currplayer_gravity;
@@ -668,8 +668,8 @@ void everything_else() {
 				slope_type[1] = currplayer_slope_type;
 				last_slope_type[1] = currplayer_last_slope_type;
 
-				currplayer_x = player_x[0];
-				currplayer_y = player_y[0];
+				currplayer_relx = player_relx[0];
+				currplayer_rely = player_rely[0];
 				currplayer_vel_x = player_vel_x[0];
 				currplayer_vel_y = player_vel_y[0];
 				currplayer_gravity = player_gravity[0];

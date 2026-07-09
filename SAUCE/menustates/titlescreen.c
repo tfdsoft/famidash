@@ -103,8 +103,8 @@ void check_if_music_stopped2() {
 #endif
 
 void hi_byte_stuff() {
-	high_byte(player_x[0]) = currplayer_x_small;
-	high_byte(player_y[0]) = currplayer_y_small;
+	high_byte(player_relx[0]) = currplayer_x_small;
+	high_byte(player_rely[0]) = currplayer_y_small;
 }	
 
 void state_menu() {

@@ -35,10 +35,10 @@ void store_practice_state(){
 	tmp1 = latest_practice_point;
 
 	curr_practice_point = latest_practice_point;
-	lohi_arr16_store(practice_player_1_x, tmp1, player_x[0]);
-	lohi_arr16_store(practice_player_2_x, get_Y, player_x[1]);
-	lohi_arr16_store(practice_player_1_y, get_Y, player_y[0]);
-	lohi_arr16_store(practice_player_2_y, get_Y, player_y[1]);
+	lohi_arr16_store(practice_player_1_x, tmp1, player_relx[0]);
+	lohi_arr16_store(practice_player_2_x, get_Y, player_relx[1]);
+	lohi_arr16_store(practice_player_1_y, get_Y, player_rely[0]);
+	lohi_arr16_store(practice_player_2_y, get_Y, player_rely[1]);
 	lohi_arr16_store(practice_player_1_vel_x, get_Y, player_vel_x[0]);
 	lohi_arr16_store(practice_player_2_vel_x, get_Y, player_vel_x[1]);
 	lohi_arr16_store(practice_player_1_vel_y, get_Y, player_vel_y[0]);
@@ -90,7 +90,7 @@ void store_practice_state(){
 		memcpy(practice_famistudio_state + lohi_arr16_load(multStateLookup, tmp1), famistudio_state, FAMISTUDIO_STATE_SIZE);
 		memcpy(practice_famistudio_registers + multBufLookup[tmp1], famistudio_output_buf, FAMISTUDIO_OUTPUT_BUF_SIZE);
     }
-	practice_sprite_x_pos = high_byte(player_x[0]);
+	practice_sprite_x_pos = high_byte(player_relx[0]);
 	auto_practicepoint_timer = 200;
 #endif
 }
@@ -99,10 +99,10 @@ void store_practice_state(){
 void load_practice_state() {
 #if !__VS_SYSTEM
 	tmp2 = curr_practice_point;
-	player_x[0] = lohi_arr16_load(practice_player_1_x, tmp2);
-	player_x[1] = lohi_arr16_load(practice_player_2_x, get_Y);
-	player_y[0] = lohi_arr16_load(practice_player_1_y, get_Y);
-	player_y[1] = lohi_arr16_load(practice_player_2_y, get_Y);
+	player_relx[0] = lohi_arr16_load(practice_player_1_x, tmp2);
+	player_relx[1] = lohi_arr16_load(practice_player_2_x, get_Y);
+	player_rely[0] = lohi_arr16_load(practice_player_1_y, get_Y);
+	player_rely[1] = lohi_arr16_load(practice_player_2_y, get_Y);
 	player_vel_x[0] = lohi_arr16_load(practice_player_1_vel_x, get_Y);
 	player_vel_x[1] = lohi_arr16_load(practice_player_2_vel_x, get_Y);
 	player_vel_y[0] = lohi_arr16_load(practice_player_1_vel_y, get_Y);
@@ -191,8 +191,8 @@ void load_practice_state() {
 	__asm__("tay");
 	#define quick_ld(to, from) __asm__("lda %v,y\n sta %v\n lda %v+1,y\n sta %v+1", from, to, from, to)
 	
-	quick_ld(currplayer_x, player_x);
-	quick_ld(currplayer_y, player_y);
+	quick_ld(currplayer_relx, player_relx);
+	quick_ld(currplayer_rely, player_rely);
 	quick_ld(currplayer_vel_x, player_vel_x);
 	quick_ld(currplayer_vel_y, player_vel_y);
 
