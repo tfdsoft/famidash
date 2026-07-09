@@ -156,7 +156,7 @@ void load_practice_state() {
 //	tmp2 = 0;
 //	do {
 //		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
-//		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
+//		idx8_store(player_old_rely, tmp2, practice_player_old_rely[tmp2]);
 //	} while (++tmp2 < 9);
 	nullscapes_active = idx8_load(practice_nullscapes_active, get_Y);
 	nullscapes_orb_type = idx8_load(practice_nullscapes_orb_type, get_Y);
