@@ -11,17 +11,17 @@ void ufo_movement(){
 		
 
 
-	Generic.x = high_byte(currplayer_x);
-	Generic.y = high_byte(currplayer_y);
+	Generic.x = high_byte(currplayer_relx);
+	Generic.y = high_byte(currplayer_rely);
 
 	ufo_ship_eject();
 
 	
-	Generic.x = high_byte(currplayer_x);
-	Generic.y = high_byte(currplayer_y);
+	Generic.x = high_byte(currplayer_relx);
+	Generic.y = high_byte(currplayer_rely);
 
 	// check collision down a little lower than UFO
-//	Generic.y = high_byte(currplayer_y); // the rest should be the same
+//	Generic.y = high_byte(currplayer_rely); // the rest should be the same
 
 
 	if((controllingplayer->press & (PAD_A | PAD_UP)) && !ufo_orbed[currplayer]) {

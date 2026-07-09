@@ -967,7 +967,7 @@ void sprite_collide_lookup() {
 			target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
 			if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 0xFF;  }
 			else { 
-				player_x[1] = player_x[0]; player_y[1] = currplayer_y;
+				player_relx[1] = player_relx[0]; player_rely[1] = currplayer_rely;
 				player_gravity[1] = currplayer_gravity ^ 0xFF;
 				player_vel_y[1] = -currplayer_vel_y; player_mini[1] = player_mini[0];
 			}
@@ -978,7 +978,7 @@ void sprite_collide_lookup() {
 	
 	spcl_sngl_pt:
 		if (!activesprites_activated[index]) {
-			if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
+			if (!twoplayer) { dual = 0; player_rely[0] = currplayer_rely; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
 			else { player_gravity[1] = player_gravity[0]; }
 			activesprites_activated[index] = 1;
 
@@ -994,7 +994,7 @@ void sprite_collide_lookup() {
 			orbed[currplayer] = 1;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 	spcl_tlpt_pt:
-			high_byte(currplayer_y) = teleport_output;
+			high_byte(currplayer_rely) = teleport_output;
 		}
 		return;
 
@@ -1093,12 +1093,12 @@ void sprite_collide_lookup() {
 		if ((cube_data[currplayer] & 2) || (controllingplayer->press & (PAD_A | PAD_UP))) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 	spcl_sppadup:
-			high_byte(currplayer_y) -= eject_D;
+			high_byte(currplayer_rely) -= eject_D;
 			currplayer_vel_y = 0;
 			currplayer_gravity = GRAVITY_UP;
 			update_currplayer_table_idx();
 			crossPRGBankJump0(spider_up_wait);
-			high_byte(currplayer_y) -= eject_U;
+			high_byte(currplayer_rely) -= eject_U;
 			currplayer_vel_y = 0;	
 			orbed[currplayer] = 1;
 			idx8_inc(activesprites_activated, index);
@@ -1108,12 +1108,12 @@ void sprite_collide_lookup() {
 		if ((cube_data[currplayer] & 2) || (controllingplayer->press & (PAD_A | PAD_UP))) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 	spcl_sppaddn:
-			high_byte(currplayer_y) -= eject_U + 1;
+			high_byte(currplayer_rely) -= eject_U + 1;
 			currplayer_vel_y = 0;
 			currplayer_gravity = GRAVITY_DOWN;
 			update_currplayer_table_idx();
 			crossPRGBankJump0(spider_down_wait);
-			high_byte(currplayer_y) -= eject_D;
+			high_byte(currplayer_rely) -= eject_D;
 			currplayer_vel_y = 0;
 			orbed[currplayer] = 1;
 			idx8_inc(activesprites_activated, index);
@@ -1175,8 +1175,8 @@ void sprite_collide(){
 		Generic.height = WAVE_HEIGHT;
 	}
 
-	Generic.x = high_byte(currplayer_x) + 1;
-	Generic.y = high_byte(currplayer_y) + (byte(0x10 - Generic.height) >> 1);
+	Generic.x = high_byte(currplayer_relx) + 1;
+	Generic.y = high_byte(currplayer_rely) + (byte(0x10 - Generic.height) >> 1);
 
 	index = 0;
 

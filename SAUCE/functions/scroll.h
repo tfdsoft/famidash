@@ -2,11 +2,11 @@
 CODE_BANK_PUSH(SCROLL_BANK)
 
 
-#define player0_x currplayer_x
-#define player1_x player_x[1]
+#define player0_x currplayer_relx
+#define player1_x player_relx[1]
 
-#define player0_y currplayer_y
-#define player1_y player_y[1]
+#define player0_y currplayer_rely
+#define player1_y player_rely[1]
 
 void process_x_scroll() {
 	switch (cam_seesaw) {

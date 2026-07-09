@@ -28,8 +28,8 @@ void death_animation() {
 			if (robotjumpframe[0] < 20) {
 				if (retro_mode && !(gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_SHIP)) mmc3_set_2kb_chr_bank_0(20);	//default set for explosion
 				oam_meta_spr(
-					idx16_load_hi_NOC(player_x, tmp2)-2,
-					idx16_load_hi_NOC(player_y, tmp2)-2,
+					idx16_load_hi_NOC(player_relx, tmp2)-2,
+					idx16_load_hi_NOC(player_rely, tmp2)-2,
 					(retro_mode && (gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_SHIP)) ? ExplodeR_Sprites[robotjumpframe[0] & 0x7F] :
 					Explode_Sprites[robotjumpframe[0] & 0x7F]);
 				++robotjumpframe[0];
@@ -140,9 +140,9 @@ void reset_level() {
 	} while (++tmp1 < max_loaded_sprites);
 
 
-	player_y[0] = spawn_y_pos;
-	player_y[1] = spawn_y_pos;
-	currplayer_y = spawn_y_pos;
+	player_rely[0] = spawn_y_pos;
+	player_rely[1] = spawn_y_pos;
+	currplayer_rely = spawn_y_pos;
 
 	target_scroll_y = spawn_y_pos;
 
@@ -155,13 +155,13 @@ void reset_level() {
 	#endif
 
 	if (!(options & platformer) && !force_platformer) {
-	player_x[0] = 0x0000;
-	player_x[1] = 0x0000;
-	currplayer_x = 0x0000;
+	player_relx[0] = 0x0000;
+	player_relx[1] = 0x0000;
+	currplayer_relx = 0x0000;
 	} else {
-	player_x[0] = 0x1110;
-	player_x[1] = 0x1110;
-	currplayer_x = 0x1110;
+	player_relx[0] = 0x1110;
+	player_relx[1] = 0x1110;
+	currplayer_relx = 0x1110;
 	}
 
 	curr_x_scroll_stop = 0x5000;

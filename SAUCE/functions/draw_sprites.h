@@ -181,21 +181,21 @@ void draw_sprites(){
 			skipProcessingCubeRotationLogic++;
 			tmp6 = currplayer_vel_x << 1;
 			
-			tmpA = player_x[0];
-			tmpB = player_y[0];
+			tmpA = player_relx[0];
+			tmpB = player_rely[0];
 
-			high_byte(player_x[0]) -= high_byte(tmp6);
-			high_byte(player_y[0]) = player_old_posy[0];
+			high_byte(player_relx[0]) -= high_byte(tmp6);
+			high_byte(player_rely[0]) = player_old_posy[0];
 
 			crossPRGBankJump0(drawplayerone);
 			
-			high_byte(player_x[0]) -= high_byte(tmp6);
-			high_byte(player_y[0]) = player_old_posy[1];
+			high_byte(player_relx[0]) -= high_byte(tmp6);
+			high_byte(player_rely[0]) = player_old_posy[1];
 
 			crossPRGBankJump0(drawplayerone);
 
-			high_byte(player_x[0]) -= high_byte(tmp6);
-			high_byte(player_y[0]) = player_old_posy[2];
+			high_byte(player_relx[0]) -= high_byte(tmp6);
+			high_byte(player_rely[0]) = player_old_posy[2];
 
 			if (gamemode == GAMEMODE_CUBE) {
 				tmp9 = currplayer_mini;
@@ -208,8 +208,8 @@ void draw_sprites(){
 				currplayer_mini = tmp9;
 			}
 			
-			player_x[0] = tmpA;
-			player_y[0] = tmpB;
+			player_relx[0] = tmpA;
+			player_rely[0] = tmpB;
 			skipProcessingCubeRotationLogic--;		
 		}
 	}
@@ -222,7 +222,7 @@ void trail_loop() {
 	if (kandoframecnt & 1) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp1 = 1;
-		tmp5 = currplayer_x - tmp6;
+		tmp5 = currplayer_relx - tmp6;
 		do {
 			if (trail_sprites_visible[tmp1]) {	
 				oam_spr(
@@ -238,7 +238,7 @@ void trail_loop() {
 		tmp1 = 7;
 		// the following 2 lines of code are equal to tmp5 -= (tmp6 * 7)
 		tmp5 = currplayer_vel_x << 4;
-		tmp5 = (currplayer_vel_x << 1) + currplayer_x - tmp5;
+		tmp5 = (currplayer_vel_x << 1) + currplayer_relx - tmp5;
 		do {
 			if (trail_sprites_visible[tmp1]) {
 				oam_spr(
@@ -262,19 +262,19 @@ void put_number() {
 }
 
 void minus15y() {
-	high_byte(player_y[0]) -= 15;
+	high_byte(player_rely[0]) -= 15;
 }
 
 void minus15x() {
-	high_byte(player_x[0]) -= 15;
+	high_byte(player_relx[0]) -= 15;
 }
 
 void plus15y() {
-	high_byte(player_y[0]) += 15;
+	high_byte(player_rely[0]) += 15;
 }
 
 void plus15x() {
-	high_byte(player_x[0]) += 15;
+	high_byte(player_relx[0]) += 15;
 }
 
 

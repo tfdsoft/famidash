@@ -47,8 +47,8 @@ void ship_movement(){
 		if(currplayer_vel_y > 0x0369) currplayer_vel_y = 0x0369;
 	}
 
-	Generic.x = high_byte(currplayer_x);
-	Generic.y = high_byte(currplayer_y);
+	Generic.x = high_byte(currplayer_relx);
+	Generic.y = high_byte(currplayer_rely);
 
 	
 	ufo_ship_eject();
@@ -58,13 +58,13 @@ void ship_movement(){
 void ufo_ship_eject() {
 	//if (!currplayer_was_on_slope_counter || currplayer_slope_type & SLOPE_UPSIDEDOWN) {
 		if(bg_coll_U()){ // check collision above
-			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U - 1;
+			high_byte(currplayer_rely) = high_byte(currplayer_rely) - eject_U - 1;
 			currplayer_vel_y = 0;
 		}
 	//}
 	//if (!currplayer_was_on_slope_counter || !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
 		if(bg_coll_D()){ // check collision below
-			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
+			high_byte(currplayer_rely) = high_byte(currplayer_rely) - eject_D;
 			currplayer_vel_y = 0;
 		}
 	//}
