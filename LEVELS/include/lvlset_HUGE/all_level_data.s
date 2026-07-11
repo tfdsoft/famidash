@@ -3965,17 +3965,17 @@
 	.align 8192
 
 
-; Data bank A0, total bank size: 8190 bytes
+; Data bank A0, total bank size: 8125 bytes
 	sprite_data_overawed:	; Size: 1826
 		.incbin "EXPORTS/sprite/overawed.bin"
+	sprite_data_storymadness:	; Size: 1781
+		.incbin "EXPORTS/sprite/storymadness.bin"
 	sprite_data_styx:	; Size: 1781
 		.incbin "EXPORTS/sprite/styx.bin"
 	sprite_data_cataclysm:	; Size: 1781
 		.incbin "EXPORTS/sprite/cataclysm.bin"
-	sprite_data_storymadness:	; Size: 1776
-		.incbin "EXPORTS/sprite/storymadness.bin"
-	sprite_data_stalemate:	; Size: 1026
-		.incbin "EXPORTS/sprite/stalemate.bin"
+	sprite_data_denouement:	; Size: 956
+		.incbin "EXPORTS/sprite/denouement.bin"
 	.align 8192
 
 
@@ -4260,13 +4260,13 @@
 	.align 8192
 
 
-; Data bank A7, total bank size: 7995 bytes
+; Data bank A7, total bank size: 8065 bytes
 	sprite_data_dryout:	; Size: 1061
 		.incbin "EXPORTS/sprite/dryout.bin"
+	sprite_data_stalemate:	; Size: 1026
+		.incbin "EXPORTS/sprite/stalemate.bin"
 	sprite_data_wcropolix:	; Size: 1026
 		.incbin "EXPORTS/sprite/wcropolix.bin"
-	sprite_data_denouement:	; Size: 956
-		.incbin "EXPORTS/sprite/denouement.bin"
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header
