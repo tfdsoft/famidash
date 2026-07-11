@@ -431,7 +431,7 @@
 	.align 8192
 
 
-; Data bank 12, total bank size: 8174 bytes
+; Data bank 12, total bank size: 8179 bytes
 	.export level_data_dorabaebasic7
 	level_data_dorabaebasic7:
 	; Header
@@ -451,7 +451,7 @@
 	; Level data
 		.incbin "EXPORTS/level/dorabaebasic7.lz.bin" ; Size: 5709
 
-	sprite_data_storymadness:	; Size: 1776
+	sprite_data_storymadness:	; Size: 1781
 		.incbin "EXPORTS/sprite/storymadness.bin"
 	sprite_data_doubletripletrial:	; Size: 676
 		.incbin "EXPORTS/sprite/doubletripletrial.bin"
