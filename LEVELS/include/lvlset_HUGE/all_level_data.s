@@ -2635,7 +2635,49 @@
 	.align 8192
 
 
-; Data bank 71, total bank size: 8191 bytes
+; Data bank 71, total bank size: 8162 bytes
+	.export level_data_hi
+	level_data_hi:
+	; Header
+		.byte <sprite_data_hi ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_hi) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_hi >> 13) ;_________ Sprite data bank
+		.byte song_miami_hotline_vol_3 ;________ Song ID
+		.byte (1 << 4) | 0 ;____________________ Starting game mode and speed
+		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
+		.byte (0 << 7) | _DECO1 ;_______________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESC << 4) | _BLOCKSB ;______ Spike Set, Block Set
+		.byte $0F ;_____________________________ Starting background color
+		.byte $0F ;_____________________________ Starting ground color
+		.byte 40 ;______________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/hi.lz.bin" ; Size: 4814
+
+	.export level_data_wintherace
+	level_data_wintherace:
+	; Header
+		.byte <sprite_data_wintherace ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_wintherace) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_wintherace >> 13) ;_________ Sprite data bank
+		.byte song_win_the_race ;_______________________ Song ID
+		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
+		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
+		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSA ;______________ Spike Set, Block Set
+		.byte $0F ;_____________________________________ Starting background color
+		.byte $0F ;_____________________________________ Starting ground color
+		.byte 27 ;______________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/wintherace.lz.bin" ; Size: 3322
+
+	.align 8192
+
+
+; Data bank 72, total bank size: 8191 bytes
 	.export level_data_tinytunes
 	level_data_tinytunes:
 	; Header
@@ -2660,7 +2702,7 @@
 	.align 8192
 
 
-; Data bank 72, total bank size: 8184 bytes
+; Data bank 73, total bank size: 8184 bytes
 	.export level_data_chromaticexpedition
 	level_data_chromaticexpedition:
 	; Header
@@ -2702,7 +2744,7 @@
 	.align 8192
 
 
-; Data bank 73, total bank size: 8136 bytes
+; Data bank 74, total bank size: 8136 bytes
 	.export level_data_everyend_30
 	level_data_everyend_30:
 	; Level data
@@ -2716,51 +2758,9 @@
 	.align 8192
 
 
-; Data bank 74, total bank size: 8071 bytes
+; Data bank 75, total bank size: 8049 bytes
 	sprite_data_pyrophoric:	; Size: 4736
 		.incbin "EXPORTS/sprite/pyrophoric.bin"
-	.export level_data_wintherace
-	level_data_wintherace:
-	; Header
-		.byte <sprite_data_wintherace ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_wintherace) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_wintherace >> 13) ;_________ Sprite data bank
-		.byte song_win_the_race ;_______________________ Song ID
-		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
-		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSA ;______________ Spike Set, Block Set
-		.byte $0F ;_____________________________________ Starting background color
-		.byte $0F ;_____________________________________ Starting ground color
-		.byte 27 ;______________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/wintherace.lz.bin" ; Size: 3322
-
-	.align 8192
-
-
-; Data bank 75, total bank size: 8035 bytes
-	.export level_data_hi
-	level_data_hi:
-	; Header
-		.byte <sprite_data_hi ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_hi) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_hi >> 13) ;_________ Sprite data bank
-		.byte song_miami_hotline_vol_3 ;________ Song ID
-		.byte (1 << 4) | 0 ;____________________ Starting game mode and speed
-		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
-		.byte (0 << 7) | _DECO1 ;_______________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;______ Spike Set, Block Set
-		.byte $0F ;_____________________________ Starting background color
-		.byte $0F ;_____________________________ Starting ground color
-		.byte 40 ;______________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/hi.lz.bin" ; Size: 4709
-
 	.export level_data_dorabaebasic4
 	level_data_dorabaebasic4:
 	; Header
