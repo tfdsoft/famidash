@@ -361,11 +361,6 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			originalArtistText: "CORNANDBEANS",
-		},
-		{
 			fmsSongName: "rainbow tylenol",
 			upperText: "RAINBOW",
 			lowerText: "TYLENOL",

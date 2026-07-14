@@ -50,21 +50,20 @@ const char levelText2D[ 6] = "RETRAY";
 const char levelText2E[10] = "LEVEL EASY";
 const char levelText2F[ 6] = "BASIC4";
 const char levelText30[ 6] = "BASIC6";
-const char levelText31[ 7] = "DREAMER";
-const char levelText32[ 5] = "SPACE";
-const char levelText33[ 7] = "SUBZERO";
-const char levelText34[10] = "KAPPACLYSM";
-const char levelText35[ 8] = "SUNSHINE";
-const char levelText36[10] = "REVOLUTION";
-const char levelText37[ 7] = "HOLIDAY";
-const char levelText38[ 9] = "THE WOODS";
-const char levelText39[ 6] = "BUT NO";
-const char levelText3A[ 7] = "TYLENOL";
-const char levelText3B[10] = "EXCITEMENT";
-const char levelText3C[ 4] = "ROAD";
-const char levelText3D[13] = "THE NIGHTMARE";
-const char levelText3E[11] = "FIRE TEMPLE";
-const char levelText3F[12] = "WATER TEMPLE";
+const char levelText31[ 5] = "SPACE";
+const char levelText32[ 7] = "SUBZERO";
+const char levelText33[10] = "KAPPACLYSM";
+const char levelText34[ 8] = "SUNSHINE";
+const char levelText35[10] = "REVOLUTION";
+const char levelText36[ 7] = "HOLIDAY";
+const char levelText37[ 9] = "THE WOODS";
+const char levelText38[ 6] = "BUT NO";
+const char levelText39[ 7] = "TYLENOL";
+const char levelText3A[10] = "EXCITEMENT";
+const char levelText3B[ 4] = "ROAD";
+const char levelText3C[13] = "THE NIGHTMARE";
+const char levelText3D[11] = "FIRE TEMPLE";
+const char levelText3E[12] = "WATER TEMPLE";
 
 
 extern const uint8_t levelTextsUpper_lo[];
@@ -105,7 +104,6 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	sizeof(levelText0A),
 	sizeof(levelText0A),
-	0,
 	sizeof(levelText0B),
 	0,
 	0,
@@ -168,5 +166,4 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText3C),
 	sizeof(levelText3D),
 	sizeof(levelText3E),
-	sizeof(levelText3F),
 };

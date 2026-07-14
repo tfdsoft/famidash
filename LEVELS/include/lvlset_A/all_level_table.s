@@ -36,7 +36,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_dorabaebasic4)
 	.byte .lobyte(level_data_dorabaebasic6)
-	.byte .lobyte(level_data_dreamer)
 	.byte .lobyte(level_data_groundtospace)
 	.byte .lobyte(level_data_subzero)
 	.byte .lobyte(level_data_kappaclysm)
@@ -84,7 +83,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_leveleasy) & $1F | $A0
 	.byte .hibyte(level_data_dorabaebasic4) & $1F | $A0
 	.byte .hibyte(level_data_dorabaebasic6) & $1F | $A0
-	.byte .hibyte(level_data_dreamer) & $1F | $A0
 	.byte .hibyte(level_data_groundtospace) & $1F | $A0
 	.byte .hibyte(level_data_subzero) & $1F | $A0
 	.byte .hibyte(level_data_kappaclysm) & $1F | $A0
@@ -132,7 +130,6 @@ _level_list_bank:
 	.byte .lobyte(level_data_leveleasy >> 13)
 	.byte .lobyte(level_data_dorabaebasic4 >> 13)
 	.byte .lobyte(level_data_dorabaebasic6 >> 13)
-	.byte .lobyte(level_data_dreamer >> 13)
 	.byte .lobyte(level_data_groundtospace >> 13)
 	.byte .lobyte(level_data_subzero >> 13)
 	.byte .lobyte(level_data_kappaclysm >> 13)
@@ -195,7 +192,6 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($000090)		; dorabaebasic6
-	.byte .lobyte($0000AB)		; dreamer
 	.byte .lobyte($0000A1)		; groundtospace
 	.byte .lobyte($000088)		; subzero
 	.byte .lobyte($000078)		; kappaclysm
@@ -245,7 +241,6 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($000090)		; dorabaebasic6
-	.byte .hibyte($0000AB)		; dreamer
 	.byte .hibyte($0000A1)		; groundtospace
 	.byte .hibyte($000088)		; subzero
 	.byte .hibyte($000078)		; kappaclysm
@@ -295,7 +290,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($000090)		; dorabaebasic6
-	.byte .bankbyte($0000AB)		; dreamer
 	.byte .bankbyte($0000A1)		; groundtospace
 	.byte .bankbyte($000088)		; subzero
 	.byte .bankbyte($000078)		; kappaclysm

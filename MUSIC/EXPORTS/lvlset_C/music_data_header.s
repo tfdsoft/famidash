@@ -29,10 +29,10 @@
 	.include "music_8.s"	; Approx. size: 7191 bytes
 	.align 8192
 .segment "DAT_BANK_30"
-	.include "music_9.s"	; Approx. size: 7267 bytes
+	.include "music_9.s"	; Approx. size: 7224 bytes
 	.align 8192
 .segment "DAT_BANK_31"
-	.include "music_10.s"	; Approx. size: 2953 bytes
+	.include "music_10.s"	; Approx. size: 4364 bytes
 	.align 8192
 
 ; DMC banks

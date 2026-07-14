@@ -1909,69 +1909,6 @@
 			]
 		},
 		{
-			level: "dreamer",
-			lowerText: "DREAMER",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "HARD",
-			stars: 4,
-			songID: "song_midnight",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [161, 24],			//shrink portal
-					offsetX: +16
-				},
-				{
-					coordinates: [
-						[322, 20],			//cube portal
-						[653, 20],			//ship portal
-					],
-					offsetY: +8
-				},
-				{
-					coordinates: [
-						[432, 24],	[445, 24],	[457, 20],	[470, 20],			//yellow orb
-						[1037, 19],	[1037, 22],		//growth portal
-					],
-					offsetX: +8
-				},
-				{
-					coordinates: [
-						[497, 22],	[876, 22],			//speed portal						
-					],
-					offsetY: -8
-				},
-				{
-					coordinates: [
-						[777, 22],			//cube portal
-						[877, 22],			//mini portal
-					],
-					offsetY: -16	
-				},
-				{
-					coordinates: [777, 23],			//speed portal
-					offsetY: -24
-				},
-				{
-					coordinates: [877, 20],			//normal grav portal
-					offsetY: +16
-				},
-				{
-					coordinates: [
-						[1038, 19],	[1038, 22],		//cube portal
-					],
-					offsetX: -8
-				},
-			]
-		},
-		{
 			level: "groundtospace",
 			upperText: "GROUND TO",
 			lowerText: "SPACE",
