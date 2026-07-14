@@ -117,11 +117,9 @@ DEFINES_HUGE = \
 	-D__VS_SYSTEM=1 \
 	-DDEBUG
 	
-album-huge: LEVELSET = Album
+album-huge: LEVELSET = Album_HUGE
 album-huge: CC65_DEFINES += -D__THE_ALBUM=1 \ -D__HUGE_ROM=1
 album-huge: CA65_DEFINES += -D__THE_ALBUM=1 \ -D__HUGE_ROM=1
-#album-huge: CC65_DEFINES += $(DEFINES_HUGE)
-#album-huge: CA65_DEFINES += $(DEFINES_HUGE)
 album-huge: OUTDIR = $(OUTDIR_PREFIX)/$@
 album-huge: TMPDIR = $(TMPDIR_PREFIX)/$@
 album-huge:
