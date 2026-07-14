@@ -2009,32 +2009,7 @@
 	.align 8192
 
 
-; Data bank 57, total bank size: 8171 bytes
-	.export level_data_hell
-	level_data_hell:
-	; Header
-		.byte <sprite_data_hell ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_hell) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_hell >> 13) ;_________ Sprite data bank
-		.byte song_accelerate ;___________________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte (0 << 7) | _EXTRASPRITES1 ;_________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Spike Set, Block Set
-		.byte $0F ;_______________________________ Starting background color
-		.byte $0F ;_______________________________ Starting ground color
-		.byte 36 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/hell.lz.bin" ; Size: 5732
-
-	sprite_data_deathmoon:	; Size: 2426
-		.incbin "EXPORTS/sprite/deathmoon.bin"
-	.align 8192
-
-
-; Data bank 58, total bank size: 8164 bytes
+; Data bank 57, total bank size: 8169 bytes
 	.export level_data_eighto
 	level_data_eighto:
 	; Header
@@ -2054,12 +2029,12 @@
 	; Level data
 		.incbin "EXPORTS/level/eighto.lz.bin" ; Size: 5730
 
-	sprite_data_goldenhaze:	; Size: 2421
-		.incbin "EXPORTS/sprite/goldenhaze.bin"
+	sprite_data_deathmoon:	; Size: 2426
+		.incbin "EXPORTS/sprite/deathmoon.bin"
 	.align 8192
 
 
-; Data bank 59, total bank size: 8068 bytes
+; Data bank 58, total bank size: 8160 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -2078,6 +2053,31 @@
 		.byte 27 ;__________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/electrodynamix.lz.bin" ; Size: 5726
+
+	sprite_data_goldenhaze:	; Size: 2421
+		.incbin "EXPORTS/sprite/goldenhaze.bin"
+	.align 8192
+
+
+; Data bank 59, total bank size: 8055 bytes
+	.export level_data_hell
+	level_data_hell:
+	; Header
+		.byte <sprite_data_hell ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_hell) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_hell >> 13) ;_________ Sprite data bank
+		.byte song_accelerate ;___________________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte (0 << 7) | _EXTRASPRITES1 ;_________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Spike Set, Block Set
+		.byte $0F ;_______________________________ Starting background color
+		.byte $0F ;_______________________________ Starting ground color
+		.byte 36 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/hell.lz.bin" ; Size: 5713
 
 	.export level_data_ninox
 	level_data_ninox:
