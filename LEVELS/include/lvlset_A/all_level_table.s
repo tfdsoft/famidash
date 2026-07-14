@@ -50,6 +50,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_watertemple)
+	.byte .lobyte(level_data_shadowtemple)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness) & $1F | $A0
@@ -97,6 +98,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_nightmare) & $1F | $A0
 	.byte .hibyte(level_data_firetemple) & $1F | $A0
 	.byte .hibyte(level_data_watertemple) & $1F | $A0
+	.byte .hibyte(level_data_shadowtemple) & $1F | $A0
 
 _level_list_bank:
 	.byte .lobyte(level_data_stereomadness >> 13)
@@ -144,6 +146,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_nightmare >> 13)
 	.byte .lobyte(level_data_firetemple >> 13)
 	.byte .lobyte(level_data_watertemple >> 13)
+	.byte .lobyte(level_data_shadowtemple >> 13)
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_rainbowtylenol_0)
@@ -206,6 +209,7 @@ _level_lengths_lo:
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000080)		; watertemple
+	.byte .lobyte($000094)		; shadowtemple
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -255,6 +259,7 @@ _level_lengths_md:
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000080)		; watertemple
+	.byte .hibyte($000094)		; shadowtemple
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -304,6 +309,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000080)		; watertemple
+	.byte .bankbyte($000094)		; shadowtemple
 
 .endif
 .endif

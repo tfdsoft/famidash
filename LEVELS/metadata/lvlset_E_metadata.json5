@@ -591,68 +591,6 @@
             parallaxDisable: true
         },
 		{
-            level: "shadowtemple",
-			lowerText: "SHADOW TEMPLE",
-            decoType: "DECO1",
-            spikeSet: "A",
-            blockSet: "B",
-            sawSet: "A",
-            difficulty: "HARDDEMON",
-            stars: 10,
-            songID: "song_clubstep",
-            startingGameMode: 0,
-            startingSpeed: 0,
-            startingBackgroundColor: 0x00,
-            startingGroundColor: 0x0F,
-            parallaxDisable: true,
-			maxFallSpeed_is_7: 0x01,
-			objectOffsets: [
-				{
-					coordinates: [
-						[91, 24], [141, 24], [243, 21], [334, 20], [334, 21], [479, 20], [479, 21], [666, 21], [689, 24], [727, 21],
-					],
-					offsetX: +16
-				},
-				{
-					coordinates: [
-						[93, 24], [691, 24],
-					],
-					offsetX: -16
-				},
-				{
-					coordinates: [
-						[144, 24],
-					],
-					offsetX: -32
-				},
-				{
-					coordinates: [
-						[97, 22], [101, 22], [105, 22], [194, 21], [246, 22], [250, 22], [254, 22], [268, 22], [334, 21], [375, 21], [432, 21], [455, 19], [479, 21], [584, 24], [666, 21], [667, 21], [690, 25], [728, 22], [771, 21], [836, 25],
-					],
-					offsetY: -8
-				},
-				{
-					coordinates: [
-						[286, 20], [287, 20], [334, 20], [335, 20], [376, 20], [432, 20], [479, 20], [480, 20], [771, 20],
-					],
-					offsetY: +8
-				},
-				{
-					coordinates: [
-						[286, 20], [375, 21], [455, 19], [583, 23], [667, 21], [906, 24],
-					],
-					offsetX: +8
-				},
-				{
-					coordinates: [
-						[732, 22], [735, 22], [738, 22], [748, 22], [751, 22], [754, 22], [757, 22], [760, 22], [763, 22], [766, 22],
-					],
-					offsetY: -8,
-					offsetX: +8,
-				},
-			]
-        },
-		{
 			level: "foresttemple",
 			lowerText: "FOREST TEMPLE",
 			decoType: "DECO1",

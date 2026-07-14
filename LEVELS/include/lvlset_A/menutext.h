@@ -64,6 +64,7 @@ const char levelText3B[ 4] = "ROAD";
 const char levelText3C[13] = "THE NIGHTMARE";
 const char levelText3D[11] = "FIRE TEMPLE";
 const char levelText3E[12] = "WATER TEMPLE";
+const char levelText3F[13] = "SHADOW TEMPLE";
 
 
 extern const uint8_t levelTextsUpper_lo[];
@@ -118,6 +119,7 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	0,
+	0,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -166,4 +168,5 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText3C),
 	sizeof(levelText3D),
 	sizeof(levelText3E),
+	sizeof(levelText3F),
 };

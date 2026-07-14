@@ -14,7 +14,6 @@ const uint8_t difficulty_list[] = {
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// demoncryogenic
 	HARDDEMON,	// azuronxolax
-	HARDDEMON,	// shadowtemple
 	HARDDEMON,	// foresttemple
 	HARDDEMON,	// jawbreaker
 	INSANEDEMON,	// denouement
@@ -47,7 +46,6 @@ const uint8_t stars_list[] = {
 	10,	// toeiiv2
 	10,	// demoncryogenic
 	10,	// azuronxolax
-	10,	// shadowtemple
 	10,	// foresttemple
 	10,	// jawbreaker
 	10,	// denouement

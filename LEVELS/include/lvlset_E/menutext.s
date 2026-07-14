@@ -5,7 +5,7 @@
 
 .export _levelTextsUpper_lo, _levelTextsUpper_hi, _levelTextsLower_lo, _levelTextsLower_hi
 
-.repeat 37, I
+.repeat 36, I
 .import .ident(.sprintf("_levelText%02X", I))
 .endrepeat
 
@@ -18,7 +18,6 @@ _levelTextsUpper_lo:
 .byte	0
 .byte	0
 .byte	<_levelText02
-.byte	0
 .byte	0
 .byte	0
 .byte	0
@@ -50,7 +49,6 @@ _levelTextsUpper_hi:
 .byte	0
 .byte	0
 .byte	>_levelText02
-.byte	0
 .byte	0
 .byte	0
 .byte	0
@@ -103,7 +101,6 @@ _levelTextsLower_lo:
 .byte	<_levelText21
 .byte	<_levelText22
 .byte	<_levelText23
-.byte	<_levelText24
 
 _levelTextsLower_hi:
 .byte	>_levelText07
@@ -135,4 +132,3 @@ _levelTextsLower_hi:
 .byte	>_levelText21
 .byte	>_levelText22
 .byte	>_levelText23
-.byte	>_levelText24
