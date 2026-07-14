@@ -74,6 +74,7 @@ CFG2 ?= CONFIG/mmc3-album.cfg
 # CFG3 ?= CONFIG/mmc3-big.cfg
 CFG4 ?= CONFIG/mmc3-huge.cfg
 CFG5 ?= CONFIG/mmc3-huge-vs.cfg
+CFG6 ?= CONFIG/mmc3-album-huge.cfg
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -84,7 +85,7 @@ endif
 .PHONY: default clean distclean build nsf vs-sys main b-sides
 
 build: $(OUTDIR) $(OUTDIR)/$(NAME).nes
-all: main vs-sys b-sides c-sides d-sides e-sides album huge vs-huge
+all: main vs-sys b-sides c-sides d-sides e-sides album huge vs-huge album-huge
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
 main: LEVELSET = A
@@ -109,6 +110,26 @@ album:
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG2) \
+	--no-print-directory	
+	
+DEFINES_HUGE = \
+	-D__HUGE_ROM=1 \
+	-D__VS_SYSTEM=1 \
+	-DDEBUG
+	
+album-huge: LEVELSET = Album
+album-huge: CC65_DEFINES += -D__THE_ALBUM=1 \ -D__HUGE_ROM=1
+album-huge: CA65_DEFINES += -D__THE_ALBUM=1 \ -D__HUGE_ROM=1
+#album-huge: CC65_DEFINES += $(DEFINES_HUGE)
+#album-huge: CA65_DEFINES += $(DEFINES_HUGE)
+album-huge: OUTDIR = $(OUTDIR_PREFIX)/$@
+album-huge: TMPDIR = $(TMPDIR_PREFIX)/$@
+album-huge:
+	@echo Building the album huge...
+	@$(MAKE) build LEVELSET=$(LEVELSET) \
+	CC65_DEFINES=$(CC65_DEFINES) \
+	CA65_DEFINES=$(CA65_DEFINES) \
+	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG6) \
 	--no-print-directory
 
 vs-sys: LEVELSET = A
@@ -125,10 +146,6 @@ vs-sys:
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
 	--no-print-directory
 
-DEFINES_HUGE = \
-	-D__HUGE_ROM=1 \
-	-D__VS_SYSTEM=1 \
-	-DDEBUG
 
 vs-huge: LEVELSET = HUGE
 vs-huge: CC65_DEFINES += $(DEFINES_HUGE)

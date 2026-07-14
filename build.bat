@@ -26,4 +26,7 @@ copy .\build\album\famidash.dbg ".\Famidash - The Album.dbg"
 
 copy .\build\huge\famidash.nes ".\Famidash - Huge Man.nes"
 copy .\build\huge\famidash.dbg ".\Famidash - Huge Man.dbg"
+
+copy .\build\album-huge\famidash.nes ".\Famidash - The Album HUGE.nes"
+copy .\build\album-huge\famidash.dbg ".\Famidash - The Album HUGE.dbg"
 pause
