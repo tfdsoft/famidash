@@ -29,10 +29,10 @@
 	.include "music_8.s"	; Approx. size: 7271 bytes
 	.align 8192
 .segment "DAT_BANK_2F"
-	.include "music_9.s"	; Approx. size: 6609 bytes
+	.include "music_9.s"	; Approx. size: 7258 bytes
 	.align 8192
 .segment "DAT_BANK_30"
-	.include "music_10.s"	; Approx. size: 7223 bytes
+	.include "music_10.s"	; Approx. size: 6701 bytes
 	.align 8192
 .segment "DAT_BANK_31"
 	.include "music_11.s"	; Approx. size: 1279 bytes
