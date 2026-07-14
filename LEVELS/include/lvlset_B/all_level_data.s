@@ -496,27 +496,13 @@
 	.align 8192
 
 
-; Data bank 17, total bank size: 8071 bytes
+; Data bank 17, total bank size: 7533 bytes
 	sprite_data_pyrophoric:	; Size: 4736
 		.incbin "EXPORTS/sprite/pyrophoric.bin"
-	.export level_data_wintherace
-	level_data_wintherace:
-	; Header
-		.byte <sprite_data_wintherace ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_wintherace) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_wintherace >> 13) ;_________ Sprite data bank
-		.byte song_win_the_race ;_______________________ Song ID
-		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
-		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSA ;______________ Spike Set, Block Set
-		.byte $0F ;_____________________________________ Starting background color
-		.byte $0F ;_____________________________________ Starting ground color
-		.byte 27 ;______________________________________ Level height
+	.export level_data_thesteamworks_2
+	level_data_thesteamworks_2:
 	; Level data
-		.incbin "EXPORTS/level/wintherace.lz.bin" ; Size: 3322
+		.incbin "EXPORTS/level/thesteamworks.lz.1.bin" ; Size: 2797
 
 	.align 8192
 
@@ -563,7 +549,7 @@
 	.align 8192
 
 
-; Data bank 19, total bank size: 7388 bytes
+; Data bank 19, total bank size: 8100 bytes
 	.export level_data_rainbowdust
 	level_data_rainbowdust:
 	; Header
@@ -583,10 +569,24 @@
 	; Level data
 		.incbin "EXPORTS/level/rainbowdust.lz.bin" ; Size: 4578
 
-	.export level_data_thesteamworks_2
-	level_data_thesteamworks_2:
+	.export level_data_wintherace
+	level_data_wintherace:
+	; Header
+		.byte <sprite_data_wintherace ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_wintherace) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_wintherace >> 13) ;_________ Sprite data bank
+		.byte song_win_the_race ;_______________________ Song ID
+		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
+		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
+		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSA ;______________ Spike Set, Block Set
+		.byte $0F ;_____________________________________ Starting background color
+		.byte $0F ;_____________________________________ Starting ground color
+		.byte 27 ;______________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/level/thesteamworks.lz.1.bin" ; Size: 2797
+		.incbin "EXPORTS/level/wintherace.lz.bin" ; Size: 3496
 
 	.align 8192
 
