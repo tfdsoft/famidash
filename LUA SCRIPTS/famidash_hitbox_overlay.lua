@@ -11,8 +11,9 @@
 --   * Sprites: hitboxes of all active sprite objects using the validated
 --     per-type dimension tables from the FamiDash editor/simulator
 --     (Editor Test/SimulatorWindow.xaml.cs). These match the ROM tables but
---     replace the 0xFF "special" markers with the objects' real sizes, and
---     include the simulator's non-flipped-pad +8px shift.
+--     replace the 0xFF "special" markers with the objects' real sizes.
+--     (The simulator's non-flipped-pad +8px shift is NOT applied: the game's
+--     runtime realy already positions pads correctly.)
 --   * Player: real collision hitbox for both players (and probe points the
 --     background collision actually samples, if enabled).
 --
@@ -154,8 +155,6 @@ local SPR_OY = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, 5, 2, 0,
 }
 
--- Non-flipped pads get their hitbox shifted 8px down (simulator rule)
-local PAD_DOWN_IDS = { [0x52]=true, [0x0A]=true, [0x0D]=true, [0x25]=true, [0xFD]=true }
 
 local M = nil  -- emu.memType.nesMemory at callback time
 local function rd8(addr) return emu.read(addr, M) or 0 end
@@ -470,7 +469,6 @@ local function drawSprites()
             local w, h = SPR_W[t + 1] or 16, SPR_H[t + 1] or 16
             if w > 0 and h > 0 then
                 local ox, oy = SPR_OX[t + 1] or 0, SPR_OY[t + 1] or 0
-                if PAD_DOWN_IDS[t] then oy = oy + 8 end
                 local x = rd8(A.spr_realx + i) + ox
                 local y = rd8(A.spr_realy + i) + oy
                 emu.drawRectangle(x, y, w, h, COLOR_SPRITE, true)

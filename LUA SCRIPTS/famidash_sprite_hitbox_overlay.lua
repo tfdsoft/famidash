@@ -5,9 +5,10 @@
 --
 -- Dimensions come from the validated tables in the FamiDash editor/simulator
 -- (Editor Test/SimulatorWindow.xaml.cs): identical to the ROM tables but with
--- the 0xFF "special" markers replaced by the objects' real sizes, plus the
--- simulator's non-flipped-pad +8px shift. Types with zero size are triggers /
--- decorations and are skipped.
+-- the 0xFF "special" markers replaced by the objects' real sizes. Types with
+-- zero size are triggers / decorations and are skipped. (The simulator's
+-- non-flipped-pad +8px shift is not applied: the game's runtime realy
+-- already positions pads correctly.)
 --
 -- For sprites + tiles combined, use famidash_hitbox_overlay.lua instead.
 -- Drop into Mesen2 via Tools -> Lua Scripting -> Open Script.
@@ -111,9 +112,6 @@ local SPR_OY = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, 5, 2, 0,
 }
 
--- Non-flipped pads get their hitbox shifted 8px down (simulator rule)
-local PAD_DOWN_IDS = { [0x52]=true, [0x0A]=true, [0x0D]=true, [0x25]=true, [0xFD]=true }
-
 local M = nil
 local function rd8(addr) return emu.read(addr, M) or 0 end
 
@@ -138,7 +136,6 @@ emu.addEventCallback(function()
             local w, h = SPR_W[t + 1] or 16, SPR_H[t + 1] or 16
             if w > 0 and h > 0 then
                 local ox, oy = SPR_OX[t + 1] or 0, SPR_OY[t + 1] or 0
-                if PAD_DOWN_IDS[t] then oy = oy + 8 end
                 local x = rd8(A.spr_realx + i) + ox
                 local y = rd8(A.spr_realy + i) + oy
                 emu.drawRectangle(x, y, w, h, COLOR_SPRITE, true)
