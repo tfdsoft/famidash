@@ -475,7 +475,7 @@ emu.addEventCallback(function()
                     if held and (not isWaveMode) then thickness = 3 end
                     drawTrailSegment(axS, ayS, bxS, byS, TRAIL_COLOR, thickness)
                     if (not isWaveMode) and pressedFresh and curEntry.p == true then
-                        drawFilledCircle(bxS, byS, 4, TRAIL_COLOR)
+                        drawFilledCircle(bxS, byS, 4, 0xFFA500) -- orange click marker
                     end
                 end
             end
