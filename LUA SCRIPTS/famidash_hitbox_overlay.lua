@@ -462,12 +462,30 @@ end
 --------------------------------------------------------------------------
 -- Sprite pass, using the simulator's validated dimension tables
 --------------------------------------------------------------------------
+
+-- Decoration and color/tile/ground-trigger sprite types have no gameplay
+-- hitbox; skip them (same exclusion sets as the editor/simulator's viewer).
+local function isNonGameplaySprite(t)
+    if t >= 0x2A and t <= 0x3F then return true end   -- decorations
+    if t == 0x49 or t == 0x4A then return true end    -- decorations
+    if t >= 0x80 and t <= 0x8C then return true end   -- bg color triggers
+    if t >= 0x90 and t <= 0x9C then return true end
+    if t >= 0xA0 and t <= 0xAC then return true end
+    if t == 0x8F or t == 0x9F or t == 0xCF then return true end
+    if t == 0xAE or t == 0xAF then return true end
+    if t >= 0xB0 and t <= 0xBF then return true end   -- tile triggers
+    if t >= 0xC0 and t <= 0xCC then return true end   -- ground color triggers
+    if t >= 0xD0 and t <= 0xDC then return true end
+    if t >= 0xE0 and t <= 0xEC then return true end
+    return false
+end
+
 local function drawSprites()
     for i = 0, 15 do
         if rd8(A.spr_active + i) > 0 then
             local t = rd8(A.spr_type + i)
             local w, h = SPR_W[t + 1] or 16, SPR_H[t + 1] or 16
-            if w > 0 and h > 0 then
+            if w > 0 and h > 0 and not isNonGameplaySprite(t) then
                 local ox, oy = SPR_OX[t + 1] or 0, SPR_OY[t + 1] or 0
                 local x = rd8(A.spr_realx + i) + ox
                 local y = rd8(A.spr_realy + i) + oy
