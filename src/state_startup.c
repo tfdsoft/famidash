@@ -61,16 +61,14 @@ banked(startup_bank.func) void state_startup(){
     // set the palette
     se_set_palette_background(pal_startup);
 
-    
-
     se_set_palette_brightness_all(0);
     se_turn_on_rendering();
 
-    __asm__("cli");
+    __asm__("cli"); // enable interrupts
 
     // fade in, play boot sound, wait, fade out
     se_wait_frames(8);
-    se_fade_palette_to(0,4);
+    se_fade_palette_to(0,4); // fade from black to normal contrast
     se_wait_frames(8);
 
     se_sfx_play(sfx_boot,0);
@@ -80,7 +78,7 @@ banked(startup_bank.func) void state_startup(){
     se_set_palette_brightness_all(4);
     se_wait_frames(85);
 
-    se_fade_palette_to(4,0);
+    se_fade_palette_to(4,0); // fade from normal contrast to black
     se_turn_off_rendering();
 
 

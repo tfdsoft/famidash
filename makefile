@@ -69,7 +69,7 @@ TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 CFG_OVERSIZE ?= link_oversize.ld
 
-CFLAGS = -flto -Os -ffast-math -mcpu=mos6502x -fnonreentrant -std=gnu23 -Wall -Wextra
+CFLAGS = -flto -Oz -mcpu=mos6502x -fnonreentrant -std=gnu23 -Wall -Wextra
 LDFLAGS = -mreserve-zp=92 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
@@ -137,7 +137,7 @@ $(TMPDIR)/sniperengine.o: src/sniperengine/sniperengine.s
 	$(CA65) src/sniperengine/sniperengine.s -o $@
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
-#./generate_everything.sh
+    #./generate_everything.sh
 	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,src/config/$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
 
 

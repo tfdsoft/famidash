@@ -1291,8 +1291,8 @@ famistudio_init:
 
     stx famistudio_song_list_lo
     sty famistudio_song_list_hi
-    stx @music_data_ptr+0
-    sty @music_data_ptr+1
+    stx @music_data_ptr + 0
+    sty @music_data_ptr + 1
 
 .if FAMISTUDIO_DUAL_SUPPORT
     tax

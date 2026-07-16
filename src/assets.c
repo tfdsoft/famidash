@@ -151,11 +151,36 @@ file(chr_ground_3, chr_bank_3) = {
     #embed "./chr/dnt/Ground3.bin"
 };
 
-
+/*
+ *  ICON KIT STUFF
+*/
 file(chr_icon0, chr_bank_3) = {
     #embed "./chr/dnt/Icon0.bin"
 };
+file(chr_icon1, chr_bank_3) = {
+    #embed "./chr/dnt/Icon1.bin"
+};
+file(chr_icon2, chr_bank_3) = {
+    #embed "./chr/dnt/Icon2.bin"
+};
+file(chr_icon3, chr_bank_3) = {
+    #embed "./chr/dnt/Icon3.bin"
+};
+file(chr_icon4, chr_bank_3) = {
+    #embed "./chr/dnt/Icon4.bin"
+};
+file(chr_icon5, chr_bank_3) = {
+    #embed "./chr/dnt/Icon5.bin"
+};
 
+const u8* chr_icons[] = {
+    chr_icon0,
+    chr_icon1,
+    chr_icon2,
+    chr_icon3,
+    chr_icon4,
+    chr_icon5,
+};
 
 
 

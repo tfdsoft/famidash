@@ -355,4 +355,6 @@ banked(startup_bank.func) void state_menu() {
 }
 
 
-
+banked(startup_bank.func) void state_help() {
+    
+}
