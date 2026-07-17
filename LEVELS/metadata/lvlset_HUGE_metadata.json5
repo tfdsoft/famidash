@@ -2440,6 +2440,56 @@
 			]
 		},
 		{
+            level: "illusion",
+			lowerText: "ILLUSION",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "HARD",
+            stars: 4,
+            songID: "song_menu_theme",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x0F,
+            startingGroundColor: 0x0F,
+            parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[165, 23], [168, 24], [237, 24], [281, 23], [303, 24],
+					],
+					offsetX: +8,
+				},
+				{
+					coordinates: [
+						[169, 25],
+					],
+					offsetX: -8,
+				},
+				{
+					coordinates: [
+						[627, 21],
+					],
+					offsetX: +16,
+				},
+				{
+					coordinates: [
+						[169, 25], [529, 23], [628, 22],
+					],
+					offsetY: -8,
+				},
+				{
+					coordinates: [
+						[628, 23],
+					],
+					offsetX: +3,
+				},
+			]
+        },
+		{
 			level: "lookatthislevel",
 			upperText: "LOOK AT",
 			lowerText: "THIS LEVEL",

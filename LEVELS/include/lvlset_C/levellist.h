@@ -12,6 +12,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// cosmicdolphin
 	NORMAL,	// somewhereinaforest
 	HARD,	// dreamer
+	HARD,	// illusion
 	HARD,	// hungrymanadventures
 	HARD,	// dorabaebasic7
 	HARD,	// storymadness
@@ -46,6 +47,7 @@ const uint8_t stars_list[] = {
 	3,	// cosmicdolphin
 	3,	// somewhereinaforest
 	4,	// dreamer
+	4,	// illusion
 	4,	// hungrymanadventures
 	4,	// dorabaebasic7
 	4,	// storymadness

@@ -23,25 +23,26 @@ const char levelText12[ 9] = "NICKTOONS";
 const char levelText13[ 7] = "DOLPHIN";
 const char levelText14[11] = "IN A FOREST";
 const char levelText15[ 7] = "DREAMER";
-const char levelText16[10] = "ADVENTURES";
-const char levelText17[ 6] = "BASIC7";
-const char levelText18[13] = "STORY MADNESS";
-const char levelText19[10] = "EXPEDITION";
-const char levelText1A[ 7] = "ENDGAME";
-const char levelText1B[ 4] = "ROTD";
-const char levelText1C[ 4] = "EASY";
-const char levelText1D[ 7] = "VICTORY";
-const char levelText1E[ 8] = "OVERAWED";
-const char levelText1F[ 5] = "GREIF";
-const char levelText20[ 5] = "UNITY";
-const char levelText21[ 9] = "DASTARDLY";
-const char levelText22[ 7] = "TROLLED";
-const char levelText23[12] = "SUPER CYCLES";
-const char levelText24[ 6] = "DECODE";
-const char levelText25[13] = "CLUTTERFUNK 2";
-const char levelText26[12] = "CHAOZ IMPACT";
-const char levelText27[13] = "SOLAR CIRCLES";
-const char levelText28[11] = "FUTURE FUNK";
+const char levelText16[ 8] = "ILLUSION";
+const char levelText17[10] = "ADVENTURES";
+const char levelText18[ 6] = "BASIC7";
+const char levelText19[13] = "STORY MADNESS";
+const char levelText1A[10] = "EXPEDITION";
+const char levelText1B[ 7] = "ENDGAME";
+const char levelText1C[ 4] = "ROTD";
+const char levelText1D[ 4] = "EASY";
+const char levelText1E[ 7] = "VICTORY";
+const char levelText1F[ 8] = "OVERAWED";
+const char levelText20[ 5] = "GREIF";
+const char levelText21[ 5] = "UNITY";
+const char levelText22[ 9] = "DASTARDLY";
+const char levelText23[ 7] = "TROLLED";
+const char levelText24[12] = "SUPER CYCLES";
+const char levelText25[ 6] = "DECODE";
+const char levelText26[13] = "CLUTTERFUNK 2";
+const char levelText27[12] = "CHAOZ IMPACT";
+const char levelText28[13] = "SOLAR CIRCLES";
+const char levelText29[11] = "FUTURE FUNK";
 
 
 extern const uint8_t levelTextsUpper_lo[];
@@ -60,6 +61,7 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	sizeof(levelText03),
 	sizeof(levelText04),
+	0,
 	0,
 	sizeof(levelText05),
 	sizeof(levelText06),
@@ -101,19 +103,20 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText19),
 	sizeof(levelText1A),
 	sizeof(levelText1B),
-	sizeof(levelText19),
 	sizeof(levelText1C),
+	sizeof(levelText1A),
 	sizeof(levelText1D),
 	sizeof(levelText1E),
 	sizeof(levelText1F),
 	sizeof(levelText20),
 	sizeof(levelText21),
-	sizeof(levelText10),
 	sizeof(levelText22),
+	sizeof(levelText10),
 	sizeof(levelText23),
 	sizeof(levelText24),
 	sizeof(levelText25),
 	sizeof(levelText26),
 	sizeof(levelText27),
 	sizeof(levelText28),
+	sizeof(levelText29),
 };

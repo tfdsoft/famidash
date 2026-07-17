@@ -15,6 +15,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_cosmicdolphin)
 	.byte .lobyte(level_data_somewhereinaforest)
 	.byte .lobyte(level_data_dreamer)
+	.byte .lobyte(level_data_illusion)
 	.byte .lobyte(level_data_hungrymanadventures)
 	.byte .lobyte(level_data_dorabaebasic7)
 	.byte .lobyte(level_data_storymadness)
@@ -48,6 +49,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_cosmicdolphin) & $1F | $A0
 	.byte .hibyte(level_data_somewhereinaforest) & $1F | $A0
 	.byte .hibyte(level_data_dreamer) & $1F | $A0
+	.byte .hibyte(level_data_illusion) & $1F | $A0
 	.byte .hibyte(level_data_hungrymanadventures) & $1F | $A0
 	.byte .hibyte(level_data_dorabaebasic7) & $1F | $A0
 	.byte .hibyte(level_data_storymadness) & $1F | $A0
@@ -81,6 +83,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_cosmicdolphin >> 13)
 	.byte .lobyte(level_data_somewhereinaforest >> 13)
 	.byte .lobyte(level_data_dreamer >> 13)
+	.byte .lobyte(level_data_illusion >> 13)
 	.byte .lobyte(level_data_hungrymanadventures >> 13)
 	.byte .lobyte(level_data_dorabaebasic7 >> 13)
 	.byte .lobyte(level_data_storymadness >> 13)
@@ -144,6 +147,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008F)		; cosmicdolphin
 	.byte .lobyte($00009D)		; somewhereinaforest
 	.byte .lobyte($0000AB)		; dreamer
+	.byte .lobyte($00008C)		; illusion
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000F7)		; dorabaebasic7
 	.byte .lobyte($00009C)		; storymadness
@@ -179,6 +183,7 @@ _level_lengths_md:
 	.byte .hibyte($00008F)		; cosmicdolphin
 	.byte .hibyte($00009D)		; somewhereinaforest
 	.byte .hibyte($0000AB)		; dreamer
+	.byte .hibyte($00008C)		; illusion
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000F7)		; dorabaebasic7
 	.byte .hibyte($00009C)		; storymadness
@@ -214,6 +219,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008F)		; cosmicdolphin
 	.byte .bankbyte($00009D)		; somewhereinaforest
 	.byte .bankbyte($0000AB)		; dreamer
+	.byte .bankbyte($00008C)		; illusion
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000F7)		; dorabaebasic7
 	.byte .bankbyte($00009C)		; storymadness
