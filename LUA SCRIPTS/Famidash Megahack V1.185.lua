@@ -1,13 +1,14 @@
------------------------
--- Famidash Megahack v1.17
--- By: Aaron Chen-Chang (Air Conditioner) & more
+﻿-----------------------
+-- Famidash Megahack v1.185
+-- By: Aaron Chen-Chang (Air Conditioner) & more...
 -- Famidash Update 1.2.8
--- This script was last updated on May 31th, 4:46 P.M. 2026, Taiwan time.
+-- This script was last updated on June 27th, 7:17 P.M. 2026, Taiwan time.
 -----------------------
 -- In order to use this script, go to Mesen after you download it, open up your Famidash HUGE ROM after you downloaded it from TFDSoft Discord server or downloaded it online, and click Debug on the top bar, and go to Script Window or you can just press ctrl + N to open the script window. And paste this script into it, and click run. 
 -----------------------
--- Press the start button to open the menu, press the start button again or press B (pretty useful if you accidentally bugged the menu to appear when moving in the level) to close the menu when you are in the level.
+-- Pause to open the menu, unpause to close the menu when you are in the level.
 -- Press the Up or Down button to move the cursor, press the A button to select the hack you want to activate and vice versa.
+-- Press Select to turn on debug mode, when debug mode is turned on, it will automatically turn on noclip accuracy too!
 -- If a hack is Green, it is allowed for completion and will not be flagged by the cheat indicator dot.
 -- If a hack is Red, it is not allowed for completion and will be flagged by the cheat indicator dot unless you disable the hack and reset player (by dying or exiting the level).
 -----------------------
@@ -15,8 +16,10 @@
 -- Cheat Indicator included and is always on.
 -- Searching included and is always on.
 -- Completion message is included and is always on.
+-- Noclip accuracy included and will be turned on when debug mode is on.
 -----------------------
 -- Information for hacks:
+-- Noclip accuracy (By Aaron Chen-Chang and wilfredlam0418): When debug mode is on, if you died to spikes and ignored death, your accuracy of playing the level goes down, fun to play with.
 -- Cheat indicator (By Aaron Chen-Chang): Will turn red when detected cheats that aren't allowed and rewinding.
 -- Clicks HUD (By Aaron Chen-Chang): Shows your total clicks and Clicks Per Second (CPS) during a level once turned on, if your CPS is 0, the background color for CPS will be black, 1~5 will be green, 6~10 will be yellow, >10 will be red, when you are pressing or holding the A button or the Up button, the "A button" or the "Up button" text and the total clicks will turn green.
 -- Input test (By Aaron Chen-Chang): Shows your inputs with a green background once turned on, this includes all possible inputs from controller 1.
@@ -25,6 +28,21 @@
 -- Path Overlay (By Kando Wontu): Shows the path you have taken by drawing a line trail down once turned on, if you click, the line gets thicker and vice versa.
 -- Ship Copter (By wilfredlam0418): Makes the swing gamemode behave like the ship once turned on.
 -- Search (By wilfredlam0418): Allows searching in level select screen, press / to start typing, press up or down after typing to select level, press enter to choose level, press left to delete characters. 
+-- Dark Mode (By Aaron Chen-Chang): Makes the whole screen less bright.
+-----------------------
+-- Main Contributors:
+-- Aaron Chen-Chang
+-- wilfredlam
+-- Kando Wontu
+-----------------------
+-- Special Thanks:
+-- Azulamazigh
+-- absolute
+-- Mesen
+-- Lua scripting
+-- The Famidash and Geometry dash community
+-----------------------
+-- For more questions, DM: aaronchenchang on Discord
 -----------------------
 -- Update log:
 -- v1.0 - Added mod menu
@@ -47,7 +65,7 @@
 -- Changed from pressing right or left to open or close to pressing B to open of close the menu because platformer mode breaks with right and left.
 -- Change it from pressing the B button to pressing the start button to close or open, because of practice mode activation closing the pause menu, pressing B will close menu no matter what. So if your menu opens while moving in the level, just press B to close it.
 -- Added instructions on how to use this hack.
--- Made it so that pressing select also closes the menu due to exiting the level making the menu appear being annoying.
+-- Made it so that pressing select also closes the menu due toexiting the level making the menu appear being annoying.
 -- Fixed Rewind cheat indicator from accidentally making Clicks HUD count as a red hack even though it isn't.
 -- Fixed Completion restart button breaking menu.
 -- V1.15
@@ -59,9 +77,19 @@
 -- Added Search, a hack that lets you search for the levels.
 -- V1.17
 -- Added an intro.
+-- Made cheat indicator detect save states.
+-- Fixed bug where having Clicks HUD on won't reset cheat dot when you use save states.
+-- Fixed the debug mode detection from detecting select to detecting actual debug mode being active.
+-- V1.18
+-- ADDED NOCLIP ACCURACY!
+-- Made it so that Mod menu opens on pausing instead of opening on pressing start.
+-- Added "deaths" to noclip accuracy
+-- Added Dark Mode, made cheat indicator appear on the left bottom.
+-- Made Cheat indicator show reasoning as to why it was red.
+-- Made everything more compact, made it so that everytime you click, it shows on the right side of the screen.
 -----------------------
 
-local editableMessage = "Best runs: 28%, 23-66%, 36-81%, 46-100%" -- edit this text with anything you want
+local editableMessage = "Best runs: 69%, 23-82%, 36-100%" -- edit this text with anything you want
 local editableX = 0
 local editableY = 120
 local editableShowBox = true
@@ -98,6 +126,19 @@ local search_held = false
 local backspace_held = false
 local confirm_held = false
 local suggestion_up_held = false
+local rewindDetected = false
+local noclipFrames = 0
+local totalFrames = 0
+local reasons = ""
+
+local function AddReason(reason)
+
+    if not string.find(reasons, reason, 1, true) then
+        reasons = reasons .. reason .. " "
+    end
+
+end
+local inputParticles = {}
 
 -- text should not be longer than this message
 local winTexts = {
@@ -200,6 +241,8 @@ local winTexts = {
     "i bet you never seen this message before",
     "GGGGGGGGGGGGGGGGGGGGGGGGG",
     "who is this guy?",
+    "Everything leads to death",
+    "Teamwork makes the dream worse",
 -- GD win messages
 -- text should not be longer than this message
     "Level and Coins Verified!",
@@ -324,12 +367,49 @@ local winTextTimer = 0
 local winTextDelay = 0
 local introActive = true
 local introText =
-    "Famidash Megahack V1.17\n" ..
+    "Famidash Megahack V1.185\n" ..
     "By Aaron Chen-Chang and more"
 
 local introChars = 0
 local blinkTimer = 0
+local function DrawInputParticles()
 
+    local input = emu.getInput(0)
+
+    if input.up and not prevUp then
+        table.insert(inputParticles, {
+            text = "U",
+            x = 244,
+            y = 220
+        })
+    end
+
+    if input.a and not prevA then
+        table.insert(inputParticles, {
+            text = "A",
+            x = 250,
+            y = 220
+        })
+    end
+
+    for i = #inputParticles, 1, -1 do
+        local p = inputParticles[i]
+
+        emu.drawString(
+            p.x,
+            p.y,
+            p.text,
+            GREEN,
+            BLACK
+        )
+
+        p.y = p.y - 9
+
+        if p.y < -10 then
+            table.remove(inputParticles, i)
+        end
+    end
+end
 -- =========================
 -- MENU SYSTEM
 -- =========================
@@ -351,10 +431,11 @@ local options = {
     "Random Gamemode",
     "Editable Text",
     "Path Overlay",
-    "Ship Copter"
+    "Ship Copter",
+    "Dark Mode"
 }
 
-local enabled = { false, false, false, false, false, false }
+local enabled = { false, false, false, false, false, false, false }
 
 -- COLORS
 local GREEN  = 0x8000FF00
@@ -372,17 +453,19 @@ local frameCounter = 0
 
 local prevA_click = false
 local prevUp_click = false
-local prevPlayerX = nil
+local prevPlayerX_ClickHUD = nil
 
 local function resetAll()
     totalClicks = 0
     clickTimes = {}
     frameCounter = 0
-
+    noclipFrames = 0
+    totalFrames = 0
     prevA_click = false
     prevUp_click = false
 
     cheatUsedThisAttempt = false
+    reasons = ""
     rewindDetected = false
 end
 
@@ -396,11 +479,11 @@ local function ClicksHUD()
     local rawX = emu.read16(ADDR_PLAYER_X, M) or 0
     local playerX = rawX >> 8
 
-    if prevPlayerX ~= nil and playerX < prevPlayerX - 20 then
+    if prevPlayerX_ClickHUD ~= nil and playerX < prevPlayerX_ClickHUD - 20 then
         resetAll()
     end
 
-    prevPlayerX = playerX
+    prevPlayerX_ClickHUD = playerX
 
     local input = emu.getInput(0)
 
@@ -440,9 +523,9 @@ local function ClicksHUD()
     end
 
     emu.drawString(10, 10, "Total Clicks: " .. totalClicks, WHITE, (aDown or upDown) and GREEN or BLACK)
-    emu.drawString(10, 25, "A Button", WHITE, aDown and GREEN or BLACK)
-    emu.drawString(10, 40, "Up Button", WHITE, upDown and GREEN or BLACK)
-    emu.drawString(10, 55, "CPS: " .. cps, WHITE, cpsColor)
+    emu.drawString(10, 19, "A Button", WHITE, aDown and GREEN or BLACK)
+    emu.drawString(10, 28, "Up Button", WHITE, upDown and GREEN or BLACK)
+    emu.drawString(10, 37, "CPS: " .. cps, WHITE, cpsColor)
 end
 
 -- =========================
@@ -457,7 +540,7 @@ local function InputTest()
     for button, pressed in pairs(input) do
         if pressed then
             emu.drawString(10, y, button .. " pressed", GREEN)
-            y = y + 15
+            y = y + 9
         end
     end
 end
@@ -488,6 +571,7 @@ local function GamemodeRandomizer()
     if inTransition then
         local newMode = math.random(0, 11)
         emu.write(122, newMode, M)
+        AddReason(" Redcheat,")
         cheatUsedThisAttempt = true
 
         emu.displayMessage(
@@ -653,6 +737,7 @@ if menuOpen then return end
     clicked_up = input.up
 
     cheatUsedThisAttempt = true
+    AddReason(" Redcheat,")
 end
 
 -- =========================
@@ -661,7 +746,7 @@ end
 
 local function drawMenu()
 
-    emu.drawString(10, 10, "Megahack v1.17 Mod menu")
+    emu.drawString(10, 10, "Megahack v1.185 Mod menu")
 
     for i = 1, #options do
 
@@ -672,9 +757,9 @@ local function drawMenu()
         local display = name .. " [" .. state .. "]"
 
         if i == selected then
-            emu.drawString(10, 30 + i * 15, "> " .. display, color, BLACK)
+            emu.drawString(10, 30 + i * 9, "> " .. display, color, BLACK)
         else
-            emu.drawString(20, 30 + i * 15, display, color, BLACK)
+            emu.drawString(20, 30 + i * 9, display, color, BLACK)
         end
     end
 end
@@ -682,7 +767,7 @@ end
 -- =========================
 -- CHEAT DOT 
 -- =========================
-
+local prevPlayerX_CheatDot = nil
 local function DrawCheatDot()
 
     local M = emu.memType.nesMemory
@@ -706,25 +791,32 @@ prevInLevel = inLevel
     local redActive = enabled[3] or enabled[6]
 
     local died = false
-    if prevPlayerX ~= nil and playerX < prevPlayerX - 20 then
+    if prevPlayerX_CheatDot ~= nil and playerX < prevPlayerX_CheatDot - 20 then
         died = true
+        totalFrames = 0
+        noclipFrames = 0
     end
     
 if died and not redActive then
     cheatUsedThisAttempt = false
+    reasons = ""
     rewindDetected = false
+    savestateDetected = false
 end
 
     if redActive and inLevel then
         cheatUsedThisAttempt = true
     end
 
-    prevPlayerX = playerX
+    prevPlayerX_CheatDot = playerX
 
 local color =
-    (cheatUsedThisAttempt or rewindDetected or redActive)
+    (cheatUsedThisAttempt or rewindDetected or redActive or savestateDetected)
     and RED or GREEN
-    emu.drawString(235, 0, "O", color, BLACK)
+    emu.drawString(0, 232, "O", color, color)
+    if reasons ~= "" then
+    emu.drawString(10, 232, reasons, WHITE, BLACK)
+end
 end
 
 -- =========================
@@ -917,6 +1009,24 @@ function search()
 	end
 end
 -- =========================
+-- Dark Mode
+-- =========================
+local function darkmode()
+
+    if not enabled[7] then
+        return
+    end
+
+    emu.drawRectangle(
+        -256,
+        -256,
+        768,
+        768,
+        0x88000000,
+        true
+    )
+end
+-- =========================
 -- Intro
 -- =========================
 
@@ -964,28 +1074,34 @@ local rainbowColor = HSVtoRGB(rainbowFrame)
 
     local visibleText = introText:sub(1, introChars)
 
-local title = "Famidash Megahack V1.17"
+local title = "Famidash Megahack V1.185"
 local author = "By Aaron Chen-Chang and more"
 
 emu.drawString(10, 10, title, rainbowColor)
-emu.drawString(10, 25, author, 0xFFFFFF)
+emu.drawString(10, 19, author, 0xFFFFFF)
 
-emu.drawString(10, 45, "Description:")
+emu.drawString(10, 39, "Description:")
 
-emu.drawString(10, 60, "Made to enhance your gameplay of Famidash.")
+emu.drawString(10, 48, "Made to enhance your gameplay of Famidash.")
 
-emu.drawString(10, 75, "Press START in a level to open mod menu.")
-emu.drawString(10, 90, "Press START again or B to close mod menu.")
+emu.drawString(10, 57, "Pause in a level to open the mod menu.")
+emu.drawString(10, 66, "Unpause to close the mod menu.")
 
-emu.drawString(10, 105, "Press UP/DOWN to select hacks in mod menu.")
-emu.drawString(10, 120, "Press A to activate or toggle hacks in mod menu.")
+emu.drawString(10, 75, "Press UP/DOWN to select hacks in mod menu.")
+emu.drawString(10, 84, "Press A to activate or toggle hacks in mod menu.")
 
-emu.drawString(10, 135, "Press / in level select screen to search")
-emu.drawString(10, 150, "Search using keyboard, backspace is left button.")
-emu.drawString(10, 165, "Press up or down to find levels you want.")
-emu.drawString(10, 180, "Press Enter to confirm, press / to stop searching.")
+emu.drawString(10, 94, "Press / in level select screen to search")
+emu.drawString(10, 103, "Search using keyboard, backspace is left button.")
+emu.drawString(10, 112, "Press up or down to find levels you want.")
+emu.drawString(10, 121, "Press Enter to confirm, press / to stop searching.")
 
-emu.drawString(10, 195, "This script includes Completion Messages too! Enjoy!")
+emu.drawString(10, 130, "When you press up or A, it will show on screen.")
+
+emu.drawString(10, 139, "Noclip accuracy will be with debug mode autoly.")
+emu.drawString(10, 153, "For more questions, DM: aaronchenchang on Discord.")
+
+emu.drawString(10, 162, "Enjoy!")
+
 
 
     if introChars >= #introText then
@@ -1024,6 +1140,11 @@ end
 -- =========================
 
 function Main()
+DrawInputParticles()
+if emu.read(107, emu.memType.nesMemory, false) < 16 and emu.read(1435, emu.memType.nesMemory, false) == 1 then
+  emu.write(111, 0, emu.memType.nesMemory)
+  emu.write(112, 0, emu.memType.nesMemory)
+end
 
 if introActive then
     DrawIntro()
@@ -1041,31 +1162,25 @@ local currentFrame = emu.getState()["frameCount"]
 if lastFrame ~= nil then
     if currentFrame < lastFrame then
         rewindDetected = true
+        AddReason(" Rewinded,")
         cheatUsedThisAttempt = true
     end
 end
 
 lastFrame = currentFrame
 
-    if inLevel then
-        if input.select and not prevSelect then
-            cheatUsedThisAttempt = true
-        end
-    end
-
-if inLevel and winTextTimer <= 0 then
-    if input.start and not prevStart then
-        menuOpen = not menuOpen
+if inLevel then
+    if emu.read(1435, emu.memType.nesMemory, false) == 1 then
+        cheatUsedThisAttempt = true
+        AddReason(" Debug Mode,")
     end
 end
 
-if input.select and not prevSelect then
-    menuOpen = false
-end
+local pauseFlag =
+    emu.read(0x05BB, emu.memType.nesMemory, false)
 
-if input.b and not prevB then
-    menuOpen = false
-end
+menuOpen =
+    emu.read(0x05BB, emu.memType.nesMemory, false) == 1
 
     if menuOpen then
 
@@ -1094,6 +1209,52 @@ end
 
     DrawCheatDot()
     PathOverlay()
+    darkmode()
+
+local debugMode =
+    emu.read(1435, emu.memType.nesMemory, false) == 1
+
+if inLevel and not menuOpen then
+    totalFrames = totalFrames + 1
+
+    if debugMode then
+        local cubeData =
+            emu.read(0x007B, emu.memType.nesMemory, false)
+
+        if cubeData == 3 or cubeData == 1 then 
+            noclipFrames = noclipFrames + 1
+        end
+    end
+end
+
+local noclipAcc = 100
+
+if totalFrames > 0 then
+    noclipAcc =
+        ((totalFrames - noclipFrames)
+        / totalFrames) * 100
+end
+
+if debugMode then
+    emu.drawString(
+        10,
+        210,
+        string.format(
+            "Noclip Accuracy: %.2f%%",
+            noclipAcc
+        )
+    )
+     emu.drawString(
+     10,
+     220,
+     "deaths:  "
+     )
+     emu.drawString(
+     50,
+     220,
+     noclipFrames
+     )
+end
 
 if winTextDelay > 0 then
     winTextDelay = winTextDelay - 1
@@ -1137,9 +1298,18 @@ local function ResetOnLoad()
         emu.reset()
     end
 end
+local function OnStateLoaded()
 
+    savestateDetected = true
+    AddReason(" SaveState,")
+    cheatUsedThisAttempt = true
+
+end
+
+
+emu.addEventCallback(OnStateLoaded, emu.eventType.stateLoaded)
 emu.addEventCallback(ResetOnLoad, emu.eventType.endFrame)
 emu.addEventCallback(Main, emu.eventType.endFrame)
 emu.addEventCallback(ShipCopter, emu.eventType.inputPolled)
 emu.addEventCallback(search, emu.eventType.inputPolled)
-emu.displayMessage("System", "Famidash Megahack v1.17 Loaded")
+emu.displayMessage("System", "Famidash Megahack v1.185 Loaded")
