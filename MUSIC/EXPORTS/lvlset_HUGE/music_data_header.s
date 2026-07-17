@@ -62,7 +62,7 @@
 	.include "music_19.s"	; Approx. size: 6812 bytes
 	.align 8192
 .segment "DAT_BANK_C9"
-	.include "music_20.s"	; Approx. size: 7052 bytes
+	.include "music_20.s"	; Approx. size: 7054 bytes
 	.align 8192
 .segment "DAT_BANK_CA"
 	.include "music_21.s"	; Approx. size: 6700 bytes

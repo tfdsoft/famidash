@@ -20,7 +20,7 @@
 	.include "music_5.s"	; Approx. size: 7427 bytes
 	.align 8192
 .segment "DAT_BANK_2D"
-	.include "music_6.s"	; Approx. size: 7304 bytes
+	.include "music_6.s"	; Approx. size: 7306 bytes
 	.align 8192
 .segment "DAT_BANK_2E"
 	.include "music_7.s"	; Approx. size: 6873 bytes
