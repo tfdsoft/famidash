@@ -1,9 +1,9 @@
-banked(fixed.data) const u8 pal_game[] = {
+/*banked(fixed.data) const u8 pal_game[] = {
     0x11, 0x0f, 0x01, 0x30,
     0x0f, 0x00, 0x10, 0x20,
     0x0f, 0x00, 0x10, 0x20,
     0x0f, 0x00, 0x10, 0x20,
-};
+};*/
 banked(fixed.func) void level_load_assets(struct Level passthru){
     set_prg_a000(level_header_bank);
 
@@ -28,8 +28,8 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
     se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
     load_metatiles(mt_default_blocks,16,0,48);
 
+    se_vram_address(0x400);
     for(u8 i=0; i<4; i++){
-        se_vram_address((0x400 + (i<<8)));
         if(active_lvl.tileset.blocks[i]){
             se_vram_donut_decompress(active_lvl.tileset.blocks[i],chr_bank_1);
         }
@@ -48,10 +48,21 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
     se_vram_address(0xc00);
     se_vram_donut_decompress(chr_ground_0,chr_bank_3);
 
-
-
-    se_set_palette_background(pal_game);
-    se_set_palette_sprites(pal_game);
+    //set starting palettes
+    
+    //background/tiles
+    tile_buffer[0] = active_lvl.color.bg;
+    tile_buffer[1] = 0x0f;
+    tile_buffer[2] = active_lvl.color.bg-0x10;
+    tile_buffer[3] = 0x20; // REPLACE WITH OBJ LATER
+    
+    //ground
+    tile_buffer[5] = 0x0f;
+    tile_buffer[6] = active_lvl.color.bg-0x10;
+    tile_buffer[7] = 0x20; // REPLACE WITH LINE LATER
+    
+    se_set_palette_background(tile_buffer);
+    //se_set_palette_sprites(sram_buffer);
 }
 
 
@@ -139,7 +150,7 @@ banked(startup_bank.data) const u8 mspr_pausemenu[] = {
 //banked(startup_bank.data) const u8 
 
 banked(startup_bank.func) void game_pause_menu(){
-    u8 selection;
+    //u8 selection;
 
     se_turn_off_rendering();
     famistudio_music_pause(1);
@@ -169,7 +180,7 @@ banked(startup_bank.func) void game_pause_menu(){
     unpack_ad((se_frame_count % (sizeof(chr_ads)>>1)));
     #endif
 
-    selection = 0;
+    //selection = 0;
 
     se_clear_sprites();
     se_draw_metasprite(0,0,mspr_pausemenu);
@@ -227,8 +238,8 @@ banked(startup_bank.func) void game_pause_menu(){
 
 
 banked(fixed.func) void state_game() {
-    se_play_sample((pcm_playsound_01+0x2000),sample_bank_2,1);
-    __asm__("cli");
+    //se_play_sample((pcm_playsound_01+0x2000),sample_bank_2,1);
+    //__asm__("cli");
 
     //u24 x_scroll = 0;
     //u16 y_scroll = 0;

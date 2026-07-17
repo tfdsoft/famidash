@@ -135,7 +135,7 @@ banked(startup_bank.func) void state_startup(){
     }
 
 
-    //gamestate = 0xff;
+    gamestate = 0x20;
     return;
 }
 

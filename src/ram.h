@@ -45,7 +45,7 @@ struct Player {
     } size;
     struct {
         u8 is_dead :1;
-        u8 gravity
+        u8 gravity;
     } properties;
 } Player;
 

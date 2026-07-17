@@ -13,13 +13,16 @@ banked(level_header_bank) const struct Level lvl_test_header = {
     .name = "lmao",
 
     .color = {
-        .bg = 0x20,//background
-        .g = 0x20,//ground
+        .bg = 0x21,//background
+        .g = 0x21,//ground
     },
 
     .tileset = {
         .blocks = {
             chr_tiles_checker,
+            chr_tiles_x,
+            chr_tiles_black,
+            chr_tiles_black
         },
         .metatiles = {
             mt_normal_blockset,
@@ -29,7 +32,7 @@ banked(level_header_bank) const struct Level lvl_test_header = {
         }
     },
 
-    .song = song_stereo_madness,
+    .song = song_stay_inside_me,
 
     .height = 32, // level height
 

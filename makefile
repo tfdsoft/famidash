@@ -69,7 +69,7 @@ TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 CFG_OVERSIZE ?= link_oversize.ld
 
-CFLAGS = -flto -Oz -mcpu=mos6502x -fnonreentrant -std=gnu23 -Wall -Wextra
+CFLAGS = -flto -Os -fnonreentrant -std=gnu23 -Wall -Wextra
 LDFLAGS = -mreserve-zp=92 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
