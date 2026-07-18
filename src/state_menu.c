@@ -266,7 +266,7 @@ banked(startup_bank.func) void state_menu() {
         
 
 
-        if((se_frame_count & 0x3f) < 5) {
+        if((se_frame_count & 0x03) < 3) {
 
             if(se_frame_count & 0x1) menu_color -= 1;
             else menu_color += 1;
