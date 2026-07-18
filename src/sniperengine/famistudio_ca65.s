@@ -1,6 +1,6 @@
 ;======================================================================================================================
-; FAMISTUDIO SOUND ENGINE (4.4.1)
-; Copyright (c) 2019-2025 Mathieu Gauthier
+; FAMISTUDIO SOUND ENGINE (4.5.0)
+; Copyright (c) 2019-2026 Mathieu Gauthier
 ;
 ; Copying and distribution of this file, with or without
 ; modification, are permitted in any medium without royalty provided
@@ -123,12 +123,12 @@
 ; Default values for the channels are to enable all channels.
  FAMISTUDIO_EXP_EPSM_SSG_CHN_CNT     = 3
  FAMISTUDIO_EXP_EPSM_FM_CHN_CNT      = 6
-FAMISTUDIO_EXP_EPSM_RHYTHM_CHN1_ENABLE = 0
-FAMISTUDIO_EXP_EPSM_RHYTHM_CHN2_ENABLE = 0
-FAMISTUDIO_EXP_EPSM_RHYTHM_CHN3_ENABLE = 0
-FAMISTUDIO_EXP_EPSM_RHYTHM_CHN4_ENABLE = 0
-FAMISTUDIO_EXP_EPSM_RHYTHM_CHN5_ENABLE = 0
-FAMISTUDIO_EXP_EPSM_RHYTHM_CHN6_ENABLE = 0
+ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN1_ENABLE = 0
+ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN2_ENABLE = 0
+ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN3_ENABLE = 0
+ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN4_ENABLE = 0
+ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN5_ENABLE = 0
+ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN6_ENABLE = 0
 
 ;======================================================================================================================
 ; 3) GLOBAL ENGINE CONFIGURATION
@@ -194,7 +194,7 @@ FAMISTUDIO_USE_PITCH_TRACK       = 1
 
 ; Must be enabled if any song uses slide notes. Slide notes allows portamento and slide effects.
 ; More information at: https://famistudio.org/doc/pianoroll/#slide-notes
- FAMISTUDIO_USE_SLIDE_NOTES       = 1
+FAMISTUDIO_USE_SLIDE_NOTES       = 1
 
 ; Must be enabled if any song uses slide notes on the noise channel too. 
 ; More information at: https://famistudio.org/doc/pianoroll/#slide-notes
@@ -202,12 +202,12 @@ FAMISTUDIO_USE_PITCH_TRACK       = 1
 
 ; Must be enabled if any song uses the vibrato speed/depth effect track. 
 ; More information at: https://famistudio.org/doc/pianoroll/#vibrato-depth-speed
- FAMISTUDIO_USE_VIBRATO           = 1
+FAMISTUDIO_USE_VIBRATO           = 1
 
 ; Must be enabled if any song uses arpeggios (not to be confused with instrument arpeggio envelopes, those are always
 ; supported).
 ; More information at: (TODO)
- FAMISTUDIO_USE_ARPEGGIO          = 1
+FAMISTUDIO_USE_ARPEGGIO          = 1
 
 ; Must be enabled if any song uses the "Duty Cycle" effect (equivalent of FamiTracker Vxx, also called "Timbre").  
  FAMISTUDIO_USE_DUTYCYCLE_EFFECT  = 1
@@ -886,6 +886,7 @@ famistudio_vrc6_saw_prev_hi    = famistudio_vrc6_saw_volume
 famistudio_chn_vrc7_prev_hi:      .res 6
 famistudio_chn_vrc7_patch:        .res 6
 famistudio_chn_vrc7_trigger:      .res 6 ; bit 0 = new note triggered, bit 7 = note released.
+famistudio_chn_vrc7_sustain:      .res 1 ; sustain bit overrides release.
 .endif
 .if FAMISTUDIO_EXP_EPSM
 .if FAMISTUDIO_EXP_EPSM_RHYTHM_CNT > 0
@@ -959,7 +960,6 @@ famistudio_dpcm_effect:           .res 1 ; TODO: Not needed if DPCM support is d
 famistudio_pulse1_prev:           .res 1
 famistudio_pulse2_prev:           .res 1
 famistudio_song_speed:            .res 1
-.export famistudio_song_speed
 
 .if FAMISTUDIO_EXP_MMC5
 famistudio_mmc5_pulse1_prev:      .res 1
@@ -1290,8 +1290,8 @@ famistudio_init:
     @music_data_ptr = famistudio_ptr0
 
     stx famistudio_song_list_lo
-    sty famistudio_song_list_hi
     stx @music_data_ptr + 0
+    sty famistudio_song_list_hi
     sty @music_data_ptr + 1
 
 .if FAMISTUDIO_DUAL_SUPPORT
@@ -2452,8 +2452,18 @@ famistudio_update_vrc7_channel_sound:
     sta FAMISTUDIO_VRC7_REG_SEL
     jsr famistudio_vrc7_wait_reg_select
 
+    lda famistudio_chn_vrc7_sustain
+    bmi @override_stop
     lda famistudio_chn_vrc7_prev_hi, y
-    and #$cf ; Remove trigger + sustain
+    and #$cf
+    bne @apply_cut
+
+@override_stop:
+    lda famistudio_chn_vrc7_prev_hi, y
+    and #$ef
+    ora #$20 ; Set sustain flag to override
+
+@apply_cut:
     sta famistudio_chn_vrc7_prev_hi, y
     sta FAMISTUDIO_VRC7_REG_WRITE
     jsr famistudio_vrc7_wait_reg_write
@@ -2573,7 +2583,7 @@ famistudio_update_vrc7_channel_sound:
 
     txa
     asl
-    ora #$20
+    ora famistudio_chn_vrc7_sustain
     ora @pitch+1
     ora @tmp
     sta famistudio_chn_vrc7_prev_hi, y
@@ -3205,10 +3215,10 @@ update_fm_instrument:
     tay
     ; And then read the pointer to the extended instrument patch data
     lda (@ptr),y
-    sta @ex_patch+0
+    sta @ex_patch + 0
     iny
     lda (@ptr),y
-    sta @ex_patch+1
+    sta @ex_patch + 1
 
 @fm_channel:
     ldx @chan_idx2
@@ -4996,12 +5006,14 @@ famistudio_set_vrc7_instrument:
     @load_patch:
     ldx @chan_idx
     lda (@ptr),y
+    sta famistudio_chn_vrc7_sustain ; Release override.
+    iny
+    lda (@ptr),y
     sta famistudio_chn_vrc7_patch-FAMISTUDIO_VRC7_CH0_IDX,x
     bne @done
 
     @read_custom_patch:
     ldx #0
-    iny
     iny
     @read_patch_loop:
         stx FAMISTUDIO_VRC7_REG_SEL
@@ -6541,6 +6553,7 @@ famistudio_sfx_sample_play:
 
 sample_play:
 
+    @update_flags = famistudio_r1
     @tmp = famistudio_r3
     @sample_index = famistudio_r3
     @sample_data_ptr = famistudio_ptr1
@@ -6602,6 +6615,8 @@ sample_play:
 @read_dmc_initial_value:
 .endif    
 
+    bit @update_flags
+    bmi @start_dmc
     lda (@sample_data_ptr),y ; Initial DMC counter
     sta FAMISTUDIO_APU_DMC_RAW
 

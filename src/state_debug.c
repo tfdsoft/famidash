@@ -5,7 +5,10 @@ const u8 pal_genericmenu[]={
     0x17,0x0f,0x10,0x30,
     0x17,0x0f,0x2a,0x39,
     0x17,0x11,0x21,0x30,
-    0x17,0x0f,0x21,0x31 
+    0x17,0x0f,0x21,0x31,
+
+    0x00,0x0f,0x29,0x2c,
+    0x00,0x0f,0x24,0x34,
 };
 
 banked(sound_test_bank.data)
@@ -51,10 +54,16 @@ banked(sound_test_bank.func) void state_soundtest(){
     famistudio_music_stop();
 
     se_wait_vsync();
+    se_vram_address(0x800);
+    se_vram_donut_decompress(chr_menu_iconkit, chr_bank_0);
     se_vram_address(0x2000);
     se_vram_unrle(nt_genericmenu,0);
 
-    se_set_palette_background(pal_genericmenu);
+    se_set_palette_all(pal_genericmenu);
+
+    // back button
+    se_draw_sprite(8,24,0x90,1);
+    se_draw_sprite(16,24,0x92,1);
 
     se_string_vram_buffer(str_soundtest, nametable_address_A(10,5));
     se_string_vram_buffer(str_song, nametable_address_A(6,9));
@@ -82,7 +91,7 @@ banked(sound_test_bank.func) void state_soundtest(){
 
     while(1){
         se_wait_vsync();
-
+        
         se_gray_line();
 
         se_one_vram_buffer(0x00, (nametable_address_A(5,9) + (selection << 8)));
@@ -106,7 +115,7 @@ banked(sound_test_bank.func) void state_soundtest(){
         if(lo(index) == song_max){index[0] = 0;}
         if(hi(index) == sfx_max){index[1]--;}
 
-        se_one_vram_buffer_repeat_horizontal(
+        if(joypad1.press) se_one_vram_buffer_repeat_horizontal(
             ' ',
             20,
             (nametable_address_A(6,10)+(selection<<8))

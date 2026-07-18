@@ -495,12 +495,8 @@ MouseBoundsMax:
     rts
 .endproc
 
-
 ; THE SOUND ENGINE!
-.include "famistudio_ca65.s"
-
-
-
+;.include "famistudio_ca65.s"
 
 .export disable_nmi
 .proc disable_nmi
@@ -2388,3 +2384,5 @@ se_run_da_irq:
 
 .endproc
 .popseg
+
+

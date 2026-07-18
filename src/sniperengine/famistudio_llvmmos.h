@@ -81,8 +81,7 @@ void __attribute__((__leaf__)) famistudio_music_stop(void);
 
 void __attribute__((__leaf__)) famistudio_update(void);
 
-#define FAMISTUDIO_CFG_SFX_SUPPORT
-#ifdef FAMISTUDIO_CFG_SFX_SUPPORT
+
 
 /**
  * ======================================================================================================================
@@ -138,6 +137,6 @@ void __attribute__((__leaf__)) famistudio_sfx_play(unsigned char sfx_index, unsi
 
 void __attribute__((__leaf__)) famistudio_sfx_sample_play(unsigned char sample_index);
 
-#endif
+
 #endif
 

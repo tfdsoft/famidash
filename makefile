@@ -133,8 +133,11 @@ $(TMPDIR)/asm.o: src/*.s
 #$(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
 #	#$(CC) -c src/assets.c $(CFLAGS) -o $@
 
-$(TMPDIR)/sniperengine.o: src/sniperengine/sniperengine.s
-	$(CA65) src/sniperengine/sniperengine.s -o $@
+$(TMPDIR)/sniperengine.o: src/sniperengine/THE_FUCKING_INCLUDE.s 
+	$(CA65) src/sniperengine/THE_FUCKING_INCLUDE.s -o $@
+
+#$(TMPDIR)/famistudio.o: src/sniperengine/famistudio_ca65.s
+#	$(CA65) src/sniperengine/famistudio_ca65.s -o $@
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
     #./generate_everything.sh
