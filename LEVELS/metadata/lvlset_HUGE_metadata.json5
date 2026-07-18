@@ -2777,6 +2777,61 @@
 				},
 			]	
 		},
+		{ 
+			level: "outerspace",
+			lowerText: "OUTERSPACE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_menu_theme",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x04,
+			startingGroundColor: 0x04,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [259, 21],
+					offsetY: -8, 
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[455, 24],
+						[425, 21],
+						[506, 23],
+						[330, 23],
+						[354, 21],
+						[386, 21]
+					],
+					offsetY: -8 
+				},
+				{
+					coordinates: [
+						[296, 21],
+						[365, 22],
+						[442, 22],
+						[436, 22],
+						[409, 22],
+						[406, 22],
+						[275, 20],
+						[114, 20],
+						[125, 21],
+						[141, 21],
+						[151, 19],
+						[166, 21],
+						[169, 21],
+						[196, 21],
+						[202, 21],
+						[208, 21]
+					],
+					offsetY: +8 
+				}
+			]
+		},
 		{
 			level: "ultiatedestruction",
 			upperText: "ULTIATE",

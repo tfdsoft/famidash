@@ -16,6 +16,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// hungrymanadventures
 	HARD,	// dorabaebasic7
 	HARD,	// storymadness
+	HARD,	// outerspace
 	HARDER,	// chromaticexpedition
 	HARDER,	// endgame
 	HARDER,	// rotd
@@ -51,6 +52,7 @@ const uint8_t stars_list[] = {
 	4,	// hungrymanadventures
 	4,	// dorabaebasic7
 	4,	// storymadness
+	5,	// outerspace
 	6,	// chromaticexpedition
 	6,	// endgame
 	7,	// rotd

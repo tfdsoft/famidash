@@ -56,6 +56,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// storymadness
 	HARD,	// groundtospace
 	HARD,	// ajollyretrochristmas
+	HARD,	// outerspace
 	HARD,	// ultiatedestruction
 	HARD,	// chippe
 	HARD,	// subzero
@@ -226,6 +227,7 @@ const uint8_t stars_list[] = {
 	4,	// storymadness
 	5,	// groundtospace
 	5,	// ajollyretrochristmas
+	5,	// outerspace
 	5,	// ultiatedestruction
 	5,	// chippe
 	5,	// subzero

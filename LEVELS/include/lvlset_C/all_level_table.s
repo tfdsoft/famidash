@@ -19,6 +19,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_hungrymanadventures)
 	.byte .lobyte(level_data_dorabaebasic7)
 	.byte .lobyte(level_data_storymadness)
+	.byte .lobyte(level_data_outerspace)
 	.byte .lobyte(level_data_chromaticexpedition)
 	.byte .lobyte(level_data_endgame)
 	.byte .lobyte(level_data_rotd)
@@ -53,6 +54,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_hungrymanadventures) & $1F | $A0
 	.byte .hibyte(level_data_dorabaebasic7) & $1F | $A0
 	.byte .hibyte(level_data_storymadness) & $1F | $A0
+	.byte .hibyte(level_data_outerspace) & $1F | $A0
 	.byte .hibyte(level_data_chromaticexpedition) & $1F | $A0
 	.byte .hibyte(level_data_endgame) & $1F | $A0
 	.byte .hibyte(level_data_rotd) & $1F | $A0
@@ -87,6 +89,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_hungrymanadventures >> 13)
 	.byte .lobyte(level_data_dorabaebasic7 >> 13)
 	.byte .lobyte(level_data_storymadness >> 13)
+	.byte .lobyte(level_data_outerspace >> 13)
 	.byte .lobyte(level_data_chromaticexpedition >> 13)
 	.byte .lobyte(level_data_endgame >> 13)
 	.byte .lobyte(level_data_rotd >> 13)
@@ -151,6 +154,7 @@ _level_lengths_lo:
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000F7)		; dorabaebasic7
 	.byte .lobyte($00009C)		; storymadness
+	.byte .lobyte($00009D)		; outerspace
 	.byte .lobyte($000056)		; chromaticexpedition
 	.byte .lobyte($00009F)		; endgame
 	.byte .lobyte($0000CC)		; rotd
@@ -187,6 +191,7 @@ _level_lengths_md:
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000F7)		; dorabaebasic7
 	.byte .hibyte($00009C)		; storymadness
+	.byte .hibyte($00009D)		; outerspace
 	.byte .hibyte($000056)		; chromaticexpedition
 	.byte .hibyte($00009F)		; endgame
 	.byte .hibyte($0000CC)		; rotd
@@ -223,6 +228,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000F7)		; dorabaebasic7
 	.byte .bankbyte($00009C)		; storymadness
+	.byte .bankbyte($00009D)		; outerspace
 	.byte .bankbyte($000056)		; chromaticexpedition
 	.byte .bankbyte($00009F)		; endgame
 	.byte .bankbyte($0000CC)		; rotd

@@ -59,6 +59,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_storymadness)
 	.byte .lobyte(level_data_groundtospace)
 	.byte .lobyte(level_data_ajollyretrochristmas)
+	.byte .lobyte(level_data_outerspace)
 	.byte .lobyte(level_data_ultiatedestruction)
 	.byte .lobyte(level_data_chippe)
 	.byte .lobyte(level_data_subzero)
@@ -228,6 +229,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_storymadness) & $1F | $A0
 	.byte .hibyte(level_data_groundtospace) & $1F | $A0
 	.byte .hibyte(level_data_ajollyretrochristmas) & $1F | $A0
+	.byte .hibyte(level_data_outerspace) & $1F | $A0
 	.byte .hibyte(level_data_ultiatedestruction) & $1F | $A0
 	.byte .hibyte(level_data_chippe) & $1F | $A0
 	.byte .hibyte(level_data_subzero) & $1F | $A0
@@ -397,6 +399,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_storymadness >> 13)
 	.byte .lobyte(level_data_groundtospace >> 13)
 	.byte .lobyte(level_data_ajollyretrochristmas >> 13)
+	.byte .lobyte(level_data_outerspace >> 13)
 	.byte .lobyte(level_data_ultiatedestruction >> 13)
 	.byte .lobyte(level_data_chippe >> 13)
 	.byte .lobyte(level_data_subzero >> 13)
@@ -671,6 +674,7 @@ _level_lengths_lo:
 	.byte .lobyte($00009C)		; storymadness
 	.byte .lobyte($0000A1)		; groundtospace
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
+	.byte .lobyte($00009D)		; outerspace
 	.byte .lobyte($00006D)		; ultiatedestruction
 	.byte .lobyte($000043)		; chippe
 	.byte .lobyte($000088)		; subzero
@@ -842,6 +846,7 @@ _level_lengths_md:
 	.byte .hibyte($00009C)		; storymadness
 	.byte .hibyte($0000A1)		; groundtospace
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
+	.byte .hibyte($00009D)		; outerspace
 	.byte .hibyte($00006D)		; ultiatedestruction
 	.byte .hibyte($000043)		; chippe
 	.byte .hibyte($000088)		; subzero
@@ -1013,6 +1018,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00009C)		; storymadness
 	.byte .bankbyte($0000A1)		; groundtospace
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
+	.byte .bankbyte($00009D)		; outerspace
 	.byte .bankbyte($00006D)		; ultiatedestruction
 	.byte .bankbyte($000043)		; chippe
 	.byte .bankbyte($000088)		; subzero
