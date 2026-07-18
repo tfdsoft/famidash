@@ -141,6 +141,10 @@ banked(startup_bank.data) const u8 menu_irq_table[] = {
     255, // end of table
 };
 
+#ifdef FLAG_ISDEMO
+banked(startup_bank.data) const char str_demo[] = "DEMO";
+#endif
+
 banked(startup_bank.func) void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned short interrupt_scroll = 0;
@@ -265,8 +269,7 @@ banked(startup_bank.func) void state_menu() {
         se_irq_table[4] = (hi(scroll_bank)+0x10);
         
 
-
-        if((se_frame_count & 0x03) < 3) {
+        if((se_frame_count & 0x3f) < 3) {
 
             if(se_frame_count & 0x1) menu_color -= 1;
             else menu_color += 1;
@@ -280,9 +283,6 @@ banked(startup_bank.func) void state_menu() {
             se_set_palette_color(10, menu_color);
         }
 
-
-
-        
         
         if((selection >= 2) && (selection < 5)){
             se_draw_metasprite(

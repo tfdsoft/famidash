@@ -1,0 +1,1 @@
+#define FLAG_ISDEMO '1'

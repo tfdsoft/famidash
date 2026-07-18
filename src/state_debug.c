@@ -9,6 +9,7 @@ const u8 pal_genericmenu[]={
 
     0x00,0x0f,0x29,0x2c,
     0x00,0x0f,0x24,0x34,
+    0x00,0x0f,0x0f,0x0f,
 };
 
 banked(sound_test_bank.data)
@@ -63,6 +64,7 @@ banked(sound_test_bank.func) void state_soundtest(){
 
     // back button
     se_draw_sprite(8,24,0x90,1);
+    se_draw_sprite(18,25,0x92,1);
     se_draw_sprite(16,24,0x92,1);
 
     se_string_vram_buffer(str_soundtest, nametable_address_A(10,5));
