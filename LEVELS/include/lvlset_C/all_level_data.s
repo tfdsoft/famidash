@@ -554,7 +554,7 @@
 	.align 8192
 
 
-; Data bank 18, total bank size: 8184 bytes
+; Data bank 18, total bank size: 8185 bytes
 	.export level_data_chromaticexpedition
 	level_data_chromaticexpedition:
 	; Header
@@ -585,13 +585,13 @@
 		.byte ($B0) ;____________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________________ Force platformer, Disable parallax
-		.byte (0 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
+		.byte (1 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_______________ Spike Set, Block Set
 		.byte $12 ;______________________________________ Starting background color
 		.byte $02 ;______________________________________ Starting ground color
 		.byte 27 ;_______________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/level/supercycles.lz.bin" ; Size: 3375
+		.incbin "EXPORTS/level/supercycles.lz.bin" ; Size: 3376
 
 	.align 8192
 
@@ -731,10 +731,10 @@
 	.align 8192
 
 
-; Data bank 1E, total bank size: 8178 bytes
+; Data bank 1E, total bank size: 8188 bytes
 	sprite_data_illusion:	; Size: 3641
 		.incbin "EXPORTS/sprite/illusion.bin"
-	sprite_data_supercycles:	; Size: 3301
+	sprite_data_supercycles:	; Size: 3311
 		.incbin "EXPORTS/sprite/supercycles.bin"
 	sprite_data_dastardly:	; Size: 1236
 		.incbin "EXPORTS/sprite/dastardly.bin"

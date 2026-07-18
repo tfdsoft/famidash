@@ -2570,7 +2570,7 @@
 	.align 8192
 
 
-; Data bank 6E, total bank size: 8187 bytes
+; Data bank 6E, total bank size: 8167 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -2590,8 +2590,8 @@
 	; Level data
 		.incbin "EXPORTS/level/problematic.lz.bin" ; Size: 4873
 
-	sprite_data_supercycles:	; Size: 3301
-		.incbin "EXPORTS/sprite/supercycles.bin"
+	sprite_data_heliopolis:	; Size: 3281
+		.incbin "EXPORTS/sprite/heliopolis.bin"
 	.align 8192
 
 
@@ -2695,7 +2695,7 @@
 	.align 8192
 
 
-; Data bank 73, total bank size: 8184 bytes
+; Data bank 73, total bank size: 8185 bytes
 	.export level_data_chromaticexpedition
 	level_data_chromaticexpedition:
 	; Header
@@ -2726,13 +2726,13 @@
 		.byte ($B0) ;____________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________________ Force platformer, Disable parallax
-		.byte (0 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
+		.byte (1 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_______________ Spike Set, Block Set
 		.byte $12 ;______________________________________ Starting background color
 		.byte $02 ;______________________________________ Starting ground color
 		.byte 27 ;_______________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/level/supercycles.lz.bin" ; Size: 3375
+		.incbin "EXPORTS/level/supercycles.lz.bin" ; Size: 3376
 
 	.align 8192
 
@@ -2751,11 +2751,11 @@
 	.align 8192
 
 
-; Data bank 75, total bank size: 8017 bytes
+; Data bank 75, total bank size: 8047 bytes
 	sprite_data_pyrophoric:	; Size: 4736
 		.incbin "EXPORTS/sprite/pyrophoric.bin"
-	sprite_data_heliopolis:	; Size: 3281
-		.incbin "EXPORTS/sprite/heliopolis.bin"
+	sprite_data_supercycles:	; Size: 3311
+		.incbin "EXPORTS/sprite/supercycles.bin"
 	.align 8192
 
 

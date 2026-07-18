@@ -1183,7 +1183,8 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			parallaxDisable: true
+			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 		},
 		{
 			level: "decode",
