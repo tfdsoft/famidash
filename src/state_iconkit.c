@@ -51,25 +51,6 @@ banked(startup_bank.func) void state_iconkit(){
         sram_buffer[0]++;
     }
     sram_buffer[0] = 0;
-    //page_selection = 0;
-    //__attribute__((leaf)) __asm__ volatile(
-    //    "ldx #0 \n"
-    //    "unpack_loop_point:"
-    //    "lda "STR(chr_icons)"+0, x \n"
-    //    "sta __rc2 \n"
-    //    "lda "STR(chr_icons)"+1, x \n"
-    //    "sta __rc3 \n"
-    //    "txa \n"
-    //    "pha \n"
-    //    "lda "STR(chr_bank_3)"\n"
-    //    "jsr unpack_icon_firstframe\n"
-    //    "pla \n"
-    //    "tax \n"
-    //    "inx \n"
-    //    "inx \n"
-    //    "cpx #$10\n"
-    //    "bne unpack_loop_point\n"
-    //);
 
     se_vram_address(0x2000);
     se_vram_unrle(nt_iconkit,0);

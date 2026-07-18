@@ -172,6 +172,9 @@ file(chr_icon4, chr_bank_3) = {
 file(chr_icon5, chr_bank_3) = {
     #embed "./chr/dnt/Icon5.bin"
 };
+file(chr_icon6, chr_bank_3) = {
+    #embed "./chr/dnt/Icon6.bin"
+};
 
 const u8* chr_icons[] = {
     chr_icon0,
@@ -180,6 +183,7 @@ const u8* chr_icons[] = {
     chr_icon3,
     chr_icon4,
     chr_icon5,
+    chr_icon6,
 };
 
 

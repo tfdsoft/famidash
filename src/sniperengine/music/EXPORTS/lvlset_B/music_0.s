@@ -17,58 +17,7 @@ music_data_famidash_music0:
 	.word @instruments
 	.word @instruments_exp
 	.word @samples-5
-; 00 : dpcm_oversize
-	.word @song0ch0
-	.word @song0ch1
-	.word @song0ch2
-	.word @song0ch3
-	.word @song0ch4
-	.if FAMISTUDIO_EXP_EPSM_SSG_CHN_CNT > 0
-	.word @song0ch5
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_SSG_CHN_CNT > 1
-	.word @song0ch6
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_SSG_CHN_CNT > 2
-	.word @song0ch7
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_FM_CHN_CNT > 0
-	.word @song0ch8
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_FM_CHN_CNT > 1
-	.word @song0ch9
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_FM_CHN_CNT > 2
-	.word @song0ch10
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_FM_CHN_CNT > 3
-	.word @song0ch11
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_FM_CHN_CNT > 4
-	.word @song0ch12
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_FM_CHN_CNT > 5
-	.word @song0ch13
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_RHYTHM_CHN1_ENABLE
-	.word @song0ch14
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_RHYTHM_CHN2_ENABLE
-	.word @song0ch15
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_RHYTHM_CHN3_ENABLE
-	.word @song0ch16
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_RHYTHM_CHN4_ENABLE
-	.word @song0ch17
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_RHYTHM_CHN5_ENABLE
-	.word @song0ch18
-	.endif
-	.if FAMISTUDIO_EXP_EPSM_RHYTHM_CHN6_ENABLE
-	.word @song0ch19
-	.endif
-	.word 307,256
+
 ; 01 : Golden Haze
 	.word @song1ch0
 	.word @song1ch1

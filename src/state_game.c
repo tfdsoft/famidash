@@ -61,6 +61,7 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
     tile_buffer[6] = active_lvl.color.bg-0x10;
     tile_buffer[7] = 0x20; // REPLACE WITH LINE LATER
     
+    
     se_set_palette_background(tile_buffer);
     //se_set_palette_sprites(sram_buffer);
 }
