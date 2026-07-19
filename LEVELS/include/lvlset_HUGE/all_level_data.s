@@ -4232,7 +4232,7 @@
 	.align 8192
 
 
-; Data bank A7, total bank size: 8192 bytes
+; Data bank A7, total bank size: 8187 bytes
 	sprite_data_ultiatedestruction:	; Size: 1226
 		.incbin "EXPORTS/sprite/ultiatedestruction.bin"
 	.export level_data_madness
@@ -4279,14 +4279,14 @@
 		.incbin "EXPORTS/sprite/baseafterbase.bin"
 	sprite_data_sonar:	; Size: 1126
 		.incbin "EXPORTS/sprite/sonar.bin"
-	sprite_data_chromaticexpedition:	; Size: 1116
-		.incbin "EXPORTS/sprite/chromaticexpedition.bin"
+	sprite_data_stereomadness:	; Size: 1111
+		.incbin "EXPORTS/sprite/stereomadness.bin"
 	.align 8192
 
 
-; Data bank A8, total bank size: 8145 bytes
-	sprite_data_stereomadness:	; Size: 1111
-		.incbin "EXPORTS/sprite/stereomadness.bin"
+; Data bank A8, total bank size: 8160 bytes
+	sprite_data_chromaticexpedition:	; Size: 1126
+		.incbin "EXPORTS/sprite/chromaticexpedition.bin"
 	sprite_data_firetemple:	; Size: 1111
 		.incbin "EXPORTS/sprite/firetemple.bin"
 	sprite_data_nullscapes:	; Size: 1101

@@ -230,7 +230,7 @@
 	.align 8192
 
 
-; Data bank 0C, total bank size: 8147 bytes
+; Data bank 0C, total bank size: 8157 bytes
 	.export level_data_endgame
 	level_data_endgame:
 	; Header
@@ -250,7 +250,7 @@
 	; Level data
 		.incbin "EXPORTS/level/endgame.lz.bin" ; Size: 7018
 
-	sprite_data_chromaticexpedition:	; Size: 1116
+	sprite_data_chromaticexpedition:	; Size: 1126
 		.incbin "EXPORTS/sprite/chromaticexpedition.bin"
 	.align 8192
 
