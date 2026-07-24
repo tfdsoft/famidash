@@ -104,6 +104,8 @@ void state_game(){
 
 	scroll_y = spawn_scroll_y_pos;
 	seam_scroll_y = (spawn_scroll_y_pos - 0x78); // [temp]	
+	// LAZY LINEAR INSERT!
+	linear_scroll_y = calculate_linear_scroll_y(scroll_y);
 	set_scroll_y(scroll_y);
 
 	player_rely[0] = spawn_y_pos;

@@ -72,6 +72,8 @@ void process_y_scroll() {
 				scroll_y_subpx -= LSB(cc65_ptr1);
 				do_if_borrow({++high_byte(cc65_ptr1);});
 				scroll_y = sub_scroll_y(MSB(cc65_ptr1), scroll_y);
+				// LAZY LINEAR INSERT!
+				linear_scroll_y = calculate_linear_scroll_y(scroll_y);
 			}
 			cap_scroll_y_at_top();
 
@@ -88,6 +90,8 @@ void process_y_scroll() {
 				scroll_y_subpx += LSB(cc65_ptr1);
 				do_if_carry({++high_byte(cc65_ptr1);});
 				scroll_y = add_scroll_y(MSB(cc65_ptr1), scroll_y);
+				// LAZY LINEAR INSERT!
+				linear_scroll_y = calculate_linear_scroll_y(scroll_y);
 			}
 			cap_scroll_y_at_bottom();
 	} else {			//ship stuff
@@ -114,6 +118,9 @@ void process_y_scroll() {
 			do_if_carry({++high_byte(cc65_ptr1);});
 			scroll_y = sub_scroll_y(MSB(cc65_ptr1), scroll_y);
 		}
+
+		// LAZY LINEAR INSERT!
+		linear_scroll_y = calculate_linear_scroll_y(scroll_y);
 		cap_scroll_y_at_top();
 		cap_scroll_y_at_bottom();
 	}
