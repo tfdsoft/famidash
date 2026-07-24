@@ -2133,9 +2133,8 @@ sta _linear_scroll_y+1
     lda _sprite_data_bank
     jsr mmc3_set_prg_bank_1
 
-	lda	_scroll_y
-	ldx	_scroll_y+1
-	jsr _calculate_linear_scroll_y
+	lda	_linear_scroll_y
+	ldx	_linear_scroll_y+1
 	sta realScrollY
 	stx realScrollY+1
 
