@@ -4,6 +4,9 @@
 .import pusha, pushax, callptr4
 .import _scroll_x, _cursedmusic
 
+; LAZY LINEAR INSERT!
+.import _linear_scroll_y
+
 .if VS_SYSTEM
 	.import _draw_arrow
 .endif
@@ -2033,6 +2036,13 @@ doit:
 	lda     #0
 	sta     _scroll_y_subpx
 
+; LAZY LINEAR INSERT!
+lda _scroll_y
+ldx _scroll_y+1
+jsr _calculate_linear_scroll_y
+sta _linear_scroll_y
+stx _linear_scroll_y+1
+
 	; we can't do anything with the high byte of the diff anyway
 
 	rts
@@ -2061,6 +2071,13 @@ doit:
 	; compensate currplayer_rely
 	ldx     _scroll_y
 	ldy     _scroll_y+1
+
+
+; LAZY LINEAR INSERT!
+lda #<$02CF	; the maximum scroll value, but linear
+sta _linear_scroll_y
+lda #>$02CF
+sta _linear_scroll_y+1
 
 	lda     #<$02EF			;
 	sta     sreg			;
