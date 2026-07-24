@@ -669,58 +669,6 @@ single_rle_byte:
 .endproc
 
 
-; [Not used in C]
-.segment _BACKGROUND_RENDER_BANK
-
-.import _scroll_y
-
-.export get_seam_scroll_y
-.proc get_seam_scroll_y
-	; No inputs
-	; Returns seam_scroll_y in AX
-start:
-	BIT	extceil
-	BPL	noSeam
-
-yesSeam:
-	; Seam position:
-	; Y ≥	| Y <	| A		| B		|
-	; 	0	|  $78	|	0	|	1	|
-	;  $78	| $178	|  2/0	|	1	|
-	; $178	| $278	|	2	|  3/1	|
-	; $278	| $2F0	|	2	|	3	|
-
-	; Get seam position
-	LDA	_scroll_y
-	LDX	_scroll_y+1
-	SEC
-	SBC	#$78	;
-	BCS	:+		;	AX = scroll_y - $78
-		SBC #$10-1;	(with valid scroll_y coordinates)
-		DEX		;__
-	:
-	STA	seam_scroll_y
-	STX seam_scroll_y+1
-
-	RTS
-
-noSeam:
-	; The level's ceiling ≤ 27 blocks, no need for a seam
-	LDA	#$78
-	LDX #$02
-	STA	seam_scroll_y
-	STX	seam_scroll_y+1
-	RTS
-
-	; Total seam system:
-	; High byte	| Seam screen	| A		| B		|
-	;	FF		|	There isn't	|	0	| 	1	|
-	;	00		|		00		|  2/0	|	1	|
-	;	01		|		01		|	2	|  3/1	|
-	;	02		|	There isn't	|	2	|	3	|
-	;	No seam can be distinguished by high byte >= 02 or bit 1
-.endproc
-
 ; char draw_screen();
 .segment _BACKGROUND_RENDER_BANK
 
