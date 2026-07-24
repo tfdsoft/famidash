@@ -178,12 +178,7 @@ void state_game(){
 
 		if (((forced_trails == 2) || trails == 2 || !(kandoframecnt & 0x1))) {
 			if (!(kandoframecnt & 1)) {
-				if (old_trail_scroll_y >= scroll_y) {
-					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_trail_scroll_y));
-				} else {
-					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(old_trail_scroll_y, scroll_y));
-					tmp6 ^= 0xFFFF; tmp6++;
-				}
+				tmp6 = old_trail_scroll_y - linear_scroll_y;
 				tmp3 = 7;
 				do {
 					tmp5 = player_old_rely[tmp3] + tmp6;
@@ -192,7 +187,7 @@ void state_game(){
 					--tmp3;
 				} while ((int8_t)tmp3 >= 0);
 				player_old_rely[0] = high_byte(player_rely[0]);
-				old_trail_scroll_y = scroll_y;
+				old_trail_scroll_y = linear_scroll_y;
 			}
 		}
 		if (discomode && !(kandoframecnt & discorefreshrate)) {

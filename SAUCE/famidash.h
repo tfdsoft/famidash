@@ -433,7 +433,7 @@ uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
 uint16_t linear_scroll_y;
 uint8_t scroll_y_subpx;
-uint16_t old_trail_scroll_y;
+uint16_t old_trail_scroll_y;	// Moved to linear!
 uint16_t target_scroll_y;
 //uint16_t reload_target_scroll_y;
 uint8_t song;
