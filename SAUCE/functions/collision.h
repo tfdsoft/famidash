@@ -56,7 +56,7 @@ char bg_coll_sides() {
 			if (!(uint8_t)(temp_y & 0x08) && !force_platformer) return 1;		// If Y pos inside block < 8px
 			break;
 		case COL_FLOOR_CEIL:
-			if (gamemode == gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) return 0;
+			if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) return 0;
 			
 	};
 	return 0;
