@@ -2058,38 +2058,23 @@ stx _linear_scroll_y+1
 .export _cap_scroll_y_at_bottom
 .proc _cap_scroll_y_at_bottom
 check:
-	lda     _scroll_y_subpx	;
-	cmp     #0              ;
-	lda     _scroll_y		;
-	sbc     #<$02F0			;	if (scroll_y > 0x2EF)
-	lda     _scroll_y+1		;
-	sbc     #>$02F0			;__
-	bcs     doit
+	sec							;
+	lda		_linear_scroll_y	;
+	sbc		#<$02CF				;	if (scroll_y > 0x2EF)
+	tay							;
+	lda		_linear_scroll_y+1	;
+	sbc		#>$02CF				;__
+	bpl		doit
 	rts
 
 doit:
-	; compensate currplayer_rely
-	ldx     _scroll_y
-	ldy     _scroll_y+1
+; LAZY LINEAR INSERT! (but role reversed)
+lda #<$02EF
+sta _scroll_y
+lda #>$02EF
+sta _scroll_y+1
 
-
-; LAZY LINEAR INSERT!
-lda #<$02CF	; the maximum scroll value, but linear
-sta _linear_scroll_y
-lda #>$02CF
-sta _linear_scroll_y+1
-
-	lda     #<$02EF			;
-	sta     sreg			;
-	sta     _scroll_y		;	scroll_y = 0x2EF
-	lda     #>$02EF			;
-	sta     sreg+1			;
-	sta     _scroll_y+1		;__
-
-	tya									;
-	jsr     __sub_scroll_y_ext			;	Get difference
-	jsr     _calculate_linear_scroll_y	;__
-	tay
+	;__	Notably, we can't do shit with the upper byte of the difference
 
 	lda     _currplayer_rely	;
 	clc							;
@@ -2111,7 +2096,6 @@ sta _linear_scroll_y+1
 
 	lda     #0
 	sta     _scroll_y_subpx
-	; we can't do anything with the high byte of the diff anyway
 
 	rts
 .endproc
@@ -2120,7 +2104,7 @@ sta _linear_scroll_y+1
 ; void check_spr_objects();
 .segment "CODE_2"
 
-.import _activesprites_active, _scroll_x, _scroll_y, _animating
+.import _activesprites_active, _scroll_x, _linear_scroll_y, _animating
 
 .export _check_spr_objects := check_spr_objects
 .proc check_spr_objects
