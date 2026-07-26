@@ -226,7 +226,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			metadata.get('songID', 0),
 			f"({metadata.get('startingSpeed', 0)} << 4) | {metadata.get('startingGameMode', 0)}",
 			f"(${metadata.get('spawnYPositionHi', 0xB0):02X})",
-			f"(${metadata.get('scrollYPositionLow', 0xEF):02X})",
+			f"(${(metadata.get('scrollYPosition', 0x02CF) & 0xFF):02X})",
 			" | ".join([
 				f"({int(bool(metadata.get(name)))} << {idx})"
 				for idx, name in enumerate(['forcePlatformer', 'parallaxDisable'])

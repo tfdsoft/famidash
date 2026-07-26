@@ -13,7 +13,7 @@
 		.byte song_magic_touch ;______________________ Song ID
 		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
 		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_____________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;____________ Spike Set, Block Set
@@ -36,7 +36,7 @@
 		.byte song_subtle_oddities ;________________________ Song ID
 		.byte (0 << 4) | 0 ;________________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;___________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Spike Set, Block Set
@@ -59,7 +59,7 @@
 		.byte song_birdbrain ;_________________________ Song ID
 		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($10) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSD ;_____________ Spike Set, Block Set
@@ -82,7 +82,7 @@
 		.byte song_meltdown ;______________________________ Song ID
 		.byte (1 << 4) | 0 ;_______________________________ Starting game mode and speed
 		.byte ($B0) ;______________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;______________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;__________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSD ;_________________ Spike Set, Block Set
@@ -105,7 +105,7 @@
 		.byte song_tetris_remix_final ;_____________ Song ID
 		.byte (0 << 4) | 0 ;________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;___________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESC << 4) | _BLOCKSB ;__________ Spike Set, Block Set
@@ -128,7 +128,7 @@
 		.byte song_new_dash_city ;_______________________ Song ID
 		.byte (0 << 4) | 0 ;_____________________________ Starting game mode and speed
 		.byte ($B0) ;____________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;____________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_______________ Spike Set, Block Set
@@ -151,7 +151,7 @@
 		.byte song_snow ;_________________________________________ Song ID
 		.byte (0 << 4) | 0 ;______________________________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_____________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_________________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSD ;________________________ Spike Set, Block Set
@@ -174,7 +174,7 @@
 		.byte song_cryogenic ;_________________________ Song ID
 		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
@@ -203,7 +203,7 @@
 		.byte song_raining_tacos ;________________________ Song ID
 		.byte (0 << 4) | 0 ;______________________________ Starting game mode and speed
 		.byte ($00) ;_____________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;________________ Spike Set, Block Set
@@ -226,7 +226,7 @@
 		.byte song_check_out ;____________________________ Song ID
 		.byte (1 << 4) | 0 ;______________________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESC << 4) | _BLOCKSB ;________________ Spike Set, Block Set
@@ -251,7 +251,7 @@
 		.byte song_snow ;__________________________________ Song ID
 		.byte (0 << 4) | 0 ;_______________________________ Starting game mode and speed
 		.byte ($B0) ;______________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;______________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;__________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_________________ Spike Set, Block Set
@@ -274,7 +274,7 @@
 		.byte song_fire_aura ;________________________ Song ID
 		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
 		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_____________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;____________ Spike Set, Block Set
@@ -302,7 +302,7 @@
 		.byte song_infiltration ;___________________________ Song ID
 		.byte (2 << 4) | 0 ;________________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;___________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESC << 4) | _BLOCKSB ;__________________ Spike Set, Block Set
@@ -332,7 +332,7 @@
 		.byte song_dry_out ;__________________________________ Song ID
 		.byte (0 << 4) | 0 ;__________________________________ Starting game mode and speed
 		.byte ($B0) ;_________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;___________________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_____________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;____________________ Spike Set, Block Set
@@ -366,7 +366,7 @@
 		.byte song_meowstuff ;_________________________________ Song ID
 		.byte (0 << 4) | 0 ;___________________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________________ Spike Set, Block Set
@@ -391,7 +391,7 @@
 		.byte song_dance_of_the_violins ;___________________ Song ID
 		.byte (0 << 4) | 0 ;________________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;___________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Spike Set, Block Set
@@ -427,7 +427,7 @@
 		.byte song_glitch_gremlin ;__________________________ Song ID
 		.byte (1 << 4) | 0 ;_________________________________ Starting game mode and speed
 		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;____________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;___________________ Spike Set, Block Set
@@ -454,7 +454,7 @@
 		.byte song_kesobomb ;_______________________ Song ID
 		.byte (2 << 4) | 0 ;________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;___________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;__________ Spike Set, Block Set
@@ -485,7 +485,7 @@
 		.byte song_tiny_tunes ;________________________ Song ID
 		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
@@ -518,7 +518,7 @@
 		.byte song_the_explorer ;___________________ Song ID
 		.byte (1 << 4) | 0 ;________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;___________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;__________ Spike Set, Block Set
@@ -537,7 +537,7 @@
 		.byte song_win_the_race ;_______________________ Song ID
 		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;___________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;______________ Spike Set, Block Set
@@ -560,7 +560,7 @@
 		.byte song_chaoz_fantasy_extended ;______________ Song ID
 		.byte (1 << 4) | 0 ;_____________________________ Starting game mode and speed
 		.byte ($B0) ;____________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;____________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESC << 4) | _BLOCKSB ;_______________ Spike Set, Block Set
@@ -579,7 +579,7 @@
 		.byte song_stereo_madness_2 ;______________ Song ID
 		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;__________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Spike Set, Block Set
@@ -613,7 +613,7 @@
 		.byte song_xenogenesis ;__________________________ Song ID
 		.byte (1 << 4) | 0 ;______________________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;________________ Spike Set, Block Set
@@ -632,7 +632,7 @@
 		.byte song_against_the_odds_redux ;___________________ Song ID
 		.byte (0 << 4) | 0 ;__________________________________ Starting game mode and speed
 		.byte ($B0) ;_________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;___________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_____________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESC << 4) | _BLOCKSC ;____________________ Spike Set, Block Set
@@ -655,7 +655,7 @@
 		.byte song_fantasy ;___________________________ Song ID
 		.byte (1 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;______________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
@@ -680,7 +680,7 @@
 		.byte song_power_trip ;________________________ Song ID
 		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;_____________ Spike Set, Block Set
@@ -699,7 +699,7 @@
 		.byte song_off_to_mars ;_______________________ Song ID
 		.byte (1 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESC << 4) | _BLOCKSA ;_____________ Spike Set, Block Set
@@ -722,7 +722,7 @@
 		.byte song_select_payment_type ;_______________________ Song ID
 		.byte (0 << 4) | 0 ;___________________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;__________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _EXTRASPRITES1 ;______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSD ;_____________________ Spike Set, Block Set
@@ -741,7 +741,7 @@
 		.byte song_pyrophoric_legacy_remix ;____________ Song ID
 		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;___________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSB ;______________ Spike Set, Block Set
@@ -777,7 +777,7 @@
 		.byte song_ninox ;_________________________ Song ID
 		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECOCLOUD ;______________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESB << 4) | _BLOCKSC ;_________ Spike Set, Block Set
@@ -798,7 +798,7 @@
 		.byte song_factory_time ;________________________ Song ID
 		.byte (0 << 4) | 0 ;_____________________________ Starting game mode and speed
 		.byte ($B0) ;____________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;____________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;_______________ Spike Set, Block Set
@@ -847,7 +847,7 @@
 		.byte song_driving_by_night ;________________________ Song ID
 		.byte (1 << 4) | 0 ;_________________________________ Starting game mode and speed
 		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;____________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;___________________ Spike Set, Block Set
@@ -876,7 +876,7 @@
 		.byte song_ultimatedestruction ;________________________ Song ID
 		.byte (0 << 4) | 0 ;____________________________________ Starting game mode and speed
 		.byte ($B0) ;___________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;___________________________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;___________________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_____________________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_______________________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;______________________ Spike Set, Block Set
@@ -909,7 +909,7 @@
 		.byte song_dry_out ;________________________ Song ID
 		.byte (0 << 4) | 0 ;________________________ Starting game mode and speed
 		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($CF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;___________________ Max Fall Speed is 7?, Deco type
 		.byte (_SPIKESA << 4) | _BLOCKSA ;__________ Spike Set, Block Set

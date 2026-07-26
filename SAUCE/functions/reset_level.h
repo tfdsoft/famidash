@@ -69,9 +69,9 @@ void reset_level() {
 	set_scroll_y(scroll_y);
 	init_rld(level);
 
-	scroll_y = spawn_scroll_y_pos;
-	// LAZY LINEAR INSERT!
-	linear_scroll_y = calculate_linear_scroll_y(scroll_y);
+	linear_scroll_y = spawn_scroll_y_pos;
+	// LAZY LINEAR INSERT! (but role reversed)
+	scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
 	scroll_y_subpx = 0;
 	currplayer_was_on_slope_counter = 0;
 	was_on_slope_counter[0] = 0;

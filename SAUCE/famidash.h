@@ -434,7 +434,7 @@ uint16_t scroll_y;
 uint16_t linear_scroll_y;
 uint8_t scroll_y_subpx;
 uint16_t old_trail_scroll_y;	// Moved to linear!
-uint16_t target_scroll_y;
+uint16_t target_scroll_y;	// Moved to linear!
 //uint16_t reload_target_scroll_y;
 uint8_t song;
 uint8_t songplaying;
@@ -452,7 +452,7 @@ uint16_t coin2_speed;
 uint16_t coin3_speed;
 
 uint16_t spawn_y_pos;
-uint16_t spawn_scroll_y_pos;
+uint16_t spawn_scroll_y_pos;	// Moved to linear!
 uint8_t max_fallspeed_7;
 
 #if __VS_SYSTEM
