@@ -159,7 +159,7 @@ banked(startup_bank.func) void state_menu() {
     
     //background_set = 2;
     // load parallax background
-    if(loaded_bg_set != background_set){
+    /*if(loaded_bg_set != background_set){
         se_vram_address(0x1000);
         set_chr_bank(0,0x10);
         set_chr_bank(1,0x12);
@@ -168,7 +168,7 @@ banked(startup_bank.func) void state_menu() {
         loaded_bg_set = background_set;
         set_chr_bank(0,4);
         set_chr_bank(1,6);
-    }
+    }*/
 
 
     set_chr_bank(2,0);
@@ -325,7 +325,7 @@ banked(startup_bank.func) void state_menu() {
         if(joypad1.press_a) {
             switch(selection){
                 case 0: // play
-                    gamestate = 0x11;
+                    gamestate = 0x20;
                     break;
                 /*case 1: // community
                     break;

@@ -2345,44 +2345,13 @@ se_run_da_irq:
     rts
 .endproc
 
+.export se_sample_eof
 .proc se_sample_eof
     lda #$ff
     sta se_irq_table+0
     rts
 .endproc
 
-.pushseg
-.segment "_pzp_pdata"
-.export funny_pcm_routine
-.proc funny_pcm_routine
-    @load_instruction: lda $c000    ; 3
 
-    bmi @exit_eof_sample            ; 5
-    sta $4011                       ; 8
-    inc @load_instruction + 1       ; 10
-    bne @exit                       ; 12
-
-    @inc_high_byte:
-    inc @load_instruction + 2       ; 14
-    lda @load_instruction + 2       ; 16
-    cmp #$e0                        ; 18
-    bne @exit                       ; 20
-
-    inc __prg_c000                  ; 22
-
-    lda #%00000110                  ; 24
-    ora __bank_select_hi            ; 26
-    sta $8000                       ; 29
-    lda __prg_c000                  ; 31
-    sta $8001                       ; 34
-    lda #$c0                        ; 36
-    sta @load_instruction + 2       ; 38
-    @exit:
-    rts                             ; 39
-    @exit_eof_sample:
-    jmp se_sample_eof               ; 42
-
-.endproc
-.popseg
-
+.importzp funny_pcm_routine
 

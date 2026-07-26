@@ -7,6 +7,7 @@ banked(startup_bank.data) const u8 pal_iconkit[]={
     0x00,0x0f,0x29,0x2c,
     0x00,0x0f,0x24,0x34,
     0x00,0x0f,0x0f,0x0f,
+    0x00,0x0f,0x10,0x20,
 };
 banked(startup_bank.data) const u8 nt_iconkit[]={
 0x04,0x01,0x04,0x3f,0x03,0x03,0x0e,0x0f,0x10,0x8a,0x00,0x04,0x19,0x02,0x02,0x1e,
@@ -39,6 +40,12 @@ banked(startup_bank.data) const u8 iconkit_irq_table[] = {
     0x10,
 };
 
+banked(startup_bank.data) const u8 spr_iconkit_select[] = {
+    0,0,0x7e,3,
+    8,0,0x7e,3|0x40,
+    0x80
+};
+
 banked(startup_bank.func) void iconkit_set_selection_attribute(u8 selection, u16 start_addr){
     
     u8 tmp = 0x33;
@@ -50,7 +57,7 @@ banked(startup_bank.func) void iconkit_set_selection_attribute(u8 selection, u16
 banked(startup_bank.func) void state_iconkit(){
 
     struct {
-        u8 id :4;
+        u8 id :3;
         u8 menu :2;
     } selection;
     
@@ -59,18 +66,11 @@ banked(startup_bank.func) void state_iconkit(){
     se_vram_donut_decompress(chr_menu_font_pusab, chr_bank_0);
     se_vram_donut_decompress(chr_menu_iconkit, chr_bank_0);
     
-    // back button
-    se_draw_sprite(8,24,0x90,1);
-    se_draw_sprite(16,24,0x92,1);
-    se_draw_sprite(9,25,0x90,2);
-    se_draw_sprite(17,25,0x92,2);
-
-    sram_buffer[0] = 0;
-    while(sram_buffer[0]<8){
+    //__asm__("brk \n .byte $ea");
+    
+    for(sram_buffer[0] = 0; sram_buffer[0]<8; sram_buffer[0]++){
         unpack_icon_firstframe((chr_icons[sram_buffer[0]]), chr_bank_3);
-        sram_buffer[0]++;
     }
-    sram_buffer[0] = 0;
 
     se_vram_address(0x2000);
     se_vram_unrle(nt_iconkit,0);
@@ -91,12 +91,21 @@ banked(startup_bank.func) void state_iconkit(){
     while(1){
         se_wait_vsync();
 
+        se_clear_sprites();
+
+        // back button
+        se_draw_sprite(8,24,0x90,1);
+        se_draw_sprite(16,24,0x92,1);
+        se_draw_sprite(9,25,0x90,2);
+        se_draw_sprite(17,25,0x92,2);
+
         if(joypad1.press_up) selection.menu--;
         if(joypad1.press_down) selection.menu++;
 
         // IF CHANGING PAGE
         switch(selection.menu){
             case 0:
+
                 se_one_vram_buffer(
                     0,
                     (0x23da + (selection.id >> 1))
@@ -104,11 +113,20 @@ banked(startup_bank.func) void state_iconkit(){
 
                 if(joypad1.press_right) selection.id++;
                 if(joypad1.press_left) selection.id--;
+                
+                se_draw_metasprite((64+((selection.id)*16)),96,spr_iconkit_select);
 
                 iconkit_set_selection_attribute(
                     selection.id,
                     0x23da
                 );
+                break;
+
+            case 1:
+            case 2:
+                se_draw_metasprite((64+((selection.id%8)*16)),(128+((selection.menu>>1)<<4)),spr_iconkit_select);
+                if(joypad1.press_right) selection.id++;
+                if(joypad1.press_left) selection.id--;
                 break;
             default:
                 //se_sfx_play(sfx_boot,0);

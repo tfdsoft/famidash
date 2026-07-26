@@ -82,8 +82,8 @@
 ; like the example below.
 ;======================================================================================================================
 
-.define FAMISTUDIO_CA65_ZP_SEGMENT   ZEROPAGE
-.define FAMISTUDIO_CA65_RAM_SEGMENT  INIT
+.define FAMISTUDIO_CA65_ZP_SEGMENT   _pzp
+.define FAMISTUDIO_CA65_RAM_SEGMENT  _pnoinit
 .define FAMISTUDIO_CA65_CODE_SEGMENT _pprg__rom__fixed__lo
 
 ;======================================================================================================================

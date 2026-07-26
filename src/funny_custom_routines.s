@@ -1,6 +1,39 @@
 .extern se_irq_table, se_irq_table_position
 
 
+
+.section .zp.data,"ax",@progbits
+.global funny_pcm_routine
+funny_pcm_routine:
+    fpcmr_load_instruction: lda $c000    ; 3
+
+    bmi fpcmr_exit_eof_sample            ; 5
+    sta $4011                       ; 8
+    inc fpcmr_load_instruction + 1       ; 10
+    bne fpcmr_exit                       ; 12
+
+    fpcmr_inc_high_byte:
+    inc fpcmr_load_instruction + 2       ; 14
+    lda fpcmr_load_instruction + 2       ; 16
+    cmp #$e0                        ; 18
+    bne fpcmr_exit                       ; 20
+
+    inc __prg_8000                  ; 22
+
+    lda #%00000110                  ; 24
+    ora __bank_select_hi            ; 26
+    sta $8000                       ; 29
+    lda __prg_8000                  ; 31
+    sta $8001                       ; 34
+    lda #$c0                        ; 36
+    sta fpcmr_load_instruction + 2       ; 38
+    fpcmr_exit:
+    rts                             ; 39
+    fpcmr_exit_eof_sample:
+    jmp se_sample_eof               ; 42
+
+
+
 .section .text.custom_irq_that_updates_scroll,"ax",@progbits
 .global custom_irq_that_updates_scroll
 custom_irq_that_updates_scroll:
@@ -161,3 +194,5 @@ custom_irq_that_updates_chr_and_x_scroll:
     pla
     tay
     rts
+
+

@@ -141,7 +141,7 @@ $(TMPDIR)/sniperengine.o: src/sniperengine/THE_FUCKING_INCLUDE.s
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
     #./generate_everything.sh
-	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,src/config/$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
+	$(CC) -v src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,src/config/$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
 
 
 clean:

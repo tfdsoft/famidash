@@ -64,8 +64,9 @@ banked(sound_test_bank.func) void state_soundtest(){
 
     // back button
     se_draw_sprite(8,24,0x90,1);
-    se_draw_sprite(18,25,0x92,1);
     se_draw_sprite(16,24,0x92,1);
+    se_draw_sprite(9,25,0x90,2);
+    se_draw_sprite(17,25,0x92,2);
 
     se_string_vram_buffer(str_soundtest, nametable_address_A(10,5));
     se_string_vram_buffer(str_song, nametable_address_A(6,9));
