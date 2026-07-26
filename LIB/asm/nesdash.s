@@ -1959,6 +1959,7 @@ early_exit:
 	rts
 .endproc
 
+
 ; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
 .segment "CODE_2"
 
@@ -1982,6 +1983,69 @@ early_exit:
 	end:
 	RTS
 .endproc
+
+
+; uint16_t calculate_ppufmt_scroll_y(uint16_t linearScroll);
+.segment "CODE_2"
+
+.export _calculate_ppufmt_scroll_y
+.proc _calculate_ppufmt_scroll_y
+	;__	AX = input, AX = output
+
+	;
+	;	The math behind this:
+	;	Every time we pass the $F0 boundary, we need to add $10.
+	;	$F0 is extremely close to $100, so we can the upper byte as
+	;	a very good estimate of the amount of such transitions.
+	;	With an adjustment at the end if the low byte >= $F0.
+	;	Indeed, this works perfectly for any linear coordinate in
+	;	the range 0..$E1F, as their (literal non-adjusted) outputs
+	;	are under $F00 (though, notably, $E10..$E1F actually maps
+	;	to $F00..$F0F due to the aforementioned adjustments).
+	;	As of writing this in Summer of 2026, this fine game of Famidash
+	;	doesn't seem to need such values of Scroll Y, but the adjustment
+	;	is quite easy regardless! For any 15 (post-conversion but pre-adjustment)
+	;	high increments there is an additional #$10 added to the total value.
+	;	In environments with extreme Y scrolling needs this can be done
+	;	as a post-factor loop.
+	;	In this case a table of shifting by 4 is used, which limits the
+	;	total proper input value to $FFF anyway, therefore locked behind
+	;	the preprocessor for potential use lies the one-time adjuster if
+	;	the input value exceeds $E1F.
+	;
+	;__	Writeup done in 2026 by dajinkosa
+
+	;__	X already contains the high byte.
+	CLC						;
+	ADC shiftBy4table, X	;
+	BCC :+					;	Do the addition
+		INX					;
+	:						;__
+
+	;	This can be used to extend the range of input values
+	;	from	$000..$E1F (linear) / $0000..$0F0F (PPU fmt)
+	;	to		$000..$FFF (linear) / $0000..$110F (PPU fmt)
+	.if 0
+		CPX #15
+		BCC :+
+			ADC #15	;__	Carry is set
+			BCC	:+
+				INX
+		:
+	.endif
+
+	;__	Adjust the low byte for proper PPU format
+	CMP #$F0
+	BCC :+
+		ADC #15	;__	Carry is set
+		BCC	:+
+			INX
+	:
+
+	;__	We're all set!
+	RTS
+.endproc
+
 
 .if !__THE_ALBUM
 ; void cap_scroll_y_at_top();
