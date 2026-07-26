@@ -112,7 +112,7 @@ void process_y_scroll() {
 			player1_y = player1_y + cc65_ptr1;
 
 			scroll_y_subpx = scroll_y_subpx - LSB(cc65_ptr1);
-			do_if_carry({++high_byte(cc65_ptr1);});
+			do_if_borrow({++high_byte(cc65_ptr1);});
 			linear_scroll_y = linear_scroll_y - MSB(cc65_ptr1);
 		}
 
