@@ -149,6 +149,20 @@ banked(startup_bank.data) const u8 mspr_pausemenu[] = {
     0x80
 };
 //banked(startup_bank.data) const u8 
+#ifdef ROM_FULL
+banked(startup_bank.func) u8 game_pause_menu_get_level_name_size(){
+    se_memory_copy(lvl_column_buffer, active_lvl.name, 24);
+
+    u8 i=0;
+    while(i<24){
+        if(lvl_column_buffer[i] == 0){
+            return i;
+        }
+        i++;
+    }
+    return 0;
+}
+#endif
 
 banked(startup_bank.func) void game_pause_menu(){
     //u8 selection;
@@ -177,8 +191,19 @@ banked(startup_bank.func) void game_pause_menu(){
     set_chr_bank(0,4);
     set_chr_bank(1,6);
 
+    // if lite version, put ad here
     #ifdef ROM_LITE
     unpack_ad((se_frame_count % (sizeof(chr_ads)>>1)));
+    #endif
+
+    // if full version, put level name
+    #ifdef ROM_FULL
+    u8 level_name_size = game_pause_menu_get_level_name_size();
+    se_multi_vram_buffer_horizontal(
+        lvl_column_buffer,
+        level_name_size,
+        nametable_address_A((5+(11-(level_name_size>>1))),6)
+    );
     #endif
 
     //selection = 0;

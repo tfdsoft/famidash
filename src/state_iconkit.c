@@ -60,6 +60,8 @@ banked(startup_bank.func) void state_iconkit(){
         u8 id :3;
         u8 menu :2;
     } selection;
+
+    u8 icon_tab = 0;
     
     se_vram_address(0);
     se_vram_donut_decompress(chr_menu_global, chr_bank_0);
@@ -106,20 +108,25 @@ banked(startup_bank.func) void state_iconkit(){
         switch(selection.menu){
             case 0:
 
-                se_one_vram_buffer(
-                    0,
-                    (0x23da + (selection.id >> 1))
-                );
+                
 
                 if(joypad1.press_right) selection.id++;
                 if(joypad1.press_left) selection.id--;
                 
                 se_draw_metasprite((64+((selection.id)*16)),96,spr_iconkit_select);
 
-                iconkit_set_selection_attribute(
-                    selection.id,
-                    0x23da
-                );
+                if(joypad1.press_a) {
+                    se_one_vram_buffer_repeat_horizontal(
+                        0,
+                        4,
+                        0x23da
+                    );
+                    icon_tab = selection.id;
+                    iconkit_set_selection_attribute(
+                        icon_tab,
+                        0x23da
+                    );
+                }
                 break;
 
             case 1:
