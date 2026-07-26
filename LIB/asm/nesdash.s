@@ -381,23 +381,22 @@ _init_rld:
 	STA	extceil			;__
 
 	@min_scroll_y_calc:
-		LDA	#$00			;
-		STA	min_scroll_y+1	;__
-		
 		TXA						;
 		EOR	#$FF				;	Get 57 - level height
 		; SEC done by LDA #$01	;	aka the highest row
 		ADC #<(1+57-1)			;__
-		SEC
-	@min_scroll_y_loop:
-		TAX
-		SBC	#15				;__
-		BCC	@min_scroll_y_fin
-		INC	min_scroll_y+1
-		BCS	@min_scroll_y_loop	; = BRA
-	@min_scroll_y_fin:
-		LDA	shiftBy4table, X
-		ORA #$08
+
+		;__	Shift right by 4
+		SEC		;	ORA #$08 right away
+		ROL		;	These 2 are painless since
+		ASL		;__	our current height is always less than 64
+		;__	Y is zero, and won't be used anymore anyway
+		ASL
+		BCC :+
+			INY
+		:	STY	min_scroll_y+1	;__	Y is 0 or 1
+		ASL
+		ROL	min_scroll_y+1
 		STA min_scroll_y
 
 	incw ptr1
@@ -2037,36 +2036,31 @@ early_exit:
 .segment _SCROLL_BANK
 
 .importzp _currplayer_rely
-.import _scroll_y, _player_rely, _scroll_y_subpx
+.import _linear_scroll_y, _player_rely, _scroll_y_subpx
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
 check:
-	lda     _scroll_y		;
-	cmp     _min_scroll_y	;	if (scroll_y < min_scroll_y)
-	lda     _scroll_y+1		;
-	sbc     _min_scroll_y+1	;__
-	bcc     doit
+	lda     _linear_scroll_y	;
+	sec							;
+	sbc     _min_scroll_y		;	if (scroll_y < min_scroll_y)
+	tay							;
+	lda     _linear_scroll_y+1	;
+	sbc     _min_scroll_y+1		;__
+	bmi     doit
 	rts
 
 doit:
-	; compensate currplayer_rely and player_rely
-	lda     _scroll_y
-	ldx     _scroll_y+1
-	sta     sreg
-	stx     sreg+1
-	ldx     _min_scroll_y	;
-	lda     _min_scroll_y+1	;	scroll_y = min_scroll_y
-	stx     _scroll_y		;
-	sta     _scroll_y+1		;__
-	jsr     __sub_scroll_y_ext
-	jsr     _calculate_linear_scroll_y
-	eor     #$FF			;__	Make the ADCs into SBCs
-	tay
+	lda     _min_scroll_y
+	sta     _linear_scroll_y
+	lda     _min_scroll_y+1
+	sta     _linear_scroll_y+1
+
+	;__	Notably, we can't do shit with the upper byte of the difference
 
 	lda     _currplayer_rely	;
-	sec							;
-	sbc     _scroll_y_subpx		;
+	clc							;
+	adc     _scroll_y_subpx		;
 	sta     _currplayer_rely	;	Compensate currplayer_rely
 	sta		_player_rely		;	(The player apparently guaranteed to be 1st)
 	tya							;
@@ -2075,8 +2069,8 @@ doit:
 	sta     _player_rely+1		;__
 
 	lda     _player_rely+2		;
-	sec							;
-	sbc     _scroll_y_subpx		;
+	clc							;
+	adc     _scroll_y_subpx		;
 	sta     _player_rely+2		;	Compensate player_rely[1]
 	tya							;
 	adc     _player_rely+2+1	;
@@ -2085,12 +2079,12 @@ doit:
 	lda     #0
 	sta     _scroll_y_subpx
 
-; LAZY LINEAR INSERT!
-lda _scroll_y
-ldx _scroll_y+1
-jsr _calculate_linear_scroll_y
-sta _linear_scroll_y
-stx _linear_scroll_y+1
+; LAZY LINEAR INSERT! (but role reversed)
+lda _linear_scroll_y
+ldx _linear_scroll_y+1
+jsr _calculate_ppufmt_scroll_y
+sta _scroll_y
+stx _scroll_y+1
 
 	; we can't do anything with the high byte of the diff anyway
 

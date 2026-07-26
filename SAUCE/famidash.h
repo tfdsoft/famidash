@@ -554,7 +554,7 @@ uint8_t player_invis;
 
 extern uint8_t famistudio_song_speed;
 
-extern uint16_t min_scroll_y;
+extern uint16_t min_scroll_y;	// Moved to linear!
 extern uint16_t seam_scroll_y;
 
 extern volatile uint8_t hexToDecOutputBuffer[5];

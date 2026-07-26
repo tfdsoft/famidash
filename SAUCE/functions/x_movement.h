@@ -67,7 +67,7 @@ void x_movement(){
 //	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
 	
 	if (dashing[currplayer] == 4 || dashing[currplayer] == 5) {	
-		if (currplayer_rely < 0x0600 && scroll_y == min_scroll_y){
+		if (currplayer_rely < 0x0600 && linear_scroll_y == min_scroll_y){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 		}
 		//return; 

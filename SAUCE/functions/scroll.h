@@ -58,7 +58,7 @@ void process_y_scroll() {
 	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_POGO || nocamlock || nocamlockforced)) {
 			if (exitPortalTimer) exitPortalTimer--;
 			if (player0_y < 0x4000 && 
-				(scroll_y >= min_scroll_y && (scroll_y_subpx || scroll_y != min_scroll_y))
+				(linear_scroll_y >= min_scroll_y && (scroll_y_subpx || linear_scroll_y != min_scroll_y))
 				){
 				// change y scroll (upward)
 				cc65_ptr1 = 0x4000 - player0_y;
