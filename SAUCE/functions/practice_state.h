@@ -67,7 +67,7 @@ void store_practice_state(){
 	lohi_arr16_store(practice_seam_scroll_y, get_Y, seam_scroll_y);
 	lohi_arr16_store(practice_old_draw_scroll_y, get_Y, old_draw_scroll_y);
 	lohi_arr16_store(practice_target_scroll_y, get_Y, target_scroll_y);
-	lohi_arr16_store(practice_min_scroll_y, get_Y, min_scroll_y);
+	lohi_arr16_store(practice_min_scroll_y, get_Y, min_scroll_y);	// notably this one is useless
 
 	idx8_store(practice_player_invis, get_Y, player_invis);
 	idx8_store(practice_player_gamemode, get_Y, gamemode);
@@ -146,7 +146,7 @@ void load_practice_state() {
 	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, get_Y);
 	seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, get_Y);
 	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, get_Y);
-	min_scroll_y = lohi_arr16_load(practice_min_scroll_y, get_Y);
+	min_scroll_y = lohi_arr16_load(practice_min_scroll_y, get_Y);	// notably this one is useless
 
 	player_invis = idx8_load(practice_player_invis, get_Y);
 	gamemode = idx8_load(practice_player_gamemode, get_Y);
