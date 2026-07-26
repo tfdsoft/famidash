@@ -2068,7 +2068,7 @@ doit:
 	sec							;
 	sbc     _scroll_y_subpx		;
 	sta     _currplayer_rely	;	Compensate currplayer_rely
-	sta		_player_rely+1		;	(Apparently guaranteed to be 0)
+	sta		_player_rely		;	(The player apparently guaranteed to be 1st)
 	tya							;
 	adc     _currplayer_rely+1	;
 	sta     _currplayer_rely+1	;
@@ -2108,28 +2108,35 @@ stx _linear_scroll_y+1
 .proc _cap_scroll_y_at_bottom
 check:
 	sec							;
-	lda		_linear_scroll_y	;
-	sbc		#<$02CF				;	if (scroll_y > 0x2EF)
+	lda     _linear_scroll_y	;
+	sbc     #<$02CF				;	if (scroll_y > 0x2EF)
 	tay							;
-	lda		_linear_scroll_y+1	;
-	sbc		#>$02CF				;__
-	bpl		doit
+	lda     _linear_scroll_y+1	;
+	sbc     #>$02CF				;__
+	bpl     adjust
 	rts
 
-doit:
+adjust:
 ; LAZY LINEAR INSERT! (but role reversed)
 lda #<$02EF
 sta _scroll_y
 lda #>$02EF
 sta _scroll_y+1
 
-	;__	Notably, we can't do shit with the upper byte of the difference
+	;	Notably, we can't do shit with the upper byte of the difference
+	;__	Therefore it's OK to use the A
+
+
+	lda     #<$02CF				;
+	sta     _linear_scroll_y	;
+	lda     #>$02CF				;
+	sta     _linear_scroll_y+1	;__
 
 	lda     _currplayer_rely	;
 	clc							;
 	adc     _scroll_y_subpx		;
 	sta     _currplayer_rely	;	Compensate currplayer_rely
-	sta		_player_rely+1		;	(Apparently guaranteed to be 0)
+	sta     _player_rely		;	(The player apparently guaranteed to be 1st)
 	tya							;
 	adc     _currplayer_rely+1	;
 	sta     _currplayer_rely+1	;
