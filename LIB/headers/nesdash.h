@@ -85,13 +85,22 @@ void __fastcall__ _sfx_play(uint16_t args);
 void __fastcall__ music_update();
 
 /**
- * @brief Converts a number from scroll_y pixels to linear pixels.
+ * @brief Converts a number from NES PPU Y scroll pixels to linear pixels.
  *
- * @param nonlinearScroll The number in scroll_y pixels to convert.
+ * @param nonlinearScroll The number in NES PPU Y scroll pixels to convert.
  *
  * @retval The number in linear pixels.
  */
 uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
+
+/**
+ * @brief Converts a number from linear pixels to NES PPU Y scroll pixels.
+ *
+ * @param linearScroll The number in linear pixels to convert.
+ *
+ * @return The number in NES PPU Y scroll pixels.
+ */
+uint16_t calculate_ppufmt_scroll_y(uint16_t linearScroll);
 
 /**
  * @brief Caps the Y scroll at min_scroll_y
