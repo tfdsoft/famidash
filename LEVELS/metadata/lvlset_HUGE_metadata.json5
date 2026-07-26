@@ -17,7 +17,7 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
-			//scrollYPositionLow: 0x30,
+			//scrollYPosition: 0x0230,
 			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
@@ -45,7 +45,7 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
-			//scrollYPositionLow: 0x30,
+			//scrollYPosition: 0x0230,
 			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
@@ -1499,7 +1499,7 @@
             startingBackgroundColor: 0x03,
             startingGroundColor: 0x0F,
             spawnYPositionHi: 0xA0,
-            scrollYPositionLow: 0x80,
+            scrollYPosition: 0x0280,
             parallaxDisable: true,
             forcePlatformer: true,
             maxFallSpeed_is_7: 0x01,
@@ -1534,7 +1534,7 @@
 			parallaxDisable: true,
 			forcePlatformer: true,
 			spawnYPositionHi: 0xA0,
-			scrollYPositionLow: 0x80,
+			scrollYPosition: 0x0280,
 			objectOffsets: [
 				{
 					coordinates: [15,38],
@@ -1601,8 +1601,7 @@
 			parallaxDisable: true,
 			forcePlatformer: true,
 			spawnYPositionHi: 0xb0,
-			scrollYPositionHi: 0x02,
-			scrollYPositionLow: 0xef,
+			scrollYPosition: 0x02CF,
 			objectOffsets: [
 				{
 					coordinates: [46,56],
@@ -1633,9 +1632,7 @@
 			parallaxDisable: true,
 			forcePlatformer: true,
 			spawnYPositionHi: 0x40,
-			spawnYPositionLow: 0x00,
-			scrollYPositionHi: 0x02,
-			scrollYPositionLow: 0xef,
+			scrollYPosition: 0x02CF,
 			objectOffsets: [
 				{
 					coordinates: [41,44],
@@ -4772,7 +4769,7 @@
 			startingBackgroundColor: 0x0C,
 			startingGroundColor: 0x0C,
 			spawnYPositionHi: 0x70,
-			scrollYPositionLow: 0x30,
+			scrollYPosition: 0x0230,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -7372,7 +7369,7 @@
 			stars: 10,
 			songID: "song_slow_down",
 			//spawnYPositionHi: 0x30,
-			//scrollYPositionLow: 0x30,
+			//scrollYPosition: 0x0230,
 			maxFallSpeed_is_7: 0x01,
 			startingGameMode: 4,
 			startingSpeed: 1,

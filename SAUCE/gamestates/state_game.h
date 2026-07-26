@@ -102,10 +102,10 @@ void state_game(){
 	mmc3_set_prg_bank_1(GET_BANK(reset_level));
 	reset_level();
 
-	scroll_y = spawn_scroll_y_pos;
-	seam_scroll_y = (spawn_scroll_y_pos - 0x78); // [temp]	
-	// LAZY LINEAR INSERT!
-	linear_scroll_y = calculate_linear_scroll_y(scroll_y);
+	linear_scroll_y = spawn_scroll_y_pos;
+	// LAZY LINEAR INSERT! (but role reversed)
+	scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
+	seam_scroll_y = (scroll_y - 0x78); // [temp]
 	set_scroll_y(scroll_y);
 
 	player_rely[0] = spawn_y_pos;
