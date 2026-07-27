@@ -993,9 +993,8 @@ char bg_coll_D() {
 
 char bg_coll_U_spider() {
 	temp_x = LEFT_POS; // automatically only the low byte
-	temp_y = add_scroll_y(
-		Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-		scroll_y
+	temp_y = calculate_ppufmt_scroll_y(
+		transitional_linear_absolute_currplayer_y + (uint8_t)((currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0))
 	);
 
 	tmp8 = (temp_y) & 0x0f;
@@ -1011,9 +1010,8 @@ char bg_coll_U_spider() {
 
 char bg_coll_D_spider() {
 	temp_x = LEFT_POS; // automatically only the low byte
-	temp_y = add_scroll_y(
-		Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-		scroll_y
+	temp_y = calculate_ppufmt_scroll_y(
+		transitional_linear_absolute_currplayer_y + (uint8_t)(Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0))
 	);
 	
 	tmp8 = (temp_y) & 0x0f;
