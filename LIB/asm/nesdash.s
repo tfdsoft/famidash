@@ -1268,11 +1268,11 @@ ntAddrHiTbl:
 	SepWriEnd = Separate2WritesSize
 
 	start:
-		LDA	_scroll_y				;
+		LDA	_linear_scroll_y		;
 		SEC							;
 		SBC	old_draw_scroll_y		;
 		STA	tmp1					;	XY = scroll_y - old_draw_scroll_y
-		LDA	_scroll_y+1				;
+		LDA	_linear_scroll_y+1		;
 		SBC	old_draw_scroll_y+1		;
 		TAY							;__
 
@@ -1330,8 +1330,8 @@ ntAddrHiTbl:
 		@fin:
 			STX	scroll_direction
 
-			LDA	_scroll_y
-			LDY	_scroll_y+1
+			LDA	_linear_scroll_y
+			LDY	_linear_scroll_y+1
 			STA	old_draw_scroll_y
 			STY	old_draw_scroll_y+1
 
