@@ -69,15 +69,15 @@ void process_y_scroll() {
 				player0_y += cc65_ptr1;
 				player1_y += cc65_ptr1;
 
-				scroll_y_subpx -= LSB(cc65_ptr1);
+				scroll_y_subpx = scroll_y_subpx - LSB(cc65_ptr1);
 				do_if_borrow({++high_byte(cc65_ptr1);});
-				scroll_y = sub_scroll_y(MSB(cc65_ptr1), scroll_y);
-				// LAZY LINEAR INSERT!
-				linear_scroll_y = calculate_linear_scroll_y(scroll_y);
+				linear_scroll_y = linear_scroll_y - MSB(cc65_ptr1);
+				// LAZY LINEAR INSERT! (but role reversed)
+				scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
 			}
 			cap_scroll_y_at_top();
 
-			if (scroll_y < 0x2EF && high_byte(player0_y) >= MSB(0xA000)){
+			if (linear_scroll_y < 0x2CF && high_byte(player0_y) >= MSB(0xA000)){
 				// change y scroll (downward)
 				cc65_ptr1 = player0_y - 0xA000;
 				if (exitPortalTimer) {
@@ -87,11 +87,11 @@ void process_y_scroll() {
 				player0_y = player0_y - cc65_ptr1;
 				player1_y = player1_y - cc65_ptr1;
 
-				scroll_y_subpx += LSB(cc65_ptr1);
+				scroll_y_subpx = scroll_y_subpx + LSB(cc65_ptr1);
 				do_if_carry({++high_byte(cc65_ptr1);});
-				scroll_y = add_scroll_y(MSB(cc65_ptr1), scroll_y);
-				// LAZY LINEAR INSERT!
-				linear_scroll_y = calculate_linear_scroll_y(scroll_y);
+				linear_scroll_y = linear_scroll_y + MSB(cc65_ptr1);
+				// LAZY LINEAR INSERT! (but role reversed)
+				scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
 			}
 			cap_scroll_y_at_bottom();
 	} else {			//ship stuff
@@ -101,9 +101,9 @@ void process_y_scroll() {
 			player0_y = player0_y - cc65_ptr1;
 			player1_y = player1_y - cc65_ptr1;
 
-			scroll_y_subpx += LSB(cc65_ptr1);
+			scroll_y_subpx = scroll_y_subpx + LSB(cc65_ptr1);
 			do_if_carry({++high_byte(cc65_ptr1);});
-			linear_scroll_y += MSB(cc65_ptr1);
+			linear_scroll_y = linear_scroll_y + MSB(cc65_ptr1);
 		}
 		if (target_scroll_y < linear_scroll_y) {
 			cc65_ptr1 = SHIP_SCROLL_SPEED(framerate);
