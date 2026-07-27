@@ -63,16 +63,17 @@ void reset_level() {
 	#if !__VS_SYSTEM
 	gameState = STATE_GAME; //fix for dying as the end trigger triggers
 	#endif
-	// slope stuff
-	seam_scroll_y = (0x2EF - 0x78); // [temp]
-	set_scroll_x(scroll_x);
-	set_scroll_y(scroll_y);
 	init_rld(level);
 
 	linear_scroll_y = spawn_scroll_y_pos;
 	// LAZY LINEAR INSERT! (but role reversed)
 	scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
+	seam_scroll_y = (scroll_y - 0x78); // [temp]
+	// slope stuff
 	scroll_y_subpx = 0;
+	set_scroll_x(scroll_x);
+	set_scroll_y(scroll_y);
+
 	currplayer_was_on_slope_counter = 0;
 	was_on_slope_counter[0] = 0;
 	was_on_slope_counter[1] = 0;
@@ -146,7 +147,7 @@ void reset_level() {
 	player_rely[1] = spawn_y_pos;
 	currplayer_rely = spawn_y_pos;
 
-	target_scroll_y = spawn_y_pos;
+	target_scroll_y = linear_scroll_y;
 
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
