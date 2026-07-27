@@ -102,20 +102,6 @@ void state_game(){
 	mmc3_set_prg_bank_1(GET_BANK(reset_level));
 	reset_level();
 
-	linear_scroll_y = spawn_scroll_y_pos;
-	// LAZY LINEAR INSERT! (but role reversed)
-	scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
-	seam_scroll_y = (scroll_y - 0x78); // [temp]
-	set_scroll_y(scroll_y);
-
-	player_rely[0] = spawn_y_pos;
-	player_rely[1] = spawn_y_pos;
-	currplayer_rely = spawn_y_pos;
-	
-	update_currplayer_table_idx();
-
-
-	
 	iconbank = (icon<<1) + 40;
 
 	pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
