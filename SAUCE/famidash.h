@@ -52,6 +52,13 @@
 #define REGION_PAL		1
 #define REGION_DENDY	2
 
+struct Base {
+	uint8_t x;
+	uint8_t y;
+	uint8_t width;
+	uint8_t height;
+};
+
 // Zeropage variables
 #pragma bss-name("ZEROPAGE")
 
@@ -168,6 +175,9 @@ extern uint8_t fullRegion;
 #pragma zpsym ("framerate")
 #pragma zpsym ("cpuRegion")
 #pragma zpsym ("fullRegion")
+
+struct Base Generic;
+struct Base Generic2;
 
 // SRAM
 #pragma bss-name("SRAM")
@@ -575,13 +585,3 @@ extern volatile uint8_t hexToDecOutputBuffer[5];
 //};
 
 //struct player2 player2 = {0x0000,0xb000};
-
-struct Base {
-	uint8_t x;
-	uint8_t y;
-	uint8_t width;
-	uint8_t height;
-};
-
-struct Base Generic;
-struct Base Generic2;
