@@ -91,8 +91,10 @@ void spider_eject() {
 void spider_up_wait() {
 	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
 	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
+	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
 	do {
 		high_byte(currplayer_rely) -= 0x08;
+		transitional_linear_absolute_currplayer_y -= 0x08;
 		crossPRGBankJump0(process_y_scroll);
 		if (high_byte(currplayer_rely) <= 0x07){ // && linear_scroll_y <= min_scroll_y
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
@@ -105,8 +107,10 @@ void spider_up_wait() {
 void spider_down_wait() {
 	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
 	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
+	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
 	do {
 		high_byte(currplayer_rely) += 0x08;
+		transitional_linear_absolute_currplayer_y += 0x08;
 		crossPRGBankJump0(process_y_scroll);
 		if (high_byte(currplayer_rely) >= 0xF8) { //&& linear_scroll_y <= min_scroll_y)
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
