@@ -45,7 +45,7 @@ void x_movement_coll() {
 	
 	Generic.x = high_byte(currplayer_relx);
 	Generic.y = high_byte(currplayer_rely);
-	transitional_linear_absolute_currplayer_y = linear_scroll_y + Generic.y;
+	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
 	// no L/R collision required, since that is accounted for with the death script
 	if (high_byte(currplayer_relx) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
