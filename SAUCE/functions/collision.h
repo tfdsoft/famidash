@@ -35,7 +35,6 @@ CODE_BANK_PUSH("XCD_BANK_01")
 	Implemented in asm
 */
 char bg_collision_sub();
-void tmp20f();
 
 
 /*
@@ -220,9 +219,8 @@ void bg_coll_floor_spikes() { // used for spike collision
 	// TOP	
 	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
-	temp_y = add_scroll_y(
-		Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2,
-		scroll_y
+	temp_y = calculate_ppufmt_scroll_y(
+		transitional_linear_absolute_currplayer_y + (uint8_t)((currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2)
 	);
 
 	bg_collision_sub();
@@ -242,9 +240,8 @@ void bg_coll_floor_spikes() { // used for spike collision
 	// BOTTOM
 	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
-	temp_y = add_scroll_y(
-		Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 2),
-		scroll_y
+	temp_y = calculate_ppufmt_scroll_y(
+		transitional_linear_absolute_currplayer_y + (uint8_t)((currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 2))
 	);
 
 	bg_collision_sub();

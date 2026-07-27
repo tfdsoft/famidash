@@ -179,6 +179,8 @@ extern uint8_t fullRegion;
 struct Base Generic;
 struct Base Generic2;
 
+uint16_t transitional_linear_absolute_currplayer_y;
+
 // SRAM
 #pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];

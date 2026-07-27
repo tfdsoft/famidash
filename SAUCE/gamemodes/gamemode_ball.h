@@ -40,7 +40,6 @@ void ball_movement(){
 	ball_eject();
 
 
-	Generic.y = high_byte(currplayer_rely);
 	Generic.x = high_byte(currplayer_relx);
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
@@ -49,6 +48,7 @@ void ball_movement(){
 	} else {
 		Generic.y = high_byte(currplayer_rely) + 1;
 	}
+	transitional_linear_absolute_currplayer_y = linear_scroll_y + Generic.y;
 
 	if (gamemode == GAMEMODE_BALL) {
 		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0 && !orbed[currplayer]){
