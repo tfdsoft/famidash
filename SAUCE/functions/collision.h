@@ -432,7 +432,7 @@ char bg_side_coll_common() {
 		return 0;
 	}
 
-	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
+	temp_y = add_scroll_y(tmp1, scroll_y);
 
 	bg_collision_sub();
 	if (collision) {
@@ -888,11 +888,10 @@ char bg_coll_U() {
 	// Slopes
 
 	if (high_byte(currplayer_relx) >= 0x10) {
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + (byte(0x10 - Generic.height) >> 1) + (currplayer_mini ? 1 : 2) + (gamemode == GAMEMODE_SHIP ? 1 : 0),
-				scroll_y
-			), temp_y, temp_room);
+		temp_y = add_scroll_y(
+			Generic.y + (byte(0x10 - Generic.height) >> 1) + (currplayer_mini ? 1 : 2) + (gamemode == GAMEMODE_SHIP ? 1 : 0),
+			scroll_y
+		);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
 		tmp2 = 0;
@@ -913,11 +912,10 @@ char bg_coll_U() {
 	if (high_byte(currplayer_vel_y) & 0x80) {
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 4 : 0); // automatically only the low byte
 		
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + ((currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 0 : 1)),
-				scroll_y
-			), temp_y, temp_room);
+		temp_y = add_scroll_y(
+			Generic.y + ((currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 0 : 1)),
+			scroll_y
+		);
 		
 		tmp8 = (temp_y) & 0x0f;
 
@@ -945,10 +943,10 @@ char bg_coll_D() {
 
 	// Slopes
 	if (high_byte(currplayer_relx) >= 0x10) {
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + Generic.height - 2 + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0), scroll_y
-			), temp_y, temp_room);
+		temp_y = add_scroll_y(
+			Generic.y + Generic.height - 2 + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
+			scroll_y
+		);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
 		tmp2 = 0;
@@ -969,11 +967,10 @@ char bg_coll_D() {
 		// check 2 points on the right side
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 4 : 0); // automatically only the low byte
 
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-				scroll_y
-			), temp_y, temp_room);
+		temp_y = add_scroll_y(
+			Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
+			scroll_y
+		);
 
 		tmp8 = (temp_y) & 0x0f;
 
@@ -996,11 +993,10 @@ char bg_coll_D() {
 
 char bg_coll_U_spider() {
 	temp_x = LEFT_POS; // automatically only the low byte
-	storeWordSeparately(
-		add_scroll_y(
-			Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-			scroll_y
-		), temp_y, temp_room);
+	temp_y = add_scroll_y(
+		Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
+		scroll_y
+	);
 
 	tmp8 = (temp_y) & 0x0f;
 
@@ -1015,11 +1011,10 @@ char bg_coll_U_spider() {
 
 char bg_coll_D_spider() {
 	temp_x = LEFT_POS; // automatically only the low byte
-	storeWordSeparately(
-		add_scroll_y(
-			Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-			scroll_y
-		), temp_y, temp_room);
+	temp_y = add_scroll_y(
+		Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
+		scroll_y
+	);
 	
 	tmp8 = (temp_y) & 0x0f;
 
@@ -1046,11 +1041,10 @@ void bg_coll_death() {
 
 	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
 
-	storeWordSeparately(
-		add_scroll_y(
-			Generic.y + (Generic.height >> 1) + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-			scroll_y
-		), temp_y, temp_room);
+	temp_y = add_scroll_y(
+		Generic.y + (Generic.height >> 1) + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
+		scroll_y
+	);
 
 	bg_collision_sub();
 	
@@ -1080,17 +1074,16 @@ void bg_coll_death() {
 }
 
 void commonly_used_store() {
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2, scroll_y
-			), temp_y, temp_room);
+		temp_y = add_scroll_y(
+			Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2,
+			scroll_y
+		);
 }			
 void commonly_stored_routine_2() {
-	storeWordSeparately(
-		add_scroll_y(
-			Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 2),
-			scroll_y
-		), temp_y, temp_room);
+	temp_y = add_scroll_y(
+		Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 2),
+		scroll_y
+	);
 }		
 
 void commonly_used_death_check() {

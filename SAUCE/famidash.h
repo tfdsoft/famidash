@@ -149,8 +149,7 @@ uint8_t x; // room loader code
 uint8_t y;
 uint8_t index;
 uint8_t temp_x;
-uint8_t temp_y;
-uint8_t temp_room;
+uint16_t temp_y;
 uint8_t dual;
 int8_t slope_frames[2];
 

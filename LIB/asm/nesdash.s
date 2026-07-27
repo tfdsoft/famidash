@@ -3506,13 +3506,13 @@ drawplayer_common := _drawplayerone::common
 ; char bg_collision_sub();
 .segment "CODE_2"
 
-.importzp _temp_x, _temp_y, _temp_room, _collision
+.importzp _temp_x, _temp_y, _collision
 
 .export _bg_collision_sub
 .proc _bg_collision_sub
     ; Returns collision block indexed by
 	; temp_x for X
-	; temp_room and y for Y
+	; temp_y for Y
     LDA _temp_y     ;
     CMP #$F0        ;   if(temp_y >= 0xf0) return 0;
     BCS Return0		;__
@@ -3526,8 +3526,8 @@ drawplayer_common := _drawplayerone::common
 	ORA tmp1		;	coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
 	TAY				;__
 
-	LDA _temp_room	;	tmp3 = temp_room&3;
-	AND #$03		;__
+	LDA _temp_y+1
+	AND #$03
 	ORA #>collMap0
 	STA ptr1+1
 	LDA #$00

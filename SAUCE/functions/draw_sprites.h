@@ -58,8 +58,8 @@ void draw_sprites(){
 		if (temp_x > 0xf0) continue;
 		if (temp_x == 0) temp_x = 1;
 
-		temp_y = activesprites_realy[index];
-		if (temp_y > 0xf0) continue;
+		low_byte(temp_y) = activesprites_realy[index];
+		if (low_byte(temp_y) > 0xf0) continue;
 
 		#define animation_frame_count tmp1
 		#define animation_frame tmp2
