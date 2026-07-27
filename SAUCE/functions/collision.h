@@ -35,9 +35,6 @@ CODE_BANK_PUSH("XCD_BANK_01")
 	Implemented in asm
 */
 char bg_collision_sub();
-void commonly_used_store();
-void commonly_stored_routine_2();
-void commonly_used_death_check();
 void tmp20f();
 
 
@@ -223,7 +220,10 @@ void bg_coll_floor_spikes() { // used for spike collision
 	// TOP	
 	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
-	commonly_used_store();
+	temp_y = add_scroll_y(
+		Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2,
+		scroll_y
+	);
 
 	bg_collision_sub();
 
@@ -242,7 +242,10 @@ void bg_coll_floor_spikes() { // used for spike collision
 	// BOTTOM
 	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
-	commonly_stored_routine_2();
+	temp_y = add_scroll_y(
+		Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 2),
+		scroll_y
+	);
 
 	bg_collision_sub();
 
@@ -1072,26 +1075,6 @@ void bg_coll_death() {
 //		reset_level();
 //	}
 }
-
-void commonly_used_store() {
-		temp_y = add_scroll_y(
-			Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2,
-			scroll_y
-		);
-}			
-void commonly_stored_routine_2() {
-	temp_y = add_scroll_y(
-		Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 2),
-		scroll_y
-	);
-}		
-
-void commonly_used_death_check() {
-	do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x08, {
-		cube_data[currplayer] = 1;
-	});
-}
-
 
 CODE_BANK_POP()
 #endif
