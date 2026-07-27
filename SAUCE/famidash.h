@@ -180,6 +180,7 @@ struct Base Generic;
 struct Base Generic2;
 
 uint16_t transitional_linear_absolute_currplayer_y;
+uint8_t transitional_sixteen_minus_generic_height_halved;
 
 // SRAM
 #pragma bss-name("SRAM")

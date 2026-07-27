@@ -1174,9 +1174,10 @@ void sprite_collide(){
 		Generic.width = WAVE_WIDTH;
 		Generic.height = WAVE_HEIGHT;
 	}
+	transitional_sixteen_minus_generic_height_halved = (byte(0x10 - Generic.height) >> 1);
 
 	Generic.x = high_byte(currplayer_relx) + 1;
-	Generic.y = high_byte(currplayer_rely) + (byte(0x10 - Generic.height) >> 1);
+	Generic.y = high_byte(currplayer_rely) + transitional_sixteen_minus_generic_height_halved;
 
 	index = 0;
 
@@ -1275,6 +1276,7 @@ void sprite_collide(){
 		Generic.width = WAVE_WIDTH;
 		Generic.height = WAVE_HEIGHT;
 	}
+	transitional_sixteen_minus_generic_height_halved = (byte(0x10 - Generic.height) >> 1);
 }
 
 
