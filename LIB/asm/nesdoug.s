@@ -113,7 +113,7 @@ _get_frame_count:
 	
 PTR2 = TEMP+2 ;and TEMP+3
 
-.import _Generic, _Generic2
+.importzp _Generic, _Generic2
 ;uint8_t __fastcall__ check_collision(void * object1, void * object2);
 ; __check_collision:
 _check_collision:
