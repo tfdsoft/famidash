@@ -10,7 +10,7 @@ banked(level_data_bank_0) const u8 lvl_test_sprites[] = {
 
 banked(level_header_bank) const struct Level lvl_test_header = {
     /* NAME (up to 23 characters) */
-    .name = "electroman\x01""adventures",
+    .name = "quite\x01tired\x01i'm\x01""afraid",
 
     .color = {
         .bg = 0x21,//background
