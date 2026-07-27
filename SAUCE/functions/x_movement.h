@@ -81,6 +81,7 @@ void x_movement(){
 		Generic.width = CUBE_WIDTH[currplayer_mini];
 		Generic.height = CUBE_HEIGHT[currplayer_mini];
 	}
+	transitional_sixteen_minus_generic_height_halved = (byte(0x10 - Generic.height) >> 1);
 
 	Generic.x = high_byte(currplayer_relx); // this is much faster than passing a pointer to player
 	Generic.y = high_byte(currplayer_rely);
