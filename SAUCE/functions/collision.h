@@ -422,7 +422,7 @@ char bg_coll_slope();
 
 */
 char bg_side_coll_common() {
-	tmp1 = Generic.y + (currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0) + (Generic.height >> 1);
+	tmp1 = (uint8_t)((currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0)) + (Generic.height >> 1);
 
 	if (currplayer_mini && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA)) {
 		tmp1 += (currplayer_gravity ? 3 : -2);
@@ -432,7 +432,7 @@ char bg_side_coll_common() {
 		return 0;
 	}
 
-	temp_y = add_scroll_y(tmp1, scroll_y);
+	temp_y = calculate_ppufmt_scroll_y(transitional_linear_absolute_currplayer_y + tmp1);
 
 	bg_collision_sub();
 	if (collision) {

@@ -83,8 +83,9 @@ void x_movement(){
 	}
 	transitional_sixteen_minus_generic_height_halved = (byte(0x10 - Generic.height) >> 1);
 
-	Generic.x = high_byte(currplayer_relx); // this is much faster than passing a pointer to player
+	Generic.x = high_byte(currplayer_relx);
 	Generic.y = high_byte(currplayer_rely);
+	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
 
 	if (!(options & platformer) && !force_platformer) {
 		//if ((controllingplayer->left) && !twoplayer && DEBUG_MODE) currplayer_relx -= currplayer_vel_x;
