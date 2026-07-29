@@ -1286,21 +1286,29 @@ ntAddrHiTbl:
 
 	calc_new_seam_pos:
 		@start:
-			LDA	#$10
-			STA	sreg+0
-			LDA	ppufmt_seam_scroll_y
-			LDX	ppufmt_seam_scroll_y+1
-			CPY	#$00	;	Puts carry into X
+			LDA	seam_scroll_y
+			LDX	seam_scroll_y+1
+			CPY	#$00	;	Always sets carry
 			BMI	@up		;__
 		
 		@down:
-			JSR	__add_scroll_y		;__	Calculate new seam position
+			;__	Carry is set
+			ADC	#$10-1
+			BCC :+
+				INX
+			:
 			STA	this_seam_pos+0		;	Store new seam position
 			STX	this_seam_pos+1		;__
-			JSR	@calc_diff			;__	Calculate difference
-			CMP	#$38				;
-			TXA						;	If the difference is less than
-			LDX	#2					;	($78 - $40), we went too far
+			STA	new_seam_pos		;	Store new seam position
+			STX	new_seam_pos+1		;__
+			SEC						;
+			EOR	#$FF				;
+			ADC	_linear_scroll_y	;	Calculate the difference
+			TAY						;	between scroll_y and seam position
+			LDA	_linear_scroll_y+1	;
+			SBC	new_seam_pos+1		;__
+			CPY	#($78 - $40)		;	If the difference is less than
+			LDY	#2					;	($78 - $40), we went too far
 			SBC	#$00				;	Also load the scrolling direction offset
 			BPL	@fin				;__
 		
@@ -1308,41 +1316,61 @@ ntAddrHiTbl:
 			LDA	#0	;	Return 0
 			TAX		;	(nothing was done)
 			RTS		;__
-		
-		@calc_diff:	;__	[Subroutine]
-			STA	new_seam_pos		;	Store new seam position
-			STX	new_seam_pos+1		;__
-			STA	sreg+0				;
-			STX	sreg+1				;	Calculate the difference 
-			LDX	_scroll_y			;	between scroll_y and seam position
-			LDA	_scroll_y+1			;	(doesn't need to be linearized due to its indended range)
-			JMP	__sub_scroll_y_ext	;__
-		
+
 		@up:
+			;__	Carry is set
 			STA	this_seam_pos+0		;	Store old seam position
 			STX	this_seam_pos+1		;__
-			JSR	__sub_scroll_y		;__	Calculate new seam position
-			JSR	@calc_diff			;__	Calculate difference
-			CMP	#$B8				;
-			TXA						;	If the difference is more than
-			LDX	#0					;	($78 + $40), we went too far
+			SBC	#$10
+			BCS :+
+				DEX
+				SEC
+			:
+			STA	new_seam_pos		;	Store new seam position
+			STX	new_seam_pos+1		;__
+			;__	Carry set previously;
+			EOR	#$FF				;
+			ADC	_linear_scroll_y	;	Calculate the difference
+			TAY						;	between scroll_y and seam position
+			LDA	_linear_scroll_y+1	;
+			SBC	new_seam_pos+1		;__
+			CPY	#($78 + $40)		;	If the difference is more than
+			LDY	#0					;	($78 + $40), we went too far
 			SBC	#$00				;	Also load scrolling direction offset
 			BPL	@ret0				;__
 		
 		@fin:
-			STX	scroll_direction
+			STY	scroll_direction
 
 			LDA	_linear_scroll_y
-			LDY	_linear_scroll_y+1
+			LDX	_linear_scroll_y+1
 			STA	old_draw_scroll_y
-			STY	old_draw_scroll_y+1
+			STX	old_draw_scroll_y+1
 
 			LDA	new_seam_pos
-			LDY	new_seam_pos+1
-			STA	ppufmt_seam_scroll_y
-			STY	ppufmt_seam_scroll_y+1
+			LDX	new_seam_pos+1
+			STA	seam_scroll_y
+			STX seam_scroll_y+1
 
-			LDY	this_seam_pos+1
+			;	Unfortunately, the calculations require
+			;__	the seam location to be in PPU format.
+			LDA	this_seam_pos				;
+			LDX	this_seam_pos+1				;
+			JSR	_calculate_ppufmt_scroll_y	;	Get this_seam_pos in PPU format
+			STA	this_seam_pos				;
+			STX	this_seam_pos+1				;__
+			LDY scroll_direction			;
+			BNE :+							;	If scroll_direction equals 2 (going down),
+				sec							;	new_seam_pos is equal to this_seam_pos
+				sbc #$10					;	But if scroll_direction equals 0 (going up),
+				bcs :+						;	new_seam_pos is equal to this_seam_pos - $10
+					sbc #15					;	(this is just the sub_scroll_y code verbatim,
+					dex						;	the fastest way to get to PPU fmt in this case)
+			:								;__
+			STA	ppufmt_seam_scroll_y		;	Store the next frames' PPU format seam position
+			STX	ppufmt_seam_scroll_y+1		;__
+
+			LDY	this_seam_pos+1		;
 			CPY	#$02				;	If no seam, exit early
 			BCS	@ret0				;__
 
