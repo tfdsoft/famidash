@@ -62,7 +62,7 @@ void store_practice_state(){
 	idx8_store(practice_player_2_last_slope_type, get_Y, last_slope_type[1]);
 
 	lohi_arr32_store_from(practice_scroll_x, get_Y, scroll_x);
-	lohi_arr16_store(practice_scroll_y, get_Y, scroll_y);
+	lohi_arr16_store(practice_scroll_y, get_Y, linear_scroll_y);
 	idx8_store(practice_scroll_y_subpx, get_Y, scroll_y_subpx);
 	lohi_arr16_store(practice_seam_scroll_y, get_Y, ppufmt_seam_scroll_y);
 	lohi_arr16_store(practice_old_draw_scroll_y, get_Y, old_draw_scroll_y);
@@ -141,7 +141,7 @@ void load_practice_state() {
 	last_slope_type[1] = idx8_load(practice_player_2_last_slope_type, get_Y);
 
 	lohi_arr32_load_to(practice_scroll_x, get_Y, scroll_x);
-	scroll_y = lohi_arr16_load(practice_scroll_y, get_Y);
+	old_trail_scroll_y = linear_scroll_y = lohi_arr16_load(practice_scroll_y, get_Y);
 	scroll_y_subpx = idx8_load(practice_scroll_y_subpx, get_Y);
 	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, get_Y);
 	ppufmt_seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, get_Y);
@@ -169,8 +169,8 @@ void load_practice_state() {
 
 	scroll_x -= (256 + 16);
 
-	// LAZY LINEAR INSERT!
-	old_trail_scroll_y = linear_scroll_y = calculate_linear_scroll_y(scroll_y);
+	// LAZY LINEAR INSERT! (but role reversed)
+	scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
 
 	tmp3 = (lastbgcolortype & 0x3F);
 	pal_col(0, tmp3);
