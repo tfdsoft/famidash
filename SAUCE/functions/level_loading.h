@@ -138,7 +138,7 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	init_sprites();
 	
 	set_scroll_x(scroll_x);
-	set_scroll_y(calculate_ppufmt_scroll_y(linear_scroll_y));
+	set_scroll_y(calculate_ppufmt_scroll_y(scroll_y));
 //	if (!practice_point_count) {
 		#if !__VS_SYSTEM
 			multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));

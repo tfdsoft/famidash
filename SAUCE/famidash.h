@@ -441,10 +441,10 @@ extern uint8_t parallax_scroll_column_start;
 uint8_t parallax_scroll_x;
 uint8_t invincible_counter;
 uint32_t scroll_x; // gotta love massive levels amirite fellas
-uint16_t linear_scroll_y;
+uint16_t scroll_y;
 uint8_t scroll_y_subpx;
-uint16_t old_trail_scroll_y;	// Moved to linear!
-uint16_t target_scroll_y;	// Moved to linear!
+uint16_t old_trail_scroll_y;
+uint16_t target_scroll_y;
 //uint16_t reload_target_scroll_y;
 uint8_t song;
 uint8_t songplaying;
@@ -462,7 +462,7 @@ uint16_t coin2_speed;
 uint16_t coin3_speed;
 
 uint16_t spawn_y_pos;
-uint16_t spawn_scroll_y_pos;	// Moved to linear!
+uint16_t spawn_scroll_y_pos;
 uint8_t max_fallspeed_7;
 
 #if __VS_SYSTEM
@@ -565,7 +565,7 @@ uint8_t player_invis;
 
 extern uint8_t famistudio_song_speed;
 
-extern uint16_t min_scroll_y;	// Moved to linear!
+extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;
 extern uint16_t ppufmt_seam_scroll_y;
 
