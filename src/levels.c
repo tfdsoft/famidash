@@ -10,16 +10,19 @@ banked(level_data_bank_0) const u8 lvl_test_sprites[] = {
 
 banked(level_header_bank) const struct Level lvl_test_header = {
     /* NAME (up to 23 characters) */
-    .name = "quite\x01tired\x01i'm\x01""afraid",
+    .name = "electrodynamix",
 
     .color = {
-        .bg = 0x21,//background
-        .g = 0x21,//ground
+        .bg = 0x19,//background
+        .g = 0x2a,//ground
     },
 
     .tileset = {
+        .background = 0,
+        .ground = 1,
+
         .blocks = {
-            chr_tiles_checker,
+            chr_tiles_brick,
             chr_tiles_x,
             chr_tiles_black,
             chr_tiles_onedotnine

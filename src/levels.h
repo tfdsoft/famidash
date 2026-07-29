@@ -1,6 +1,7 @@
 struct Level {
     u8 name[24];
 
+
     struct {
         u8 bg;
         u8 g;
@@ -9,6 +10,8 @@ struct Level {
     } color;
 
     struct {
+        u8 background;
+        u8 ground;
         const u8* blocks[4];
         const struct Metatile* metatiles[4];
     } tileset;

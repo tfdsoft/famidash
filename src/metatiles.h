@@ -14,11 +14,14 @@ struct Metatile {
 // 
 struct Metatile_Attr {
     u8 palette : 2;
-
-    u8 topleft : 1;
-    u8 topright : 1;
-    u8 bottomleft : 1;
-    u8 bottomright : 1;
-
     u8 type : 2;
+    union {
+        u8 collision : 4;
+        struct {
+            u8 collision_tl : 1;
+            u8 collision_tr : 1;
+            u8 collision_bl : 1;
+            u8 collision_br : 1;
+        };
+    };
 };

@@ -115,12 +115,24 @@ file(chr_ad_5, chr_bank_4) = {
     #embed "./chr/dnt/Ad_Retray.bin"
 };
 file(chr_ad_6, chr_bank_4) = {
-    0x02, 0x11, 0x2b,
+    0x02, 0x1c, 0x2b,
     #embed "./chr/dnt/Ad_Tactus.bin"
 };
 file(chr_ad_7, chr_bank_4) = {
     0x0f, 0x16, 0x20,
     #embed "./chr/dnt/Ad_Famiwiki.bin"
+};
+file(chr_ad_8, chr_bank_4) = {
+    0x0f, 0x06, 0x16,
+    #embed "./chr/dnt/Ad_PBF.bin"
+};
+file(chr_ad_9, chr_bank_4) = {
+    0x0f, 0x16, 0x20,
+    #embed "./chr/dnt/Ad_FamiblockTheater.bin"
+};
+file(chr_ad_a, chr_bank_4) = {
+    0x03, 0x13, 0x2a,
+    #embed "./chr/dnt/Ad_GD221.bin"
 };
 
 banked(chr_bank_4) const u8 * const chr_ads[] = {
@@ -131,7 +143,10 @@ banked(chr_bank_4) const u8 * const chr_ads[] = {
     chr_ad_4,
     chr_ad_5,
     chr_ad_6,
-    chr_ad_7
+    chr_ad_7,
+    chr_ad_8,
+    chr_ad_9,
+    chr_ad_a,
 };
 
 #endif

@@ -24,21 +24,33 @@ static u8 check_player_collision_y(struct Player* player){
     }
     return tmp;
 }*/
-u8 check_collision_point(struct Player* player, s8 extra_x, s8 extra_y){
+struct Metatile_Attr check_collision_point(struct Player* player, s8 extra_x, s8 extra_y){
     u8 x = player->pos.x.lo + extra_x;
     u16 y = player->pos.y.word + extra_y;
 
-    if(get_metatile_at(x,y)) return 1;
+    u8 metatile = get_metatile_at(x,y);
+    
+    if((metatile & 0xf0) && (metatile & 0x0f)){
+        return ((struct Metatile_Attr){0,0,{0b1111}});
+    }
+    return (metatiles_collision[metatile]);
 
-    return 0;
+    // if metatile is in one of the four custom sets,
+    // and is the first tile in that set,
+    // pass through
+    //if(((metatile >> 6) == 1) && (!(metatile & 0x0f))){
+    //    return 0;
+    //} else return metatile;
 }
 
 u8 check_collision_LR(struct Player* player, s8 extra_x){
-    u8 x = player->pos.x.lo + extra_x;
-    u16 y = player->pos.y.word;
+    //u8 x = player->pos.x.lo + extra_x;
+    //u16 y = player->pos.y.word;
 
-    if(get_metatile_at(x,y)) return 1;
-    if(get_metatile_at(x,y+15)) return 1;
+    struct Metatile_Attr metatile = check_collision_point(player, extra_x, 0);
+    if(metatile.collision) return 1;
+    metatile = check_collision_point(player, extra_x, player->size.height);
+    if(metatile.collision) return 1;
 
     return 0;
 }
@@ -47,22 +59,24 @@ u8 check_collision_UD(struct Player* player, s8 extra_y){
     u8 x = player->pos.x.lo;
     u16 y = player->pos.y.word + extra_y;
 
-    if(get_metatile_at(x,y)) return 1;
-    if(get_metatile_at(x+15,y)) return 1;
+    struct Metatile_Attr metatile = check_collision_point(player, 0, extra_y);
+    if(metatile.collision) return 1;
+    metatile = check_collision_point(player, player->size.width, extra_y);
+    if(metatile.collision) return 1;
 
     return 0;
 }
 
 
 void move_player(struct Player* player){
-    u8 collision_value;
+    struct Metatile_Attr collision_value;
 
     player->speed.y += phys_gravity[0];
     if(player->speed.y > 0x700) player->speed.y = 0x700;
 
-    //common_gravity_routine
+    
 
-
+    if(joypad1.up) player->speed.y = -0x400;
     player->pos.y.full += player->speed.y;
     //collision_value = check_collision_UD(player, 0);
     //if(collision_value){
@@ -70,7 +84,7 @@ void move_player(struct Player* player){
     //    player->speed.y = 0;
     //}
     if(player->speed.y > 0){
-        collision_value = check_collision_UD(player, player->size.height);
+        u8 collision_value = check_collision_UD(player, player->size.height);
         if(collision_value){
             player->pos.y.lo &= 0xf8;
             player->speed.y = 0;
@@ -89,7 +103,7 @@ void move_player(struct Player* player){
     
     player->pos.x.full += player->speed.x;
     collision_value = check_collision_point(player, (player->size.width >>1), (player->size.height >>1));
-    if(collision_value) {
+    if(collision_value.type == 2) {
         player->properties.is_dead = 1;
     }
     //if(check_collision_LR(player, 0)) { // left

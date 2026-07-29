@@ -9,6 +9,9 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
 
     active_lvl = passthru;
 
+    background_set = active_lvl.tileset.background;
+    ground_set = active_lvl.tileset.ground;
+
     se_memory_fill(sram_buffer, 0, 0x400);
 
     se_vram_address(0);
@@ -45,8 +48,9 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
         }
     }
 
+    
     se_vram_address(0xc00);
-    se_vram_donut_decompress(chr_ground_0,chr_bank_3);
+    se_vram_donut_decompress(chr_g[active_lvl.tileset.ground],chr_bank_3);
 
     //set starting palettes
     

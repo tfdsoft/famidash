@@ -36,7 +36,7 @@ banked(level_header_bank) const struct Metatile mt_default_blocks[] = {
 
 
     {4, 6, 5, 7}, // block
-    {},
+    {0x3f, 0x3f, 0x3f, 0x3f},
     {},
     {},
     {0x08, 0x0a, 0x00, 0x00},
@@ -73,7 +73,7 @@ banked(level_header_bank) const struct Metatile mt_default_blocks[] = {
     {0x00, 0x26, 0x00, 0x27}, // ground spikes (right)
 };
 banked(level_header_bank) const struct Metatile_Attr mta_default_blocks[] = {
-    {1, 1,1,1,1, 2},
+    {1, 2, {0b1111}},
 };
 
 

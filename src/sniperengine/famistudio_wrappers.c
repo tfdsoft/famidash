@@ -54,7 +54,7 @@ __attribute__((noinline)) void se_music_play(u8 s){
 
     __asm__(
         "pla \n"
-        "jsr set_prg_a000 \n"
+        "jmp set_prg_a000 \n"
     );
 }
 

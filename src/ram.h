@@ -87,7 +87,7 @@ sram u8 sram_buffer[2048], background_set, ground_set;
 #define metatiles_BL ((u8*)sram_buffer+512)  // bottom left, 256
 #define metatiles_BR ((u8*)sram_buffer+768)  // bottom right, 256
 
-#define metatiles_collision (*(struct mt_coll*)&sram_buffer[1024])  // collision, 256
+#define metatiles_collision ((struct Metatile_Attr*)sram_buffer+1024)  // collision, 256
 
 // da collision buffer
 #define collision_map_0 ((u8*)(sram_buffer+1280)) // 240
