@@ -1250,7 +1250,7 @@ ntAddrHiTbl:
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
 .import _no_parallax, _invisblocks, _force_platformer
-.import _scroll_y
+.import _linear_scroll_y
 
 .proc draw_screen_UD_tiles_frame0
 	scroll_direction = tmp1
@@ -2109,13 +2109,6 @@ doit:
 	lda     #0
 	sta     _scroll_y_subpx
 
-; LAZY LINEAR INSERT! (but role reversed)
-lda _linear_scroll_y
-ldx _linear_scroll_y+1
-jsr _calculate_ppufmt_scroll_y
-sta _scroll_y
-stx _scroll_y+1
-
 	; we can't do anything with the high byte of the diff anyway
 
 	rts
@@ -2126,7 +2119,7 @@ stx _scroll_y+1
 .segment _SCROLL_BANK
 
 .importzp _currplayer_rely
-.import _scroll_y, _player_rely, _scroll_y_subpx
+.import _linear_scroll_y, _player_rely, _scroll_y_subpx
 
 .export _cap_scroll_y_at_bottom
 .proc _cap_scroll_y_at_bottom
@@ -2141,11 +2134,6 @@ check:
 	rts
 
 adjust:
-; LAZY LINEAR INSERT! (but role reversed)
-lda #<$02EF
-sta _scroll_y
-lda #>$02EF
-sta _scroll_y+1
 
 	;	Notably, we can't do shit with the upper byte of the difference
 	;__	Therefore it's OK to use the A
