@@ -169,9 +169,6 @@ void load_practice_state() {
 
 	scroll_x -= (256 + 16);
 
-	// LAZY LINEAR INSERT! (but role reversed)
-	scroll_y = calculate_ppufmt_scroll_y(linear_scroll_y);
-
 	tmp3 = (lastbgcolortype & 0x3F);
 	pal_col(0, tmp3);
 	pal_col(0x0D, tmp3);
