@@ -242,7 +242,6 @@ uint8_t gameboy_mode;
 uint8_t invisblocks;
 uint8_t cam_seesaw;
 uint8_t forced_credits;
-extern uint8_t extceil;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
 uint8_t menu_music;
@@ -516,6 +515,7 @@ uint8_t discorefreshrate;
 uint8_t discoframe;
 uint8_t no_parallax;
 uint8_t force_platformer;
+extern uint8_t extceil;
 uint8_t outline_color;
 uint8_t forced_trails;
 uint8_t skipProcessingCubeRotationLogic;
@@ -568,6 +568,7 @@ extern uint8_t famistudio_song_speed;
 
 extern uint16_t min_scroll_y;	// Moved to linear!
 extern uint16_t seam_scroll_y;
+extern uint16_t ppufmt_seam_scroll_y;
 
 extern volatile uint8_t hexToDecOutputBuffer[5];
 

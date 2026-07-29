@@ -73,8 +73,9 @@ sprite_data = _sprite_data
 	min_scroll_y:		.res 2
 
 	; variables related to both the above and below
-	old_draw_scroll_y:	.res 2
-	seam_scroll_y:		.res 2
+	old_draw_scroll_y:		.res 2
+	seam_scroll_y:			.res 2
+	ppufmt_seam_scroll_y:	.res 2
 	
 	; variables related to draw_screen
 	rld_column:			.res 1
@@ -91,6 +92,7 @@ sprite_data = _sprite_data
 .export _extceil := extceil
 .export _min_scroll_y := min_scroll_y
 .export	_seam_scroll_y := seam_scroll_y
+.export	_ppufmt_seam_scroll_y := ppufmt_seam_scroll_y
 .export _old_draw_scroll_y := old_draw_scroll_y
 
 .export _drawing_frame := drawing_frame
@@ -771,8 +773,8 @@ frame1:
 
 calc_seam_pos:
 
-	LDA seam_scroll_y
-	LDX seam_scroll_y+1
+	LDA ppufmt_seam_scroll_y
+	LDX ppufmt_seam_scroll_y+1
 
 	LDY	#15+15	;__	Load the starting nametable into Y
 
@@ -1074,17 +1076,17 @@ ntAddrHiTbl:
 	.endif
 
 	; Seam pos for attributes:
-	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 5) ^ column
-	LDA seam_scroll_y
+	; ( <ppufmt_seam_scroll_y & $E0 | >ppufmt_seam_scroll_y & 5) ^ column
+	LDA ppufmt_seam_scroll_y
 	AND #$E0
 	STA SeamValue
-	LDA seam_scroll_y+1
+	LDA ppufmt_seam_scroll_y+1
 	AND #$03	; add bit 1 to not use if no seam
 	ORA SeamValue
 	STA SeamValue
 
 	LDY	#>collMap2		;__	Get the default value
-	AND #$03			;	Bits 0 and 1 are directly from >seam_scroll_y
+	AND #$03			;	Bits 0 and 1 are directly from >ppufmt_seam_scroll_y
 	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
 	BNE	:+				;
 		LDY	#>collMap0	;	Get high byte of starting value
@@ -1286,8 +1288,8 @@ ntAddrHiTbl:
 		@start:
 			LDA	#$10
 			STA	sreg+0
-			LDA	seam_scroll_y
-			LDX	seam_scroll_y+1
+			LDA	ppufmt_seam_scroll_y
+			LDX	ppufmt_seam_scroll_y+1
 			CPY	#$00	;	Puts carry into X
 			BMI	@up		;__
 		
@@ -1337,8 +1339,8 @@ ntAddrHiTbl:
 
 			LDA	new_seam_pos
 			LDY	new_seam_pos+1
-			STA	seam_scroll_y
-			STY	seam_scroll_y+1
+			STA	ppufmt_seam_scroll_y
+			STY	ppufmt_seam_scroll_y+1
 
 			LDY	this_seam_pos+1
 			CPY	#$02				;	If no seam, exit early
@@ -1346,7 +1348,7 @@ ntAddrHiTbl:
 
 	start_writing:
 		@get_collmap_ptr:
-			;	Y contains the >seam_scroll_y, Carry is clear
+			;	Y contains the >ppufmt_seam_scroll_y, Carry is clear
 			LDA this_seam_pos	;
 			AND	#$F0			;	Get low byte
 			STA	collmap_ptr		;__	(none of these affect the carry)
