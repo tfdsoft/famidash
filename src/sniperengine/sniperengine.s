@@ -1312,11 +1312,26 @@ donut_stream_ptr = $02
 	pha
 	stx __rc20 ;to
 	sty __rc21 ;from
+
+    cpx __rc21
+    bcs @dont_set_emp_bits_at_first
+        lda se_ppu_mask_var
+        ora #%11100000
+        sta se_ppu_mask_var
+    @dont_set_emp_bits_at_first:
+
 	jmp @check_equal
 
     @fade_loop:
-        lda #2
-        jsr se_wait_frames ;wait 4 frames
+        lda se_ppu_mask_var
+        eor #%11100000
+        sta se_ppu_mask_var
+        jsr se_wait_vsync ;wait 4 frames
+
+        lda se_ppu_mask_var
+        eor #%11100000
+        sta se_ppu_mask_var
+        jsr se_wait_vsync ;wait 4 frames
 
         lda __rc21 ;from
         cmp __rc20 ;to
@@ -1341,6 +1356,9 @@ donut_stream_ptr = $02
         bne @fade_loop
 
     @done:
+    lda se_ppu_mask_var
+    and #%00011111
+    sta se_ppu_mask_var
 	jsr se_wait_vsync ;do 1 final, make sure the last change goes
 	pla
 	sta __rc21

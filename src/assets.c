@@ -134,6 +134,10 @@ file(chr_ad_a, chr_bank_4) = {
     0x03, 0x13, 0x2a,
     #embed "./chr/dnt/Ad_GD221.bin"
 };
+file(chr_ad_b, chr_bank_4) = {
+    0x16, 0x27, 0x38,
+    #embed "./chr/dnt/Ad_NoClaude.bin"
+};
 
 banked(chr_bank_4) const u8 * const chr_ads[] = {
     chr_ad_0,
@@ -147,6 +151,7 @@ banked(chr_bank_4) const u8 * const chr_ads[] = {
     chr_ad_8,
     chr_ad_9,
     chr_ad_a,
+    chr_ad_b,
 };
 
 #endif
