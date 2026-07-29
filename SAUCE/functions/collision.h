@@ -884,7 +884,7 @@ char bg_coll_return_slope_U () {
 
 
 char bg_coll_U() {
-	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
+	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
 	
 	// Slopes
 
@@ -939,7 +939,7 @@ char bg_coll_U() {
 	tmp1, tmp2, tmp4, tmp7, tmp8
 */
 char bg_coll_D() {
-	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
+	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
 
 	// Slopes
 	if (high_byte(currplayer_relx) >= 0x10) {

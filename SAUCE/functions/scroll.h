@@ -58,7 +58,7 @@ void process_y_scroll() {
 	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_POGO || nocamlock || nocamlockforced)) {
 			if (exitPortalTimer) exitPortalTimer--;
 			if (player0_y < 0x4000 && 
-				(linear_scroll_y >= min_scroll_y && (scroll_y_subpx || linear_scroll_y != min_scroll_y))
+				(scroll_y >= min_scroll_y && (scroll_y_subpx || scroll_y != min_scroll_y))
 				){
 				// change y scroll (upward)
 				cc65_ptr1 = 0x4000 - player0_y;
@@ -71,11 +71,11 @@ void process_y_scroll() {
 
 				scroll_y_subpx = scroll_y_subpx - LSB(cc65_ptr1);
 				do_if_borrow({++high_byte(cc65_ptr1);});
-				linear_scroll_y = linear_scroll_y - MSB(cc65_ptr1);
+				scroll_y = scroll_y - MSB(cc65_ptr1);
 			}
 			cap_scroll_y_at_top();
 
-			if (linear_scroll_y < 0x2CF && high_byte(player0_y) >= MSB(0xA000)){
+			if (scroll_y < 0x2CF && high_byte(player0_y) >= MSB(0xA000)){
 				// change y scroll (downward)
 				cc65_ptr1 = player0_y - 0xA000;
 				if (exitPortalTimer) {
@@ -87,11 +87,11 @@ void process_y_scroll() {
 
 				scroll_y_subpx = scroll_y_subpx + LSB(cc65_ptr1);
 				do_if_carry({++high_byte(cc65_ptr1);});
-				linear_scroll_y = linear_scroll_y + MSB(cc65_ptr1);
+				scroll_y = scroll_y + MSB(cc65_ptr1);
 			}
 			cap_scroll_y_at_bottom();
 	} else {			//ship stuff
-		if (target_scroll_y > linear_scroll_y) {
+		if (target_scroll_y > scroll_y) {
 			cc65_ptr1 = SHIP_SCROLL_SPEED(framerate);
 			
 			player0_y = player0_y - cc65_ptr1;
@@ -99,9 +99,9 @@ void process_y_scroll() {
 
 			scroll_y_subpx = scroll_y_subpx + LSB(cc65_ptr1);
 			do_if_carry({++high_byte(cc65_ptr1);});
-			linear_scroll_y = linear_scroll_y + MSB(cc65_ptr1);
+			scroll_y = scroll_y + MSB(cc65_ptr1);
 		}
-		if (target_scroll_y < linear_scroll_y) {
+		if (target_scroll_y < scroll_y) {
 			cc65_ptr1 = SHIP_SCROLL_SPEED(framerate);
 			
 			player0_y = player0_y + cc65_ptr1;
@@ -109,7 +109,7 @@ void process_y_scroll() {
 
 			scroll_y_subpx = scroll_y_subpx - LSB(cc65_ptr1);
 			do_if_borrow({++high_byte(cc65_ptr1);});
-			linear_scroll_y = linear_scroll_y - MSB(cc65_ptr1);
+			scroll_y = scroll_y - MSB(cc65_ptr1);
 		}
 
 		cap_scroll_y_at_top();
@@ -122,7 +122,7 @@ void do_the_scroll_thing(){
 	process_y_scroll();
 
     set_scroll_x(scroll_x);
-    set_scroll_y(calculate_ppufmt_scroll_y(linear_scroll_y));
+    set_scroll_y(calculate_ppufmt_scroll_y(scroll_y));
 }
 
 

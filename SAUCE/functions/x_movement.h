@@ -45,7 +45,7 @@ void x_movement_coll() {
 	
 	Generic.x = high_byte(currplayer_relx);
 	Generic.y = high_byte(currplayer_rely);
-	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
+	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
 	// no L/R collision required, since that is accounted for with the death script
 	if (high_byte(currplayer_relx) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
@@ -68,7 +68,7 @@ void x_movement(){
 //	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
 	
 	if (dashing[currplayer] == 4 || dashing[currplayer] == 5) {	
-		if (currplayer_rely < 0x0600 && linear_scroll_y == min_scroll_y){
+		if (currplayer_rely < 0x0600 && scroll_y == min_scroll_y){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 		}
 		//return; 
@@ -85,7 +85,7 @@ void x_movement(){
 
 	Generic.x = high_byte(currplayer_relx);
 	Generic.y = high_byte(currplayer_rely);
-	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
+	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
 
 	if (!(options & platformer) && !force_platformer) {
 		//if ((controllingplayer->left) && !twoplayer && DEBUG_MODE) currplayer_relx -= currplayer_vel_x;

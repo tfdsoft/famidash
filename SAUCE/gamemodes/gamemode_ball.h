@@ -48,7 +48,7 @@ void ball_movement(){
 	} else {
 		Generic.y = high_byte(currplayer_rely) + 1;
 	}
-	transitional_linear_absolute_currplayer_y = Generic.y + linear_scroll_y;
+	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
 
 	if (gamemode == GAMEMODE_BALL) {
 		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0 && !orbed[currplayer]){

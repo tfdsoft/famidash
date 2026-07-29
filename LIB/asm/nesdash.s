@@ -4,9 +4,6 @@
 .import pusha, pushax, callptr4
 .import _scroll_x, _cursedmusic
 
-; LAZY LINEAR INSERT!
-.import _linear_scroll_y
-
 .if VS_SYSTEM
 	.import _draw_arrow
 .endif
@@ -1250,7 +1247,7 @@ ntAddrHiTbl:
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
 .import _no_parallax, _invisblocks, _force_platformer
-.import _linear_scroll_y
+.import _scroll_y
 
 .proc draw_screen_UD_tiles_frame0
 	scroll_direction = tmp1
@@ -1270,13 +1267,13 @@ ntAddrHiTbl:
 	SepWriEnd = Separate2WritesSize
 
 	start:
-		LDA	_linear_scroll_y		;
-		SEC							;
-		SBC	old_draw_scroll_y		;
-		STA	tmp1					;	XY = scroll_y - old_draw_scroll_y
-		LDA	_linear_scroll_y+1		;
-		SBC	old_draw_scroll_y+1		;
-		TAY							;__
+		LDA	_scroll_y			;
+		SEC						;
+		SBC	old_draw_scroll_y	;
+		STA	tmp1				;	XY = scroll_y - old_draw_scroll_y
+		LDA	_scroll_y+1			;
+		SBC	old_draw_scroll_y+1	;
+		TAY						;__
 
 		ORA	tmp1
 		BNE	calc_new_seam_pos
@@ -1297,20 +1294,20 @@ ntAddrHiTbl:
 			BCC :+
 				INX
 			:
-			STA	this_seam_pos+0		;	Store new seam position
-			STX	this_seam_pos+1		;__
-			STA	new_seam_pos		;	Store new seam position
-			STX	new_seam_pos+1		;__
-			SEC						;
-			EOR	#$FF				;
-			ADC	_linear_scroll_y	;	Calculate the difference
-			TAY						;	between scroll_y and seam position
-			LDA	_linear_scroll_y+1	;
-			SBC	new_seam_pos+1		;__
-			CPY	#($78 - $40)		;	If the difference is less than
-			LDY	#2					;	($78 - $40), we went too far
-			SBC	#$00				;	Also load the scrolling direction offset
-			BPL	@fin				;__
+			STA	this_seam_pos+0	;	Store new seam position
+			STX	this_seam_pos+1	;__
+			STA	new_seam_pos	;	Store new seam position
+			STX	new_seam_pos+1	;__
+			SEC					;
+			EOR	#$FF			;
+			ADC	_scroll_y		;	Calculate the difference
+			TAY					;	between scroll_y and seam position
+			LDA	_scroll_y+1		;
+			SBC	new_seam_pos+1	;__
+			CPY	#($78 - $40)	;	If the difference is less than
+			LDY	#2				;	($78 - $40), we went too far
+			SBC	#$00			;	Also load the scrolling direction offset
+			BPL	@fin			;__
 		
 		@ret0:		;
 			LDA	#0	;	Return 0
@@ -1326,24 +1323,24 @@ ntAddrHiTbl:
 				DEX
 				SEC
 			:
-			STA	new_seam_pos		;	Store new seam position
-			STX	new_seam_pos+1		;__
-			;__	Carry set previously;
-			EOR	#$FF				;
-			ADC	_linear_scroll_y	;	Calculate the difference
-			TAY						;	between scroll_y and seam position
-			LDA	_linear_scroll_y+1	;
-			SBC	new_seam_pos+1		;__
-			CPY	#($78 + $40)		;	If the difference is more than
-			LDY	#0					;	($78 + $40), we went too far
-			SBC	#$00				;	Also load scrolling direction offset
-			BPL	@ret0				;__
+			STA	new_seam_pos	;	Store new seam position
+			STX	new_seam_pos+1	;__
+			;__	Carry set previously
+			EOR	#$FF			;
+			ADC	_scroll_y		;	Calculate the difference
+			TAY					;	between scroll_y and seam position
+			LDA	_scroll_y+1		;
+			SBC	new_seam_pos+1	;__
+			CPY	#($78 + $40)	;	If the difference is more than
+			LDY	#0				;	($78 + $40), we went too far
+			SBC	#$00			;	Also load scrolling direction offset
+			BPL	@ret0			;__
 		
 		@fin:
 			STY	scroll_direction
 
-			LDA	_linear_scroll_y
-			LDX	_linear_scroll_y+1
+			LDA	_scroll_y
+			LDX	_scroll_y+1
 			STA	old_draw_scroll_y
 			STX	old_draw_scroll_y+1
 
@@ -2066,25 +2063,25 @@ early_exit:
 .segment _SCROLL_BANK
 
 .importzp _currplayer_rely
-.import _linear_scroll_y, _player_rely, _scroll_y_subpx
+.import _scroll_y, _player_rely, _scroll_y_subpx
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
 check:
-	lda     _linear_scroll_y	;
-	sec							;
-	sbc     _min_scroll_y		;	if (scroll_y < min_scroll_y)
-	tay							;
-	lda     _linear_scroll_y+1	;
-	sbc     _min_scroll_y+1		;__
+	lda     _scroll_y		;
+	sec						;
+	sbc     _min_scroll_y	;	if (scroll_y < min_scroll_y)
+	tay						;
+	lda     _scroll_y+1		;
+	sbc     _min_scroll_y+1	;__
 	bmi     doit
 	rts
 
 doit:
 	lda     _min_scroll_y
-	sta     _linear_scroll_y
+	sta     _scroll_y
 	lda     _min_scroll_y+1
-	sta     _linear_scroll_y+1
+	sta     _scroll_y+1
 
 	;__	Notably, we can't do shit with the upper byte of the difference
 
@@ -2119,17 +2116,17 @@ doit:
 .segment _SCROLL_BANK
 
 .importzp _currplayer_rely
-.import _linear_scroll_y, _player_rely, _scroll_y_subpx
+.import _scroll_y, _player_rely, _scroll_y_subpx
 
 .export _cap_scroll_y_at_bottom
 .proc _cap_scroll_y_at_bottom
 check:
-	sec							;
-	lda     _linear_scroll_y	;
-	sbc     #<$02CF				;	if (scroll_y > 0x2EF)
-	tay							;
-	lda     _linear_scroll_y+1	;
-	sbc     #>$02CF				;__
+	sec					;
+	lda     _scroll_y	;
+	sbc     #<$02CF		;	if (scroll_y > 0x2EF[ppu fmt])
+	tay					;
+	lda     _scroll_y+1	;
+	sbc     #>$02CF		;__
 	bpl     adjust
 	rts
 
@@ -2140,9 +2137,9 @@ adjust:
 
 
 	lda     #<$02CF				;
-	sta     _linear_scroll_y	;
+	sta     _scroll_y			;
 	lda     #>$02CF				;
-	sta     _linear_scroll_y+1	;__
+	sta     _scroll_y+1			;__
 
 	lda     _currplayer_rely	;
 	clc							;
@@ -2172,7 +2169,7 @@ adjust:
 ; void check_spr_objects();
 .segment "CODE_2"
 
-.import _activesprites_active, _scroll_x, _linear_scroll_y, _animating
+.import _activesprites_active, _scroll_x, _scroll_y, _animating
 
 .export _check_spr_objects := check_spr_objects
 .proc check_spr_objects
@@ -2185,8 +2182,8 @@ adjust:
     lda _sprite_data_bank
     jsr mmc3_set_prg_bank_1
 
-	lda	_linear_scroll_y
-	ldx	_linear_scroll_y+1
+	lda	_scroll_y
+	ldx	_scroll_y+1
 	sta realScrollY
 	stx realScrollY+1
 
