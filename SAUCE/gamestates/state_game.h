@@ -364,10 +364,9 @@ void everything_else() {
 				
 				if (mouse.left) {
 					kandodebugmode = 2;
-					//high_byte(currplayer_relx) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
 					curr_x_scroll_stop = 0xE000;
-					high_byte(currplayer_rely) = (mouse.y + high_byte(scroll_y)) - 10;
+					high_byte(currplayer_rely) = mouse.y - 10;
 					high_byte(currplayer_relx) = mouse.x - 10 < 0 ? mouse.x : mouse.x - 10;
 					if (high_byte(currplayer_relx) > 226) high_byte(currplayer_relx) = 226;
 					
