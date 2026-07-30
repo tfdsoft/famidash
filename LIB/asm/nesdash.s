@@ -1999,19 +1999,12 @@ early_exit:
 	;	a very good estimate of the amount of such transitions.
 	;	With an adjustment at the end if the low byte >= $F0.
 	;	Indeed, this works perfectly for any linear coordinate in
-	;	the range 0..$E1F, as their (literal non-adjusted) outputs
-	;	are under $F00 (though, notably, $E10..$E1F actually maps
-	;	to $F00..$F0F due to the aforementioned adjustments).
+	;	the range 0..$FFF.
 	;	As of writing this in Summer of 2026, this fine game of Famidash
-	;	doesn't seem to need such values of Scroll Y, but the adjustment
-	;	is quite easy regardless! For any 15 (post-conversion but pre-adjustment)
-	;	high increments there is an additional #$10 added to the total value.
-	;	In environments with extreme Y scrolling needs this can be done
-	;	as a post-factor loop.
+	;	doesn't seem to need such values of Scroll Y, but we gotta have
+	;	future-proof code.
 	;	In this case a table of shifting by 4 is used, which limits the
-	;	total proper input value to $FFF anyway, therefore locked behind
-	;	the preprocessor for potential use lies the one-time adjuster if
-	;	the input value exceeds $E1F.
+	;	total proper input value to $FFF.
 	;
 	;__	Writeup done in 2026 by dajinkosa
 
@@ -2019,20 +2012,12 @@ early_exit:
 	CLC						;
 	ADC shiftBy4table, X	;
 	BCC :+					;	Do the addition
-		INX					;
+		INX					;__
+		ADC	#15	;__	C set	;
+		BCC :+				;	Compensate if we
+			INX				;	got too big
 	:						;__
 
-	;	This can be used to extend the range of input values
-	;	from	$000..$E1F (linear) / $0000..$0F0F (PPU fmt)
-	;	to		$000..$FFF (linear) / $0000..$110F (PPU fmt)
-	.if 0
-		CPX #15
-		BCC :+
-			ADC #15	;__	Carry is set
-			BCC	:+
-				INX
-		:
-	.endif
 
 	;__	Adjust the low byte for proper PPU format
 	CMP #$F0
