@@ -892,7 +892,23 @@
 					offsetY: -8
 				},
 			]
-		},		
+		},
+		{
+			level: "powertrip",
+			lowerText: "POWER TRIP",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 8,
+			songID: "song_power_trip",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},	
 		{
 			level: "rainingtacos",
 			lowerText: "RAINING TACOS",
@@ -1209,22 +1225,6 @@
 			difficulty: "INSANE",
 			stars: 8,
 			songID: "song_subtle_oddities",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "powertrip",
-			lowerText: "POWER TRIP",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "INSANE",
-			stars: 8,
-			songID: "song_power_trip",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

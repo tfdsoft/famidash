@@ -28,12 +28,12 @@ _level_list_lo:
 	.byte .lobyte(level_data_wintherace)
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
+	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_dorabaebasic10)
 	.byte .lobyte(level_data_offtomars)
 	.byte .lobyte(level_data_akrile)
 	.byte .lobyte(level_data_subtleoddities)
-	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_newdashcity)
 	.byte .lobyte(level_data_birdbrain)
@@ -65,12 +65,12 @@ _level_list_hi:
 	.byte .hibyte(level_data_wintherace) & $1F | $A0
 	.byte .hibyte(level_data_factorytime) & $1F | $A0
 	.byte .hibyte(level_data_thesteamworks) & $1F | $A0
+	.byte .hibyte(level_data_powertrip) & $1F | $A0
 	.byte .hibyte(level_data_rainingtacos) & $1F | $A0
 	.byte .hibyte(level_data_dorabaebasic10) & $1F | $A0
 	.byte .hibyte(level_data_offtomars) & $1F | $A0
 	.byte .hibyte(level_data_akrile) & $1F | $A0
 	.byte .hibyte(level_data_subtleoddities) & $1F | $A0
-	.byte .hibyte(level_data_powertrip) & $1F | $A0
 	.byte .hibyte(level_data_danceofviolins) & $1F | $A0
 	.byte .hibyte(level_data_newdashcity) & $1F | $A0
 	.byte .hibyte(level_data_birdbrain) & $1F | $A0
@@ -102,12 +102,12 @@ _level_list_bank:
 	.byte .lobyte(level_data_wintherace >> 13)
 	.byte .lobyte(level_data_factorytime >> 13)
 	.byte .lobyte(level_data_thesteamworks >> 13)
+	.byte .lobyte(level_data_powertrip >> 13)
 	.byte .lobyte(level_data_rainingtacos >> 13)
 	.byte .lobyte(level_data_dorabaebasic10 >> 13)
 	.byte .lobyte(level_data_offtomars >> 13)
 	.byte .lobyte(level_data_akrile >> 13)
 	.byte .lobyte(level_data_subtleoddities >> 13)
-	.byte .lobyte(level_data_powertrip >> 13)
 	.byte .lobyte(level_data_danceofviolins >> 13)
 	.byte .lobyte(level_data_newdashcity >> 13)
 	.byte .lobyte(level_data_birdbrain >> 13)
@@ -172,12 +172,12 @@ _level_lengths_lo:
 	.byte .lobyte($00008F)		; wintherace
 	.byte .lobyte($00008F)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
+	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($000097)		; dorabaebasic10
 	.byte .lobyte($000097)		; offtomars
 	.byte .lobyte($000081)		; akrile
 	.byte .lobyte($0000C0)		; subtleoddities
-	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000108)		; newdashcity
 	.byte .lobyte($00009D)		; birdbrain
@@ -211,12 +211,12 @@ _level_lengths_md:
 	.byte .hibyte($00008F)		; wintherace
 	.byte .hibyte($00008F)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
+	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($000097)		; dorabaebasic10
 	.byte .hibyte($000097)		; offtomars
 	.byte .hibyte($000081)		; akrile
 	.byte .hibyte($0000C0)		; subtleoddities
-	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000108)		; newdashcity
 	.byte .hibyte($00009D)		; birdbrain
@@ -250,12 +250,12 @@ _level_lengths_hi:
 	.byte .bankbyte($00008F)		; wintherace
 	.byte .bankbyte($00008F)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
+	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($000097)		; dorabaebasic10
 	.byte .bankbyte($000097)		; offtomars
 	.byte .bankbyte($000081)		; akrile
 	.byte .bankbyte($0000C0)		; subtleoddities
-	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000108)		; newdashcity
 	.byte .bankbyte($00009D)		; birdbrain

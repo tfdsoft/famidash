@@ -92,6 +92,7 @@ _levelTextsUpper_lo:
 .byte	<_levelText1F
 .byte	<_levelText20
 .byte	<_levelText21
+.byte	0
 .byte	<_levelText22
 .byte	0
 .byte	0
@@ -103,7 +104,6 @@ _levelTextsUpper_lo:
 .byte	0
 .byte	0
 .byte	<_levelText25
-.byte	0
 .byte	<_levelText26
 .byte	<_levelText27
 .byte	0
@@ -262,6 +262,7 @@ _levelTextsUpper_hi:
 .byte	>_levelText1F
 .byte	>_levelText20
 .byte	>_levelText21
+.byte	0
 .byte	>_levelText22
 .byte	0
 .byte	0
@@ -273,7 +274,6 @@ _levelTextsUpper_hi:
 .byte	0
 .byte	0
 .byte	>_levelText25
-.byte	0
 .byte	>_levelText26
 .byte	>_levelText27
 .byte	0

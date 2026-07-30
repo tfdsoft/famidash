@@ -25,12 +25,12 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// wintherace
 	HARDER,	// factorytime
 	HARDER,	// thesteamworks
+	HARDER,	// powertrip
 	INSANE,	// rainingtacos
 	INSANE,	// dorabaebasic10
 	INSANE,	// offtomars
 	INSANE,	// akrile
 	INSANE,	// subtleoddities
-	INSANE,	// powertrip
 	INSANE,	// danceofviolins
 	INSANE,	// newdashcity
 	INSANE,	// birdbrain
@@ -63,12 +63,12 @@ const uint8_t stars_list[] = {
 	7,	// wintherace
 	7,	// factorytime
 	7,	// thesteamworks
+	8,	// powertrip
 	8,	// rainingtacos
 	8,	// dorabaebasic10
 	8,	// offtomars
 	8,	// akrile
 	8,	// subtleoddities
-	8,	// powertrip
 	8,	// danceofviolins
 	8,	// newdashcity
 	9,	// birdbrain

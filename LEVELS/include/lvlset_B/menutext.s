@@ -34,11 +34,11 @@ _levelTextsUpper_lo:
 .byte	0
 .byte	0
 .byte	0
+.byte	0
 .byte	<_levelText0C
 .byte	<_levelText0D
 .byte	0
 .byte	<_levelText0E
-.byte	0
 .byte	<_levelText0F
 .byte	0
 .byte	0
@@ -71,11 +71,11 @@ _levelTextsUpper_hi:
 .byte	0
 .byte	0
 .byte	0
+.byte	0
 .byte	>_levelText0C
 .byte	>_levelText0D
 .byte	0
 .byte	>_levelText0E
-.byte	0
 .byte	>_levelText0F
 .byte	0
 .byte	0

@@ -41,12 +41,12 @@ const char levelText24[ 4] = "DUST";
 const char levelText25[ 8] = "THE RACE";
 const char levelText26[12] = "FACTORY TIME";
 const char levelText27[14] = "THE STEAMWORKS";
-const char levelText28[13] = "RAINING TACOS";
-const char levelText29[ 7] = "BASIC10";
-const char levelText2A[ 4] = "MARS";
-const char levelText2B[ 6] = "AKRILE";
-const char levelText2C[ 8] = "ODDITIES";
-const char levelText2D[10] = "POWER TRIP";
+const char levelText28[10] = "POWER TRIP";
+const char levelText29[13] = "RAINING TACOS";
+const char levelText2A[ 7] = "BASIC10";
+const char levelText2B[ 4] = "MARS";
+const char levelText2C[ 6] = "AKRILE";
+const char levelText2D[ 8] = "ODDITIES";
 const char levelText2E[ 7] = "VIOLINS";
 const char levelText2F[13] = "NEW DASH CITY";
 const char levelText30[ 9] = "BIRDBRAIN";
@@ -86,11 +86,11 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	0,
+	0,
 	sizeof(levelText0C),
 	sizeof(levelText0D),
 	0,
 	sizeof(levelText0E),
-	0,
 	sizeof(levelText0F),
 	0,
 	0,

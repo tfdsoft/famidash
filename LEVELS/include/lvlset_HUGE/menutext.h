@@ -136,18 +136,18 @@ const char levelText83[12] = "FACTORY TIME";
 const char levelText84[14] = "THE STEAMWORKS";
 const char levelText85[ 4] = "EASY";
 const char levelText86[ 7] = "VICTORY";
-const char levelText87[ 9] = "THE WOODS";
-const char levelText88[13] = "RAINING TACOS";
-const char levelText89[ 8] = "OVERAWED";
-const char levelText8A[ 6] = "BUT NO";
-const char levelText8B[ 7] = "TYLENOL";
-const char levelText8C[ 5] = "GREIF";
-const char levelText8D[ 7] = "BASIC10";
-const char levelText8E[ 4] = "MARS";
-const char levelText8F[ 5] = "UNITY";
-const char levelText90[ 6] = "AKRILE";
-const char levelText91[ 8] = "ODDITIES";
-const char levelText92[10] = "POWER TRIP";
+const char levelText87[10] = "POWER TRIP";
+const char levelText88[ 9] = "THE WOODS";
+const char levelText89[13] = "RAINING TACOS";
+const char levelText8A[ 8] = "OVERAWED";
+const char levelText8B[ 6] = "BUT NO";
+const char levelText8C[ 7] = "TYLENOL";
+const char levelText8D[ 5] = "GREIF";
+const char levelText8E[ 7] = "BASIC10";
+const char levelText8F[ 4] = "MARS";
+const char levelText90[ 5] = "UNITY";
+const char levelText91[ 6] = "AKRILE";
+const char levelText92[ 8] = "ODDITIES";
 const char levelText93[ 7] = "VIOLINS";
 const char levelText94[ 4] = "CITY";
 const char levelText95[ 9] = "DASTARDLY";
@@ -305,6 +305,7 @@ const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText1F),
 	sizeof(levelText20),
 	sizeof(levelText21),
+	0,
 	sizeof(levelText22),
 	0,
 	0,
@@ -316,7 +317,6 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	sizeof(levelText25),
-	0,
 	sizeof(levelText26),
 	sizeof(levelText27),
 	0,

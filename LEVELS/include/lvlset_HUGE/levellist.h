@@ -84,6 +84,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// astronomicalexpedition
 	HARDER,	// ninecircleseasy
 	HARDER,	// carefreevictory
+	HARDER,	// powertrip
 	INSANE,	// lostinthewoods
 	INSANE,	// rainingtacos
 	INSANE,	// overawed
@@ -95,7 +96,6 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// unity
 	INSANE,	// akrile
 	INSANE,	// subtleoddities
-	INSANE,	// powertrip
 	INSANE,	// danceofviolins
 	INSANE,	// newdashcity
 	INSANE,	// dastardly
@@ -255,6 +255,7 @@ const uint8_t stars_list[] = {
 	7,	// astronomicalexpedition
 	7,	// ninecircleseasy
 	7,	// carefreevictory
+	8,	// powertrip
 	8,	// lostinthewoods
 	8,	// rainingtacos
 	8,	// overawed
@@ -266,7 +267,6 @@ const uint8_t stars_list[] = {
 	8,	// unity
 	8,	// akrile
 	8,	// subtleoddities
-	8,	// powertrip
 	8,	// danceofviolins
 	8,	// newdashcity
 	8,	// dastardly

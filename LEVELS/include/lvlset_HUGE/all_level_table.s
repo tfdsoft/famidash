@@ -87,6 +87,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
 	.byte .lobyte(level_data_carefreevictory)
+	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_overawed)
@@ -98,7 +99,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_unity)
 	.byte .lobyte(level_data_akrile)
 	.byte .lobyte(level_data_subtleoddities)
-	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_newdashcity)
 	.byte .lobyte(level_data_dastardly)
@@ -257,6 +257,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_astronomicalexpedition) & $1F | $A0
 	.byte .hibyte(level_data_ninecircleseasy) & $1F | $A0
 	.byte .hibyte(level_data_carefreevictory) & $1F | $A0
+	.byte .hibyte(level_data_powertrip) & $1F | $A0
 	.byte .hibyte(level_data_lostinthewoods) & $1F | $A0
 	.byte .hibyte(level_data_rainingtacos) & $1F | $A0
 	.byte .hibyte(level_data_overawed) & $1F | $A0
@@ -268,7 +269,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_unity) & $1F | $A0
 	.byte .hibyte(level_data_akrile) & $1F | $A0
 	.byte .hibyte(level_data_subtleoddities) & $1F | $A0
-	.byte .hibyte(level_data_powertrip) & $1F | $A0
 	.byte .hibyte(level_data_danceofviolins) & $1F | $A0
 	.byte .hibyte(level_data_newdashcity) & $1F | $A0
 	.byte .hibyte(level_data_dastardly) & $1F | $A0
@@ -427,6 +427,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_astronomicalexpedition >> 13)
 	.byte .lobyte(level_data_ninecircleseasy >> 13)
 	.byte .lobyte(level_data_carefreevictory >> 13)
+	.byte .lobyte(level_data_powertrip >> 13)
 	.byte .lobyte(level_data_lostinthewoods >> 13)
 	.byte .lobyte(level_data_rainingtacos >> 13)
 	.byte .lobyte(level_data_overawed >> 13)
@@ -438,7 +439,6 @@ _level_list_bank:
 	.byte .lobyte(level_data_unity >> 13)
 	.byte .lobyte(level_data_akrile >> 13)
 	.byte .lobyte(level_data_subtleoddities >> 13)
-	.byte .lobyte(level_data_powertrip >> 13)
 	.byte .lobyte(level_data_danceofviolins >> 13)
 	.byte .lobyte(level_data_newdashcity >> 13)
 	.byte .lobyte(level_data_dastardly >> 13)
@@ -702,6 +702,7 @@ _level_lengths_lo:
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
 	.byte .lobyte($0000D5)		; carefreevictory
+	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000065)		; lostinthewoods
 	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($0000A7)		; overawed
@@ -713,7 +714,6 @@ _level_lengths_lo:
 	.byte .lobyte($00006B)		; unity
 	.byte .lobyte($000081)		; akrile
 	.byte .lobyte($0000C0)		; subtleoddities
-	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000108)		; newdashcity
 	.byte .lobyte($0000B2)		; dastardly
@@ -874,6 +874,7 @@ _level_lengths_md:
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
 	.byte .hibyte($0000D5)		; carefreevictory
+	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000065)		; lostinthewoods
 	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($0000A7)		; overawed
@@ -885,7 +886,6 @@ _level_lengths_md:
 	.byte .hibyte($00006B)		; unity
 	.byte .hibyte($000081)		; akrile
 	.byte .hibyte($0000C0)		; subtleoddities
-	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000108)		; newdashcity
 	.byte .hibyte($0000B2)		; dastardly
@@ -1046,6 +1046,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy
 	.byte .bankbyte($0000D5)		; carefreevictory
+	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000065)		; lostinthewoods
 	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($0000A7)		; overawed
@@ -1057,7 +1058,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00006B)		; unity
 	.byte .bankbyte($000081)		; akrile
 	.byte .bankbyte($0000C0)		; subtleoddities
-	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000108)		; newdashcity
 	.byte .bankbyte($0000B2)		; dastardly
