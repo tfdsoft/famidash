@@ -3529,8 +3529,6 @@ drawplayer_common := _drawplayerone::common
 	; temp_x for X
 	; temp_y for Y
     LDA _temp_y     ;
-    CMP #$F0        ;   if(temp_y >= 0xf0) return 0;
-    BCS Return0		;__
     AND #$F0        ;	temp_y & 0xF0
     STA tmp1        ;__
 	LDA _temp_x		;
@@ -3548,20 +3546,11 @@ drawplayer_common := _drawplayerone::common
 	LDA #$00
 	STA ptr1
 
-	.if USE_ILLEGAL_OPCODES
-		LAX (ptr1),Y
-	.else
-		LDA (ptr1),Y
-		TAX
-	.endif
+	LDA (ptr1),Y
+	TAX
 	LDA metatiles_coll,X	;	return is_solid[collision];
 	STA _collision	;
 	RTS				;__
-
-	Return0:
-	LDA #$00
-	sta _collision
-	RTS
 
 .endproc
 
