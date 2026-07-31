@@ -1485,7 +1485,8 @@
 		},
 		{
 			level: "thetower",
-            lowerText: "THE TOWER",
+			upperText: "THE",
+            lowerText: "TOWER",
             decoType: "EXTRASPRITES1",
             spikeSet: "A",
             blockSet: "B",
@@ -1516,7 +1517,8 @@
 		},
 		{
 			level: "thesewers",
-			lowerText: "THE SEWERS",
+			upperText: "THE",
+			lowerText: "SEWERS",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "A",
 			blockSet: "B",
@@ -1582,8 +1584,8 @@
 		},
 		{
 			level: "thecellar",
-			upperText: "",
-			lowerText: "THE CELLAR",
+			upperText: "THE",
+			lowerText: "CELLAR",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",
@@ -3043,6 +3045,44 @@
 			]	
 		},
 		{
+            level: "dorabaebasic8",
+			upperText: "DORABAE",
+			lowerText: "BASIC8",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "HARD",
+            stars: 5,
+            songID: "song_endgame_full",
+            startingGameMode: 2,
+            startingSpeed: 1,
+            startingBackgroundColor: 0x16,
+            startingGroundColor: 0x0F,
+            parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [
+						[66, 51], [147, 51], [984, 30], [1385, 25],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[118, 55], [148, 52], [229, 49], [229, 54], [311, 51], [377, 47], [539, 38], [614, 34], [683, 30], [684, 30], [754, 31], [758, 30], [878, 30], [898, 31], [905, 31], [912, 31], [984, 30], [985, 30], [993, 30], [1032, 12], [1045, 11], [1056, 12], [1067, 13], [1078, 14], [1090, 11], [1101, 13], [1113, 12], [1204, 16], [1324, 41], [1343, 36], [1359, 31], [1386, 26], [1404, 27], [1434, 27],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[118, 55], [162, 55], [203, 49], [443, 45], [446, 44], [539, 38], [684, 30], [930, 28], [930, 33], [1320, 34], [1385, 25],
+					],
+					offsetX: -8
+				},
+			]
+        },
+		{
 			level: "pyrophoric",
 			lowerText: "PYROPHORIC",
 			decoType: "DECO1",
@@ -3255,7 +3295,7 @@
 			sawSet: "A",
 			difficulty: "HARDER",
 			stars: 6,
-			songID: "song_endgame",
+			songID: "song_endgame_full",
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x03,
@@ -5246,7 +5286,7 @@
 			sawSet: "A",
 			difficulty: "EASYDEMON",
 			stars: 10,
-			songID: "song_endgame",
+			songID: "song_endgame_full",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
@@ -5987,7 +6027,7 @@
 			sawSet: "A",
 			difficulty: "MEDIUMDEMON",
 			stars: 10,
-			songID: "song_endgame",
+			songID: "song_endgame_full",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
@@ -6476,7 +6516,7 @@
             sawSet: "A",
             difficulty: "HARDDEMON",
             stars: 10,
-            songID: "song_endgame",
+            songID: "song_endgame_full",
             startingGameMode: 0,
             startingSpeed: 0,
             startingBackgroundColor: 0x12,

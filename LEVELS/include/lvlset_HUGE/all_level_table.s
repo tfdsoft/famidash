@@ -66,6 +66,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_moonlight)
 	.byte .lobyte(level_data_fofii_fofii_fofii)
 	.byte .lobyte(level_data_selectpaymenttype)
+	.byte .lobyte(level_data_dorabaebasic8)
 	.byte .lobyte(level_data_pyrophoric)
 	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_chromaticexpedition)
@@ -236,6 +237,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_moonlight) & $1F | $A0
 	.byte .hibyte(level_data_fofii_fofii_fofii) & $1F | $A0
 	.byte .hibyte(level_data_selectpaymenttype) & $1F | $A0
+	.byte .hibyte(level_data_dorabaebasic8) & $1F | $A0
 	.byte .hibyte(level_data_pyrophoric) & $1F | $A0
 	.byte .hibyte(level_data_cryogenic) & $1F | $A0
 	.byte .hibyte(level_data_chromaticexpedition) & $1F | $A0
@@ -406,6 +408,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_moonlight >> 13)
 	.byte .lobyte(level_data_fofii_fofii_fofii >> 13)
 	.byte .lobyte(level_data_selectpaymenttype >> 13)
+	.byte .lobyte(level_data_dorabaebasic8 >> 13)
 	.byte .lobyte(level_data_pyrophoric >> 13)
 	.byte .lobyte(level_data_cryogenic >> 13)
 	.byte .lobyte(level_data_chromaticexpedition >> 13)
@@ -681,6 +684,7 @@ _level_lengths_lo:
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
 	.byte .lobyte($0000BC)		; selectpaymenttype
+	.byte .lobyte($0000EA)		; dorabaebasic8
 	.byte .lobyte($00004D)		; pyrophoric
 	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($000056)		; chromaticexpedition
@@ -853,6 +857,7 @@ _level_lengths_md:
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
 	.byte .hibyte($0000BC)		; selectpaymenttype
+	.byte .hibyte($0000EA)		; dorabaebasic8
 	.byte .hibyte($00004D)		; pyrophoric
 	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($000056)		; chromaticexpedition
@@ -1025,6 +1030,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
 	.byte .bankbyte($0000BC)		; selectpaymenttype
+	.byte .bankbyte($0000EA)		; dorabaebasic8
 	.byte .bankbyte($00004D)		; pyrophoric
 	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($000056)		; chromaticexpedition

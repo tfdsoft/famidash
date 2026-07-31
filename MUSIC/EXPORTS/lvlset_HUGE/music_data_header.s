@@ -11,7 +11,7 @@
 	.include "music_2.s"	; Approx. size: 6446 bytes
 	.align 8192
 .segment "DAT_BANK_B8"
-	.include "music_3.s"	; Approx. size: 6550 bytes
+	.include "music_3.s"	; Approx. size: 6471 bytes
 	.align 8192
 .segment "DAT_BANK_B9"
 	.include "music_4.s"	; Approx. size: 6696 bytes
@@ -32,64 +32,64 @@
 	.include "music_9.s"	; Approx. size: 6725 bytes
 	.align 8192
 .segment "DAT_BANK_BF"
-	.include "music_10.s"	; Approx. size: 6552 bytes
+	.include "music_10.s"	; Approx. size: 6806 bytes
 	.align 8192
 .segment "DAT_BANK_C0"
-	.include "music_11.s"	; Approx. size: 6970 bytes
+	.include "music_11.s"	; Approx. size: 6552 bytes
 	.align 8192
 .segment "DAT_BANK_C1"
-	.include "music_12.s"	; Approx. size: 7089 bytes
+	.include "music_12.s"	; Approx. size: 6970 bytes
 	.align 8192
 .segment "DAT_BANK_C2"
-	.include "music_13.s"	; Approx. size: 6625 bytes
+	.include "music_13.s"	; Approx. size: 7089 bytes
 	.align 8192
 .segment "DAT_BANK_C3"
-	.include "music_14.s"	; Approx. size: 6525 bytes
+	.include "music_14.s"	; Approx. size: 6625 bytes
 	.align 8192
 .segment "DAT_BANK_C4"
-	.include "music_15.s"	; Approx. size: 6593 bytes
+	.include "music_15.s"	; Approx. size: 6525 bytes
 	.align 8192
 .segment "DAT_BANK_C5"
-	.include "music_16.s"	; Approx. size: 7142 bytes
+	.include "music_16.s"	; Approx. size: 6593 bytes
 	.align 8192
 .segment "DAT_BANK_C6"
-	.include "music_17.s"	; Approx. size: 6806 bytes
+	.include "music_17.s"	; Approx. size: 7142 bytes
 	.align 8192
 .segment "DAT_BANK_C7"
-	.include "music_18.s"	; Approx. size: 7334 bytes
+	.include "music_18.s"	; Approx. size: 6966 bytes
 	.align 8192
 .segment "DAT_BANK_C8"
-	.include "music_19.s"	; Approx. size: 6812 bytes
+	.include "music_19.s"	; Approx. size: 7334 bytes
 	.align 8192
 .segment "DAT_BANK_C9"
-	.include "music_20.s"	; Approx. size: 7054 bytes
+	.include "music_20.s"	; Approx. size: 6812 bytes
 	.align 8192
 .segment "DAT_BANK_CA"
-	.include "music_21.s"	; Approx. size: 6700 bytes
+	.include "music_21.s"	; Approx. size: 7054 bytes
 	.align 8192
 .segment "DAT_BANK_CB"
-	.include "music_22.s"	; Approx. size: 7004 bytes
+	.include "music_22.s"	; Approx. size: 6700 bytes
 	.align 8192
 .segment "DAT_BANK_CC"
-	.include "music_23.s"	; Approx. size: 6676 bytes
+	.include "music_23.s"	; Approx. size: 7004 bytes
 	.align 8192
 .segment "DAT_BANK_CD"
-	.include "music_24.s"	; Approx. size: 7038 bytes
+	.include "music_24.s"	; Approx. size: 6676 bytes
 	.align 8192
 .segment "DAT_BANK_CE"
-	.include "music_25.s"	; Approx. size: 6996 bytes
+	.include "music_25.s"	; Approx. size: 7038 bytes
 	.align 8192
 .segment "DAT_BANK_CF"
-	.include "music_26.s"	; Approx. size: 7005 bytes
+	.include "music_26.s"	; Approx. size: 6936 bytes
 	.align 8192
 .segment "DAT_BANK_D0"
-	.include "music_27.s"	; Approx. size: 7025 bytes
+	.include "music_27.s"	; Approx. size: 7163 bytes
 	.align 8192
 .segment "DAT_BANK_D1"
-	.include "music_28.s"	; Approx. size: 7241 bytes
+	.include "music_28.s"	; Approx. size: 6678 bytes
 	.align 8192
 .segment "DAT_BANK_D2"
-	.include "music_29.s"	; Approx. size: 7095 bytes
+	.include "music_29.s"	; Approx. size: 7165 bytes
 	.align 8192
 .segment "DAT_BANK_D3"
 	.include "music_30.s"	; Approx. size: 7016 bytes
@@ -101,16 +101,16 @@
 	.include "music_32.s"	; Approx. size: 6351 bytes
 	.align 8192
 .segment "DAT_BANK_D6"
-	.include "music_33.s"	; Approx. size: 6594 bytes
+	.include "music_33.s"	; Approx. size: 6135 bytes
 	.align 8192
 .segment "DAT_BANK_D7"
-	.include "music_34.s"	; Approx. size: 7148 bytes
+	.include "music_34.s"	; Approx. size: 6415 bytes
 	.align 8192
 .segment "DAT_BANK_D8"
 	.include "music_35.s"	; Approx. size: 7004 bytes
 	.align 8192
 .segment "DAT_BANK_D9"
-	.include "music_36.s"	; Approx. size: 7097 bytes
+	.include "music_36.s"	; Approx. size: 7210 bytes
 	.align 8192
 .segment "DAT_BANK_DA"
 	.include "music_37.s"	; Approx. size: 6824 bytes
@@ -119,28 +119,28 @@
 	.include "music_38.s"	; Approx. size: 6824 bytes
 	.align 8192
 .segment "DAT_BANK_DC"
-	.include "music_39.s"	; Approx. size: 7220 bytes
+	.include "music_39.s"	; Approx. size: 7264 bytes
 	.align 8192
 .segment "DAT_BANK_DD"
-	.include "music_40.s"	; Approx. size: 6935 bytes
+	.include "music_40.s"	; Approx. size: 7200 bytes
 	.align 8192
 .segment "DAT_BANK_DE"
-	.include "music_41.s"	; Approx. size: 6573 bytes
+	.include "music_41.s"	; Approx. size: 6554 bytes
 	.align 8192
 .segment "DAT_BANK_DF"
-	.include "music_42.s"	; Approx. size: 7104 bytes
+	.include "music_42.s"	; Approx. size: 7001 bytes
 	.align 8192
 .segment "DAT_BANK_E0"
-	.include "music_43.s"	; Approx. size: 6950 bytes
+	.include "music_43.s"	; Approx. size: 7016 bytes
 	.align 8192
 .segment "DAT_BANK_E1"
-	.include "music_44.s"	; Approx. size: 7076 bytes
+	.include "music_44.s"	; Approx. size: 7022 bytes
 	.align 8192
 .segment "DAT_BANK_E2"
-	.include "music_45.s"	; Approx. size: 6394 bytes
+	.include "music_45.s"	; Approx. size: 7040 bytes
 	.align 8192
 .segment "DAT_BANK_E3"
-	.include "music_46.s"	; Approx. size: 3176 bytes
+	.include "music_46.s"	; Approx. size: 5147 bytes
 	.align 8192
 
 ; DMC banks

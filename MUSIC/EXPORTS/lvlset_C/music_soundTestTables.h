@@ -217,7 +217,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_deep_swim,
 	song_dastardly,
 	song_hungryman_adventures,
-	song_endgame,
+	song_endgame_full,
 	song_ground_to_retray,
 	song_load,
 	song_mario_kart_7__rainbow_road_remix,
@@ -237,7 +237,7 @@ const uint8_t xbgmlookuptable[] = {
 
 const uint8_t xbgmlookuptable[] = {
 	song_stereo_madness,
-	song_endgame,
+	song_endgame_full,
 };
 
 #endif

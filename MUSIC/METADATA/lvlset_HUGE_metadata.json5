@@ -489,10 +489,10 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
-			fmsSongName: "endgame",
+			fmsSongName: "Endgame Full",
 			lowerText: "ENDGAME",
 			originalArtist: "Waterflame",
-			coveringArtist: "Vikrinox",
+			coveringArtist: ["Vikrinox", "SeaGlowingPro"],
 		},
 		{
 			fmsSongName: "endorphins",
