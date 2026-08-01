@@ -3189,7 +3189,7 @@
 		.byte <sprite_data_illusion ;_________________ Sprite data ptr, low byte
 		.byte >(sprite_data_illusion) & $1F | $A0 ;___ Sprite data ptr, high byte
 		.byte <(sprite_data_illusion >> 13) ;_________ Sprite data bank
-		.byte song_menu_theme ;_______________________ Song ID
+		.byte song_operation_evolution ;______________ Song ID
 		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
 		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
 		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)

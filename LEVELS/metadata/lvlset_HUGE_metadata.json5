@@ -2450,7 +2450,7 @@
             sawSet: "A",
             difficulty: "HARD",
             stars: 4,
-            songID: "song_menu_theme",
+            songID: "song_operation_evolution",
             startingGameMode: 0,
             startingSpeed: 0,
             startingBackgroundColor: 0x0F,

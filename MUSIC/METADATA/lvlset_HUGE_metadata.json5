@@ -861,6 +861,13 @@
 		},
 		*/
 		{
+			fmsSongName: "Operation Evolution",
+			upperText: "OPERATION",
+			lowerText: "EVOLUTION",
+			originalArtist: "Dimrain47",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "Power Trip",
 			lowerText: "POWER TRIP",
 			originalArtist: "Boom Kitty",
