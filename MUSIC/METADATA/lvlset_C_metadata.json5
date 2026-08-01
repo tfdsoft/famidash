@@ -154,6 +154,12 @@
 			originalArtistText: "RUKKUS",
 		},
 		{
+			fmsSongName: "Operation Evolution",
+			upperText: "OPERATION",
+			lowerText: "EVOLUTION",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
 			fmsSongName: "Solar Wind",
 			lowerText: "SOLAR WIND",
 			originalArtistText: "JUMPER",

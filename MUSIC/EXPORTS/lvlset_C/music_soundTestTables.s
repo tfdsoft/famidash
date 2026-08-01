@@ -4,7 +4,7 @@
 
 .segment _BGMTEST_BANK
 
-.repeat 67, I
+.repeat 70, I
 .import .ident(.sprintf("_musicSoundTestString%02X", I))
 .endrepeat
 
@@ -33,14 +33,15 @@ _xbgmtextsUpper_lo:
 .byte	<_musicSoundTestString08
 .byte	0
 .byte	0
-.byte	0
 .byte	<_musicSoundTestString09
+.byte	0
 .byte	<_musicSoundTestString0A
+.byte	<_musicSoundTestString0B
 .byte	0
 .byte	0
-.byte	<_musicSoundTestString0B
-.byte	<_musicSoundTestString0B
 .byte	<_musicSoundTestString0C
+.byte	<_musicSoundTestString0C
+.byte	<_musicSoundTestString0D
 
 _xbgmtextsUpper_hi:
 .byte	0
@@ -65,17 +66,17 @@ _xbgmtextsUpper_hi:
 .byte	>_musicSoundTestString08
 .byte	0
 .byte	0
-.byte	0
 .byte	>_musicSoundTestString09
+.byte	0
 .byte	>_musicSoundTestString0A
+.byte	>_musicSoundTestString0B
 .byte	0
 .byte	0
-.byte	>_musicSoundTestString0B
-.byte	>_musicSoundTestString0B
 .byte	>_musicSoundTestString0C
+.byte	>_musicSoundTestString0C
+.byte	>_musicSoundTestString0D
 
 _xbgmtextsLower_lo:
-.byte	<_musicSoundTestString0D
 .byte	<_musicSoundTestString0E
 .byte	<_musicSoundTestString0F
 .byte	<_musicSoundTestString10
@@ -105,9 +106,10 @@ _xbgmtextsLower_lo:
 .byte	<_musicSoundTestString28
 .byte	<_musicSoundTestString29
 .byte	<_musicSoundTestString2A
+.byte	<_musicSoundTestString2B
+.byte	<_musicSoundTestString2C
 
 _xbgmtextsLower_hi:
-.byte	>_musicSoundTestString0D
 .byte	>_musicSoundTestString0E
 .byte	>_musicSoundTestString0F
 .byte	>_musicSoundTestString10
@@ -137,69 +139,73 @@ _xbgmtextsLower_hi:
 .byte	>_musicSoundTestString28
 .byte	>_musicSoundTestString29
 .byte	>_musicSoundTestString2A
+.byte	>_musicSoundTestString2B
+.byte	>_musicSoundTestString2C
 
 _xbgmtextsOriginalArtist_lo:
-.byte	<_musicSoundTestString2B
-.byte	<_musicSoundTestString2C
 .byte	<_musicSoundTestString2D
 .byte	<_musicSoundTestString2E
 .byte	<_musicSoundTestString2F
 .byte	<_musicSoundTestString30
 .byte	<_musicSoundTestString31
-.byte	<_musicSoundTestString2C
 .byte	<_musicSoundTestString32
 .byte	<_musicSoundTestString33
-.byte	<_musicSoundTestString34
+.byte	<_musicSoundTestString2E
 .byte	<_musicSoundTestString34
 .byte	<_musicSoundTestString35
 .byte	<_musicSoundTestString36
+.byte	<_musicSoundTestString36
 .byte	<_musicSoundTestString37
-.byte	<_musicSoundTestString34
-.byte	<_musicSoundTestString34
 .byte	<_musicSoundTestString38
 .byte	<_musicSoundTestString39
+.byte	<_musicSoundTestString36
+.byte	<_musicSoundTestString36
 .byte	<_musicSoundTestString3A
 .byte	<_musicSoundTestString3B
 .byte	<_musicSoundTestString3C
-.byte	<_musicSoundTestString30
 .byte	<_musicSoundTestString3D
 .byte	<_musicSoundTestString3E
 .byte	<_musicSoundTestString3F
+.byte	<_musicSoundTestString32
 .byte	<_musicSoundTestString40
 .byte	<_musicSoundTestString41
-.byte	<_musicSoundTestString41
 .byte	<_musicSoundTestString42
+.byte	<_musicSoundTestString43
+.byte	<_musicSoundTestString44
+.byte	<_musicSoundTestString44
+.byte	<_musicSoundTestString45
 
 _xbgmtextsOriginalArtist_hi:
-.byte	>_musicSoundTestString2B
-.byte	>_musicSoundTestString2C
 .byte	>_musicSoundTestString2D
 .byte	>_musicSoundTestString2E
 .byte	>_musicSoundTestString2F
 .byte	>_musicSoundTestString30
 .byte	>_musicSoundTestString31
-.byte	>_musicSoundTestString2C
 .byte	>_musicSoundTestString32
 .byte	>_musicSoundTestString33
-.byte	>_musicSoundTestString34
+.byte	>_musicSoundTestString2E
 .byte	>_musicSoundTestString34
 .byte	>_musicSoundTestString35
 .byte	>_musicSoundTestString36
+.byte	>_musicSoundTestString36
 .byte	>_musicSoundTestString37
-.byte	>_musicSoundTestString34
-.byte	>_musicSoundTestString34
 .byte	>_musicSoundTestString38
 .byte	>_musicSoundTestString39
+.byte	>_musicSoundTestString36
+.byte	>_musicSoundTestString36
 .byte	>_musicSoundTestString3A
 .byte	>_musicSoundTestString3B
 .byte	>_musicSoundTestString3C
-.byte	>_musicSoundTestString30
 .byte	>_musicSoundTestString3D
 .byte	>_musicSoundTestString3E
 .byte	>_musicSoundTestString3F
+.byte	>_musicSoundTestString32
 .byte	>_musicSoundTestString40
 .byte	>_musicSoundTestString41
-.byte	>_musicSoundTestString41
 .byte	>_musicSoundTestString42
+.byte	>_musicSoundTestString43
+.byte	>_musicSoundTestString44
+.byte	>_musicSoundTestString44
+.byte	>_musicSoundTestString45
 
 .endif
