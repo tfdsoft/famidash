@@ -18,6 +18,8 @@
 #include "metatiles.c"
 #include "levels.c"
 
+#include "nametables.c"
+
 // extra code
 #include "funny_custom_routines.h"
 #include "physics.h"
@@ -107,6 +109,9 @@ int main(void) {
                 break;
             case 0x11:
 
+                break;
+            case 0x12:
+                jsrfar_noargs(startup_bank, state_levelselect_2);
                 break;
             case 0x14:
                 jsrfar_noargs(debug_bank, state_soundtest);

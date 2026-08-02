@@ -171,10 +171,10 @@ banked(startup_bank.func) void state_menu() {
     }*/
 
 
-    set_chr_bank(2,0);
-    set_chr_bank(3,1);
-    set_chr_bank(4,2);
-    set_chr_bank(5,3);
+    //set_chr_bank(2,0);
+    //set_chr_bank(3,1);
+    //set_chr_bank(4,2);
+    //set_chr_bank(5,3);
 
     se_vram_address(0);
     // load menu stuff
@@ -327,9 +327,10 @@ banked(startup_bank.func) void state_menu() {
                 case 0: // play
                     gamestate = 0x20;
                     break;
-                /*case 1: // community
+                case 1: // community
+                gamestate = 0x12;
                     break;
-                case 2: // settings
+                /*case 2: // settings
                     break;*/
                 case 3: // music
                     gamestate = 0x14;
@@ -357,4 +358,82 @@ banked(startup_bank.func) void state_menu() {
 
 banked(startup_bank.func) void state_help() {
     
+}
+
+
+
+
+banked(startup_bank.data) const u8 levelselect2_irq_table[] = {
+    47,
+    0x60,0x81, //1 lo/hi bytes of function goes here
+    0,
+    1,
+    0,
+    0,
+
+    133,
+    0x60,0x81, //8 lo/hi bytes of function goes here
+    0,
+    0,
+    183,
+    0,
+
+    255
+};
+
+banked(startup_bank.func) void state_levelselect_2() {
+    u16 unfunny_scroll_value = 0;
+
+    se_vram_address(0);
+    se_vram_donut_decompress(chr_menu_global, chr_bank_0);
+    se_vram_donut_decompress(chr_menu_font_pusab, chr_bank_0);
+
+
+    se_vram_address(0x2000);
+    se_vram_unrle(nt_startupbank_genericmenu,0);
+    for(int i=0; i<3; i++){
+        se_vram_unrle(nt_startupbank_genericmenu_extendedbit,0);
+    }
+
+
+
+    se_memory_copy(
+        (void*)se_irq_table,
+        (void*)levelselect2_irq_table,
+        sizeof(levelselect2_irq_table)
+    );
+    se_write_function_to_irq_table(
+        custom_irq_that_updates_scroll,1
+    );
+    se_write_function_to_irq_table(
+        custom_irq_that_updates_scroll,8
+    );
+    for(int i=0; i<4; i++){
+        se_multi_vram_buffer_horizontal(
+            "SCROLLING TEST", 
+            15, 
+            nametable_address_B(6,(2+(i<<3)))
+        );
+    }
+    for(int i=0; i<3; i++){
+        se_multi_vram_buffer_horizontal(
+            "IT KEEPS GOIN", 
+            13, 
+            nametable_address_D(6,(2+(i<<3)))
+        );
+    }
+    
+
+    __asm__("cli");
+    se_turn_on_rendering();
+    se_fade_palette_to(0,4);
+
+    while(1){
+        se_wait_vsync();
+        
+        if(joypad1.down) unfunny_scroll_value++;
+        if(joypad1.up) unfunny_scroll_value--;
+        
+        se_irq_table[5] = unfunny_scroll_value;
+    }
 }
