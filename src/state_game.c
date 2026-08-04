@@ -293,11 +293,19 @@ banked(fixed.func) void state_game() {
     Player.pos.x.word = 0;
     Player.pos.y.word = (active_lvl.height<<4)-0x10;
     Player.properties.is_dead = 0;
-    Player.size.width = Player.size.height = 16;
+    Player.size.width = Player.size.height = 15;
     Camera.x.word = 0;
     Camera.y.word = (active_lvl.height<<4)-0xc0;
 
     se_set_palette_brightness_all(4);
+
+
+
+    se_irq_table[0] = 255;
+    se_write_function_to_irq_table(
+        nofunction,1
+    );
+    __asm__("cli");
 
     se_post_nmi_ptr = nofunction;
     se_turn_on_rendering();
@@ -307,12 +315,13 @@ banked(fixed.func) void state_game() {
         se_wait_vsync();
         se_clear_sprites();
         se_music_update();
+        se_gray_line();
 
         move_player(&Player);
         if(Player.properties.is_dead) break;
 
-        //if(joypad1.right) scroll_direction = 16;
-        //if(joypad1.left) scroll_direction = -1;
+        if(joypad1.right) scroll_direction = 16;
+        if(joypad1.left) scroll_direction = -1;
         y_offset = (Camera.y.word >> 3)+1;
         if(((u8)((Camera.x.word>>4) + scroll_direction+1)) != lvl_rle_x_offset){
             if(!(scroll_direction & 0x80)) {
@@ -350,6 +359,14 @@ banked(fixed.func) void state_game() {
         //    nametable_address_A(28,0)
         //);
         
+
+        //struct Metatile_Attr test = check_collision_point(&Player, 0, 16);
+        
+        se_one_vram_buffer_repeat_horizontal(
+            (metatiles_collision[get_metatile_at(Player.pos.x.lo, Player.pos.y.word)].collision),
+            4,    
+            nametable_address_C(8,8)
+        );
         
 
 

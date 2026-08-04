@@ -28,26 +28,47 @@ struct Metatile_Attr check_collision_point(struct Player* player, s8 extra_x, s8
     u8 x = player->pos.x.lo + extra_x;
     u16 y = player->pos.y.word + extra_y;
 
-    u8 metatile = get_metatile_at(x,y);
-    
-    if((metatile & 0xf0) && (metatile & 0x0f)){
-        return ((struct Metatile_Attr){0,0,{0b1111}});
-    }
-    return (metatiles_collision[metatile]);
+    //u8 metatile = ;
 
-    // if metatile is in one of the four custom sets,
-    // and is the first tile in that set,
-    // pass through
-    //if(((metatile >> 6) == 1) && (!(metatile & 0x0f))){
-    //    return 0;
-    //} else return metatile;
+    // special cases!
+    //switch ((metatile & 0xf0)>>4) {
+    //    case 0:
+    //        return (struct Metatile_Attr){0,0,{0b0000}};
+    //    case 1:
+    //        return (struct Metatile_Attr){0,2,{0b1111}};
+    //        break;
+    //    default:
+    //        break;
+    //}
+
+    struct Metatile_Attr attributes = metatiles_collision[get_metatile_at(x,y)];
+    
+
+    u8 collide_mask = 0;
+    // get top/bottom
+    if((y & 0x08)==0) collide_mask |= 0b1100;
+    else collide_mask |= 0b0011;
+    // get left/right side
+    if((x & 0x08)==0) collide_mask &= 0b1010;
+    else collide_mask &= 0b0101;
+    if((attributes.collision & collide_mask)){
+        return attributes;
+    } 
+
+    //attributes.collision = 0;
+    return (struct Metatile_Attr){0b0000,0,0};
 }
+
+
 
 u8 check_collision_LR(struct Player* player, s8 extra_x){
     //u8 x = player->pos.x.lo + extra_x;
     //u16 y = player->pos.y.word;
+    struct Metatile_Attr metatile;
 
-    struct Metatile_Attr metatile = check_collision_point(player, extra_x, 0);
+    metatile = check_collision_point(player, extra_x, 0);
+    if(metatile.collision) return 1;
+    metatile = check_collision_point(player, extra_x, (player->size.height >> 1));
     if(metatile.collision) return 1;
     metatile = check_collision_point(player, extra_x, player->size.height);
     if(metatile.collision) return 1;
@@ -56,10 +77,14 @@ u8 check_collision_LR(struct Player* player, s8 extra_x){
 }
 
 u8 check_collision_UD(struct Player* player, s8 extra_y){
-    u8 x = player->pos.x.lo;
-    u16 y = player->pos.y.word + extra_y;
+    //u8 x = player->pos.x.lo;
+    //u16 y = player->pos.y.word + extra_y;
+    struct Metatile_Attr metatile;
 
-    struct Metatile_Attr metatile = check_collision_point(player, 0, extra_y);
+    __asm__("brk \n .byte $ea");
+    metatile = check_collision_point(player, 0, extra_y);
+    if(metatile.collision) return 1;
+    metatile = check_collision_point(player, (player->size.width >> 1), extra_y);
     if(metatile.collision) return 1;
     metatile = check_collision_point(player, player->size.width, extra_y);
     if(metatile.collision) return 1;
@@ -78,42 +103,54 @@ void move_player(struct Player* player){
 
     if(joypad1.up) player->speed.y = -0x400;
     player->pos.y.full += player->speed.y;
-    //collision_value = check_collision_UD(player, 0);
-    //if(collision_value){
-    //    player->pos.y.lo = 1+(player->pos.y.lo | 0x07);
-    //    player->speed.y = 0;
-    //}
-    if(player->speed.y > 0){
-        u8 collision_value = check_collision_UD(player, player->size.height);
-        if(collision_value){
-            player->pos.y.lo &= 0xf8;
-            player->speed.y = 0;
-            if(joypad1.a) player->speed.y = phys_jumpvel[0];
+    
+    if(1){ // used to encase the collision value
+
+        if(player->speed.y > 0){
+            u8 collision_value = check_collision_UD(player, player->size.height);
+            if(collision_value){
+                player->pos.y.lo &= 0xf8;
+                player->speed.y = 0;
+                if(joypad1.a) player->speed.y = phys_jumpvel[0];
+            }
+        } else {
+            u8 collision_value = check_collision_UD(player, 0);
+            if(collision_value){
+                player->pos.y.lo = 1+(player->pos.y.lo | 0x07);
+                player->speed.y = 0;
+            }
         }
     }
     
     
-    
 
 
-    //player->speed.x = 0;
-    //if(joypad1.left) player->speed.x = -phys_speed[0];
-    //if(joypad1.right)
+    player->speed.x = 0;
+    if(joypad1.left) player->speed.x = -phys_speed[0];
+    if(joypad1.right) 
     player->speed.x = phys_speed[0];
     
     player->pos.x.full += player->speed.x;
-    collision_value = check_collision_point(player, (player->size.width >>1), (player->size.height >>1));
-    if(collision_value.type == 2) {
-        player->properties.is_dead = 1;
+    //collision_value = check_collision_point(player, (player->size.width >>1), (player->size.height >>1));
+    //if(collision_value.type == 2) {
+    //    //player->properties.is_dead = 1;
+    //}
+    if(1){
+        if(player->speed.x > 0){
+            u8 collision_value = check_collision_LR(player, player->size.width);
+            if(collision_value) { // right
+                player->pos.x.lo &= 0xf8;
+                player->speed.x = 0;
+            }
+        } else {
+            u8 collision_value = check_collision_LR(player, 0);
+            if(collision_value) { // left
+                player->pos.x.word = 1+(player->pos.x.word | 0x0007);
+                player->speed.x = 0;
+            }
+        }
+        
     }
-    //if(check_collision_LR(player, 0)) { // left
-    //    player->pos.x.word = 1+(player->pos.x.word | 0x0007);
-    //    player->speed.x = 0;
-    //}
-    //if(check_collision_LR(player, 15)) { // right
-    //    player->pos.x.lo &= 0xf8;
-    //    player->speed.x = 0;
-    //}
 
 
 

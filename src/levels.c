@@ -10,7 +10,7 @@ banked(level_data_bank_0) const u8 lvl_test_sprites[] = {
 
 banked(level_header_bank) const struct Level lvl_test_header = {
     /* NAME (up to 23 characters) */
-    .name = "electrodynamix",
+    .name = "fd2\x01test\x01level",
 
     .color = {
         .bg = 0x19,//background
@@ -37,7 +37,7 @@ banked(level_header_bank) const struct Level lvl_test_header = {
 
     .song = song_stay_inside_me,
 
-    .height = 32, // level height
+    .height = 27, // level height
 
     .tile_data = (u8*)lvl_test_tiles,
     .tile_bank = level_data_bank_0,
