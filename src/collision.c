@@ -31,11 +31,11 @@ struct Metatile_Attr check_collision_point(struct Player* player, s8 extra_x, s8
     //u8 metatile = ;
 
     // special cases!
-    switch ((metatile & 0xf0)>>4) {
+    switch ((get_metatile_at(x,y) & 0xf0)>>4) {
         case 0:
-            return (struct Metatile_Attr){0,0,{0b0000}};
+            return (struct Metatile_Attr){0b0000,0,0};
         case 1:
-            return (struct Metatile_Attr){0,2,{0b1111}};
+            return (struct Metatile_Attr){0b1111,0,2};
             break;
         default:
             break;
