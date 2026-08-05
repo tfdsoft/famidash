@@ -31,15 +31,15 @@ struct Metatile_Attr check_collision_point(struct Player* player, s8 extra_x, s8
     //u8 metatile = ;
 
     // special cases!
-    //switch ((metatile & 0xf0)>>4) {
-    //    case 0:
-    //        return (struct Metatile_Attr){0,0,{0b0000}};
-    //    case 1:
-    //        return (struct Metatile_Attr){0,2,{0b1111}};
-    //        break;
-    //    default:
-    //        break;
-    //}
+    switch ((metatile & 0xf0)>>4) {
+        case 0:
+            return (struct Metatile_Attr){0,0,{0b0000}};
+        case 1:
+            return (struct Metatile_Attr){0,2,{0b1111}};
+            break;
+        default:
+            break;
+    }
 
     struct Metatile_Attr attributes = metatiles_collision[get_metatile_at(x,y)];
     
@@ -67,11 +67,11 @@ u8 check_collision_LR(struct Player* player, s8 extra_x){
     struct Metatile_Attr metatile;
 
     metatile = check_collision_point(player, extra_x, 0);
-    if(metatile.collision) return 1;
+    if(metatile.collision) return 1+metatile.type;
     metatile = check_collision_point(player, extra_x, (player->size.height >> 1));
-    if(metatile.collision) return 1;
+    if(metatile.collision) return 1+metatile.type;
     metatile = check_collision_point(player, extra_x, player->size.height);
-    if(metatile.collision) return 1;
+    if(metatile.collision) return 1+metatile.type;
 
     return 0;
 }
