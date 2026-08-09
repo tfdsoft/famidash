@@ -108,7 +108,7 @@ int main(void) {
                 jsrfar_noargs(startup_bank, state_menu);
                 break;
             case 0x11:
-
+                jsrfar_noargs(startup_bank, state_levelselect);
                 break;
             case 0x12:
                 jsrfar_noargs(startup_bank, state_levelselect_2);

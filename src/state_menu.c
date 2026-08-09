@@ -325,7 +325,7 @@ banked(startup_bank.func) void state_menu() {
         if(joypad1.press_a) {
             switch(selection){
                 case 0: // play
-                    gamestate = 0x20;
+                    gamestate = 0x11;
                     break;
                 case 1: // community
                 gamestate = 0x12;
@@ -360,6 +360,47 @@ banked(startup_bank.func) void state_help() {
     
 }
 
+
+
+banked(startup_bank.data) const char THEFUCKINGLEVELSELECTTEXTSCREWYOU[] = "LEVEL SELECT";
+banked(startup_bank.func) void state_levelselect(){
+    // load in the pusab font
+    se_vram_address(0x200);
+    se_vram_donut_decompress(chr_menu_font_pusab, chr_bank_0);
+
+
+    // clear the screen because there's still garbage in it
+    se_vram_address(0x2000);
+    se_memory_fill(
+        (void*)0x2007,  // the ppu's data port
+        0,              // the value to fill in
+        0x400           // 1 kilo
+    );
+
+    // write the "LEVEL SELECT" text to the screen
+    se_multi_vram_buffer_horizontal(
+        THEFUCKINGLEVELSELECTTEXTSCREWYOU,
+        sizeof(THEFUCKINGLEVELSELECTTEXTSCREWYOU)-1,
+        nametable_address_A(2,2)
+    );
+
+
+    se_turn_on_rendering();
+
+
+    se_fade_palette_to(0,4);
+
+    while(1){
+        se_wait_vsync();
+
+
+
+        if(joypad1.b){
+            gamestate = 0x10;
+            break;
+        }
+    }
+}
 
 
 

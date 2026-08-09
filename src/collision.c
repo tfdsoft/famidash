@@ -125,17 +125,17 @@ void move_player(struct Player* player){
     
 
 
-    player->speed.x = 0;
-    if(joypad1.left) player->speed.x = -phys_speed[0];
-    if(joypad1.right) 
+    //player->speed.x = 0;
+    //if(joypad1.left) player->speed.x = -phys_speed[0];
+    //if(joypad1.right) 
     player->speed.x = phys_speed[0];
     
     player->pos.x.full += player->speed.x;
-    //collision_value = check_collision_point(player, (player->size.width >>1), (player->size.height >>1));
-    //if(collision_value.type == 2) {
-    //    //player->properties.is_dead = 1;
-    //}
-    if(1){
+    collision_value = check_collision_point(player, (player->size.width >>1), (player->size.height >>1));
+    if(collision_value.type == 2) {
+        player->properties.is_dead = 1;
+    }
+    /*if(1){
         if(player->speed.x > 0){
             u8 collision_value = check_collision_LR(player, player->size.width);
             if(collision_value) { // right
@@ -150,7 +150,7 @@ void move_player(struct Player* player){
             }
         }
         
-    }
+    }*/
 
 
 
