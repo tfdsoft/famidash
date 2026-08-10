@@ -396,6 +396,7 @@ banked(startup_bank.func) void state_levelselect(){
 
 
         if(joypad1.b){
+            se_fade_palette_to(4,0);
             gamestate = 0x10;
             break;
         }
