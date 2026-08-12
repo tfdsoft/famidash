@@ -13,6 +13,7 @@ const uint8_t multStateLookup_hi[] = {
 };
 
 extern uint16_t old_draw_scroll_y, seam_scroll_y;
+extern uint8_t seam_absent;
 
 extern uint8_t famistudio_state[FAMISTUDIO_STATE_SIZE];
 extern uint8_t famistudio_output_buf[FAMISTUDIO_OUTPUT_BUF_SIZE];
@@ -167,7 +168,8 @@ void load_practice_state() {
 	lastgcolortype = idx8_load(practice_g_color_type, get_Y);
 	lastbgcolortype = idx8_load(practice_bg_color_type, get_Y);
 
-	ppufmt_seam_scroll_y = calculate_ppufmt_scroll_y(seam_scroll_y);
+	ppufmt_seam_scroll_y = ((int16_t)seam_scroll_y) < 0 ? seam_scroll_y : calculate_ppufmt_scroll_y(seam_scroll_y);
+	__asm__("lda %v+1 \n cmp #%b \n ror %v", ppufmt_seam_scroll_y, 2, seam_absent);
 
 	scroll_x -= (256 + 16);
 
