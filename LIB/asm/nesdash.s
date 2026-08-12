@@ -772,28 +772,28 @@ frame1:
 
 calc_seam_pos:
 
-	LDA ppufmt_seam_scroll_y
-	LDX ppufmt_seam_scroll_y+1
+	LDA seam_scroll_y
+	LDX seam_scroll_y+1
 
 	LDY	#15+15	;__	Load the starting nametable into Y
 
-	CPX #$02	;	If there is a seam,
-	BCS @noseam	;__	calculate its position in metatiles
+	BIT seam_absent	;	If there is a seam,
+	BMI @noseam		;__	calculate its position in metatiles
 	@yesseam:
-		LSR					;
-		LSR					;	Divide by 16, get index 
-		LSR					;	inside screen in metatiles
-		LSR					;__
-		CLC					;	Add 0 or 15, since scroll_y is nonlinear
-		ADC SeamTable, X	;__
-		ADC #30				;__	If the carry was set then something got fucked
+		LSR						;
+		LSR						;	Divide by 16, get index
+		LSR						;	inside screen in metatiles
+		LSR						;__
+		CLC						;	Add 0 or 16, since we're using the linear value
+		ADC shiftBy4table, X	;__
+		ADC #30					;__	If the carry was set then something got fucked
 		STA SeamValue
 		BCC @fin	; = BRA, unless the additions got fucked
 
 	@noseam:		;__	If there is no seam, store an invalid value
 		STX SeamValue
-		CPX	#$FF	;
-		BNE	@fin	;	If the starting screen is 0, load into Y
+		CPX	#$00	;
+		BPL	@fin	;	If the starting screen is 0, load into Y
 			LDY #0	;__
 	@fin:
 		STY	CurrentRow
@@ -1026,9 +1026,6 @@ ParallaxBuffer:
 		.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
 	ParallaxBufferCol5:
 		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
-
-SeamTable:
-	.byte 0, 15
 
 ntAddrHiTbl:
 	.byte	$24|$80,	$20|$80
