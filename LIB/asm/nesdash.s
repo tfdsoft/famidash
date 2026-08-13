@@ -1994,22 +1994,25 @@ early_exit:
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
-	; AX = input, AX = output
-	; clobbers tmp1
-	STX tmp1
-	LDY	tmp1
-	INY	; for the BEQ ending condition
-	LDX #0
-	CLC
-	loop:
-		DEY
-		BEQ end
-		ADC #$F0
-		BCC loop
-			INX
-			CLC
-			BCC loop
-	end:
+	;__	AX = input, AX = output
+	;
+	;	The math behind this:
+	;	Every time we pass the $100 boundary, we need to subtract $10.
+	;	$100 is literally the upper byte, the amount of such transitions.
+	;	Indeed, this works perfectly for any linear coordinate in
+	;	the range 0..$FFF.
+	;	In this case a table of shifting by 4 is used, which limits the
+	;	total proper input value to $FFF.
+	;
+	;__	Writeup done in 2026 by dajinkosa
+	;
+	;	In fact this works so well this needs to be a macro instead lmao
+	;__
+	SEC
+	SBC shiftBy4table, X
+	BCS :+
+		DEX
+	:
 	RTS
 .endproc
 
