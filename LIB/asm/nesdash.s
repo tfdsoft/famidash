@@ -1350,37 +1350,38 @@ ntAddrHiTbl:
 
 			;	Unfortunately, the calculations require
 			;__	the seam location to be in PPU format.
-			LDA	this_seam_pos					;
-			LDX	this_seam_pos+1					;	If the seam is negative, it doesn't matter much
+			LDA	new_seam_pos					;
+			LDX	new_seam_pos+1					;	If the seam is negative, it doesn't matter much
 			BMI	@seam_pos_negative_skip			;__
-				JSR	_calculate_ppufmt_scroll_y	;	Get this_seam_pos in PPU format
-			@seam_pos_negative_skip:			;
-			STA	this_seam_pos					;
-			STX	this_seam_pos+1					;__
-			LDY scroll_direction				;
-			BNE :+								;	If scroll_direction equals 2 (going down),
-				sec								;	new_seam_pos is equal to this_seam_pos
-				sbc #$10						;	But if scroll_direction equals 0 (going up),
-				bcs :+							;	new_seam_pos is equal to this_seam_pos - $10
-					sbc #15						;	(this is just the sub_scroll_y code verbatim,
-					dex							;	the fastest way to get to PPU fmt in this case)
-			:									;__
+				JSR	_calculate_ppufmt_scroll_y	;	Get new_seam_pos in PPU format
+			@seam_pos_negative_skip:			;__
 			STA	ppufmt_seam_scroll_y			;	Store the next frames' PPU format seam position
 			STX	ppufmt_seam_scroll_y+1			;__
 			CPX	#$02							;	Only the bit 7 of seam_absent matters
 			ROR	seam_absent						;__
 
-			LDY	this_seam_pos+1		;
-			CPY	#$02				;	If no seam, exit early
+			CPY #$00							;
+			BNE :+								;	If scroll_direction equals 2 (going down),
+				clc								;	new_seam_pos is equal to this_seam_pos
+				adc #$10						;	But if scroll_direction equals 0 (going up),
+				bcc :+							;	new_seam_pos is equal to this_seam_pos - $10
+					adc #15						;	(this is just the add_scroll_y code verbatim,
+					inx							;	the fastest way to get to PPU fmt in this case)
+			:									;__
+
+			STA this_seam_pos
+			STX this_seam_pos+1
+
+			CPX	#$02				;	If no seam, exit early
 			BCS	@ret0				;__
 
 	start_writing:
 		@get_collmap_ptr:
-			;	Y contains the >ppufmt_seam_scroll_y, Carry is clear
+			;	X contains the >ppufmt_seam_scroll_y, Carry is clear
 			LDA this_seam_pos	;
 			AND	#$F0			;	Get low byte
 			STA	collmap_ptr		;__	(none of these affect the carry)
-			TYA					;
+			TXA					;
 			ADC	scroll_direction;
 			ORA	#>collMap0		;	Get high byte
 			STA	collmap_ptr+1	;__
