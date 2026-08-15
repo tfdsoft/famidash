@@ -6,6 +6,7 @@ labels: ''
 assignees: ''
 
 ---
+(Note: When reporting an issue, please use the latest nightly dev builds as reference instead of the latest release found in releases. Bugs found in the latest release are most likely fixed in the latest dev build unless stated otherwise. Please remove this note once submitting your bug report.)
 
 **Describe the bug**
 
