@@ -10,6 +10,10 @@ extern uint8_t xargs[4];
 #define storeBytesToSreg(a, b) (__AX__ = (byte(b)<<8)|byte(a), __EAX__<<=16)
 #define storeByteToSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))
 
+extern uint8_t shiftBy4table[16];
+#define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
+#define shlNibble12(nibble) (idx8_load(shiftBy4table, nibble), __AX__ <<= 8)
+
 /**
  * @brief set metasprite in OAM buffer (horizontally and/or vertically flipped, depending on flip parameter)
  * @param flip
@@ -91,7 +95,7 @@ void __fastcall__ music_update();
  *
  * @retval The number in linear pixels.
  */
-uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
+#define calculate_linear_scroll_y(nonlinearScroll) (__AX__ = nonlinearScroll, __asm__("sec \n sbc %v, x \n bcs %s \n dex \n %s:", shiftBy4table, __LINE__, __LINE__), __AX__)
 
 /**
  * @brief Converts a number from linear pixels to NES PPU Y scroll pixels.
@@ -310,10 +314,6 @@ extern uint8_t PAL_BUF[32];
 #define jumpInTableWithOffset(tbl, val, off) ( \
 	__A__ = val << 1, \
 	__asm__("tay \n lda %v-%w, y \n ldx %v-%w+1, y \n jsr callax ", tbl, (off * 2), tbl, (off * 2)))
-
-extern uint8_t shiftBy4table[16];
-#define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
-#define shlNibble12(nibble) (idx8_load(shiftBy4table, nibble), __AX__ <<= 8)
 
 // Result in __AX__
 #define signExtend8to16(value) {__AX__ = 0; __A__ = value; do_if_negative({__asm__("dex");});}

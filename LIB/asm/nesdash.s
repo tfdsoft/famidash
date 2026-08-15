@@ -52,6 +52,25 @@ sprite_data = _sprite_data
 	jsr crossPRGBankJump
 .endmacro
 
+;__	AX = input, AX = output
+;
+;	The math behind this:
+;	Every time we pass the $100 boundary, we need to subtract $10.
+;	$100 is literally the upper byte, the amount of such transitions.
+;	Indeed, this works perfectly for any linear coordinate in
+;	the range 0..$FFF.
+;	In this case a table of shifting by 4 is used, which limits the
+;	total proper input value to $FFF.
+;
+;__	Writeup done in 2026 by dajinkosa
+.macro calculate_linear_scroll_y
+	SEC
+	SBC shiftBy4table, X
+	BCS :+
+		DEX
+	:
+.endmacro
+
 
 .segment "ZEROPAGE"
 	rld_value:      	.res 1
@@ -2041,34 +2060,6 @@ exit:
 	sty _sprite_data+1	;__	invalidate the sprite pointer
 early_exit:
 	rts
-.endproc
-
-
-; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
-.segment "CODE_2"
-
-.export _calculate_linear_scroll_y
-.proc _calculate_linear_scroll_y
-	;__	AX = input, AX = output
-	;
-	;	The math behind this:
-	;	Every time we pass the $100 boundary, we need to subtract $10.
-	;	$100 is literally the upper byte, the amount of such transitions.
-	;	Indeed, this works perfectly for any linear coordinate in
-	;	the range 0..$FFF.
-	;	In this case a table of shifting by 4 is used, which limits the
-	;	total proper input value to $FFF.
-	;
-	;__	Writeup done in 2026 by dajinkosa
-	;
-	;	In fact this works so well this needs to be a macro instead lmao
-	;__
-	SEC
-	SBC shiftBy4table, X
-	BCS :+
-		DEX
-	:
-	RTS
 .endproc
 
 
