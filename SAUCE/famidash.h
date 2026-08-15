@@ -288,7 +288,7 @@ lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_scroll_y, MAX_PRACTICE_POINTS);
 uint8_t practice_scroll_y_subpx[MAX_PRACTICE_POINTS];
 lohi_arr16_decl(practice_min_scroll_y, MAX_PRACTICE_POINTS);
-lohi_arr16_decl(practice_seam_scroll_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_seam_position, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_old_draw_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_target_scroll_y, MAX_PRACTICE_POINTS);
 
@@ -566,8 +566,9 @@ uint8_t player_invis;
 extern uint8_t famistudio_song_speed;
 
 extern uint16_t min_scroll_y;
-extern uint16_t seam_scroll_y;
-extern uint16_t ppufmt_seam_scroll_y;
+extern uint16_t seam_position;
+extern uint8_t seam_position_screen;
+extern uint8_t seam_absent;
 
 extern volatile uint8_t hexToDecOutputBuffer[5];
 

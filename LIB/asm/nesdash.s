@@ -71,8 +71,8 @@ sprite_data = _sprite_data
 
 	; variables related to both the above and below
 	old_draw_scroll_y:		.res 2
-	seam_scroll_y:			.res 2
-	ppufmt_seam_scroll_y:	.res 2
+	seam_position:			.res 2
+	seam_position_screen:	.res 1	;__	High byte of seam_screen in PPU format, unless it's negative
 	seam_absent:			.res 1	;__	Only for its bit 7
 	
 	; variables related to draw_screen
@@ -89,8 +89,8 @@ sprite_data = _sprite_data
 
 .export _extceil := extceil
 .export _min_scroll_y := min_scroll_y
-.export	_seam_scroll_y := seam_scroll_y
-.export	_ppufmt_seam_scroll_y := ppufmt_seam_scroll_y
+.export	_seam_position := seam_position
+.export	_seam_position_screen := seam_position_screen
 .export _seam_absent := seam_absent
 .export _old_draw_scroll_y := old_draw_scroll_y
 
@@ -772,8 +772,8 @@ frame1:
 
 calc_seam_pos:
 
-	LDA seam_scroll_y
-	LDX seam_scroll_y+1
+	LDA seam_position
+	LDX seam_position+1
 
 	LDY	#15+15	;__	Load the starting nametable into Y
 
@@ -1072,7 +1072,7 @@ ntAddrHiTbl:
 	.endif
 
 	;	Seam pos for attributes:
-	;	( <seam_scroll_y & $E0 | >seam_scroll_y & 1 | (seam present ? 0 : 2)) ^
+	;	( <seam_position & $E0 | >seam_position & 1 | (seam present ? 0 : 2)) ^
 	;__	^ (column & $0E) - $20
 	;	Bits 7-4 define the row where the seam switch occurs
 	;	Bit 0 defines when the seam is activated:
@@ -1089,8 +1089,8 @@ ntAddrHiTbl:
 	;	Unfortunately the seam requires every two rows and is attached to ppufmt,
 	;__	so we convert to ppufmt to get which screen we are on
 
-	LDA seam_scroll_y					;
-	LDX	seam_scroll_y+1					;
+	LDA seam_position					;
+	LDX	seam_position+1					;
 	TAY									;
 	BMI	:+								;	Calculate the ppufmt seam if positive
 		JSR _calculate_ppufmt_scroll_y	;
@@ -1110,7 +1110,7 @@ ntAddrHiTbl:
 	LDY	#>collMap2			;	Load the default
 	LDX	#(<collMap2>>4)		;__	starting position
 
-	LDA seam_scroll_y+1		;
+	LDA seam_position+1		;
 	BPL :+					;	If starting at screen 0,
 		LDY #>collMap0		;	load starting position of screen 0
 		LDX #(<collMap0>>4)	;__
@@ -1329,8 +1329,8 @@ ntAddrHiTbl:
 
 	calc_new_seam_pos:
 		@start:
-			LDA	seam_scroll_y
-			LDX	seam_scroll_y+1
+			LDA	seam_position
+			LDX	seam_position+1
 			CPY	#$00	;	Always sets carry
 			BMI	@up		;__
 		
@@ -1392,16 +1392,15 @@ ntAddrHiTbl:
 
 			LDA	new_seam_pos
 			LDX	new_seam_pos+1
-			STA	seam_scroll_y
-			STX seam_scroll_y+1
+			STA	seam_position
+			STX seam_position+1
 
 			;	Unfortunately, the calculations require
 			;__	the seam location to be in PPU format.
 			BMI	@seam_pos_negative_skip			;	Get new_seam_pos in PPU format
 				JSR	_calculate_ppufmt_scroll_y	;	If the seam is negative, it doesn't matter much
 			@seam_pos_negative_skip:			;__
-			STA	ppufmt_seam_scroll_y			;	Store the next frames' PPU format seam position
-			STX	ppufmt_seam_scroll_y+1			;__
+			STX	seam_position_screen			;__	Store the next frames' seam position screen (PPU format)
 			CPX	#$02							;	Only the bit 7 of seam_absent matters
 			ROR	seam_absent						;__
 

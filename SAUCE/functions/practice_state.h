@@ -12,8 +12,7 @@ const uint8_t multStateLookup_hi[] = {
 	MSB(4*FAMISTUDIO_STATE_SIZE),	MSB(5*FAMISTUDIO_STATE_SIZE),	MSB(6*FAMISTUDIO_STATE_SIZE),	MSB(7*FAMISTUDIO_STATE_SIZE),
 };
 
-extern uint16_t old_draw_scroll_y, seam_scroll_y;
-extern uint8_t seam_absent;
+extern uint16_t old_draw_scroll_y, seam_position;
 
 extern uint8_t famistudio_state[FAMISTUDIO_STATE_SIZE];
 extern uint8_t famistudio_output_buf[FAMISTUDIO_OUTPUT_BUF_SIZE];
@@ -65,7 +64,7 @@ void store_practice_state(){
 	lohi_arr32_store_from(practice_scroll_x, get_Y, scroll_x);
 	lohi_arr16_store(practice_scroll_y, get_Y, scroll_y);
 	idx8_store(practice_scroll_y_subpx, get_Y, scroll_y_subpx);
-	lohi_arr16_store(practice_seam_scroll_y, get_Y, seam_scroll_y);
+	lohi_arr16_store(practice_seam_position, get_Y, seam_position);
 	lohi_arr16_store(practice_old_draw_scroll_y, get_Y, old_draw_scroll_y);
 	lohi_arr16_store(practice_target_scroll_y, get_Y, target_scroll_y);
 	lohi_arr16_store(practice_min_scroll_y, get_Y, min_scroll_y);	// notably this one is useless
@@ -145,7 +144,7 @@ void load_practice_state() {
 	old_trail_scroll_y = scroll_y = lohi_arr16_load(practice_scroll_y, get_Y);
 	scroll_y_subpx = idx8_load(practice_scroll_y_subpx, get_Y);
 	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, get_Y);
-	seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, get_Y);
+	seam_position = lohi_arr16_load(practice_seam_position, get_Y);
 	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, get_Y);
 	min_scroll_y = lohi_arr16_load(practice_min_scroll_y, get_Y);	// notably this one is useless
 
@@ -168,8 +167,8 @@ void load_practice_state() {
 	lastgcolortype = idx8_load(practice_g_color_type, get_Y);
 	lastbgcolortype = idx8_load(practice_bg_color_type, get_Y);
 
-	ppufmt_seam_scroll_y = ((int16_t)seam_scroll_y) < 0 ? seam_scroll_y : calculate_ppufmt_scroll_y(seam_scroll_y);
-	__asm__("lda %v+1 \n cmp #%b \n ror %v", ppufmt_seam_scroll_y, 2, seam_absent);
+	__A__ = seam_position_screen = MSB(((int16_t)seam_position) < 0 ? seam_position : calculate_ppufmt_scroll_y(seam_position));
+	__asm__("cmp #%b \n ror %v", 2, seam_absent);
 
 	scroll_x -= (256 + 16);
 
