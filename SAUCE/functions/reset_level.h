@@ -66,8 +66,9 @@ void reset_level() {
 	init_rld(level);
 
 	scroll_y = spawn_scroll_y_pos;
-	seam_scroll_y = (scroll_y - 0x78);
-	ppufmt_seam_scroll_y = calculate_ppufmt_scroll_y(seam_scroll_y);
+	seam_position = (scroll_y - 0x78);
+	__A__ = seam_position_screen = MSB(((int16_t)seam_position) < 0 ? seam_position : calculate_ppufmt_scroll_y(seam_position));
+	__asm__("cmp #%b \n ror %v", 2, seam_absent);
 	// slope stuff
 	scroll_y_subpx = 0;
 	set_scroll_x(scroll_x);
