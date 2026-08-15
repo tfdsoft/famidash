@@ -1106,20 +1106,13 @@ ntAddrHiTbl:
 	;__	So we subtract $20
 
 	;	Unfortunately the seam requires every two rows and is attached to ppufmt,
-	;__	so we convert to ppufmt to get which screen we are on
+	;__	so we use the ppufmt screen value
 
-	LDA seam_position					;
-	LDX	seam_position+1					;
-	TAY									;
-	BMI	:+								;	Calculate the ppufmt seam if positive
-		JSR _calculate_ppufmt_scroll_y	;
-	:									;__
+	LDA	seam_position_screen	;
+	AND #$01					;	Is it on an odd screen?
+	TAX							;__
 
-	TXA			;
-	AND #$01	;	Is it on an odd screen?
-	TAX			;__
-
-	TYA						;
+	LDA seam_position		;
 	AND #$E0				;	Calculate the low byte of the seam match
 	ORA	shiftBy4table, X	;__	OR $10 if it's on an odd ppufmt screen
 	SEC						;
