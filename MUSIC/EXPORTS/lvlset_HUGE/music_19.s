@@ -1077,7 +1077,7 @@ music_data_famidash_music19:
 	.byte $41, $0c
 	.word @song2ref1564
 	.byte $73, $51, $02, $c0, $90, $50, $02, $35, $3b, $9d, $7f, $84, $2a, $81, $73, $51, $02, $d0, $8c, $50, $02, $31, $3b, $b9
-	.byte $7f, $4b, .lobyte(@env54), .hibyte(@env54), $84, $29, $81, $4b, .lobyte(@env39), .hibyte(@env39), $4c
+	.byte $7f, $4b, .lobyte(@env54), .hibyte(@env54), $84, $29, $81, $4b, .lobyte(@env12), .hibyte(@env12), $4c
 @song2ref1625:
 	.byte $80, $2c, $47, $03, $2c, $81, $00, $86, $2e, $81, $47, $00, $80, $2c, $47, $01, $2c, $47, $03, $2c, $81, $86, $2e, $81
 	.byte $00, $81, $88, $25, $81

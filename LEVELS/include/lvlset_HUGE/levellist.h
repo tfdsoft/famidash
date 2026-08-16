@@ -69,6 +69,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// chromaticexpedition
 	HARDER,	// oceane
 	HARDER,	// endgame
+	HARDER,	// reincarnation
 	HARDER,	// generationretro
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
@@ -241,6 +242,7 @@ const uint8_t stars_list[] = {
 	6,	// chromaticexpedition
 	6,	// oceane
 	6,	// endgame
+	6,	// reincarnation
 	6,	// generationretro
 	6,	// scarletsurge
 	6,	// tinytunes

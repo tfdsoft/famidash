@@ -362,7 +362,7 @@ music_data_famidash_music15:
 	.byte .hibyte(@env35)
 	.byte $41, $24
 	.word @song0ref1239
-	.byte $7b, $4d, $9c, $2d, $85, $4d, $2d, $85, $4d, $30, $85, $4d, $2b, $83, $4e, $00, $81, $7c, $4b, .lobyte(@env22), .hibyte(@env22)
+	.byte $7b, $4d, $9c, $2d, $85, $4d, $2d, $85, $4d, $30, $85, $4d, $2b, $83, $4e, $00, $81, $7c, $4b, .lobyte(@env14), .hibyte(@env14)
 	.byte $4c, $8a
 @song0ref1472:
 	.byte $09, $4f, $01, $15, $4f, $00, $10, $4f, $02, $09, $4f, $01, $15, $79, $81, $4f, $02, $09, $48, $04

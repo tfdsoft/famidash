@@ -1044,6 +1044,13 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
+			fmsSongName: "The Beginning of Time",
+			upperText: "THE BEGINNING",
+			lowerText: "OF TIME",
+			originalArtist: "Dj Nate",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "The Explorer",
 			lowerText: "THE EXPLORER",
 			originalArtist: "SpazeMusic",
