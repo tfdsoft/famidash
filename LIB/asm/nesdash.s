@@ -1116,8 +1116,10 @@ ntAddrHiTbl:
 	AND #$E0				;	Calculate the low byte of the seam match
 	ORA	shiftBy4table, X	;__	OR $10 if it's on an odd ppufmt screen
 	SEC						;
-	SBC #$20				;	Compensate for working two screens ahead
-	STA SeamValue			;__
+	SBC #$20				;__	Compensate for working two screens ahead
+	CPX #1					;	(Add X, which is 1 or 0, to the value)
+	ADC #0					;	Enable processing on a certain pass, as mentioned above
+	STA	SeamValue			;__
 
 	LDY	#>collMap2			;	Load the default
 	LDX	#(<collMap2>>4)		;__	starting position
@@ -1127,8 +1129,7 @@ ntAddrHiTbl:
 		LDY #>collMap0		;	load starting position of screen 0
 		LDX #(<collMap0>>4)	;__
 	:
-	AND #$01				;	Enable processing on a certain pass, as mentioned above
-	ORA SeamValue			;__
+	LDA SeamValue			;
 	BIT seam_absent			;
 	BPL	:+					;	If the seam is absent,
 		ORA #$02			;	deactivate it
