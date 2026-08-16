@@ -690,7 +690,35 @@
 	.align 8192
 
 
-; Data bank 1C, total bank size: 8170 bytes
+; Data bank 1C, total bank size: 8190 bytes
+	.export level_data_reincarnation
+	level_data_reincarnation:
+	; Header
+		.byte <sprite_data_reincarnation ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_reincarnation) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_reincarnation >> 13) ;_________ Sprite data bank
+		.byte song_the_beginning_of_time ;_________________ Song ID
+		.byte (0 << 4) | 0 ;_______________________________ Starting game mode and speed
+		.byte ($B0) ;______________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;______________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;________________________ Force platformer, Disable parallax
+		.byte (1 << 7) | _DECO1 ;__________________________ Max Fall Speed is 7?, Deco type
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_________________ Spike Set, Block Set
+		.byte $0F ;________________________________________ Starting background color
+		.byte $0F ;________________________________________ Starting ground color
+		.byte 27 ;_________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/reincarnation.lz.bin" ; Size: 4330
+
+	.export level_data_futurefunkfix_6
+	level_data_futurefunkfix_6:
+	; Level data
+		.incbin "EXPORTS/level/futurefunkfix.lz.2.bin" ; Size: 3847
+
+	.align 8192
+
+
+; Data bank 1D, total bank size: 8170 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -732,23 +760,15 @@
 	.align 8192
 
 
-; Data bank 1D, total bank size: 8187 bytes
+; Data bank 1E, total bank size: 7937 bytes
 	sprite_data_ninecircleseasy:	; Size: 3981
 		.incbin "EXPORTS/sprite/ninecircleseasy.bin"
-	.export level_data_futurefunkfix_6
-	level_data_futurefunkfix_6:
-	; Level data
-		.incbin "EXPORTS/level/futurefunkfix.lz.2.bin" ; Size: 3847
-
-	.export level_data_astronomicalexpedition_3
-	level_data_astronomicalexpedition_3:
-	; Level data
-		.incbin "EXPORTS/level/astronomicalexpedition.lz.3.bin" ; Size: 359
-
+	sprite_data_reincarnation:	; Size: 3956
+		.incbin "EXPORTS/sprite/reincarnation.bin"
 	.align 8192
 
 
-; Data bank 1E, total bank size: 8122 bytes
+; Data bank 1F, total bank size: 8122 bytes
 	.export level_data_illusion
 	level_data_illusion:
 	; Header
@@ -775,7 +795,7 @@
 	.align 8192
 
 
-; Data bank 1F, total bank size: 8138 bytes
+; Data bank 20, total bank size: 8138 bytes
 	sprite_data_illusion:	; Size: 3641
 		.incbin "EXPORTS/sprite/illusion.bin"
 	sprite_data_dorabaebasic8:	; Size: 3456
@@ -785,7 +805,7 @@
 	.align 8192
 
 
-; Data bank 20, total bank size: 8037 bytes
+; Data bank 21, total bank size: 8037 bytes
 	sprite_data_supercycles:	; Size: 3311
 		.incbin "EXPORTS/sprite/supercycles.bin"
 	.export level_data_groundtoretray
@@ -829,7 +849,7 @@
 	.align 8192
 
 
-; Data bank 21, total bank size: 7523 bytes
+; Data bank 22, total bank size: 7523 bytes
 	sprite_data_solarcircles:	; Size: 2911
 		.incbin "EXPORTS/sprite/solarcircles.bin"
 	sprite_data_dreamer:	; Size: 2791
@@ -839,7 +859,7 @@
 	.align 8192
 
 
-; Data bank 22, total bank size: 7753 bytes
+; Data bank 23, total bank size: 8112 bytes
 	.export level_data_somewhereinaforest_0
 	level_data_somewhereinaforest_0:
 	; Level data
@@ -889,7 +909,12 @@
 	; Level data
 		.incbin "EXPORTS/level/madness.lz.bin" ; Size: 1207
 
+	.export level_data_astronomicalexpedition_3
+	level_data_astronomicalexpedition_3:
+	; Level data
+		.incbin "EXPORTS/level/astronomicalexpedition.lz.3.bin" ; Size: 359
+
 	.align 8192
 
 
-LEVEL_BANK_COUNT = 35
+LEVEL_BANK_COUNT = 36

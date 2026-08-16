@@ -23,6 +23,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_dorabaebasic8)
 	.byte .lobyte(level_data_chromaticexpedition)
 	.byte .lobyte(level_data_endgame)
+	.byte .lobyte(level_data_reincarnation)
 	.byte .lobyte(level_data_rotd)
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
@@ -59,6 +60,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_dorabaebasic8) & $1F | $A0
 	.byte .hibyte(level_data_chromaticexpedition) & $1F | $A0
 	.byte .hibyte(level_data_endgame) & $1F | $A0
+	.byte .hibyte(level_data_reincarnation) & $1F | $A0
 	.byte .hibyte(level_data_rotd) & $1F | $A0
 	.byte .hibyte(level_data_astronomicalexpedition) & $1F | $A0
 	.byte .hibyte(level_data_ninecircleseasy) & $1F | $A0
@@ -95,6 +97,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_dorabaebasic8 >> 13)
 	.byte .lobyte(level_data_chromaticexpedition >> 13)
 	.byte .lobyte(level_data_endgame >> 13)
+	.byte .lobyte(level_data_reincarnation >> 13)
 	.byte .lobyte(level_data_rotd >> 13)
 	.byte .lobyte(level_data_astronomicalexpedition >> 13)
 	.byte .lobyte(level_data_ninecircleseasy >> 13)
@@ -161,6 +164,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000EA)		; dorabaebasic8
 	.byte .lobyte($000056)		; chromaticexpedition
 	.byte .lobyte($00009F)		; endgame
+	.byte .lobyte($0000DD)		; reincarnation
 	.byte .lobyte($0000CC)		; rotd
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
@@ -199,6 +203,7 @@ _level_lengths_md:
 	.byte .hibyte($0000EA)		; dorabaebasic8
 	.byte .hibyte($000056)		; chromaticexpedition
 	.byte .hibyte($00009F)		; endgame
+	.byte .hibyte($0000DD)		; reincarnation
 	.byte .hibyte($0000CC)		; rotd
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
@@ -237,6 +242,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000EA)		; dorabaebasic8
 	.byte .bankbyte($000056)		; chromaticexpedition
 	.byte .bankbyte($00009F)		; endgame
+	.byte .bankbyte($0000DD)		; reincarnation
 	.byte .bankbyte($0000CC)		; rotd
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy

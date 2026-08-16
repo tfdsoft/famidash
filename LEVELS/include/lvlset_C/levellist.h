@@ -20,6 +20,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// dorabaebasic8
 	HARDER,	// chromaticexpedition
 	HARDER,	// endgame
+	HARDER,	// reincarnation
 	HARDER,	// rotd
 	HARDER,	// astronomicalexpedition
 	HARDER,	// ninecircleseasy
@@ -57,6 +58,7 @@ const uint8_t stars_list[] = {
 	5,	// dorabaebasic8
 	6,	// chromaticexpedition
 	6,	// endgame
+	6,	// reincarnation
 	7,	// rotd
 	7,	// astronomicalexpedition
 	7,	// ninecircleseasy

@@ -182,6 +182,12 @@
 			originalArtistText: "SETH PEELLE"
 		},
 		{
+			fmsSongName: "The Beginning of Time",
+			upperText: "THE BEGINNING",
+			lowerText: "OF TIME",
+			originalArtistText: "DJ NATE",
+		},
+		{
 			fmsSongName: "Unity",
 			lowerText: "UNITY",
 			originalArtistText: "THEFATRAT"
