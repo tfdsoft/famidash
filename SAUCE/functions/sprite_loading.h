@@ -33,7 +33,7 @@ const unsigned char OUTLINES[]={
 		0x0F
 };
 
-#define PORTAL_TO_TOP_DIFF 0x3A
+#define PORTAL_TO_TOP_DIFF 0x5A
 
 #define OUTL    0xFC
 #define COLR    0xFD
