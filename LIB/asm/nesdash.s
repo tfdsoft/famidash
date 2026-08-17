@@ -1071,45 +1071,85 @@ ntAddrHiTbl:
 		STA ptr3
 	.endif
 
-	; Seam pos for attributes:
-	; ( <ppufmt_seam_scroll_y & $E0 | >ppufmt_seam_scroll_y & 5) ^ column
-	LDA ppufmt_seam_scroll_y
-	AND #$E0
-	STA SeamValue
-	LDA ppufmt_seam_scroll_y+1
-	AND #$03	; add bit 1 to not use if no seam
-	ORA SeamValue
-	STA SeamValue
+	;	Seam pos for attributes:
+	;	( <seam_scroll_y & $E0 | >seam_scroll_y & 1 | (seam present ? 0 : 2)) ^
+	;__	^ (column & $0E) - $20
+	;	Bits 7-4 define the row where the seam switch occurs
+	;	Bit 0 defines when the seam is activated:
+	;		- if the screen is 0 it's activated on the first pass, if 1 it isn't
+	;		- The value is DECremented
+	;		- if the screen is 0 it isn't activated on the second pass, if 1 it is
+	;	Bits 3-1 are the column where it's iterated
+	;	Bit 1 is also flipped if the seam is absent, so if the bit is set, the column
+	;	no longer corresponds to the column being actively drawn, and so the seam won't
+	;	get activated. (Bit 0 works the same way).
+	;	And then it turns out we're working with something 2 PPU screens / $1E0 pixels ahead
+	;__	So we subtract $20
 
-	LDY	#>collMap2		;__	Get the default value
-	AND #$03			;	Bits 0 and 1 are directly from >ppufmt_seam_scroll_y
-	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
-	BNE	:+				;
-		LDY	#>collMap0	;	Get high byte of starting value
-	:					;	(the screen)
-	STY	ptr1+1			;__
+	;	Unfortunately the seam requires every two rows and is attached to ppufmt,
+	;__	so we convert to ppufmt to get which screen we are on
 
-	LDA ptr3			;
-	AND #$0E			;	Get column (w/o highest bit cuz attributes)
-	; ADC #<(collMap0-1) ; the low byte is 0
-	STA ptr1			;__
-	EOR	SeamValue		;	The only overlapping bit is bit 1,
-	STA	SeamValue		;__	if it's invalid the seam won't be drawn
+	LDA seam_scroll_y					;
+	LDX	seam_scroll_y+1					;
+	TAY									;
+	BMI	:+								;	Calculate the ppufmt seam if positive
+		JSR _calculate_ppufmt_scroll_y	;
+	:									;__
 
-	LDX #0
-	STX ColumnBufferIdx
-	JSR attributeCalc
+	TXA			;
+	AND #$01	;	Is it on an odd screen?
+	TAX			;__
 
-	; Increment screen (we always increment)
-	INC ptr1+1
+	TYA						;
+	AND #$E0				;	Calculate the low byte of the seam match
+	ORA	shiftBy4table, X	;__	OR $10 if it's on an odd ppufmt screen
+	SEC						;
+	SBC #$20				;	Compensate for working two screens ahead
+	STA SeamValue			;__
 
-	DEC	SeamValue
+	LDY	#>collMap2			;	Load the default
+	LDX	#(<collMap2>>4)		;__	starting position
 
-	JSR attributeCalc
+	LDA seam_scroll_y+1		;
+	BPL :+					;	If starting at screen 0,
+		LDY #>collMap0		;	load starting position of screen 0
+		LDX #(<collMap0>>4)	;__
+	:
+	AND #$01				;	Enable processing on a certain pass, as mentioned above
+	ORA SeamValue			;__
+	BIT seam_absent			;
+	BPL	:+					;	If the seam is absent,
+		ORA #$02			;	deactivate it
+	:						;__
+	STA SeamValue			;__
+	STY	ptr1+1				;__	Store high byte to free up the Y register
 
-	; Get address hi byte (either left or right side)
-	lda _scroll_x + 1 	; high byte
-	and #%00000001		;
+	LDA ptr3				;
+	AND #$0E				;	Get column (w/o highest bit cuz attributes)
+	TAY						;__
+	ORA shiftBy4table, X	;__	Get the starting pointer low byte
+	STA ptr1				;__ Store the starting pointer
+	TYA						;	Add the column value to the seam
+	EOR	SeamValue			;	Bit 1 overlaps, if it's invalid
+	STA	SeamValue			;__	the seam won't be drawn
+
+	LDX #0					;
+	STX ColumnBufferIdx		;	Calculate the high screen of attributes
+	JSR attributeCalc		;__
+
+	LDA ptr1				;
+	SEC						;
+	SBC #$10				;
+	STA	ptr1				;	Compensate for the ppufmt discrepancy
+	BCS	:+					;
+		DEC ptr1+1			;
+	:						;__
+
+	DEC	SeamValue			;	Calculate the low screen of attributes
+	JSR attributeCalc		;__
+
+	lda _scroll_x + 1 	;
+	and #%00000001		;	Get address hi byte (either left or right side)
 	tay					;	5 cycles, 6 bytes
 	lda	ntAddrHiTbl, Y	;__
 	sta NametableAddrHi
@@ -1223,15 +1263,21 @@ attributeCalc:
 		STA columnBuffer,X
 
 		; Increment pointer
-		LDA	ptr1
-		CMP SeamValue
-		BNE :+
-			DEC ptr1+1
-			DEC ptr1+1
-		:
+		LDX ptr1
+		LDA #$20
+		CPX SeamValue
+		BNE @ptrIncNoSeam
+			DEC SeamValue	;__	Invalidate the seam value
+			DEC ptr1+1		;
+			DEC ptr1+1		;	- $1E0 + $20 = - $200 + $40
+			LDA #$40		;__
+		@ptrIncNoSeam:
 		CLC
-		ADC #$20
+		ADC ptr1
 		STA	ptr1
+		BCC :+
+			INC ptr1+1
+		:
 
 		INC ColumnBufferIdx
 		DEC LoopCount
@@ -1254,6 +1300,7 @@ ntAddrHiTbl:
 	loop_count = tmp3
 
 	new_seam_pos = ptr1
+	ppufmt_this_seam_pos = ptr1
 	this_seam_pos = ptr2
 	collmap_ptr = ptr3
 
@@ -1293,7 +1340,7 @@ ntAddrHiTbl:
 			BCC :+
 				INX
 			:
-			STA	this_seam_pos+0	;	Store new seam position
+			STA	this_seam_pos	;	Store new seam position
 			STX	this_seam_pos+1	;__
 			STA	new_seam_pos	;	Store new seam position
 			STX	new_seam_pos+1	;__
@@ -1315,7 +1362,7 @@ ntAddrHiTbl:
 
 		@up:
 			;__	Carry is set
-			STA	this_seam_pos+0		;	Store old seam position
+			STA	this_seam_pos		;	Store old seam position
 			STX	this_seam_pos+1		;__
 			SBC	#$10
 			BCS :+
@@ -1350,10 +1397,8 @@ ntAddrHiTbl:
 
 			;	Unfortunately, the calculations require
 			;__	the seam location to be in PPU format.
-			LDA	new_seam_pos					;
-			LDX	new_seam_pos+1					;	If the seam is negative, it doesn't matter much
-			BMI	@seam_pos_negative_skip			;__
-				JSR	_calculate_ppufmt_scroll_y	;	Get new_seam_pos in PPU format
+			BMI	@seam_pos_negative_skip			;	Get new_seam_pos in PPU format
+				JSR	_calculate_ppufmt_scroll_y	;	If the seam is negative, it doesn't matter much
 			@seam_pos_negative_skip:			;__
 			STA	ppufmt_seam_scroll_y			;	Store the next frames' PPU format seam position
 			STX	ppufmt_seam_scroll_y+1			;__
@@ -1361,28 +1406,38 @@ ntAddrHiTbl:
 			ROR	seam_absent						;__
 
 			CPY #$00							;
-			BNE :+								;	If scroll_direction equals 2 (going down),
-				clc								;	new_seam_pos is equal to this_seam_pos
-				adc #$10						;	But if scroll_direction equals 0 (going up),
-				bcc :+							;	new_seam_pos is equal to this_seam_pos - $10
-					adc #15						;	(this is just the add_scroll_y code verbatim,
-					inx							;	the fastest way to get to PPU fmt in this case)
-			:									;__
+			BNE @seam_add_fin					;
+				clc								;	If scroll_direction equals 2 (going down),
+				adc #$10						;	new_seam_pos is equal to this_seam_pos
+				bcs :+							;	But if scroll_direction equals 0 (going up),
+				cmp #$F0						;	new_seam_pos is equal to this_seam_pos - $10
+				bcc	@seam_add_fin				;	(this is just the add_scroll_y code verbatim,
+				:	adc #15						;	the fastest way to get to PPU fmt in this case)
+					inx							;
+			@seam_add_fin:						;__
 
-			STA this_seam_pos
-			STX this_seam_pos+1
+			STA ppufmt_this_seam_pos
+			STX ppufmt_this_seam_pos+1
 
 			CPX	#$02				;	If no seam, exit early
 			BCS	@ret0				;__
 
 	start_writing:
 		@get_collmap_ptr:
-			;	X contains the >ppufmt_seam_scroll_y, Carry is clear
+			;__	Y *still* has the scroll direction, Carry is clear
 			LDA this_seam_pos	;
-			AND	#$F0			;	Get low byte
-			STA	collmap_ptr		;__	(none of these affect the carry)
+			LDX	this_seam_pos+1	;
+			AND	#$F0			;
+			CPY #$00
+			BEQ	:+	;__	Add $1E0 if going down
+				;__	Carry is set
+				INX
+				ADC #($E0-1)
+				BCC	:+
+					INX
+			:
+			STA	collmap_ptr		;__
 			TXA					;
-			ADC	scroll_direction;
 			ORA	#>collMap0		;	Get high byte
 			STA	collmap_ptr+1	;__
 
@@ -1395,7 +1450,7 @@ ntAddrHiTbl:
 
 	write_unified:
 		@shift_addr:
-			LDA	this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
+			LDA	ppufmt_this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
 			ASL					;	Double 8-bit left shift
 			ADC	#$80			;	to shift the mm bits to the high byte
 			ROL					;__	to get ll00 00hh
@@ -1411,10 +1466,10 @@ ntAddrHiTbl:
 			BCS	:+				;	Get X of nametable
 				ORA	#$04		;__
 			:	ORA	#$20|$40	;__	Get valid nametable addr with horizontal seq update
-			LDY	this_seam_pos+1	;
-			BEQ	:+				;	Get Y of nametable
-				ORA	#$08		;__
-			:	STA	VRAM_BUF+0,X;__	Store the high byte of nametable addr
+			LDY	ppufmt_this_seam_pos+1	;
+			BEQ	:+						;	Get Y of nametable
+				ORA	#$08				;__
+			:	STA	VRAM_BUF+0,X		;__	Store the high byte of nametable addr
 		@store_length:
 			LDA	#64				;	Store length
 			STA	VRAM_BUF+2,	X	;__
@@ -1470,7 +1525,7 @@ ntAddrHiTbl:
 		;		 \Combined length of 32(+6)/ \Combined length of 32(+6)/
 
 		@shift_addr:
-			LDA	this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
+			LDA	ppufmt_this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
 			ASL					;	Double 8-bit left shift
 			ADC	#$80			;	to shift the mm bits to the high byte
 			ROL					;__	to get ll00 00hh
@@ -1492,9 +1547,9 @@ ntAddrHiTbl:
 			BCC	:+				;	Get X of nametable
 				ORA	#$04		;__
 			:	ORA	#$20|$40	;__	Get valid nametable addr with horizontal seq update
-			LDY	this_seam_pos+1	;
-			BEQ	:+				;	Get Y of nametable
-				ORA	#$08		;__
+			LDY	ppufmt_this_seam_pos+1	;
+			BEQ	:+						;	Get Y of nametable
+				ORA	#$08				;__
 			:	PHA				;__	Push high byte of nametable addr for writes B & D
 			STA SepWrABuf,	X	;	Store the high byte
 			STA	SepWrCBuf,	X	;__
