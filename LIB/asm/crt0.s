@@ -412,14 +412,11 @@ CURSED_MUSIC_ENABLE = 1
 .endif
 	.include "sfx.s"
 
-.segment "COLLMAP0"
+.segment "COLLMAP"
 	collMap0:		.res 16*15
-.segment "COLLMAP1"
 	collMap1:		.res 16*15
-.segment "COLLMAP2"
-    collMap2:       .res 16*15
-.segment "COLLMAP3"
-    collMap3:       .res 16*12
+	collMap2:		.res 16*15
+	collMap3:		.res 16*12
 	ground:			.res 16*3
 
 .segment "SRAM"

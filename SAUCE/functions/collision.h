@@ -219,7 +219,7 @@ void bg_coll_floor_spikes() { // used for spike collision
 	// TOP	
 	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
-	temp_y = calculate_ppufmt_scroll_y(
+	temp_y = (
 		transitional_linear_absolute_currplayer_y + (uint8_t)((currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0) + Generic.height - 2)
 	);
 
@@ -240,7 +240,7 @@ void bg_coll_floor_spikes() { // used for spike collision
 	// BOTTOM
 	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
-	temp_y = calculate_ppufmt_scroll_y(
+	temp_y = (
 		transitional_linear_absolute_currplayer_y + (uint8_t)((currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 2))
 	);
 
@@ -432,7 +432,7 @@ char bg_side_coll_common() {
 		return 0;
 	}
 
-	temp_y = calculate_ppufmt_scroll_y(transitional_linear_absolute_currplayer_y + tmp1);
+	temp_y = transitional_linear_absolute_currplayer_y + tmp1;
 
 	bg_collision_sub();
 	if (collision) {
@@ -889,7 +889,7 @@ char bg_coll_U() {
 	// Slopes
 
 	if (high_byte(currplayer_relx) >= 0x10) {
-		temp_y = calculate_ppufmt_scroll_y(
+		temp_y = (
 			transitional_linear_absolute_currplayer_y + (uint8_t)(transitional_sixteen_minus_generic_height_halved + (currplayer_mini ? 1 : 2) + (gamemode == GAMEMODE_SHIP ? 1 : 0))
 		);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
@@ -912,7 +912,7 @@ char bg_coll_U() {
 	if (high_byte(currplayer_vel_y) & 0x80) {
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 4 : 0); // automatically only the low byte
 		
-		temp_y = calculate_ppufmt_scroll_y(
+		temp_y = (
 			transitional_linear_absolute_currplayer_y + (uint8_t)(((currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 0 : 1)))
 		);
 		
@@ -943,7 +943,7 @@ char bg_coll_D() {
 
 	// Slopes
 	if (high_byte(currplayer_relx) >= 0x10) {
-		temp_y = calculate_ppufmt_scroll_y(
+		temp_y = (
 			transitional_linear_absolute_currplayer_y - 2 + (uint8_t)(Generic.height + (currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0))
 		);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
@@ -966,7 +966,7 @@ char bg_coll_D() {
 		// check 2 points on the right side
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 4 : 0); // automatically only the low byte
 
-		temp_y = calculate_ppufmt_scroll_y(
+		temp_y = (
 			transitional_linear_absolute_currplayer_y + (uint8_t)(Generic.height + (currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0))
 		);
 
@@ -991,7 +991,7 @@ char bg_coll_D() {
 
 char bg_coll_U_spider() {
 	temp_x = LEFT_POS; // automatically only the low byte
-	temp_y = calculate_ppufmt_scroll_y(
+	temp_y = (
 		transitional_linear_absolute_currplayer_y + (uint8_t)((currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0))
 	);
 
@@ -1008,7 +1008,7 @@ char bg_coll_U_spider() {
 
 char bg_coll_D_spider() {
 	temp_x = LEFT_POS; // automatically only the low byte
-	temp_y = calculate_ppufmt_scroll_y(
+	temp_y = (
 		transitional_linear_absolute_currplayer_y + (uint8_t)(Generic.height + (currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0))
 	);
 	
@@ -1037,7 +1037,7 @@ void bg_coll_death() {
 
 	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
 
-	temp_y = calculate_ppufmt_scroll_y(
+	temp_y = (
 		transitional_linear_absolute_currplayer_y + (uint8_t)((Generic.height >> 1) + (currplayer_mini ? transitional_sixteen_minus_generic_height_halved : 0))
 	);
 
