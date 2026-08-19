@@ -2584,45 +2584,32 @@ drawplayer_center_offsets:
 			LDA	_chargepower
 			jeq @no_round
 
+			;__	Tilt the icon based on charge power
 
 			cmp #10
 			BCS :+
-			ldx #23
-			stx _cube_rotate+1
-			jmp @fin
-
-		: 	cmp #20
+				ldx #23
+				bne @football_fin
+			:
+			cmp #20
 			BCS :+
-			ldx #22
-			stx _cube_rotate+1
-			jmp @fin
-
-
-		: 	cmp #30
+				ldx #22
+				bne @football_fin
+			:
+			cmp #30
 			BCS :+
-			ldx #21
-			stx _cube_rotate+1
-			jmp @fin
-
-
-		: 	cmp #38
-			BCS :+
-			ldx #20
-			stx _cube_rotate+1
-			jmp @fin
-
-
-		: 	cmp #50
+				ldx #21
+				bne @football_fin
+			:
+			cmp #50
 			BCS @football_power_hi
-			ldx #20
-			stx _cube_rotate+1
-			jmp @fin
-
-		@football_power_hi:
-
-			ldx #6
-			stx _cube_rotate+1
-			jmp @fin
+				ldx #20
+				bne @football_fin
+			@football_power_hi:
+				ldx #6
+			@football_fin:
+				stx _cube_rotate+1
+				jmp @fin_nold
 
 		football := @football_entrypoint
 
@@ -3150,45 +3137,32 @@ drawplayer_common := _drawplayerone::common
 			LDA	_chargepower
 			jeq @no_round
 
+			;__	Tilt the icon based on charge power
 
 			cmp #10
 			BCS :+
-			ldx #23
-			stx _cube_rotate+3
-			jmp @fin
-
-		: 	cmp #20
+				ldx #23
+				bne @football_fin
+			:
+			cmp #20
 			BCS :+
-			ldx #22
-			stx _cube_rotate+3
-			jmp @fin
-
-
-		: 	cmp #30
+				ldx #22
+				bne @football_fin
+			:
+			cmp #30
 			BCS :+
-			ldx #21
-			stx _cube_rotate+3
-			jmp @fin
-
-
-		: 	cmp #38
-			BCS :+
-			ldx #20
-			stx _cube_rotate+3
-			jmp @fin
-
-
-		: 	cmp #50
+				ldx #21
+				bne @football_fin
+			:
+			cmp #50
 			BCS @football_power_hi
-			ldx #20
-			stx _cube_rotate+3
-			jmp @fin
-
-		@football_power_hi:
-
-			ldx #6
-			stx _cube_rotate+3
-			jmp @fin
+				ldx #20
+				bne @football_fin
+			@football_power_hi:
+				ldx #6
+			@football_fin:
+				stx _cube_rotate+3
+				jmp @fin_nold
 
 		football := @football_entrypoint
 
