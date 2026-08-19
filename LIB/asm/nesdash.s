@@ -2467,7 +2467,9 @@ drawplayer_center_offsets:
 	jeq	pogo	;__
 	dex			;	case 0x0A: SNAKE
 	jeq	wave	;__
-	
+	dex			;	case 0x0B: football
+	jeq	football;__
+
 	; default: cube
     cube:
 		; C code:
@@ -2475,59 +2477,37 @@ drawplayer_center_offsets:
 			; 		else cube_rotate[0] += player_gravity[0] ? -CUBE_GRAVITY : CUBE_GRAVITY;
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
-
-        BIT _cube_data
-        BMI @round
 		ldx _skipProcessingCubeRotationLogic			;player trails?
-		beq @nofin
-		jmp @fin			;if so, get out of here
-	@nofin:
+		jne @fin			;if so, get out of here
 
-		LDA _gamemode
-		cmp #$0B
-		bne @normalagain
-		lda _player_vel_y+1
-		ORA _player_vel_y+0
-		bne @normalagain
-		
-		lda #0
-		sta _cube_rotate+1
-		beq @round
-		
-		
-		@normalagain:
-		LDA _player_vel_y+1		;	if player_vel_y == 0
-		ORA _player_vel_y+0		;
-		BNE @no_round		    ;__
-        @round:	    
+        BIT _cube_data		;	Being on a slope implies being on ground, so round it
+        BMI @round			;__
+
+		LDA _player_vel_y+1	;
+		ORA _player_vel_y+0	;	if player_vel_y != 0, just spin more
+		BNE @no_round		;__
+
+        @round:
+        	LDA #$00			;
 			STA	_cube_rotate+0	;__ low_byte = 0
-			.if USE_ILLEGAL_OPCODES
-				LAX _cube_rotate+1	;	LAX abs is apparently stable
-			.else
-				LDA _cube_rotate+1
-				TAX
-			.endif
+			LDA _cube_rotate+1	;
+			TAX					;
 			SEC					;
 			SBC #12				;
 			BCC :+				;	Limit table idx to 0..12
 				TAX				;	
 				CLC				;
 			:					;__
-			LDA _cube_rotate+1	;	Round the cube rotation
-			ADC @rounding_table, X
-            STA _cube_rotate+1
-			BIT _cube_data
-            BPL :+
-                LDY _slope_type
-                CLC
+			LDA _cube_rotate+1		;	Round the cube rotation
+			ADC @rounding_table, X	;
+            STA _cube_rotate+1		;__
+			BIT _cube_data			;
+            BPL :+					;	If on slope,
+                LDY _slope_type		;	adjust forward to be on slope
+                CLC					;__
                 ADC rounding_slope_table-1, y
             : 
             TAX
-			lda _gamemode
-			cmp #$0B
-			bne @doit
-			jmp @no_round
-			@doit:
             JMP @fin_nold
 
 		@no_round:
@@ -2535,69 +2515,6 @@ drawplayer_center_offsets:
 		ASL				;	Physics table index
 		ASL				;	(just the framerate)
 		TAY				;__
-
-
-		LDX _gamemode
-		cpx #$0B
-		bne @normalstuff
-
-		lda _orbed
-		beq @disregard1
-		lda _player_vel_y+0
-		ora _player_vel_y+1
-		beq @hi
-		
-
-
-	@disregard1:
-		lda _player_vel_y+0
-		ora _player_vel_y+1
-		bne @normalstuff
-
-		lda _chargepower+0			;football
-		beq @normalstuff
-
-		cmp #10
-		BCS :+
-		ldx #23
-		stx _cube_rotate+1
-		jmp @fin
-
-	: 	cmp #20
-		BCS :+
-		ldx #22
-		stx _cube_rotate+1
-		jmp @fin
-
-
-	: 	cmp #30
-		BCS :+
-		ldx #21
-		stx _cube_rotate+1
-		jmp @fin
-
-
-	: 	cmp #38
-		BCS :+
-		ldx #20
-		stx _cube_rotate+1
-		jmp @fin
-
-
-	: 	cmp #50
-		BCS @hi
-		ldx #20
-		stx _cube_rotate+1
-		jmp @fin
-
-	@hi:
-
-		ldx #6
-		stx _cube_rotate+1
-		jmp @fin	
-	  
-	
-	@normalstuff:
 		LDA _cube_rotate
 		LDX _player_gravity+0
 		BNE @subtract
@@ -2661,23 +2578,71 @@ drawplayer_center_offsets:
 		@don:
 			TAX
 			AND #$C0
-			PHA
-			lda _gameState
-			cmp #1	; STATE_MENU
-			bne @continue
-			pla
-			ora #$20
-			bne @resume
-		@continue:
-			PLA
-		@resume:
+			ldy _gameState
+			cpy #1	; STATE_MENU
+			bne	:+
+				ora #$20
+			:
 			STA xargs+0	; flip setting
-
 
 			TXA
 			AND #$07
 			TAY
 			JMP fin
+
+
+		@football_entrypoint:
+			LDA _player_vel_y+1	;
+			ORA _player_vel_y+0	;	if player_vel_y != 0, just spin more
+			jne @no_round		;__
+
+			LDA	_orbed
+			jne @football_power_hi
+
+			LDA	_chargepower
+			jeq @no_round
+
+
+			cmp #10
+			BCS :+
+			ldx #23
+			stx _cube_rotate+1
+			jmp @fin
+
+		: 	cmp #20
+			BCS :+
+			ldx #22
+			stx _cube_rotate+1
+			jmp @fin
+
+
+		: 	cmp #30
+			BCS :+
+			ldx #21
+			stx _cube_rotate+1
+			jmp @fin
+
+
+		: 	cmp #38
+			BCS :+
+			ldx #20
+			stx _cube_rotate+1
+			jmp @fin
+
+
+		: 	cmp #50
+			BCS @football_power_hi
+			ldx #20
+			stx _cube_rotate+1
+			jmp @fin
+
+		@football_power_hi:
+
+			ldx #6
+			stx _cube_rotate+1
+			jmp @fin
+
+		football := @football_entrypoint
 
 	ship:
 		; C code:
@@ -3089,147 +3054,59 @@ drawplayer_common := _drawplayerone::common
 	dex			;	case 0x09: POGO
 	jeq	pogo	;__
 	dex			;	case 0x0A: SNAKE
-	jeq	pogo	;__
+	jeq	wave	;__
+	dex			;	case 0x0B: football
+	jeq football;__
 
     ; default: cube
     cube:
-        ; C code:
-			; 		if (player_vel_y[1] == 0) cube_rotate[1] = round to the nearest 90°;
-			; 		else cube_rotate[1] += player_gravity[1] ? -CUBE_GRAVITY : CUBE_GRAVITY;
-			; 		cap the mf at 0..23
-		@rounding_table = drawcube_rounding_table
+    	@rounding_table = drawcube_rounding_table
+		ldx _skipProcessingCubeRotationLogic			;player trails?
+		jne @fin			;if so, get out of here
 
-        BIT _cube_data+1
-        BMI @round
-	;	ldx _skipProcessingCubeRotationLogic		;PLAYER TRAILS are disabled for 2 player mode anyway
-	;	bne	@fin		
+        BIT _cube_data+1	;	Being on a slope implies being on ground, so round it
+        BMI @round			;__
 
+		LDA _player_vel_y+3	;
+		ORA _player_vel_y+2	;	if player_vel_y != 0, just spin more
+		BNE @no_round		;__
 
-		LDA _gamemode
-		cmp #$0B
-		bne @normalagain
-		lda _player_vel_y+3
-		ORA _player_vel_y+2
-		bne @normalagain
-		
-		lda #0
-		sta _cube_rotate+3
-		beq @round
-		
-		
-		@normalagain:
-
-		LDA _player_vel_y+3		;	if player_vel_y == 0
-		ORA _player_vel_y+2		;
-		BNE @no_round			;__
-		@round:
+        @round:
+        	LDA #$00			;
 			STA	_cube_rotate+2	;__ low_byte = 0
-			.if USE_ILLEGAL_OPCODES
-				LAX _cube_rotate+3	;	LAX abs is apparently stable
-			.else
-				LDA _cube_rotate+3	;
-				TAX
-			.endif
+			LDA _cube_rotate+3	;
+			TAX					;
 			SEC					;
 			SBC #12				;
 			BCC :+				;	Limit table idx to 0..12
-				TAX				;	
+				TAX				;
 				CLC				;
 			:					;__
-			LDA _cube_rotate+3	;	Round the cube rotation
-			ADC @rounding_table, X
-			STA _cube_rotate+3	;
-			BIT _cube_data+1
-			BPL :+
-				LDY _slope_type+1
-				CLC
-				ADC rounding_slope_table-1, y
-			: 
-			TAX					;__
-			lda _gamemode
-			cmp #$0B
-			bne @doit
-			jmp @no_round
-			@doit:
-			JMP @fin_nold
+			LDA _cube_rotate+3		;	Round the cube rotation
+			ADC @rounding_table, X	;
+            STA _cube_rotate+3		;__
+			BIT _cube_data+1		;
+            BPL :+					;	If on slope,
+                LDY _slope_type+1	;	adjust forward to be on slope
+                CLC					;__
+                ADC rounding_slope_table-1, y
+            :
+            TAX
+            JMP @fin_nold
 
 		@no_round:
 		LDA	_framerate	;
 		ASL				;	Physics table index
 		ASL				;	(just the framerate)
 		TAY				;__
-
-		LDX _gamemode
-		cpx #$0B
-		bne @normalstuff
-
-		lda _orbed+1
-		beq @disregard1
-		lda _player_vel_y+2
-		ora _player_vel_y+3
-		beq @hi
-		
-
-
-	@disregard1:
-		lda _player_vel_y+2
-		ora _player_vel_y+3
-		bne @normalstuff
-
-		lda _chargepower+1		;football
-		beq @normalstuff
-
-		cmp #5
-		BCS :+
-		ldx #23
-		stx _cube_rotate+3
-		jmp @fin
-
-	: 	cmp #15
-		BCS :+
-		ldx #22
-		stx _cube_rotate+3
-		jmp @fin
-
-
-	: 	cmp #25
-		BCS :+
-		ldx #21
-		stx _cube_rotate+3
-		jmp @fin
-
-
-	: 	cmp #30
-		BCS :+
-		ldx #20
-		stx _cube_rotate+3
-		jmp @fin
-
-
-	: 	cmp #46
-		BCS @hi
-		ldx #20
-		stx _cube_rotate+3
-		jmp @fin
-
-	@hi:
-
-		ldx #6
-		stx _cube_rotate+3
-		jmp @fin	
-	  
-	
-	@normalstuff:
-
 		LDA _cube_rotate+2
-
 		LDX _player_gravity+1
 		BNE @subtract
-
+		@add:
 			CLC						;
 			ADC _CUBE_GRAVITY_lo,Y	;
-			STA _cube_rotate+2		;	cube_rotate[0] += CUBE_GRAVITY;
-			BCC @fin				;
+			STA _cube_rotate+2		;
+			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
 				LDX _cube_rotate+3	;
 				INX					;__
 				CPX #24				;
@@ -3240,9 +3117,9 @@ drawplayer_common := _drawplayerone::common
 
 		@subtract:
 			SEC						;
-			SBC _CUBE_GRAVITY_lo,Y	; 	
-			STA _cube_rotate+2		;	cube_rotate[0] -= CUBE_GRAVITY;
-			BCS @fin				;
+			SBC _CUBE_GRAVITY_lo,Y	;
+			STA _cube_rotate+2		;
+			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
 				DEC _cube_rotate+3	;
 				BPL @fin			;__
 				LDA #23				;	Cap at 0
@@ -3268,35 +3145,90 @@ drawplayer_common := _drawplayerone::common
 		@noflip:
 			LDA drawcube_sprite_none, X
 			;jmp @don
-			
+
 		@don:
 			TAX
 			AND #$C0
-			STA xargs+0
+			STA xargs+0	; flip setting
+
 			TXA
 			AND #$07
 			TAY
+			JMP fin_ninja
 
+
+		@football_entrypoint:
+			LDA _player_vel_y+3	;
+			ORA _player_vel_y+2	;	if player_vel_y != 0, just spin more
+			jne @no_round		;__
+
+			LDA	_orbed
+			jne @football_power_hi
+
+			LDA	_chargepower
+			jeq @no_round
+
+
+			cmp #10
+			BCS :+
+			ldx #23
+			stx _cube_rotate+3
+			jmp @fin
+
+		: 	cmp #20
+			BCS :+
+			ldx #22
+			stx _cube_rotate+3
+			jmp @fin
+
+
+		: 	cmp #30
+			BCS :+
+			ldx #21
+			stx _cube_rotate+3
+			jmp @fin
+
+
+		: 	cmp #38
+			BCS :+
+			ldx #20
+			stx _cube_rotate+3
+			jmp @fin
+
+
+		: 	cmp #50
+			BCS @football_power_hi
+			ldx #20
+			stx _cube_rotate+3
+			jmp @fin
+
+		@football_power_hi:
+
+			ldx #6
+			stx _cube_rotate+3
+			jmp @fin
+
+		football := @football_entrypoint
+
+	fin_ninja:	;__	A special little ninja routine because someone can't code
 			LDA _gamemode
 			cmp #$08
-			bne :++
+			jne drawplayer_common
 			lda _player_vel_y+2
 			ora _player_vel_y+3
-			bne :++
+			jne drawplayer_common
 			lda _player_gravity+1
 			beq :+
-			lda #0
-			sta _cube_rotate+2
-			lda #$0C
-			sta _cube_rotate+3
-			bne :++
-		:	
-			lda #0
-			sta _cube_rotate+2
-			sta _cube_rotate+3
-		:	
-
-			JMP drawplayer_common
+				lda #0
+				sta _cube_rotate+2
+				lda #$0C
+				sta _cube_rotate+3
+				jmp drawplayer_common
+			:
+				lda #0
+				sta _cube_rotate+2
+				sta _cube_rotate+3
+				jmp drawplayer_common
 
 	ship:
 		; C code:
