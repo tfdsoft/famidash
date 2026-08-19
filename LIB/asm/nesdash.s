@@ -3131,10 +3131,10 @@ drawplayer_common := _drawplayerone::common
 			ORA _player_vel_y+2	;	if player_vel_y != 0, just spin more
 			jne @no_round		;__
 
-			LDA	_orbed
+			LDA	_orbed+1
 			jne @football_power_hi
 
-			LDA	_chargepower
+			LDA	_chargepower+1
 			jeq @no_round
 
 			;__	Tilt the icon based on charge power
