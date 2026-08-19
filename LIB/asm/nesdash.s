@@ -2322,6 +2322,11 @@ drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1	; doubling it simplifies the routine
 	.byte <-24
 
+rounding_slope_table:
+	;     45v  22v  66v  45^  22^  66^  nothing
+    .byte $09, $08, $09, $00, $03, $04, $08, $00
+	.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
+
 ; Bits 6-7: FLIP
 ; Bits 0-2: actual idx
 .define NOFLIP $00
@@ -2930,10 +2935,6 @@ drawplayer_center_offsets:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER_ALT, >_WAVE, >_SWING, >_ROBOT_ALT, >_POGO, >_SNAKE, >_CUBE
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_ROBOT_ALT, >_MINI_POGO, >_MINI_SNAKE, >_MINI_CUBE
 
-    rounding_slope_table:
-		;     45v  22v  66v  45^  22^  66^  nothing
-        .byte $09, $08, $09, $00, $03, $04, $08, $00
-		.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
 .endproc
 drawplayer_common := _drawplayerone::common
 
@@ -3450,12 +3451,6 @@ drawplayer_common := _drawplayerone::common
     sprite_table_table_hi2:
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER_ALT2, >_WAVE2, >_SWING2, >_CUBE2, >_POGO2, >_SNAKE2, >_CUBE2
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, >_MINI_CUBE2, >_MINI_POGO2, >_MINI_SNAKE2, >_MINI_CUBE2
-    rounding_slope_table:
-		;     45v  22v  66v  45^  22^  66^  nothing
-        .byte $09, $08, $09, $00, $03, $04, $08, $00
-		.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
-
-
 .endproc
 
 ; char bg_collision_sub();
