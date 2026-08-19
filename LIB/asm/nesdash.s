@@ -2322,53 +2322,35 @@ drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1	; doubling it simplifies the routine
 	.byte <-24
 
+; Bits 6-7: FLIP
+; Bits 0-2: actual idx
+.define NOFLIP $00
+.define H_FLIP $40
+.define V_FLIP $80
+.define HVFLIP $C0
+
 drawcube_sprite_table:
-	; Bits 6-7: FLIP
-	; Bits 0-2: actual idx
-	.define NOFLIP $00
-	.define H_FLIP $40
-	.define V_FLIP $80
-	.define HVFLIP $C0
 	.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
 	.byte NOFLIP|6, V_FLIP|5, V_FLIP|4, V_FLIP|3, V_FLIP|2, V_FLIP|1
 	.byte HVFLIP|0, HVFLIP|1, HVFLIP|2, HVFLIP|3, HVFLIP|4, HVFLIP|5
 	.byte HVFLIP|6, H_FLIP|5, H_FLIP|4, H_FLIP|3, H_FLIP|2, H_FLIP|1
-	.undef NOFLIP
-	.undef H_FLIP
-	.undef V_FLIP
-	.undef HVFLIP
 
 drawcube_sprite_way:
-	; Bits 6-7: FLIP
-	; Bits 0-2: actual idx
-	.define NOFLIP $00
-	.define H_FLIP $40
-	.define V_FLIP $80
-	.define HVFLIP $C0
 	.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
 	.byte NOFLIP|6, H_FLIP|5, H_FLIP|4, H_FLIP|3, H_FLIP|2, H_FLIP|1
 	.byte H_FLIP|0, HVFLIP|1, HVFLIP|2, HVFLIP|3, HVFLIP|4, HVFLIP|5
 	.byte V_FLIP|6, V_FLIP|5, V_FLIP|4, V_FLIP|3, V_FLIP|2, V_FLIP|1
-	.undef NOFLIP
-	.undef H_FLIP
-	.undef V_FLIP
-	.undef HVFLIP
 
 drawcube_sprite_none:
-	; Bits 6-7: FLIP
-	; Bits 0-2: actual idx
-	.define NOFLIP $00
-	.define H_FLIP $40
-	.define V_FLIP $80
-	.define HVFLIP $C0
 	.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
 	.byte NOFLIP|6, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
 	.byte NOFLIP|6, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
 	.byte NOFLIP|6, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
-	.undef NOFLIP
-	.undef H_FLIP
-	.undef V_FLIP
-	.undef HVFLIP
+
+.undef NOFLIP
+.undef H_FLIP
+.undef V_FLIP
+.undef HVFLIP
 
 
 drawplayer_center_offsets:
