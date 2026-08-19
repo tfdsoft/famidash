@@ -2420,14 +2420,7 @@ drawplayer_center_offsets:
 	ADC drawplayer_center_offsets, X
 	STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
-	; The switch 
-	LDX _retro_mode
-	beq @normal
-	LDX _gamemode
-	cpx #$08
-	jeq	robot
-	
-@normal:
+	; The switch
 	LDX _gamemode
 	DEX			;	case 0x01: ship shit
 	jeq ship	;__
@@ -2444,7 +2437,7 @@ drawplayer_center_offsets:
 	dex			;	case 0x07: swing shit
 	jeq	ship	;__
 	dex			;	case 0x08: NINJA
-	jeq	cube	;__
+	jeq	ninja	;__
 	dex			;	case 0x09: POGO
 	jeq	pogo	;__
 	dex			;	case 0x0A: SNAKE
@@ -2725,6 +2718,14 @@ drawplayer_center_offsets:
 		DEY					;	kandotemp3[0] = 0;
 	@go:
 		JMP fin				;__
+
+
+	ninja:
+		LDX _retro_mode
+		BNE robot
+		JMP cube
+
+
 	robot:
 		; C code:
 			;	if (player_vel_y[0] == 0) {
@@ -2875,7 +2876,6 @@ drawplayer_center_offsets:
 		JMP fin
 
 
-
 	fin:
 			LDA _gamemode
 			cmp #$08
@@ -3002,7 +3002,7 @@ drawplayer_common := _drawplayerone::common
 	ADC drawplayer_center_offsets, X
 	STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
-	; The switch 
+	; The switch
 	LDX _gamemode
 	DEX			;	case 0x01: ship shit
 	jeq ship	;__
@@ -3015,17 +3015,17 @@ drawplayer_common := _drawplayerone::common
 	DEX			;	case 0x05: spider shit
 	jeq spider	;__
 	dex			;	case 0x06: wave shit
-	jeq	wave	;__	
+	jeq	wave	;__
 	dex			;	case 0x07: swing shit
 	jeq	ship	;__
 	dex			;	case 0x08: NINJA
-	jeq	cube	;__
+	jeq	ninja	;__
 	dex			;	case 0x09: POGO
 	jeq	pogo	;__
 	dex			;	case 0x0A: SNAKE
 	jeq	wave	;__
 	dex			;	case 0x0B: football
-	jeq football;__
+	jeq	football;__
 
     ; default: cube
     cube:
@@ -3298,6 +3298,14 @@ drawplayer_common := _drawplayerone::common
 			DEY				;	kandotemp3[1] = 0;
 		@fin:
 			JMP drawplayer_common    	;__
+
+
+	ninja:
+		LDX _retro_mode
+		BNE robot
+		JMP cube
+
+
 	robot:
 		; C code:
 			;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
