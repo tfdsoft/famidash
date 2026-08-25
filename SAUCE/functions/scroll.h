@@ -69,7 +69,7 @@ void process_y_scroll() {
 				player0_y += cc65_ptr1;
 				player1_y += cc65_ptr1;
 
-				scroll_y_subpx = scroll_y_subpx - LSB(cc65_ptr1);
+				scroll_y_subpx = scroll_y_subpx - low_byte(cc65_ptr1);
 				do_if_borrow({++high_byte(cc65_ptr1);});
 				scroll_y = scroll_y - MSB(cc65_ptr1);
 			}
@@ -107,7 +107,7 @@ void process_y_scroll() {
 			player0_y = player0_y + cc65_ptr1;
 			player1_y = player1_y + cc65_ptr1;
 
-			scroll_y_subpx = scroll_y_subpx - LSB(cc65_ptr1);
+			scroll_y_subpx = scroll_y_subpx - low_byte(cc65_ptr1);
 			do_if_borrow({++high_byte(cc65_ptr1);});
 			scroll_y = scroll_y - MSB(cc65_ptr1);
 		}
