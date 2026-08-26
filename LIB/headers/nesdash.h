@@ -266,9 +266,10 @@ extern uint8_t PAL_BUF[32];
 
 // For more than 16 bits use extra macros and shit
 // Naming convention: crossPRGBankJump<bitsIn>
-#define crossPRGBankJump0(sym) (__asm__("lda #<%v \n ldx #>%v \n ldy #<.bank(%v) \n jsr crossPRGBankJump ", sym, sym, sym), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
+#define crossPRGBankJump0(sym) (__asm__("lda #<%v \n ldx #>%v \n ldy #<.bank(%v) \n jsr crossPRGBankJump ", sym, sym, sym), __asm__("lda ptr3 \n ldx ptr3+1"), __EAX__)
 #define crossPRGBankJump8(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0(sym))
 #define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym))
+#define crossPRGBankJump32(sym, args) (__EAX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym))
 
 // holy fuck i am a genius
 #define do_if_flag_common(func, opcode) do { \
