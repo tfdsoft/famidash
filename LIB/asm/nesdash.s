@@ -3405,7 +3405,6 @@ drawplayer_center_offsets:
 	finale:
 		TYA
 		ORA #$80	;__	Second player after all
-		TYA
 		TAX
 		lda gamemode
 		ora flip
