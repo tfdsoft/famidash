@@ -462,8 +462,8 @@ void everything_else() {
 						ppu_off();
 						set_player_banks();
 						oam_clear();
-						crossPRGBankJump0(drawplayerone);
-						mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
+						crossPRGBankJump0(processAndRenderPlayerSpriteOne);
+						mmc3_set_prg_bank_1(GET_BANK(draw_sprites));
 						draw_sprites();
 						ppu_on_all();
 					}

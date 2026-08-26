@@ -59,6 +59,32 @@ struct Base {
 	uint8_t height;
 };
 
+
+typedef struct playerSprite_s {
+    union {
+        uint32_t state;
+        struct {
+            union {
+                uint8_t flipGamemode;
+                struct {
+                    uint8_t gamemode : 6;
+                    uint8_t flip : 2;
+                };
+            };
+            union {
+                uint8_t playerAndAnimIndex;
+                struct {
+                    uint8_t animIdx : 7;
+                    uint8_t playerIdx : 1;
+                };
+            };
+            uint8_t x;
+            uint8_t y;
+        };
+    };
+} playerSprite;
+
+
 // Zeropage variables
 #pragma bss-name("ZEROPAGE")
 
@@ -178,6 +204,9 @@ extern uint8_t fullRegion;
 
 struct Base Generic;
 struct Base Generic2;
+
+playerSprite playerSpriteFirst;
+playerSprite playerSpriteSecond;
 
 uint16_t transitional_linear_absolute_currplayer_y;
 uint8_t transitional_sixteen_minus_generic_height_halved;

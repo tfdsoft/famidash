@@ -6,24 +6,36 @@ void minus15x();
 void plus15y();
 void plus15x();
 void trail_loop();
-/*
-	Draws the first player sprite
-	Implemented in asm
-*/
-void __fastcall__ drawplayerone();
-void __fastcall__ drawplayertwo();
+
+playerSprite __fastcall__ processPlayerSpriteOne();
+playerSprite __fastcall__ processPlayerSpriteTwo();
+
+void __fastcall__ renderPlayerSpriteOne();
+void __fastcall__ renderPlayerSpriteTwo();
+void __fastcall__ renderPlayerSprite(playerSprite sprite);
+
+void __fastcall__ processAndRenderPlayerSpriteOne();
+
 
 void draw_sprites(){
 	// dual = 1;
 	// twoplayer = 1;
 	
 	// draw player
-	if (!invisible) {
+	if (!(__A__ = invisible, __asm__("ora %v", player_invis), __A__)) {
+		playerSpriteFirst.state = crossPRGBankJump0(processPlayerSpriteOne);
 		if (dual) {
-			if (kandoframecnt & 1 && !player_invis) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
-			else if (!player_invis) { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
+			playerSpriteSecond.state = crossPRGBankJump0(processPlayerSpriteTwo);
+			if (kandoframecnt & 1) {
+				crossPRGBankJump0(renderPlayerSpriteTwo);
+				crossPRGBankJump0(renderPlayerSpriteOne);
+			} else {
+				crossPRGBankJump0(renderPlayerSpriteOne);
+				crossPRGBankJump0(renderPlayerSpriteTwo);
+			}
+		} else {
+			crossPRGBankJump0(renderPlayerSpriteOne);
 		}
-		else if (!player_invis) crossPRGBankJump0(drawplayerone);
 	}
 
 	// the level sprites
@@ -33,9 +45,10 @@ void draw_sprites(){
 
 	if (practice_point_count) {
 		tmp3 = practice_player_1_y_hi[curr_practice_point];
+		tmp3--;
 		if (practice_sprite_x_pos > 10) { 
 			practice_sprite_x_pos -= 3;
-			oam_meta_spr(practice_sprite_x_pos, tmp3 - 1, Practice_Sprites[0]);
+			oam_meta_spr(practice_sprite_x_pos, tmp3, Practice_Sprites[0]);
 		}
 		// else if (practice_sprite_x_pos < 10) {}
 	}
@@ -178,41 +191,41 @@ void draw_sprites(){
 			trail_loop();
 		}
 		else if ((forced_trails == 2 || trails == 2) && !(kandoframecnt & 1)) {
-			skipProcessingCubeRotationLogic++;
-			tmp6 = currplayer_vel_x << 1;
+			// The below code seems extremely weird.
+			// But as of writing this, cc65 just DOES NOT want to generate
+			// subtraction code like a normal 6502 compiler (sec \n sbc)
+			// So I had to do it myself
+			#define subA(sym, off) (__asm__("sec \n sbc %v+%w", sym, off))
+			#define aSubB(a, sym, off) (__A__ = a, subA(sym, off), __A__)
+			// Signed divide by 2
+			__A__ = high_byte(currplayer_vel_x);
+			__A__ <<= 1;
+			do_if_c_set({__asm__("ora #$80");});
+			tmp2 = __A__;
 			
-			tmpA = player_relx[0];
-			tmpB = player_rely[0];
+			low_byte(cc65_sreg) = playerSpriteFirst.x -= tmp2;
+			high_byte(cc65_sreg) = playerSpriteFirst.y += aSubB(player_old_rely[0], player_rely, 1);
 
-			high_byte(player_relx[0]) -= high_byte(tmp6);
-			high_byte(player_rely[0]) = player_old_rely[0];
-
-			crossPRGBankJump0(drawplayerone);
+			crossPRGBankJump0(renderPlayerSpriteOne);
 			
-			high_byte(player_relx[0]) -= high_byte(tmp6);
-			high_byte(player_rely[0]) = player_old_rely[1];
+			low_byte(cc65_sreg) = playerSpriteFirst.x = aSubB(playerSpriteFirst.x, tmp2, 0);
+			high_byte(cc65_sreg) = playerSpriteFirst.y += aSubB(player_old_rely[1], player_old_rely, 0);
 
-			crossPRGBankJump0(drawplayerone);
+			crossPRGBankJump0(renderPlayerSpriteOne);
 
-			high_byte(player_relx[0]) -= high_byte(tmp6);
-			high_byte(player_rely[0]) = player_old_rely[2];
+			low_byte(cc65_sreg) = playerSpriteFirst.x = aSubB(playerSpriteFirst.x, tmp2, 0);
+			high_byte(cc65_sreg) = playerSpriteFirst.y += aSubB(player_old_rely[2], player_old_rely, 1);
 
-			if (gamemode == GAMEMODE_CUBE) {
-				tmp9 = currplayer_mini;
-				currplayer_mini = 1;
+			if (gamemode == GAMEMODE_CUBE && !currplayer_mini) {
+				playerSpriteFirst.flipGamemode += 12; // gamemode_count
+			} else {
+				__A__ = playerSpriteFirst.flipGamemode;
 			}
 
-			crossPRGBankJump0(drawplayerone);
-			
-			if (gamemode == GAMEMODE_CUBE) {
-				currplayer_mini = tmp9;
+			// __A__ and sreg are already complete and I am squeezing every byte here
+			crossPRGBankJump0(renderPlayerSpriteOne);
 			}
-			
-			player_relx[0] = tmpA;
-			player_rely[0] = tmpB;
-			skipProcessingCubeRotationLogic--;		
 		}
-	}
 	}
 #undef spr_type
 #undef animation_ptr

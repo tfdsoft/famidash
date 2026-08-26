@@ -338,7 +338,7 @@ void state_menu() {
 					title_cube_shit();
 					hi_byte_stuff();
 					gamemode = 0;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_NINJA:
 					//oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
@@ -346,7 +346,7 @@ void state_menu() {
 					title_cube_shit();
 					hi_byte_stuff();
 					gamemode = GAMEMODE_NINJA;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_UFO:
 					title_ufo_shit();
@@ -359,7 +359,7 @@ void state_menu() {
 					title_football_shit();
 					hi_byte_stuff();
 					gamemode = GAMEMODE_FOOTBALL;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_POGO:
 					title_pogo_shit();
@@ -385,13 +385,13 @@ void state_menu() {
 					title_cube_shit();
 					hi_byte_stuff();
 					gamemode = 0;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_MINININJA:
 					title_cube_shit();
 					hi_byte_stuff();
 					gamemode = GAMEMODE_NINJA;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_SHIP:
 					title_ship_shit();
@@ -491,7 +491,7 @@ void state_menu() {
 					//oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);
 					hi_byte_stuff();
 					gamemode = GAMEMODE_SWING;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_MINISHIP:
 					title_ship_shit();
@@ -572,7 +572,7 @@ void state_menu() {
 					//oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
 					hi_byte_stuff();
 					gamemode = GAMEMODE_SWING;
-					crossPRGBankJump0(drawplayerone);
+					crossPRGBankJump0(processAndRenderPlayerSpriteOne);
 					break;
 				case TITLEMODE_META:
 					if (!(kandoframecnt & 0x07)) {
