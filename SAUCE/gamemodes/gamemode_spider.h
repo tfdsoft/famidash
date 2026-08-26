@@ -91,7 +91,7 @@ void spider_eject() {
 void spider_up_wait() {
 	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
 	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
-	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
+	transitional_linear_absolute_currplayer_y = MSB(scroll_y_subpx + currplayer_rely) + scroll_y;
 	do {
 		high_byte(currplayer_rely) -= 0x08;
 		transitional_linear_absolute_currplayer_y -= 0x08;
@@ -107,7 +107,7 @@ void spider_up_wait() {
 void spider_down_wait() {
 	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
 	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
-	transitional_linear_absolute_currplayer_y = Generic.y + scroll_y;
+	transitional_linear_absolute_currplayer_y = MSB(scroll_y_subpx + currplayer_rely) + scroll_y;
 	do {
 		high_byte(currplayer_rely) += 0x08;
 		transitional_linear_absolute_currplayer_y += 0x08;
