@@ -449,6 +449,9 @@ if __name__ == "__main__":
         print("FamiStudio is older than 4.4.2, please upgrade to version 4.4.2.")
         exit(1)
 
+    # Ensure the TMP folder exists
+    tmpFolder.mkdir(parents=True, exist_ok=True)
+
     # Get FamiStudio text file
     print("\n==== Exporting a FamiStudio text file for processing...")
     fsTxtPath = tmpFolder / "{exportStemPrefix}_fs.txt"
