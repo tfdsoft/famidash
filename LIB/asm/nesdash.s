@@ -4003,14 +4003,18 @@ SSDPCM_getbyte:
 			INY
 		.endif
 		SBC	levelLengthLo
-		BCS loop
+		.if !MID_LEVEL_LENGTHS_ENABLED
+			BCS loop
+		.endif
 
 		.if MID_LEVEL_LENGTHS_ENABLED
 			TAY
 			TXA
 			SBC levelLengthMd
 			TAX
-			BCS loop_sec
+			.if !HIGH_LEVEL_LENGTHS_ENABLED
+				BCS loop_sec
+			.endif
 		.else
 			DEX
 			BNE loop_sec
