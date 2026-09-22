@@ -386,7 +386,7 @@ finish:
 
 	; Fill the banks unused by both level and music data
 .if !__THE_ALBUM
-	.if LEVEL_BANK_COUNT < FIRST_MUSIC_BANK
+	.if LEVEL_BANK_COUNT <= FIRST_MUSIC_BANK
 		.segment "LVL_BANK"
 		.repeat FIRST_MUSIC_BANK - LEVEL_BANK_COUNT
 			.res 8192
