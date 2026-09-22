@@ -391,6 +391,12 @@ finish:
 		.repeat FIRST_MUSIC_BANK - LEVEL_BANK_COUNT
 			.res 8192
 		.endrepeat
+	.else
+		.error .sprintf("Last Level Bank: 0x%02X", LEVEL_BANK_COUNT - 1)
+		.error .sprintf("First Music Bank: 0x%02X", FIRST_MUSIC_BANK)
+		.error "The banks of level and music data have collided."
+		.error "You have put too much into one ROM."
+		.error "Please, free up some space by removing something."
 	.endif
 .endif
 
