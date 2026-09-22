@@ -17,6 +17,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_demoncryogenic)
 	.byte .lobyte(level_data_azuronxolax)
+	.byte .lobyte(level_data_shadowtemple)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_jawbreaker)
 	.byte .lobyte(level_data_denouement)
@@ -48,6 +49,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_toeiiv2) & $1F | $A0
 	.byte .hibyte(level_data_demoncryogenic) & $1F | $A0
 	.byte .hibyte(level_data_azuronxolax) & $1F | $A0
+	.byte .hibyte(level_data_shadowtemple) & $1F | $A0
 	.byte .hibyte(level_data_foresttemple) & $1F | $A0
 	.byte .hibyte(level_data_jawbreaker) & $1F | $A0
 	.byte .hibyte(level_data_denouement) & $1F | $A0
@@ -79,6 +81,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_toeiiv2 >> 13)
 	.byte .lobyte(level_data_demoncryogenic >> 13)
 	.byte .lobyte(level_data_azuronxolax >> 13)
+	.byte .lobyte(level_data_shadowtemple >> 13)
 	.byte .lobyte(level_data_foresttemple >> 13)
 	.byte .lobyte(level_data_jawbreaker >> 13)
 	.byte .lobyte(level_data_denouement >> 13)
@@ -143,6 +146,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($0000C1)		; azuronxolax
+	.byte .lobyte($000094)		; shadowtemple
 	.byte .lobyte($00008F)		; foresttemple
 	.byte .lobyte($000086)		; jawbreaker
 	.byte .lobyte($000054)		; denouement
@@ -176,6 +180,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($0000C1)		; azuronxolax
+	.byte .hibyte($000094)		; shadowtemple
 	.byte .hibyte($00008F)		; foresttemple
 	.byte .hibyte($000086)		; jawbreaker
 	.byte .hibyte($000054)		; denouement
@@ -209,6 +214,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($0000C1)		; azuronxolax
+	.byte .bankbyte($000094)		; shadowtemple
 	.byte .bankbyte($00008F)		; foresttemple
 	.byte .bankbyte($000086)		; jawbreaker
 	.byte .bankbyte($000054)		; denouement
