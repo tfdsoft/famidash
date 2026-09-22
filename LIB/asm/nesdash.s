@@ -317,16 +317,11 @@ _init_rld:
 	STA _current_deco_type;__
 	INY
 	
-	LDA (ptr1),y			;	Spike Set, Block Set
-	TAX						;__
-	LSR						;
-	LSR						;
-	LSR						;	Spike set
-	LSR						;
+	LDA (ptr1),y			;	Spike Set
 	STA _current_spike_set	;__
+	INY
 
-	TXA						;
-	AND #$0F				;	Block set
+	LDA (ptr1),y			;	Block Set
 	STA _current_block_set	;__
 
 	TYA						;

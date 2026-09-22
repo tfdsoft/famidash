@@ -1776,12 +1776,24 @@ MouseBoundsMax:
 	cmp #::_BLOCKSD
 	beq @sloped
 	cmp #::_BLOCKSB
+	beq @slopeb
+	cmp #::_BLOCKSE
+	beq @slopee
+	cmp #::_BLOCKSF
+	beq @slopef
 	bne @slopea
 
+@slopeb:
 	lda #::_SLOPESB
 	bne @slopcont
 @sloped:
 	lda #::_SLOPESD
+	bne @slopcont
+@slopee:
+	lda #::_SLOPESE
+	bne @slopcont
+@slopef:
+	lda #::_SLOPESF
 	bne @slopcont
 @slopea:
 	lda #::_SLOPESA

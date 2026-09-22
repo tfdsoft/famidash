@@ -235,10 +235,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 				f"({metadata.get('maxFallSpeed_is_7', 0)} << 7)",
 				f"_{metadata.get('decoType', 'NONE')}",			
 			]),
-			" | ".join([
-				f"({getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_")} << 4)",
-				getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
-			]),
+			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
+			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D', 'E', 'F'), "_"),
 			f"${metadata.get('startingBackgroundColor', 0):02X}",
 			f"${metadata.get('startingGroundColor', 0):02X}",
 			str(len(lines)),
@@ -254,7 +252,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			"Y Scroll Position (low byte)",
 			", ".join(["Force platformer", "Disable parallax"]),
 			", ".join(["Max Fall Speed is 7?", "Deco type"]),
-			", ".join(["Spike Set", "Block Set"]),
+			"Spike set",
+			"Block set",
 			"Starting background color",
 			"Starting ground color",
 			"Level height"

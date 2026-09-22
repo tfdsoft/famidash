@@ -3,7 +3,7 @@
 
 .segment "LVL_BANK"
 
-; Data bank 00, total bank size: 8174 bytes
+; Data bank 00, total bank size: 8175 bytes
 	.export level_data_motion
 	level_data_motion:
 	; Header
@@ -16,7 +16,8 @@
 		.byte ($CF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;___________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;__________ Spike Set, Block Set
+		.byte _SPIKESC ;____________________________ Spike set
+		.byte _BLOCKSB ;____________________________ Block set
 		.byte $0F ;_________________________________ Starting background color
 		.byte $0F ;_________________________________ Starting ground color
 		.byte 57 ;__________________________________ Level height
@@ -35,7 +36,7 @@
 	.align 8192
 
 
-; Data bank 02, total bank size: 8145 bytes
+; Data bank 02, total bank size: 8146 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -48,7 +49,8 @@
 		.byte ($CF) ;____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESB << 4) | _BLOCKSA ;_______ Spike Set, Block Set
+		.byte _SPIKESB ;_________________________ Spike set
+		.byte _BLOCKSA ;_________________________ Block set
 		.byte $0F ;______________________________ Starting background color
 		.byte $0F ;______________________________ Starting ground color
 		.byte 27 ;_______________________________ Level height
@@ -58,7 +60,7 @@
 	.align 8192
 
 
-; Data bank 03, total bank size: 8117 bytes
+; Data bank 03, total bank size: 8118 bytes
 	.export level_data_sonicwave
 	level_data_sonicwave:
 	; Header
@@ -71,7 +73,8 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESC ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
@@ -81,7 +84,7 @@
 	.align 8192
 
 
-; Data bank 04, total bank size: 8098 bytes
+; Data bank 04, total bank size: 8099 bytes
 	.export level_data_trythisgd
 	level_data_trythisgd:
 	; Header
@@ -94,7 +97,8 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESC ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 57 ;_____________________________________ Level height
@@ -104,7 +108,7 @@
 	.align 8192
 
 
-; Data bank 05, total bank size: 8039 bytes
+; Data bank 05, total bank size: 8040 bytes
 	.export level_data_everyend
 	level_data_everyend:
 	; Header
@@ -117,7 +121,8 @@
 		.byte ($CF) ;_________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_____________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSA ;____________ Spike Set, Block Set
+		.byte _SPIKESA ;______________________________ Spike set
+		.byte _BLOCKSA ;______________________________ Block set
 		.byte $11 ;___________________________________ Starting background color
 		.byte $11 ;___________________________________ Starting ground color
 		.byte 57 ;____________________________________ Level height
@@ -127,7 +132,7 @@
 	.align 8192
 
 
-; Data bank 06, total bank size: 8031 bytes
+; Data bank 06, total bank size: 8032 bytes
 	.export level_data_deathmoon
 	level_data_deathmoon:
 	; Header
@@ -140,7 +145,8 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESB << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESB ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $16 ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 57 ;_____________________________________ Level height
@@ -150,7 +156,7 @@
 	.align 8192
 
 
-; Data bank 07, total bank size: 7981 bytes
+; Data bank 07, total bank size: 7982 bytes
 	.export level_data_sonicblaster
 	level_data_sonicblaster:
 	; Header
@@ -163,7 +169,8 @@
 		.byte ($CF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;________________ Spike Set, Block Set
+		.byte _SPIKESC ;__________________________________ Spike set
+		.byte _BLOCKSB ;__________________________________ Block set
 		.byte $0F ;_______________________________________ Starting background color
 		.byte $0F ;_______________________________________ Starting ground color
 		.byte 25 ;________________________________________ Level height
@@ -173,7 +180,7 @@
 	.align 8192
 
 
-; Data bank 08, total bank size: 7975 bytes
+; Data bank 08, total bank size: 7976 bytes
 	.export level_data_ninecircles
 	level_data_ninecircles:
 	; Header
@@ -186,7 +193,8 @@
 		.byte ($CF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_______________ Spike Set, Block Set
+		.byte _SPIKESC ;_________________________________ Spike set
+		.byte _BLOCKSB ;_________________________________ Block set
 		.byte $0F ;______________________________________ Starting background color
 		.byte $0F ;______________________________________ Starting ground color
 		.byte 27 ;_______________________________________ Level height
@@ -196,7 +204,7 @@
 	.align 8192
 
 
-; Data bank 09, total bank size: 7736 bytes
+; Data bank 09, total bank size: 7737 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -209,7 +217,8 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECOCLOUD ;__________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESC ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
@@ -219,7 +228,7 @@
 	.align 8192
 
 
-; Data bank 0A, total bank size: 7520 bytes
+; Data bank 0A, total bank size: 7521 bytes
 	.export level_data_pgclubstep
 	level_data_pgclubstep:
 	; Header
@@ -232,7 +241,8 @@
 		.byte ($CF) ;___________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;______________ Spike Set, Block Set
+		.byte _SPIKESA ;________________________________ Spike set
+		.byte _BLOCKSB ;________________________________ Block set
 		.byte $0F ;_____________________________________ Starting background color
 		.byte $0F ;_____________________________________ Starting ground color
 		.byte 50 ;______________________________________ Level height
@@ -242,7 +252,7 @@
 	.align 8192
 
 
-; Data bank 0B, total bank size: 8080 bytes
+; Data bank 0B, total bank size: 7055 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -255,19 +265,18 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESC ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $06 ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/cataclysm.lz.bin" ; Size: 7041
 
-	sprite_data_stalemate:	; Size: 1026
-		.incbin "EXPORTS/sprite/stalemate.bin"
 	.align 8192
 
 
-; Data bank 0C, total bank size: 8192 bytes
+; Data bank 0C, total bank size: 6831 bytes
 	.export level_data_fairydust
 	level_data_fairydust:
 	; Header
@@ -280,22 +289,18 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESA ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/fairydust.lz.bin" ; Size: 6817
 
-	.export level_data_trythisgd_2
-	level_data_trythisgd_2:
-	; Level data
-		.incbin "EXPORTS/level/trythisgd.lz.1.bin" ; Size: 1362
-
 	.align 8192
 
 
-; Data bank 0D, total bank size: 8192 bytes
+; Data bank 0D, total bank size: 6797 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -308,19 +313,18 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESC ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $06 ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/aftermath.lz.bin" ; Size: 6783
 
-	sprite_data_xx:	; Size: 1396
-		.incbin "EXPORTS/sprite/xx.bin"
 	.align 8192
 
 
-; Data bank 0E, total bank size: 8029 bytes
+; Data bank 0E, total bank size: 6959 bytes
 	.export level_data_invisiblelight
 	level_data_invisiblelight:
 	; Header
@@ -333,27 +337,49 @@
 		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;___________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Spike Set, Block Set
+		.byte _SPIKESA ;____________________________________ Spike set
+		.byte _BLOCKSB ;____________________________________ Block set
 		.byte $0F ;_________________________________________ Starting background color
 		.byte $0F ;_________________________________________ Starting ground color
 		.byte 57 ;__________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/invisiblelight.lz.bin" ; Size: 6760
 
-	sprite_data_everymadness:	; Size: 1256
-		.incbin "EXPORTS/sprite/everymadness.bin"
+	.export level_data_motion_1
+	level_data_motion_1:
+	; Level data
+		.incbin "EXPORTS/level/motion.lz.1.bin" ; Size: 185
+
 	.align 8192
 
 
-; Data bank 0F, total bank size: 8072 bytes
+; Data bank 0F, total bank size: 7269 bytes
 	sprite_data_eon:	; Size: 6571
 		.incbin "EXPORTS/sprite/eon.bin"
-	sprite_data_aftermath:	; Size: 1501
-		.incbin "EXPORTS/sprite/aftermath.bin"
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte <sprite_data_luckydraw ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_luckydraw) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_luckydraw >> 13) ;_________ Sprite data bank
+		.byte song_every_end_pt1 ;_____________________ Song ID
+		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
+		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
+		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
+		.byte (0 << 7) | _DECOCLOUD ;__________________ Max Fall Speed is 7?, Deco type
+		.byte _SPIKESB ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
+		.byte $0F ;____________________________________ Starting background color
+		.byte $0F ;____________________________________ Starting ground color
+		.byte 27 ;_____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/luckydraw.lz.bin" ; Size: 684
+
 	.align 8192
 
 
-; Data bank 10, total bank size: 6538 bytes
+; Data bank 10, total bank size: 7352 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -366,17 +392,23 @@
 		.byte ($CF) ;______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;__________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_________________ Spike Set, Block Set
+		.byte _SPIKESC ;___________________________________ Spike set
+		.byte _BLOCKSB ;___________________________________ Block set
 		.byte $0F ;________________________________________ Starting background color
 		.byte $0F ;________________________________________ Starting ground color
 		.byte 37 ;_________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/endorphinrush.lz.bin" ; Size: 6525
 
+	.export level_data_eon_3
+	level_data_eon_3:
+	; Level data
+		.incbin "EXPORTS/level/eon.lz.1.bin" ; Size: 813
+
 	.align 8192
 
 
-; Data bank 11, total bank size: 6537 bytes
+; Data bank 11, total bank size: 7564 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -389,17 +421,20 @@
 		.byte ($CF) ;______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;__________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_________________ Spike Set, Block Set
+		.byte _SPIKESA ;___________________________________ Spike set
+		.byte _BLOCKSB ;___________________________________ Block set
 		.byte $0F ;________________________________________ Starting background color
 		.byte $0F ;________________________________________ Starting ground color
 		.byte 27 ;_________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/thermodynamix.lz.bin" ; Size: 6524
 
+	sprite_data_stalemate:	; Size: 1026
+		.incbin "EXPORTS/sprite/stalemate.bin"
 	.align 8192
 
 
-; Data bank 12, total bank size: 7984 bytes
+; Data bank 12, total bank size: 7985 bytes
 	.export level_data_xx
 	level_data_xx:
 	; Header
@@ -412,7 +447,8 @@
 		.byte ($CF) ;___________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;_______ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESB << 4) | _BLOCKSB ;______ Spike Set, Block Set
+		.byte _SPIKESB ;________________________ Spike set
+		.byte _BLOCKSB ;________________________ Block set
 		.byte $0F ;_____________________________ Starting background color
 		.byte $0F ;_____________________________ Starting ground color
 		.byte 57 ;______________________________ Level height
@@ -424,7 +460,7 @@
 	.align 8192
 
 
-; Data bank 13, total bank size: 8169 bytes
+; Data bank 13, total bank size: 7865 bytes
 	.export level_data_eighto
 	level_data_eighto:
 	; Header
@@ -437,19 +473,20 @@
 		.byte ($CF) ;_______________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;___________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSC ;__________ Spike Set, Block Set
+		.byte _SPIKESC ;____________________________ Spike set
+		.byte _BLOCKSC ;____________________________ Block set
 		.byte $0F ;_________________________________ Starting background color
 		.byte $0F ;_________________________________ Starting ground color
 		.byte 47 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/eighto.lz.bin" ; Size: 5730
 
-	sprite_data_deathmoon:	; Size: 2426
-		.incbin "EXPORTS/sprite/deathmoon.bin"
+	sprite_data_problematic:	; Size: 2121
+		.incbin "EXPORTS/sprite/problematic.bin"
 	.align 8192
 
 
-; Data bank 14, total bank size: 7947 bytes
+; Data bank 14, total bank size: 7948 bytes
 	.export level_data_hell
 	level_data_hell:
 	; Header
@@ -462,7 +499,8 @@
 		.byte ($CF) ;_____________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
 		.byte (0 << 7) | _EXTRASPRITES1 ;_________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Spike Set, Block Set
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
 		.byte $0F ;_______________________________ Starting background color
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 36 ;________________________________ Level height
@@ -474,7 +512,7 @@
 	.align 8192
 
 
-; Data bank 15, total bank size: 8130 bytes
+; Data bank 15, total bank size: 8076 bytes
 	.export level_data_deadlyclubstep
 	level_data_deadlyclubstep:
 	; Header
@@ -487,19 +525,20 @@
 		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;___________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Spike Set, Block Set
+		.byte _SPIKESA ;____________________________________ Spike set
+		.byte _BLOCKSB ;____________________________________ Block set
 		.byte $0F ;_________________________________________ Starting background color
 		.byte $0F ;_________________________________________ Starting ground color
 		.byte 40 ;__________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/deadlyclubstep.lz.bin" ; Size: 5276
 
-	sprite_data_pgclubstep:	; Size: 2841
-		.incbin "EXPORTS/sprite/pgclubstep.bin"
+	sprite_data_fairydust:	; Size: 2786
+		.incbin "EXPORTS/sprite/fairydust.bin"
 	.align 8192
 
 
-; Data bank 16, total bank size: 8179 bytes
+; Data bank 16, total bank size: 8050 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -512,24 +551,20 @@
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;______________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
+		.byte _SPIKESA ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
 		.byte $0F ;____________________________________ Starting background color
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/stalemate.lz.bin" ; Size: 5195
 
-	sprite_data_fairydust:	; Size: 2786
-		.incbin "EXPORTS/sprite/fairydust.bin"
-	.export level_data_motion_1
-	level_data_motion_1:
-	; Level data
-		.incbin "EXPORTS/level/motion.lz.1.bin" ; Size: 185
-
+	sprite_data_pgclubstep:	; Size: 2841
+		.incbin "EXPORTS/sprite/pgclubstep.bin"
 	.align 8192
 
 
-; Data bank 17, total bank size: 7972 bytes
+; Data bank 17, total bank size: 7883 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -542,19 +577,20 @@
 		.byte ($CF) ;____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESB << 4) | _BLOCKSB ;_______________ Spike Set, Block Set
+		.byte _SPIKESB ;_________________________________ Spike set
+		.byte _BLOCKSB ;_________________________________ Block set
 		.byte $0F ;______________________________________ Starting background color
 		.byte $0F ;______________________________________ Starting ground color
 		.byte 27 ;_______________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/problematic.lz.bin" ; Size: 4873
 
-	sprite_data_thermodynamix:	; Size: 3086
-		.incbin "EXPORTS/sprite/thermodynamix.bin"
+	sprite_data_eighto:	; Size: 2996
+		.incbin "EXPORTS/sprite/eighto.bin"
 	.align 8192
 
 
-; Data bank 18, total bank size: 7898 bytes
+; Data bank 18, total bank size: 7859 bytes
 	.export level_data_hi
 	level_data_hi:
 	; Header
@@ -567,45 +603,46 @@
 		.byte ($CF) ;___________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_______________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESC << 4) | _BLOCKSB ;______ Spike Set, Block Set
+		.byte _SPIKESC ;________________________ Spike set
+		.byte _BLOCKSB ;________________________ Block set
 		.byte $0F ;_____________________________ Starting background color
 		.byte $0F ;_____________________________ Starting ground color
 		.byte 40 ;______________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/hi.lz.bin" ; Size: 4814
 
-	sprite_data_invisiblelight:	; Size: 3071
-		.incbin "EXPORTS/sprite/invisiblelight.bin"
-	.align 8192
-
-
-; Data bank 19, total bank size: 8180 bytes
-	.export level_data_everyend_6
-	level_data_everyend_6:
-	; Level data
-		.incbin "EXPORTS/level/everyend.lz.2.bin" ; Size: 4772
-
-	.export level_data_deathmoon_0
-	level_data_deathmoon_0:
-	; Level data
-		.incbin "EXPORTS/level/deathmoon.lz.1.bin" ; Size: 3408
-
-	.align 8192
-
-
-; Data bank 1A, total bank size: 7737 bytes
-	sprite_data_sonicwave:	; Size: 4706
-		.incbin "EXPORTS/sprite/sonicwave.bin"
 	sprite_data_trythisgd:	; Size: 3031
 		.incbin "EXPORTS/sprite/trythisgd.bin"
 	.align 8192
 
 
-; Data bank 1B, total bank size: 8042 bytes
+; Data bank 19, total bank size: 7843 bytes
+	.export level_data_everyend_6
+	level_data_everyend_6:
+	; Level data
+		.incbin "EXPORTS/level/everyend.lz.2.bin" ; Size: 4772
+
+	sprite_data_invisiblelight:	; Size: 3071
+		.incbin "EXPORTS/sprite/invisiblelight.bin"
+	.align 8192
+
+
+; Data bank 1A, total bank size: 7792 bytes
+	sprite_data_sonicwave:	; Size: 4706
+		.incbin "EXPORTS/sprite/sonicwave.bin"
+	sprite_data_thermodynamix:	; Size: 3086
+		.incbin "EXPORTS/sprite/thermodynamix.bin"
+	.align 8192
+
+
+; Data bank 1B, total bank size: 7934 bytes
 	sprite_data_endorphinrush:	; Size: 4526
 		.incbin "EXPORTS/sprite/endorphinrush.bin"
-	sprite_data_sonicblaster:	; Size: 3516
-		.incbin "EXPORTS/sprite/sonicblaster.bin"
+	.export level_data_deathmoon_0
+	level_data_deathmoon_0:
+	; Level data
+		.incbin "EXPORTS/level/deathmoon.lz.1.bin" ; Size: 3408
+
 	.align 8192
 
 
@@ -617,19 +654,14 @@
 	.align 8192
 
 
-; Data bank 1D, total bank size: 7572 bytes
+; Data bank 1D, total bank size: 7279 bytes
 	.export level_data_sonicwave_4
 	level_data_sonicwave_4:
 	; Level data
 		.incbin "EXPORTS/level/sonicwave.lz.1.bin" ; Size: 3763
 
-	sprite_data_eighto:	; Size: 2996
-		.incbin "EXPORTS/sprite/eighto.bin"
-	.export level_data_eon_3
-	level_data_eon_3:
-	; Level data
-		.incbin "EXPORTS/level/eon.lz.1.bin" ; Size: 813
-
+	sprite_data_sonicblaster:	; Size: 3516
+		.incbin "EXPORTS/sprite/sonicblaster.bin"
 	.align 8192
 
 
@@ -643,7 +675,7 @@
 	.align 8192
 
 
-; Data bank 1F, total bank size: 8087 bytes
+; Data bank 1F, total bank size: 7696 bytes
 	sprite_data_motion:	; Size: 2641
 		.incbin "EXPORTS/sprite/motion.bin"
 	.export level_data_everymadness
@@ -658,40 +690,33 @@
 		.byte ($CF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte (0 << 7) | _DECO1 ;_________________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESA << 4) | _BLOCKSA ;________________ Spike Set, Block Set
+		.byte _SPIKESA ;__________________________________ Spike set
+		.byte _BLOCKSA ;__________________________________ Block set
 		.byte $12 ;_______________________________________ Starting background color
 		.byte $02 ;_______________________________________ Starting ground color
 		.byte 27 ;________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/everymadness.lz.bin" ; Size: 2615
 
-	sprite_data_problematic:	; Size: 2121
-		.incbin "EXPORTS/sprite/problematic.bin"
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte <sprite_data_luckydraw ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_luckydraw) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_luckydraw >> 13) ;_________ Sprite data bank
-		.byte song_every_end_pt1 ;_____________________ Song ID
-		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
-		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte (0 << 7) | _DECOCLOUD ;__________________ Max Fall Speed is 7?, Deco type
-		.byte (_SPIKESB << 4) | _BLOCKSB ;_____________ Spike Set, Block Set
-		.byte $0F ;____________________________________ Starting background color
-		.byte $0F ;____________________________________ Starting ground color
-		.byte 27 ;_____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/luckydraw.lz.bin" ; Size: 684
-
+	sprite_data_deathmoon:	; Size: 2426
+		.incbin "EXPORTS/sprite/deathmoon.bin"
 	.align 8192
 
 
-; Data bank 20, total bank size: 1701 bytes
+; Data bank 20, total bank size: 7216 bytes
 	sprite_data_everyend:	; Size: 1701
 		.incbin "EXPORTS/sprite/everyend.bin"
+	sprite_data_aftermath:	; Size: 1501
+		.incbin "EXPORTS/sprite/aftermath.bin"
+	sprite_data_xx:	; Size: 1396
+		.incbin "EXPORTS/sprite/xx.bin"
+	.export level_data_trythisgd_2
+	level_data_trythisgd_2:
+	; Level data
+		.incbin "EXPORTS/level/trythisgd.lz.1.bin" ; Size: 1362
+
+	sprite_data_everymadness:	; Size: 1256
+		.incbin "EXPORTS/sprite/everymadness.bin"
 	.align 8192
 
 
