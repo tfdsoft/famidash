@@ -191,7 +191,7 @@
 		.byte (0 << 0) | (1 << 1) ;_______________________________ Force platformer, Disable parallax
 		.byte (1 << 7) | _DECO1 ;_________________________________ Max Fall Speed is 7?, Deco type
 		.byte _SPIKESC ;__________________________________________ Spike set
-		.byte _BLOCKSB ;__________________________________________ Block set
+		.byte _BLOCKSE ;__________________________________________ Block set
 		.byte $00 ;_______________________________________________ Starting background color
 		.byte $10 ;_______________________________________________ Starting ground color
 		.byte 27 ;________________________________________________ Level height
