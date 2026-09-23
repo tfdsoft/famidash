@@ -235,7 +235,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 				f"({metadata.get('maxFallSpeed_is_7', 0)} << 7)",
 				f"_{metadata.get('decoType', 'NONE')}",			
 			]),
-			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
+			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C', 'D'), "_"),
 			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D', 'E', 'F'), "_"),
 			f"${metadata.get('startingBackgroundColor', 0):02X}",
 			f"${metadata.get('startingGroundColor', 0):02X}",

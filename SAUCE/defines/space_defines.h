@@ -13,9 +13,9 @@
 #define TOTAL_LEVEL_COUNT (OFFICIAL_LEVEL_COUNT+COMMUNITY_LEVEL_COUNT)
 
 #if __HUGE_ROM
-#define MAX_ICONS 19 //total icons
+#define MAX_ICONS 18 //total icons
 #else
-#define MAX_ICONS 20 //total icons
+#define MAX_ICONS 19 //total icons
 #endif
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
@@ -39,6 +39,7 @@
 #define SPIKESA 0
 #define SPIKESB 2
 #define SPIKESC 4
+#define SPIKESD 58
 #define BLOCKSA 6
 #define BLOCKSB 8
 #define BLOCKSC 10

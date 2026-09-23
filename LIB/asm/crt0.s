@@ -489,12 +489,13 @@ _GAME_CHR:
 		.incbin "GRAPHICS/Level Sprites/bankblankextra2.chr" ; 1kb
 	.endif
 	
-    .repeat 10, I   ; banks 40 - 61
+    .repeat 9, I   ; banks 40 - 61
         .incbin .sprintf("GRAPHICS/Icons/bankicon%02X.chr", I)  ; 1kb
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
 
+    .incbin "GRAPHICS/Level Tiles/SpikesD.chr" ; (58)
     .incbin "GRAPHICS/Level Tiles/BlocksE.chr" ; (60)
     .incbin "GRAPHICS/Level Tiles/BlocksF.chr" ; (62)
     .incbin "GRAPHICS/Level Tiles/slopesE.chr" ; (64)
