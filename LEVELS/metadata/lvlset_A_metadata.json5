@@ -938,7 +938,7 @@
 			lowerText: "PROCESSING",
 			decoType: "DECO1",
 			spikeSet: "C",
-			blockSet: "B",
+			blockSet: "F",
 			sawSet: "A",
 			difficulty: "HARDER",
 			stars: 10,
