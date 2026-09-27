@@ -2564,10 +2564,13 @@ drawplayer_center_offsets:
 			jne @football_power_hi
 
 			LDA	_chargepower
-			jeq @no_round
+			bne @power
+
+			ldx #0
+			beq @football_fin
 
 			;__	Tilt the icon based on charge power
-
+			@power:
 			cmp #10
 			BCS :+
 				ldx #23
