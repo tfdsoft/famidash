@@ -737,6 +737,13 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Monster Dance Off",
+			upperText: "MONSTER",
+			lowerText: "DANCE OFF",
+			originalArtist: "F777",
+			coveringArtist: "cosmicspace33",
+		},
+		{
 			fmsSongName: "Moon Fries",
 			lowerText: "MOON FRIES",
 			originalArtist: "KingSammelot",
