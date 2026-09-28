@@ -2566,7 +2566,7 @@ drawplayer_center_offsets:
 			LDA	_chargepower
 			bne @power
 
-			ldx #0
+			tax
 			beq @football_fin
 
 			;__	Tilt the icon based on charge power
