@@ -1314,7 +1314,7 @@ _xbgmtextsCoveringArtist2_lo:
 .byte	0
 .byte	0
 .byte	0
-.byte	0
+.byte	<_musicSoundTestStringA9
 .byte	0
 .byte	<_musicSoundTestStringA9
 .byte	0
@@ -1434,7 +1434,7 @@ _xbgmtextsCoveringArtist2_hi:
 .byte	0
 .byte	0
 .byte	0
-.byte	0
+.byte	>_musicSoundTestStringA9
 .byte	0
 .byte	>_musicSoundTestStringA9
 .byte	0

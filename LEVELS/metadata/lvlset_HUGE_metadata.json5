@@ -7010,7 +7010,7 @@
 			sawSet: "A",
 			difficulty: "INSANEDEMON",
 			stars: 10,
-			songID: "song_stalemate",
+			songID: "song_stalemate_full",
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,

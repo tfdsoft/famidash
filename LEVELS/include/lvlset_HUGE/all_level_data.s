@@ -2628,7 +2628,7 @@
 		.byte <sprite_data_stalemate ;_________________ Sprite data ptr, low byte
 		.byte >(sprite_data_stalemate) & $1F | $A0 ;___ Sprite data ptr, high byte
 		.byte <(sprite_data_stalemate >> 13) ;_________ Sprite data bank
-		.byte song_stalemate ;_________________________ Song ID
+		.byte song_stalemate_full ;____________________ Song ID
 		.byte (1 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
 		.byte ($CF) ;__________________________________ Y Scroll Position (low byte)

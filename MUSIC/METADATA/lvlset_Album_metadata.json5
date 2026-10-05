@@ -725,10 +725,10 @@
 			coveringArtist: "ElAngel378",
 		},	
 		{
-			fmsSongName: "stalemate",
+			fmsSongName: "Stalemate Full",
 			lowerText: "STALEMATE",
 			originalArtist: "KayoszX",
-			coveringArtist: "ElAngel378",
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},	
 		{
 			fmsSongName: "Stereo madness 2",

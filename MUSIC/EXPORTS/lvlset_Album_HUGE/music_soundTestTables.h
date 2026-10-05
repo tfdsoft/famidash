@@ -1521,7 +1521,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_slow_down,
 	song_snow,
 	song_sonic_blaster,
-	song_stalemate,
+	song_stalemate_full,
 	song_stereo_madness_2,
 	song_subtle_oddities,
 	song_supernova,

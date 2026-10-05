@@ -990,18 +990,17 @@
 			coveringArtist: "ElAngel378",
 		},	
 		{
-			fmsSongName: "stalemate",
-			upperText: "STALEMATE",
-			lowerText: "STALEMATE CUT",
+			fmsSongName: "Stalemate Full",
+			lowerText: "STALEMATE",
 			originalArtist: "KayoszX",
-			coveringArtist: ["ElAngel378"]
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},	
 		{
-			fmsSongName: "stalemate greif cut",
+			fmsSongName: "Stalemate GREIF Cut",
 			upperText: "STALEMATE",
 			lowerText: "GREIF CUT",
 			originalArtist: "KayoszX",
-			coveringArtist: ["ElAngel378"]
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},
 		/*
 		{
