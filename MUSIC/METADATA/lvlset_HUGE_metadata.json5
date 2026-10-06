@@ -334,6 +334,13 @@
 			coveringArtist: "NerdBoy628"
 		},
 		{
+			fmsSongName: "Blast Processing Alt Cut",
+			upperText: "BLAST PROCESS",
+			lowerText: "ALT CUT",
+			originalArtist: "Waterflame",
+			coveringArtist: ["ElAngel378", "Crafty Jumper"],
+		},
+		{
 			fmsSongName: "C Madness",
 			lowerText: "C MADNESS",
 			originalArtist: ["FBound  Lunar", "Crafty Jumper"],

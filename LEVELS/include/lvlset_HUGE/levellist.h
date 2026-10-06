@@ -75,6 +75,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// tinytunes
 	HARDER,	// kappaclysm
 	HARDER,	// worldlyadventures
+	HARDER,	// thisismylevel
 	HARDER,	// sunshine
 	HARDER,	// revolution
 	HARDER,	// funnygameholiday
@@ -250,6 +251,7 @@ const uint8_t stars_list[] = {
 	6,	// tinytunes
 	6,	// kappaclysm
 	6,	// worldlyadventures
+	6,	// thisismylevel
 	7,	// sunshine
 	7,	// revolution
 	7,	// funnygameholiday

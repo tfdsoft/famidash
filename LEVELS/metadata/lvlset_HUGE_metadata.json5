@@ -3495,7 +3495,7 @@
 		},
 		{
 			level: "worldlyadventures",
-			upperText: "W",
+			upperText: "WOR",
 			lowerText: "ADVENTURES",
 			decoType: "DECO1",
 			spikeSet: "A",
@@ -3547,13 +3547,13 @@
 			blockSet: "D",
 			sawSet: "A",
 			difficulty: "HARDER",
-			//stars: 6,
+			stars: 6,
 			songID: "song_blast_processing_alt_cut",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x07,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -4143,7 +4143,8 @@
             startingBackgroundColor: 0x1c,
             startingGroundColor: 0x0F,
             parallaxDisable: true,
-            forcePlatformer: true
+            forcePlatformer: true,
+			maxFallSpeed_is_7: 0x01,
         },
 		{
 			level: "powertrip",
@@ -5218,6 +5219,7 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [

@@ -78,6 +78,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_tinytunes)
 	.byte .lobyte(level_data_kappaclysm)
 	.byte .lobyte(level_data_worldlyadventures)
+	.byte .lobyte(level_data_thisismylevel)
 	.byte .lobyte(level_data_sunshine)
 	.byte .lobyte(level_data_revolution)
 	.byte .lobyte(level_data_funnygameholiday)
@@ -252,6 +253,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_tinytunes) & $1F | $A0
 	.byte .hibyte(level_data_kappaclysm) & $1F | $A0
 	.byte .hibyte(level_data_worldlyadventures) & $1F | $A0
+	.byte .hibyte(level_data_thisismylevel) & $1F | $A0
 	.byte .hibyte(level_data_sunshine) & $1F | $A0
 	.byte .hibyte(level_data_revolution) & $1F | $A0
 	.byte .hibyte(level_data_funnygameholiday) & $1F | $A0
@@ -426,6 +428,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_tinytunes >> 13)
 	.byte .lobyte(level_data_kappaclysm >> 13)
 	.byte .lobyte(level_data_worldlyadventures >> 13)
+	.byte .lobyte(level_data_thisismylevel >> 13)
 	.byte .lobyte(level_data_sunshine >> 13)
 	.byte .lobyte(level_data_revolution >> 13)
 	.byte .lobyte(level_data_funnygameholiday >> 13)
@@ -708,6 +711,7 @@ _level_lengths_lo:
 	.byte .lobyte($000082)		; tinytunes
 	.byte .lobyte($000078)		; kappaclysm
 	.byte .lobyte($0000BA)		; worldlyadventures
+	.byte .lobyte($000084)		; thisismylevel
 	.byte .lobyte($0000A4)		; sunshine
 	.byte .lobyte($0000B9)		; revolution
 	.byte .lobyte($0000A4)		; funnygameholiday
@@ -884,6 +888,7 @@ _level_lengths_md:
 	.byte .hibyte($000082)		; tinytunes
 	.byte .hibyte($000078)		; kappaclysm
 	.byte .hibyte($0000BA)		; worldlyadventures
+	.byte .hibyte($000084)		; thisismylevel
 	.byte .hibyte($0000A4)		; sunshine
 	.byte .hibyte($0000B9)		; revolution
 	.byte .hibyte($0000A4)		; funnygameholiday
@@ -1060,6 +1065,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000082)		; tinytunes
 	.byte .bankbyte($000078)		; kappaclysm
 	.byte .bankbyte($0000BA)		; worldlyadventures
+	.byte .bankbyte($000084)		; thisismylevel
 	.byte .bankbyte($0000A4)		; sunshine
 	.byte .bankbyte($0000B9)		; revolution
 	.byte .bankbyte($0000A4)		; funnygameholiday
