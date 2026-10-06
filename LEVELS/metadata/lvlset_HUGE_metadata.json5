@@ -3494,6 +3494,50 @@
 			]
 		},
 		{
+			level: "worldlyadventures",
+			upperText: "W",
+			lowerText: "ADVENTURES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 6,
+			songID: "song_worldly_adventures",
+			startingGameMode: 11,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [
+						[145, 25], [154, 22], [166, 22], [326, 18], [511, 16], [516, 16], [639, 16], [654, 19], [793, 18], [870, 16], [940, 16],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[640, 15], [709, 17], [940, 15],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[947, 16],
+					],
+					offsetY: -16
+				},
+				{
+					coordinates: [
+						[1043, 14],
+					],
+					offsetY: +16
+				},
+			]
+		},
+		{
 			level: "sunshine",
 			lowerText: "SUNSHINE",
 			decoType: "DECO1",

@@ -77,6 +77,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_scarletsurge)
 	.byte .lobyte(level_data_tinytunes)
 	.byte .lobyte(level_data_kappaclysm)
+	.byte .lobyte(level_data_worldlyadventures)
 	.byte .lobyte(level_data_sunshine)
 	.byte .lobyte(level_data_revolution)
 	.byte .lobyte(level_data_funnygameholiday)
@@ -251,6 +252,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_scarletsurge) & $1F | $A0
 	.byte .hibyte(level_data_tinytunes) & $1F | $A0
 	.byte .hibyte(level_data_kappaclysm) & $1F | $A0
+	.byte .hibyte(level_data_worldlyadventures) & $1F | $A0
 	.byte .hibyte(level_data_sunshine) & $1F | $A0
 	.byte .hibyte(level_data_revolution) & $1F | $A0
 	.byte .hibyte(level_data_funnygameholiday) & $1F | $A0
@@ -425,6 +427,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_scarletsurge >> 13)
 	.byte .lobyte(level_data_tinytunes >> 13)
 	.byte .lobyte(level_data_kappaclysm >> 13)
+	.byte .lobyte(level_data_worldlyadventures >> 13)
 	.byte .lobyte(level_data_sunshine >> 13)
 	.byte .lobyte(level_data_revolution >> 13)
 	.byte .lobyte(level_data_funnygameholiday >> 13)
@@ -530,103 +533,106 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_somewhereinaforest_0)
 	.byte .lobyte(level_data_ajollyretrochristmas_1)
 	.byte .lobyte(level_data_cryogenic_2)
-	.byte .lobyte(level_data_thesteamworks_3)
-	.byte .lobyte(level_data_astronomicalexpedition_4)
+	.byte .lobyte(level_data_worldlyadventures_3)
+	.byte .lobyte(level_data_thesteamworks_4)
 	.byte .lobyte(level_data_astronomicalexpedition_5)
 	.byte .lobyte(level_data_astronomicalexpedition_6)
-	.byte .lobyte(level_data_carefreevictory_7)
-	.byte .lobyte(level_data_rainbowtylenol_8)
-	.byte .lobyte(level_data_subtleoddities_9)
-	.byte .lobyte(level_data_newdashcity_10)
-	.byte .lobyte(level_data_birdbrain_11)
-	.byte .lobyte(level_data_tetrix_12)
-	.byte .lobyte(level_data_highlife_13)
-	.byte .lobyte(level_data_extraordinaryexcitement_14)
-	.byte .lobyte(level_data_deathmoon_15)
-	.byte .lobyte(level_data_motion_16)
-	.byte .lobyte(level_data_respitev2_17)
-	.byte .lobyte(level_data_skeletalshenanigans_18)
-	.byte .lobyte(level_data_trythisgd_19)
-	.byte .lobyte(level_data_demonpyrophoric_20)
-	.byte .lobyte(level_data_demoncryogenic_21)
-	.byte .lobyte(level_data_futurefunkfix_22)
+	.byte .lobyte(level_data_astronomicalexpedition_7)
+	.byte .lobyte(level_data_carefreevictory_8)
+	.byte .lobyte(level_data_rainbowtylenol_9)
+	.byte .lobyte(level_data_subtleoddities_10)
+	.byte .lobyte(level_data_newdashcity_11)
+	.byte .lobyte(level_data_birdbrain_12)
+	.byte .lobyte(level_data_tetrix_13)
+	.byte .lobyte(level_data_highlife_14)
+	.byte .lobyte(level_data_extraordinaryexcitement_15)
+	.byte .lobyte(level_data_deathmoon_16)
+	.byte .lobyte(level_data_motion_17)
+	.byte .lobyte(level_data_respitev2_18)
+	.byte .lobyte(level_data_skeletalshenanigans_19)
+	.byte .lobyte(level_data_trythisgd_20)
+	.byte .lobyte(level_data_demonpyrophoric_21)
+	.byte .lobyte(level_data_demoncryogenic_22)
 	.byte .lobyte(level_data_futurefunkfix_23)
-	.byte .lobyte(level_data_eon_24)
-	.byte .lobyte(level_data_windylandscape_25)
-	.byte .lobyte(level_data_sonicwave_26)
-	.byte .lobyte(level_data_aftercatabath_27)
+	.byte .lobyte(level_data_futurefunkfix_24)
+	.byte .lobyte(level_data_eon_25)
+	.byte .lobyte(level_data_windylandscape_26)
+	.byte .lobyte(level_data_sonicwave_27)
 	.byte .lobyte(level_data_aftercatabath_28)
-	.byte .lobyte(level_data_everyend_29)
+	.byte .lobyte(level_data_aftercatabath_29)
 	.byte .lobyte(level_data_everyend_30)
-	.byte .lobyte(level_data_heliopolis_31)
+	.byte .lobyte(level_data_everyend_31)
+	.byte .lobyte(level_data_heliopolis_32)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_somewhereinaforest_0) & $1F | $A0
 	.byte .hibyte(level_data_ajollyretrochristmas_1) & $1F | $A0
 	.byte .hibyte(level_data_cryogenic_2) & $1F | $A0
-	.byte .hibyte(level_data_thesteamworks_3) & $1F | $A0
-	.byte .hibyte(level_data_astronomicalexpedition_4) & $1F | $A0
+	.byte .hibyte(level_data_worldlyadventures_3) & $1F | $A0
+	.byte .hibyte(level_data_thesteamworks_4) & $1F | $A0
 	.byte .hibyte(level_data_astronomicalexpedition_5) & $1F | $A0
 	.byte .hibyte(level_data_astronomicalexpedition_6) & $1F | $A0
-	.byte .hibyte(level_data_carefreevictory_7) & $1F | $A0
-	.byte .hibyte(level_data_rainbowtylenol_8) & $1F | $A0
-	.byte .hibyte(level_data_subtleoddities_9) & $1F | $A0
-	.byte .hibyte(level_data_newdashcity_10) & $1F | $A0
-	.byte .hibyte(level_data_birdbrain_11) & $1F | $A0
-	.byte .hibyte(level_data_tetrix_12) & $1F | $A0
-	.byte .hibyte(level_data_highlife_13) & $1F | $A0
-	.byte .hibyte(level_data_extraordinaryexcitement_14) & $1F | $A0
-	.byte .hibyte(level_data_deathmoon_15) & $1F | $A0
-	.byte .hibyte(level_data_motion_16) & $1F | $A0
-	.byte .hibyte(level_data_respitev2_17) & $1F | $A0
-	.byte .hibyte(level_data_skeletalshenanigans_18) & $1F | $A0
-	.byte .hibyte(level_data_trythisgd_19) & $1F | $A0
-	.byte .hibyte(level_data_demonpyrophoric_20) & $1F | $A0
-	.byte .hibyte(level_data_demoncryogenic_21) & $1F | $A0
-	.byte .hibyte(level_data_futurefunkfix_22) & $1F | $A0
+	.byte .hibyte(level_data_astronomicalexpedition_7) & $1F | $A0
+	.byte .hibyte(level_data_carefreevictory_8) & $1F | $A0
+	.byte .hibyte(level_data_rainbowtylenol_9) & $1F | $A0
+	.byte .hibyte(level_data_subtleoddities_10) & $1F | $A0
+	.byte .hibyte(level_data_newdashcity_11) & $1F | $A0
+	.byte .hibyte(level_data_birdbrain_12) & $1F | $A0
+	.byte .hibyte(level_data_tetrix_13) & $1F | $A0
+	.byte .hibyte(level_data_highlife_14) & $1F | $A0
+	.byte .hibyte(level_data_extraordinaryexcitement_15) & $1F | $A0
+	.byte .hibyte(level_data_deathmoon_16) & $1F | $A0
+	.byte .hibyte(level_data_motion_17) & $1F | $A0
+	.byte .hibyte(level_data_respitev2_18) & $1F | $A0
+	.byte .hibyte(level_data_skeletalshenanigans_19) & $1F | $A0
+	.byte .hibyte(level_data_trythisgd_20) & $1F | $A0
+	.byte .hibyte(level_data_demonpyrophoric_21) & $1F | $A0
+	.byte .hibyte(level_data_demoncryogenic_22) & $1F | $A0
 	.byte .hibyte(level_data_futurefunkfix_23) & $1F | $A0
-	.byte .hibyte(level_data_eon_24) & $1F | $A0
-	.byte .hibyte(level_data_windylandscape_25) & $1F | $A0
-	.byte .hibyte(level_data_sonicwave_26) & $1F | $A0
-	.byte .hibyte(level_data_aftercatabath_27) & $1F | $A0
+	.byte .hibyte(level_data_futurefunkfix_24) & $1F | $A0
+	.byte .hibyte(level_data_eon_25) & $1F | $A0
+	.byte .hibyte(level_data_windylandscape_26) & $1F | $A0
+	.byte .hibyte(level_data_sonicwave_27) & $1F | $A0
 	.byte .hibyte(level_data_aftercatabath_28) & $1F | $A0
-	.byte .hibyte(level_data_everyend_29) & $1F | $A0
+	.byte .hibyte(level_data_aftercatabath_29) & $1F | $A0
 	.byte .hibyte(level_data_everyend_30) & $1F | $A0
-	.byte .hibyte(level_data_heliopolis_31) & $1F | $A0
+	.byte .hibyte(level_data_everyend_31) & $1F | $A0
+	.byte .hibyte(level_data_heliopolis_32) & $1F | $A0
 
 _level_chunk_list_bank:
 	.byte .lobyte(level_data_somewhereinaforest_0 >> 13)
 	.byte .lobyte(level_data_ajollyretrochristmas_1 >> 13)
 	.byte .lobyte(level_data_cryogenic_2 >> 13)
-	.byte .lobyte(level_data_thesteamworks_3 >> 13)
-	.byte .lobyte(level_data_astronomicalexpedition_4 >> 13)
+	.byte .lobyte(level_data_worldlyadventures_3 >> 13)
+	.byte .lobyte(level_data_thesteamworks_4 >> 13)
 	.byte .lobyte(level_data_astronomicalexpedition_5 >> 13)
 	.byte .lobyte(level_data_astronomicalexpedition_6 >> 13)
-	.byte .lobyte(level_data_carefreevictory_7 >> 13)
-	.byte .lobyte(level_data_rainbowtylenol_8 >> 13)
-	.byte .lobyte(level_data_subtleoddities_9 >> 13)
-	.byte .lobyte(level_data_newdashcity_10 >> 13)
-	.byte .lobyte(level_data_birdbrain_11 >> 13)
-	.byte .lobyte(level_data_tetrix_12 >> 13)
-	.byte .lobyte(level_data_highlife_13 >> 13)
-	.byte .lobyte(level_data_extraordinaryexcitement_14 >> 13)
-	.byte .lobyte(level_data_deathmoon_15 >> 13)
-	.byte .lobyte(level_data_motion_16 >> 13)
-	.byte .lobyte(level_data_respitev2_17 >> 13)
-	.byte .lobyte(level_data_skeletalshenanigans_18 >> 13)
-	.byte .lobyte(level_data_trythisgd_19 >> 13)
-	.byte .lobyte(level_data_demonpyrophoric_20 >> 13)
-	.byte .lobyte(level_data_demoncryogenic_21 >> 13)
-	.byte .lobyte(level_data_futurefunkfix_22 >> 13)
+	.byte .lobyte(level_data_astronomicalexpedition_7 >> 13)
+	.byte .lobyte(level_data_carefreevictory_8 >> 13)
+	.byte .lobyte(level_data_rainbowtylenol_9 >> 13)
+	.byte .lobyte(level_data_subtleoddities_10 >> 13)
+	.byte .lobyte(level_data_newdashcity_11 >> 13)
+	.byte .lobyte(level_data_birdbrain_12 >> 13)
+	.byte .lobyte(level_data_tetrix_13 >> 13)
+	.byte .lobyte(level_data_highlife_14 >> 13)
+	.byte .lobyte(level_data_extraordinaryexcitement_15 >> 13)
+	.byte .lobyte(level_data_deathmoon_16 >> 13)
+	.byte .lobyte(level_data_motion_17 >> 13)
+	.byte .lobyte(level_data_respitev2_18 >> 13)
+	.byte .lobyte(level_data_skeletalshenanigans_19 >> 13)
+	.byte .lobyte(level_data_trythisgd_20 >> 13)
+	.byte .lobyte(level_data_demonpyrophoric_21 >> 13)
+	.byte .lobyte(level_data_demoncryogenic_22 >> 13)
 	.byte .lobyte(level_data_futurefunkfix_23 >> 13)
-	.byte .lobyte(level_data_eon_24 >> 13)
-	.byte .lobyte(level_data_windylandscape_25 >> 13)
-	.byte .lobyte(level_data_sonicwave_26 >> 13)
-	.byte .lobyte(level_data_aftercatabath_27 >> 13)
+	.byte .lobyte(level_data_futurefunkfix_24 >> 13)
+	.byte .lobyte(level_data_eon_25 >> 13)
+	.byte .lobyte(level_data_windylandscape_26 >> 13)
+	.byte .lobyte(level_data_sonicwave_27 >> 13)
 	.byte .lobyte(level_data_aftercatabath_28 >> 13)
-	.byte .lobyte(level_data_everyend_29 >> 13)
+	.byte .lobyte(level_data_aftercatabath_29 >> 13)
 	.byte .lobyte(level_data_everyend_30 >> 13)
-	.byte .lobyte(level_data_heliopolis_31 >> 13)
+	.byte .lobyte(level_data_everyend_31 >> 13)
+	.byte .lobyte(level_data_heliopolis_32 >> 13)
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -704,6 +710,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
 	.byte .lobyte($000078)		; kappaclysm
+	.byte .lobyte($0000BA)		; worldlyadventures
 	.byte .lobyte($0000A4)		; sunshine
 	.byte .lobyte($0000B9)		; revolution
 	.byte .lobyte($0000A4)		; funnygameholiday
@@ -880,6 +887,7 @@ _level_lengths_md:
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
 	.byte .hibyte($000078)		; kappaclysm
+	.byte .hibyte($0000BA)		; worldlyadventures
 	.byte .hibyte($0000A4)		; sunshine
 	.byte .hibyte($0000B9)		; revolution
 	.byte .hibyte($0000A4)		; funnygameholiday
@@ -1056,6 +1064,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes
 	.byte .bankbyte($000078)		; kappaclysm
+	.byte .bankbyte($0000BA)		; worldlyadventures
 	.byte .bankbyte($0000A4)		; sunshine
 	.byte .bankbyte($0000B9)		; revolution
 	.byte .bankbyte($0000A4)		; funnygameholiday

@@ -1145,6 +1145,13 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Worldly Adventures",
+			upperText: "WORLDLY",
+			lowerText: "ADVENTURES",
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",
 			originalArtist: "TheFatRat",
