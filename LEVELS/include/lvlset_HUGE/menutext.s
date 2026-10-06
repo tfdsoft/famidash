@@ -5,7 +5,7 @@
 
 .export _levelTextsUpper_lo, _levelTextsUpper_hi, _levelTextsLower_lo, _levelTextsLower_hi
 
-.repeat 219, I
+.repeat 218, I
 .import .ident(.sprintf("_levelText%02X", I))
 .endrepeat
 
@@ -136,6 +136,7 @@ _levelTextsUpper_lo:
 .byte	0
 .byte	0
 .byte	<_levelText35
+.byte	0
 .byte	<_levelText36
 .byte	0
 .byte	0
@@ -174,9 +175,7 @@ _levelTextsUpper_lo:
 .byte	0
 .byte	<_levelText3E
 .byte	0
-.byte	0
 .byte	<_levelText3F
-.byte	0
 .byte	0
 .byte	0
 .byte	0
@@ -311,6 +310,7 @@ _levelTextsUpper_hi:
 .byte	0
 .byte	0
 .byte	>_levelText35
+.byte	0
 .byte	>_levelText36
 .byte	0
 .byte	0
@@ -349,9 +349,7 @@ _levelTextsUpper_hi:
 .byte	0
 .byte	>_levelText3E
 .byte	0
-.byte	0
 .byte	>_levelText3F
-.byte	0
 .byte	0
 .byte	0
 .byte	0
@@ -494,18 +492,18 @@ _levelTextsLower_lo:
 .byte	<_levelTextBA
 .byte	<_levelTextBB
 .byte	<_levelTextBC
-.byte	<_levelText7B
 .byte	<_levelTextBD
-.byte	<_levelTextBC
+.byte	<_levelText7B
 .byte	<_levelTextBE
-.byte	<_levelText4D
+.byte	<_levelTextBD
 .byte	<_levelTextBF
-.byte	<_levelText7C
+.byte	<_levelText4D
 .byte	<_levelTextC0
-.byte	<_levelTextBC
-.byte	<_levelTextBC
-.byte	<_levelText22
+.byte	<_levelText7C
 .byte	<_levelTextC1
+.byte	<_levelTextBD
+.byte	<_levelTextBD
+.byte	<_levelText22
 .byte	<_levelTextC2
 .byte	<_levelTextC3
 .byte	<_levelTextC4
@@ -518,12 +516,12 @@ _levelTextsLower_lo:
 .byte	<_levelTextCB
 .byte	<_levelTextCC
 .byte	<_levelTextCD
-.byte	<_levelText26
 .byte	<_levelTextCE
+.byte	<_levelText26
 .byte	<_levelTextCF
 .byte	<_levelTextD0
-.byte	<_levelText4D
 .byte	<_levelTextD1
+.byte	<_levelText4D
 .byte	<_levelTextD2
 .byte	<_levelTextD3
 .byte	<_levelTextD4
@@ -532,7 +530,6 @@ _levelTextsLower_lo:
 .byte	<_levelTextD7
 .byte	<_levelTextD8
 .byte	<_levelTextD9
-.byte	<_levelTextDA
 
 _levelTextsLower_hi:
 .byte	>_levelText40
@@ -669,18 +666,18 @@ _levelTextsLower_hi:
 .byte	>_levelTextBA
 .byte	>_levelTextBB
 .byte	>_levelTextBC
-.byte	>_levelText7B
 .byte	>_levelTextBD
-.byte	>_levelTextBC
+.byte	>_levelText7B
 .byte	>_levelTextBE
-.byte	>_levelText4D
+.byte	>_levelTextBD
 .byte	>_levelTextBF
-.byte	>_levelText7C
+.byte	>_levelText4D
 .byte	>_levelTextC0
-.byte	>_levelTextBC
-.byte	>_levelTextBC
-.byte	>_levelText22
+.byte	>_levelText7C
 .byte	>_levelTextC1
+.byte	>_levelTextBD
+.byte	>_levelTextBD
+.byte	>_levelText22
 .byte	>_levelTextC2
 .byte	>_levelTextC3
 .byte	>_levelTextC4
@@ -693,12 +690,12 @@ _levelTextsLower_hi:
 .byte	>_levelTextCB
 .byte	>_levelTextCC
 .byte	>_levelTextCD
-.byte	>_levelText26
 .byte	>_levelTextCE
+.byte	>_levelText26
 .byte	>_levelTextCF
 .byte	>_levelTextD0
-.byte	>_levelText4D
 .byte	>_levelTextD1
+.byte	>_levelText4D
 .byte	>_levelTextD2
 .byte	>_levelTextD3
 .byte	>_levelTextD4
@@ -707,4 +704,3 @@ _levelTextsLower_hi:
 .byte	>_levelTextD7
 .byte	>_levelTextD8
 .byte	>_levelTextD9
-.byte	>_levelTextDA

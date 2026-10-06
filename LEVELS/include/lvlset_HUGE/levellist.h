@@ -128,6 +128,7 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// respitev2
 	EASYDEMON,	// chaozimpact
 	EASYDEMON,	// everymadness
+	EASYDEMON,	// sunslammer
 	MEDIUMDEMON,	// skeletalshenanigans
 	MEDIUMDEMON,	// trythisgd
 	MEDIUMDEMON,	// goldenhaze
@@ -165,7 +166,6 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// aftermath
 	IMPOSSIBLEDEMON,	// wcropolix
 	IMPOSSIBLEDEMON,	// silentclubstep
-	IMPOSSIBLEDEMON,	// aftercatabath
 	IMPOSSIBLEDEMON,	// shardscapes
 	IMPOSSIBLEDEMON,	// element111rg
 	GRANDPADEMON,	// slaughterhouse
@@ -173,7 +173,6 @@ const uint8_t difficulty_list[] = {
 	GRANDPADEMON,	// nullscapes
 	GRANDPADEMON,	// everyend
 	GRANDPADEMON,	// heliopolis
-	GRANDPADEMON,	// silentcircles
 	GRANDPADEMON,	// luckydraw
 };
 
@@ -304,6 +303,7 @@ const uint8_t stars_list[] = {
 	10,	// respitev2
 	10,	// chaozimpact
 	10,	// everymadness
+	10,	// sunslammer
 	10,	// skeletalshenanigans
 	10,	// trythisgd
 	10,	// goldenhaze
@@ -341,7 +341,6 @@ const uint8_t stars_list[] = {
 	10,	// aftermath
 	10,	// wcropolix
 	10,	// silentclubstep
-	10,	// aftercatabath
 	10,	// shardscapes
 	10,	// element111rg
 	10,	// slaughterhouse
@@ -349,6 +348,5 @@ const uint8_t stars_list[] = {
 	10,	// nullscapes
 	10,	// everyend
 	10,	// heliopolis
-	10,	// silentcircles
 	10,	// luckydraw
 };

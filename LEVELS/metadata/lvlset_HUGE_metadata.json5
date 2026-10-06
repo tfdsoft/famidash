@@ -3537,6 +3537,52 @@
 				},
 			]
 		},
+		{ 
+			level: "thisismylevel",
+			commentForAnyoneWhoReadsThis: "hi guyse whats uppeth",
+			upperText: "THIS IS",
+			lowerText: "MY LEVEL",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARDER",
+			//stars: 6,
+			songID: "song_blast_processing_alt_cut",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					objectID: 0x07, // coin 1
+					offsetX: 8,
+				},
+				{
+					objectID: 0x1A, // coin 2
+					offsetY: -16,
+				},
+				{
+				// screen count isnt 0 based
+				// it starts from 1
+					coordinates: [
+						[174,27], // red orb in spider
+						[223,27], // yellow orb in spider
+					],
+					offsetY: -8
+				},
+				{
+					objectID: 0x16, // 2x speed portals 
+					offsetY: -8,
+				},
+				{
+					objectID: 0x15, // 1x speed portals 
+					offsetY: -8,
+				}
+			]
+		},
 		{
 			level: "sunshine",
 			lowerText: "SUNSHINE",
@@ -5756,7 +5802,57 @@
 					offsetY: -8
 				}
 			]	
-		},	
+		},
+		{
+            level: "sunslammer",
+			commentForAnyoneWhoReadsThis: "jade harley was here! :D",
+			lowerText: "SUNSLAMMER",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "D",
+            sawSet: "A",
+            difficulty: "EASYDEMON",
+            stars: 10,
+            songID: "song_sunslammer",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x0F,
+            startingGroundColor: 0x0F,
+            parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+                {
+                    coordinates: [
+                        [32, 23], [51, 22], [75, 24], [127, 23], [152, 21], [203, 22], [407, 21], [539, 23], [563, 22], [628, 22], [650, 23], [701, 22], [722, 18], [835, 21], [861, 22], [864, 20], [882, 18], [897, 21], [967, 21], [968, 21], [985, 22], [1029, 24], [1050, 22], [1062, 23], [1219, 22], [1273, 21], [1580, 22], [1608, 21], [1634, 21], [1752, 21], [1780, 22], [1958, 15], [1975, 13], [2021, 9], [2244, 10], [2273, 13], [2279, 13],
+                    ],
+                    offsetY: -8
+                },
+				{
+                    coordinates: [
+                        [565, 20], [566, 20], [968, 20], [1274, 20],
+                    ],
+                    offsetY: +8
+                },
+				{
+                    coordinates: [
+                        [93, 26], [119, 22], [125, 17], [175, 18], [201, 18], [219, 24], [265, 23], [267, 21], [295, 24], [298, 22], [301, 23], [304, 21], [307, 22], [310, 21], [381, 20], [425, 14], [605, 19], [690, 17], [796, 19], [847, 20], [967, 21], [1219, 22], [1273, 21], [1293, 21], [1340, 21], [1559, 22], [1782, 21], [1782, 23], [1859, 19], [1901, 13], [1908, 13], [1911, 13], [1981, 13], [1984, 10], [1991, 12], [1998, 10], [2008, 12], [2029, 8], [2068, 10], [2144, 14], [2151, 14],
+                    ],
+                    offsetX: +8
+                },
+				{
+                    coordinates: [
+                        [471, 20], [565, 20], [684, 20], [948, 20], [1406, 21], [2100, 12],
+                    ],
+                    offsetX: +16
+                },
+				{
+                    coordinates: [
+                        [951, 20],
+                    ],
+                    offsetX: -16
+                },
+			],
+        },
 		{
 			level: "skeletalshenanigans",
 			upperText: "SKELETAL",
@@ -7498,6 +7594,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "aftercatabath",
 			lowerText: "AFTERCATABATH",
@@ -7514,6 +7611,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		*/
 		{
 			level: "shardscapes",
 			lowerText: "SHARDSCAPES",
@@ -7767,6 +7865,7 @@
 				},
 			]
 		},
+		/*
 		{
 			level: "silentcircles",
 			lowerText: "SILENT CIRCLES",
@@ -7846,6 +7945,7 @@
 				},
 			]
 		},
+		*/
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",

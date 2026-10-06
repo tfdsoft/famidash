@@ -1025,6 +1025,12 @@
 			coveringArtist: ["dajinkosa", "SeaGlowingPro"]
 		},
 		{
+			fmsSongName: "Sunslammer",
+			lowerText: "SUNSLAMMER",
+			originalArtist: ["Toby Fox", "Seth Peelle"],
+			coveringArtist: "SeaGlowingPro"
+		},
+		{
 			fmsSongName: "Supernova",
 			lowerText: "SUPERNOVA",
 			originalArtist: "XTRULLOR",

@@ -131,6 +131,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_respitev2)
 	.byte .lobyte(level_data_chaozimpact)
 	.byte .lobyte(level_data_everymadness)
+	.byte .lobyte(level_data_sunslammer)
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_trythisgd)
 	.byte .lobyte(level_data_goldenhaze)
@@ -168,7 +169,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_wcropolix)
 	.byte .lobyte(level_data_silentclubstep)
-	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_shardscapes)
 	.byte .lobyte(level_data_element111rg)
 	.byte .lobyte(level_data_slaughterhouse)
@@ -176,7 +176,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_nullscapes)
 	.byte .lobyte(level_data_everyend)
 	.byte .lobyte(level_data_heliopolis)
-	.byte .lobyte(level_data_silentcircles)
 	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
@@ -306,6 +305,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_respitev2) & $1F | $A0
 	.byte .hibyte(level_data_chaozimpact) & $1F | $A0
 	.byte .hibyte(level_data_everymadness) & $1F | $A0
+	.byte .hibyte(level_data_sunslammer) & $1F | $A0
 	.byte .hibyte(level_data_skeletalshenanigans) & $1F | $A0
 	.byte .hibyte(level_data_trythisgd) & $1F | $A0
 	.byte .hibyte(level_data_goldenhaze) & $1F | $A0
@@ -343,7 +343,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_aftermath) & $1F | $A0
 	.byte .hibyte(level_data_wcropolix) & $1F | $A0
 	.byte .hibyte(level_data_silentclubstep) & $1F | $A0
-	.byte .hibyte(level_data_aftercatabath) & $1F | $A0
 	.byte .hibyte(level_data_shardscapes) & $1F | $A0
 	.byte .hibyte(level_data_element111rg) & $1F | $A0
 	.byte .hibyte(level_data_slaughterhouse) & $1F | $A0
@@ -351,7 +350,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_nullscapes) & $1F | $A0
 	.byte .hibyte(level_data_everyend) & $1F | $A0
 	.byte .hibyte(level_data_heliopolis) & $1F | $A0
-	.byte .hibyte(level_data_silentcircles) & $1F | $A0
 	.byte .hibyte(level_data_luckydraw) & $1F | $A0
 
 _level_list_bank:
@@ -481,6 +479,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_respitev2 >> 13)
 	.byte .lobyte(level_data_chaozimpact >> 13)
 	.byte .lobyte(level_data_everymadness >> 13)
+	.byte .lobyte(level_data_sunslammer >> 13)
 	.byte .lobyte(level_data_skeletalshenanigans >> 13)
 	.byte .lobyte(level_data_trythisgd >> 13)
 	.byte .lobyte(level_data_goldenhaze >> 13)
@@ -518,7 +517,6 @@ _level_list_bank:
 	.byte .lobyte(level_data_aftermath >> 13)
 	.byte .lobyte(level_data_wcropolix >> 13)
 	.byte .lobyte(level_data_silentclubstep >> 13)
-	.byte .lobyte(level_data_aftercatabath >> 13)
 	.byte .lobyte(level_data_shardscapes >> 13)
 	.byte .lobyte(level_data_element111rg >> 13)
 	.byte .lobyte(level_data_slaughterhouse >> 13)
@@ -526,7 +524,6 @@ _level_list_bank:
 	.byte .lobyte(level_data_nullscapes >> 13)
 	.byte .lobyte(level_data_everyend >> 13)
 	.byte .lobyte(level_data_heliopolis >> 13)
-	.byte .lobyte(level_data_silentcircles >> 13)
 	.byte .lobyte(level_data_luckydraw >> 13)
 
 _level_chunk_list_lo:
@@ -549,17 +546,17 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_16)
 	.byte .lobyte(level_data_motion_17)
 	.byte .lobyte(level_data_respitev2_18)
-	.byte .lobyte(level_data_skeletalshenanigans_19)
-	.byte .lobyte(level_data_trythisgd_20)
-	.byte .lobyte(level_data_demonpyrophoric_21)
-	.byte .lobyte(level_data_demoncryogenic_22)
-	.byte .lobyte(level_data_futurefunkfix_23)
-	.byte .lobyte(level_data_futurefunkfix_24)
-	.byte .lobyte(level_data_eon_25)
-	.byte .lobyte(level_data_windylandscape_26)
-	.byte .lobyte(level_data_sonicwave_27)
-	.byte .lobyte(level_data_aftercatabath_28)
-	.byte .lobyte(level_data_aftercatabath_29)
+	.byte .lobyte(level_data_sunslammer_19)
+	.byte .lobyte(level_data_sunslammer_20)
+	.byte .lobyte(level_data_skeletalshenanigans_21)
+	.byte .lobyte(level_data_trythisgd_22)
+	.byte .lobyte(level_data_demonpyrophoric_23)
+	.byte .lobyte(level_data_demoncryogenic_24)
+	.byte .lobyte(level_data_futurefunkfix_25)
+	.byte .lobyte(level_data_futurefunkfix_26)
+	.byte .lobyte(level_data_eon_27)
+	.byte .lobyte(level_data_windylandscape_28)
+	.byte .lobyte(level_data_sonicwave_29)
 	.byte .lobyte(level_data_everyend_30)
 	.byte .lobyte(level_data_everyend_31)
 	.byte .lobyte(level_data_heliopolis_32)
@@ -584,17 +581,17 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_deathmoon_16) & $1F | $A0
 	.byte .hibyte(level_data_motion_17) & $1F | $A0
 	.byte .hibyte(level_data_respitev2_18) & $1F | $A0
-	.byte .hibyte(level_data_skeletalshenanigans_19) & $1F | $A0
-	.byte .hibyte(level_data_trythisgd_20) & $1F | $A0
-	.byte .hibyte(level_data_demonpyrophoric_21) & $1F | $A0
-	.byte .hibyte(level_data_demoncryogenic_22) & $1F | $A0
-	.byte .hibyte(level_data_futurefunkfix_23) & $1F | $A0
-	.byte .hibyte(level_data_futurefunkfix_24) & $1F | $A0
-	.byte .hibyte(level_data_eon_25) & $1F | $A0
-	.byte .hibyte(level_data_windylandscape_26) & $1F | $A0
-	.byte .hibyte(level_data_sonicwave_27) & $1F | $A0
-	.byte .hibyte(level_data_aftercatabath_28) & $1F | $A0
-	.byte .hibyte(level_data_aftercatabath_29) & $1F | $A0
+	.byte .hibyte(level_data_sunslammer_19) & $1F | $A0
+	.byte .hibyte(level_data_sunslammer_20) & $1F | $A0
+	.byte .hibyte(level_data_skeletalshenanigans_21) & $1F | $A0
+	.byte .hibyte(level_data_trythisgd_22) & $1F | $A0
+	.byte .hibyte(level_data_demonpyrophoric_23) & $1F | $A0
+	.byte .hibyte(level_data_demoncryogenic_24) & $1F | $A0
+	.byte .hibyte(level_data_futurefunkfix_25) & $1F | $A0
+	.byte .hibyte(level_data_futurefunkfix_26) & $1F | $A0
+	.byte .hibyte(level_data_eon_27) & $1F | $A0
+	.byte .hibyte(level_data_windylandscape_28) & $1F | $A0
+	.byte .hibyte(level_data_sonicwave_29) & $1F | $A0
 	.byte .hibyte(level_data_everyend_30) & $1F | $A0
 	.byte .hibyte(level_data_everyend_31) & $1F | $A0
 	.byte .hibyte(level_data_heliopolis_32) & $1F | $A0
@@ -619,17 +616,17 @@ _level_chunk_list_bank:
 	.byte .lobyte(level_data_deathmoon_16 >> 13)
 	.byte .lobyte(level_data_motion_17 >> 13)
 	.byte .lobyte(level_data_respitev2_18 >> 13)
-	.byte .lobyte(level_data_skeletalshenanigans_19 >> 13)
-	.byte .lobyte(level_data_trythisgd_20 >> 13)
-	.byte .lobyte(level_data_demonpyrophoric_21 >> 13)
-	.byte .lobyte(level_data_demoncryogenic_22 >> 13)
-	.byte .lobyte(level_data_futurefunkfix_23 >> 13)
-	.byte .lobyte(level_data_futurefunkfix_24 >> 13)
-	.byte .lobyte(level_data_eon_25 >> 13)
-	.byte .lobyte(level_data_windylandscape_26 >> 13)
-	.byte .lobyte(level_data_sonicwave_27 >> 13)
-	.byte .lobyte(level_data_aftercatabath_28 >> 13)
-	.byte .lobyte(level_data_aftercatabath_29 >> 13)
+	.byte .lobyte(level_data_sunslammer_19 >> 13)
+	.byte .lobyte(level_data_sunslammer_20 >> 13)
+	.byte .lobyte(level_data_skeletalshenanigans_21 >> 13)
+	.byte .lobyte(level_data_trythisgd_22 >> 13)
+	.byte .lobyte(level_data_demonpyrophoric_23 >> 13)
+	.byte .lobyte(level_data_demoncryogenic_24 >> 13)
+	.byte .lobyte(level_data_futurefunkfix_25 >> 13)
+	.byte .lobyte(level_data_futurefunkfix_26 >> 13)
+	.byte .lobyte(level_data_eon_27 >> 13)
+	.byte .lobyte(level_data_windylandscape_28 >> 13)
+	.byte .lobyte(level_data_sonicwave_29 >> 13)
 	.byte .lobyte(level_data_everyend_30 >> 13)
 	.byte .lobyte(level_data_everyend_31 >> 13)
 	.byte .lobyte(level_data_heliopolis_32 >> 13)
@@ -764,6 +761,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000E4)		; respitev2
 	.byte .lobyte($000080)		; chaozimpact
 	.byte .lobyte($000090)		; everymadness
+	.byte .lobyte($000170)		; sunslammer
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000D4)		; trythisgd
 	.byte .lobyte($00009F)		; goldenhaze
@@ -801,7 +799,6 @@ _level_lengths_lo:
 	.byte .lobyte($00007B)		; aftermath
 	.byte .lobyte($00007E)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
-	.byte .lobyte($0001BE)		; aftercatabath
 	.byte .lobyte($00006E)		; shardscapes
 	.byte .lobyte($0000A2)		; element111rg
 	.byte .lobyte($000097)		; slaughterhouse
@@ -809,7 +806,6 @@ _level_lengths_lo:
 	.byte .lobyte($000075)		; nullscapes
 	.byte .lobyte($0002DC)		; everyend
 	.byte .lobyte($0000BC)		; heliopolis
-	.byte .lobyte($000080)		; silentcircles
 	.byte .lobyte($000087)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -941,6 +937,7 @@ _level_lengths_md:
 	.byte .hibyte($0000E4)		; respitev2
 	.byte .hibyte($000080)		; chaozimpact
 	.byte .hibyte($000090)		; everymadness
+	.byte .hibyte($000170)		; sunslammer
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000D4)		; trythisgd
 	.byte .hibyte($00009F)		; goldenhaze
@@ -978,7 +975,6 @@ _level_lengths_md:
 	.byte .hibyte($00007B)		; aftermath
 	.byte .hibyte($00007E)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
-	.byte .hibyte($0001BE)		; aftercatabath
 	.byte .hibyte($00006E)		; shardscapes
 	.byte .hibyte($0000A2)		; element111rg
 	.byte .hibyte($000097)		; slaughterhouse
@@ -986,7 +982,6 @@ _level_lengths_md:
 	.byte .hibyte($000075)		; nullscapes
 	.byte .hibyte($0002DC)		; everyend
 	.byte .hibyte($0000BC)		; heliopolis
-	.byte .hibyte($000080)		; silentcircles
 	.byte .hibyte($000087)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -1118,6 +1113,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000E4)		; respitev2
 	.byte .bankbyte($000080)		; chaozimpact
 	.byte .bankbyte($000090)		; everymadness
+	.byte .bankbyte($000170)		; sunslammer
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000D4)		; trythisgd
 	.byte .bankbyte($00009F)		; goldenhaze
@@ -1155,7 +1151,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00007B)		; aftermath
 	.byte .bankbyte($00007E)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
-	.byte .bankbyte($0001BE)		; aftercatabath
 	.byte .bankbyte($00006E)		; shardscapes
 	.byte .bankbyte($0000A2)		; element111rg
 	.byte .bankbyte($000097)		; slaughterhouse
@@ -1163,7 +1158,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000075)		; nullscapes
 	.byte .bankbyte($0002DC)		; everyend
 	.byte .bankbyte($0000BC)		; heliopolis
-	.byte .bankbyte($000080)		; silentcircles
 	.byte .bankbyte($000087)		; luckydraw
 
 .endif
