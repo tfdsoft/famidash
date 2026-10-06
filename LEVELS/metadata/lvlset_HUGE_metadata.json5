@@ -4038,6 +4038,24 @@
 			]
 		},
 		{
+            level: "adventurouscaver",
+            upperText: "ADVENTUROUS",
+            lowerText: "CAVER",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "HARDER",
+            stars: 7,
+            songID: "song_every_end_pt1",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x1c,
+            startingGroundColor: 0x0F,
+            parallaxDisable: true,
+            forcePlatformer: true
+        },
+		{
 			level: "powertrip",
 			lowerText: "POWER TRIP",
 			decoType: "DECO1",
@@ -5094,6 +5112,96 @@
 				},
 			]
 		},
+		{ 
+			level: "wavepark",
+			upperText: "WAVE",
+			lowerText: "PARK",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 10,
+			songID: "song_time_machine",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[821, 21],
+						[731, 24],
+						[920, 23],
+						[981, 18]
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[631, 22],
+						[179, 14],
+						[112, 14],
+						[104, 18],
+						[88, 23],
+						[81, 23],
+						[77, 21],
+						[63, 23],
+						[899, 18],
+						[914, 22],
+						[968, 22],
+						[974, 20],
+						[637, 24]
+					],
+					offsetY: +8 
+				},
+				{
+					coordinates: [
+						[515, 7],
+						[474, 13],
+						[45, 20],
+						[46, 20],
+						[752, 20],
+						[752, 21],
+						[954, 23],
+						[960, 23],
+						[14, 22],
+						[15, 22],
+						[16, 22]
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[483, 15],
+						[179, 16],
+						[122, 19],
+						[51, 24],
+						[635, 24],
+						[636, 24],
+						[924, 23],
+						[923, 22],
+						[552, 8],
+						[965, 23]
+					],
+					offsetY: -8 
+				},
+				{
+					coordinates: [
+						[890, 20],
+						[903, 21],
+						[907, 20],
+						[511, 4],
+						[515, 4],
+						[519, 4],
+						[523, 4]
+					],
+					offsetY: +8, 
+					offsetX: +8
+				}
+			]
+		},
 		{
 			level: "thelightningroad",
 			upperText: "THE LIGHTNING",
@@ -5138,7 +5246,8 @@
 		},
 		{
 			level: "nightmare",
-			lowerText: "THE NIGHTMARE",
+			upperText: "THE",
+			lowerText: "NIGHTMARE",
 			decoType: "DECOCLOUD",
 			spikeSet: "B",
 			blockSet: "C",
@@ -5372,6 +5481,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "dearnostalgists",
 			lowerText: " DEAR NOSTALGISTS",
@@ -5380,7 +5490,7 @@
 			blockSet: "A",
 			sawSet: "A",
 			difficulty: "EASYDEMON",
-			//stars: 10,
+			stars: 10,
 			songID: "song_okiba_crackdown",
 			startingGameMode: 0,
 			startingSpeed: 2,
@@ -5388,6 +5498,7 @@
 			startingGroundColor: 0x1C,
 			parallaxDisable: true
 		},
+		*/
 		{
 			level: "clutterfunk2",
 			lowerText: "CLUTTERFUNK 2",
@@ -6532,7 +6643,8 @@
 		},
 		{
 			level: "demoncryogenic",
-			lowerText: "DEMON CRYOGENIC",
+			upperText: "DEMON",
+			lowerText: "CRYOGENIC",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",

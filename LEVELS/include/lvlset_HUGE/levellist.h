@@ -86,6 +86,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// astronomicalexpedition
 	HARDER,	// ninecircleseasy
 	HARDER,	// carefreevictory
+	HARDER,	// adventurouscaver
 	HARDER,	// powertrip
 	INSANE,	// lostinthewoods
 	INSANE,	// rainingtacos
@@ -108,6 +109,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// tetrix
 	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
+	INSANE,	// wavepark
 	EASYDEMON,	// thelightningroad
 	EASYDEMON,	// nightmare
 	EASYDEMON,	// demonpark
@@ -259,6 +261,7 @@ const uint8_t stars_list[] = {
 	7,	// astronomicalexpedition
 	7,	// ninecircleseasy
 	7,	// carefreevictory
+	7,	// adventurouscaver
 	8,	// powertrip
 	8,	// lostinthewoods
 	8,	// rainingtacos
@@ -281,6 +284,7 @@ const uint8_t stars_list[] = {
 	9,	// tetrix
 	9,	// highlife
 	9,	// extraordinaryexcitement
+	10,	// wavepark
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark

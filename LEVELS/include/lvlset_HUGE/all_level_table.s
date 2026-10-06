@@ -89,6 +89,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
 	.byte .lobyte(level_data_carefreevictory)
+	.byte .lobyte(level_data_adventurouscaver)
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_rainingtacos)
@@ -111,6 +112,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_tetrix)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_extraordinaryexcitement)
+	.byte .lobyte(level_data_wavepark)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_demonpark)
@@ -261,6 +263,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_astronomicalexpedition) & $1F | $A0
 	.byte .hibyte(level_data_ninecircleseasy) & $1F | $A0
 	.byte .hibyte(level_data_carefreevictory) & $1F | $A0
+	.byte .hibyte(level_data_adventurouscaver) & $1F | $A0
 	.byte .hibyte(level_data_powertrip) & $1F | $A0
 	.byte .hibyte(level_data_lostinthewoods) & $1F | $A0
 	.byte .hibyte(level_data_rainingtacos) & $1F | $A0
@@ -283,6 +286,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_tetrix) & $1F | $A0
 	.byte .hibyte(level_data_highlife) & $1F | $A0
 	.byte .hibyte(level_data_extraordinaryexcitement) & $1F | $A0
+	.byte .hibyte(level_data_wavepark) & $1F | $A0
 	.byte .hibyte(level_data_thelightningroad) & $1F | $A0
 	.byte .hibyte(level_data_nightmare) & $1F | $A0
 	.byte .hibyte(level_data_demonpark) & $1F | $A0
@@ -433,6 +437,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_astronomicalexpedition >> 13)
 	.byte .lobyte(level_data_ninecircleseasy >> 13)
 	.byte .lobyte(level_data_carefreevictory >> 13)
+	.byte .lobyte(level_data_adventurouscaver >> 13)
 	.byte .lobyte(level_data_powertrip >> 13)
 	.byte .lobyte(level_data_lostinthewoods >> 13)
 	.byte .lobyte(level_data_rainingtacos >> 13)
@@ -455,6 +460,7 @@ _level_list_bank:
 	.byte .lobyte(level_data_tetrix >> 13)
 	.byte .lobyte(level_data_highlife >> 13)
 	.byte .lobyte(level_data_extraordinaryexcitement >> 13)
+	.byte .lobyte(level_data_wavepark >> 13)
 	.byte .lobyte(level_data_thelightningroad >> 13)
 	.byte .lobyte(level_data_nightmare >> 13)
 	.byte .lobyte(level_data_demonpark >> 13)
@@ -710,6 +716,7 @@ _level_lengths_lo:
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
 	.byte .lobyte($0000D5)		; carefreevictory
+	.byte .lobyte($000044)		; adventurouscaver
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000065)		; lostinthewoods
 	.byte .lobyte($0000BB)		; rainingtacos
@@ -732,6 +739,7 @@ _level_lengths_lo:
 	.byte .lobyte($000137)		; tetrix
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
+	.byte .lobyte($0000A0)		; wavepark
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A0)		; demonpark
@@ -884,6 +892,7 @@ _level_lengths_md:
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
 	.byte .hibyte($0000D5)		; carefreevictory
+	.byte .hibyte($000044)		; adventurouscaver
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000065)		; lostinthewoods
 	.byte .hibyte($0000BB)		; rainingtacos
@@ -906,6 +915,7 @@ _level_lengths_md:
 	.byte .hibyte($000137)		; tetrix
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
+	.byte .hibyte($0000A0)		; wavepark
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A0)		; demonpark
@@ -1058,6 +1068,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy
 	.byte .bankbyte($0000D5)		; carefreevictory
+	.byte .bankbyte($000044)		; adventurouscaver
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000065)		; lostinthewoods
 	.byte .bankbyte($0000BB)		; rainingtacos
@@ -1080,6 +1091,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000137)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
+	.byte .bankbyte($0000A0)		; wavepark
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A0)		; demonpark
