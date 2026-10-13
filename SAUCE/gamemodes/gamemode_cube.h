@@ -55,6 +55,7 @@ void cube_movement(){
 
 					slope_jump_check();
 
+					if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); orbhitonthisframe[currplayer] = 1; }
 				}
 			
 			}
