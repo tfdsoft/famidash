@@ -747,7 +747,7 @@ _level_lengths_lo:
 	.byte .lobyte($000137)		; tetrix
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
-	.byte .lobyte($0000A0)		; wavepark
+	.byte .lobyte($0000A2)		; wavepark
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A0)		; demonpark
@@ -924,7 +924,7 @@ _level_lengths_md:
 	.byte .hibyte($000137)		; tetrix
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
-	.byte .hibyte($0000A0)		; wavepark
+	.byte .hibyte($0000A2)		; wavepark
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A0)		; demonpark
@@ -1101,7 +1101,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000137)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
-	.byte .bankbyte($0000A0)		; wavepark
+	.byte .bankbyte($0000A2)		; wavepark
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A0)		; demonpark

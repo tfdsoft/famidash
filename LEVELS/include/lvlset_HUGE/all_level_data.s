@@ -915,7 +915,7 @@
 	.align 8192
 
 
-; Data bank 2C, total bank size: 7704 bytes
+; Data bank 2C, total bank size: 7728 bytes
 	.export level_data_wavepark
 	level_data_wavepark:
 	; Header
@@ -934,7 +934,7 @@
 		.byte $02 ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/level/wavepark.lz.bin" ; Size: 7690
+		.incbin "EXPORTS/level/wavepark.lz.bin" ; Size: 7714
 
 	.align 8192
 
@@ -2218,7 +2218,7 @@
 	.align 8192
 
 
-; Data bank 5A, total bank size: 8120 bytes
+; Data bank 5A, total bank size: 8125 bytes
 	.export level_data_eighto
 	level_data_eighto:
 	; Header
@@ -2239,7 +2239,7 @@
 	; Level data
 		.incbin "EXPORTS/level/eighto.lz.bin" ; Size: 5730
 
-	sprite_data_wavepark:	; Size: 2376
+	sprite_data_wavepark:	; Size: 2381
 		.incbin "EXPORTS/sprite/wavepark.bin"
 	.align 8192
 
