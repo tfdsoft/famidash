@@ -1,1 +1,1 @@
-del /Q TMP\*.*
+rmdir /s /q tmp

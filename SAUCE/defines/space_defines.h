@@ -34,24 +34,24 @@
 #define LEVELCOMPLETEBANK 106
 #define PRACTICECOMPLETEBANK 110
 
-#define DEMONFACE_HUGE_BANK 86
+#define DEMONFACE_HUGE_BANK 76
 
 #define SPIKESA 0
 #define SPIKESB 2
 #define SPIKESC 4
-#define SPIKESD 58
+#define SPIKESD 78
 #define BLOCKSA 6
 #define BLOCKSB 8
 #define BLOCKSC 10
 #define BLOCKSD 12
-#define BLOCKSE 60
-#define BLOCKSF 62
+#define BLOCKSE 80
+#define BLOCKSF 82
 #define SAWBLADESA 14
 #define SLOPESA 16
 #define SLOPESB 88
 #define SLOPESD 90
-#define SLOPESE 64
-#define SLOPESF 66
+#define SLOPESE 84
+#define SLOPESF 86
 
 #define DECO1 28
 #define DECOCLOUD 32
