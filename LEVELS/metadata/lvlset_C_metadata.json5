@@ -598,7 +598,7 @@
 			sawSet: "A",
 			difficulty: "HARD",
 			stars: 5,
-			songID: "song_sunslammer",
+			songID: "song_space_battle",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x04,

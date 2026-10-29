@@ -42,8 +42,8 @@ const char musicSoundTestString24[12] = "NINE$CIRCLES";
 const char musicSoundTestString25[ 9] = "EVOLUTION";
 const char musicSoundTestString26[10] = "SOLAR$WIND";
 const char musicSoundTestString27[11] = "IN$A$FOREST";
-const char musicSoundTestString28[ 9] = "GREIF$CUT";
-const char musicSoundTestString29[10] = "SUNSLAMMER";
+const char musicSoundTestString28[12] = "SPACE$BATTLE";
+const char musicSoundTestString29[ 9] = "GREIF$CUT";
 const char musicSoundTestString2A[ 7] = "OF$TIME";
 const char musicSoundTestString2B[ 5] = "UNITY";
 const char musicSoundTestString2C[13] = "FUTUREFUNKPT1";
@@ -69,8 +69,8 @@ const char musicSoundTestString3F[12] = "CORNANDBEANS";
 const char musicSoundTestString40[ 6] = "RUKKUS";
 const char musicSoundTestString41[ 9] = "DIMRAIN47";
 const char musicSoundTestString42[12] = "CAM$TOBY$TEM";
-const char musicSoundTestString43[ 7] = "KAYOSZX";
-const char musicSoundTestString44[11] = "SETH$PEELLE";
+const char musicSoundTestString43[ 4] = "F777";
+const char musicSoundTestString44[ 7] = "KAYOSZX";
 const char musicSoundTestString45[ 7] = "DJ$NATE";
 const char musicSoundTestString46[ 9] = "THEFATRAT";
 const char musicSoundTestString47[ 8] = "LEMKUUJA";
@@ -110,8 +110,8 @@ const uint8_t xbgmtextsUpperSize[] = {
 	sizeof(musicSoundTestString09),
 	0,
 	sizeof(musicSoundTestString0A),
-	sizeof(musicSoundTestString0B),
 	0,
+	sizeof(musicSoundTestString0B),
 	sizeof(musicSoundTestString0C),
 	0,
 	sizeof(musicSoundTestString0D),
@@ -238,8 +238,8 @@ const uint8_t xbgmlookuptable[] = {
 	song_operation_evolution,
 	song_solar_wind,
 	song_somewhere_in_a_forest,
+	song_space_battle,
 	song_stalemate_greif_cut,
-	song_sunslammer,
 	song_the_beginning_of_time,
 	song_unity,
 	song_future_funk_pt1,

@@ -36,8 +36,8 @@ _xbgmtextsUpper_lo:
 .byte	<_musicSoundTestString09
 .byte	0
 .byte	<_musicSoundTestString0A
-.byte	<_musicSoundTestString0B
 .byte	0
+.byte	<_musicSoundTestString0B
 .byte	<_musicSoundTestString0C
 .byte	0
 .byte	<_musicSoundTestString0D
@@ -70,8 +70,8 @@ _xbgmtextsUpper_hi:
 .byte	>_musicSoundTestString09
 .byte	0
 .byte	>_musicSoundTestString0A
-.byte	>_musicSoundTestString0B
 .byte	0
+.byte	>_musicSoundTestString0B
 .byte	>_musicSoundTestString0C
 .byte	0
 .byte	>_musicSoundTestString0D

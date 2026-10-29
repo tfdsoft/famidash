@@ -171,15 +171,15 @@
 			originalArtistText: "CAM TOBY TEM",
 		},
 		{
+			fmsSongName: "Space Battle",
+			lowerText: "SPACE BATTLE",
+			originalArtistText: "F777"
+		},
+		{
 			fmsSongName: "Stalemate GREIF Cut",
 			upperText: "STALEMATE",
 			lowerText: "GREIF CUT",
 			originalArtistText: "KAYOSZX",
-		},
-		{
-			fmsSongName: "Sunslammer",
-			lowerText: "SUNSLAMMER",
-			originalArtistText: "SETH PEELLE"
 		},
 		{
 			fmsSongName: "The Beginning of Time",

@@ -995,7 +995,13 @@
 			lowerText: "SONIC BLASTER",
 			originalArtist: "F777",
 			coveringArtist: "ElAngel378",
-		},	
+		},
+		{
+			fmsSongName: "Space Battle",
+			lowerText: "SPACE BATTLE",
+			originalArtist: "F777",
+			coveringArtist: ["Kabez", "SeaGlowingPro"],
+		},
 		{
 			fmsSongName: "Stalemate Full",
 			lowerText: "STALEMATE",

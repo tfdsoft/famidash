@@ -3744,7 +3744,7 @@
 		.byte <sprite_data_outerspace ;_________________ Sprite data ptr, low byte
 		.byte >(sprite_data_outerspace) & $1F | $A0 ;___ Sprite data ptr, high byte
 		.byte <(sprite_data_outerspace >> 13) ;_________ Sprite data bank
-		.byte song_menu_theme ;_________________________ Song ID
+		.byte song_space_battle ;_______________________ Song ID
 		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
 		.byte ($CF) ;___________________________________ Y Scroll Position (low byte)
