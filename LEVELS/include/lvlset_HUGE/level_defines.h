@@ -115,10 +115,10 @@
 #define level_tetrix 106
 #define level_highlife 107
 #define level_extraordinaryexcitement 108
-#define level_wavepark 109
-#define level_thelightningroad 110
-#define level_nightmare 111
-#define level_demonpark 112
+#define level_thelightningroad 109
+#define level_nightmare 110
+#define level_demonpark 111
+#define level_wavepark 112
 #define level_supercycles 113
 #define level_xx 114
 #define level_problematic 115

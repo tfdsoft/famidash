@@ -111,10 +111,10 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// tetrix
 	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
-	INSANE,	// wavepark
 	EASYDEMON,	// thelightningroad
 	EASYDEMON,	// nightmare
 	EASYDEMON,	// demonpark
+	EASYDEMON,	// wavepark
 	EASYDEMON,	// supercycles
 	EASYDEMON,	// xx
 	EASYDEMON,	// problematic
@@ -287,10 +287,10 @@ const uint8_t stars_list[] = {
 	9,	// tetrix
 	9,	// highlife
 	9,	// extraordinaryexcitement
-	10,	// wavepark
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark
+	10,	// wavepark
 	10,	// supercycles
 	10,	// xx
 	10,	// problematic
