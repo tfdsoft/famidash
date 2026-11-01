@@ -114,10 +114,10 @@ _level_list_lo:
 	.byte .lobyte(level_data_tetrix)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_extraordinaryexcitement)
-	.byte .lobyte(level_data_wavepark)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_demonpark)
+	.byte .lobyte(level_data_wavepark)
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_xx)
 	.byte .lobyte(level_data_problematic)
@@ -289,10 +289,10 @@ _level_list_hi:
 	.byte .hibyte(level_data_tetrix) & $1F | $A0
 	.byte .hibyte(level_data_highlife) & $1F | $A0
 	.byte .hibyte(level_data_extraordinaryexcitement) & $1F | $A0
-	.byte .hibyte(level_data_wavepark) & $1F | $A0
 	.byte .hibyte(level_data_thelightningroad) & $1F | $A0
 	.byte .hibyte(level_data_nightmare) & $1F | $A0
 	.byte .hibyte(level_data_demonpark) & $1F | $A0
+	.byte .hibyte(level_data_wavepark) & $1F | $A0
 	.byte .hibyte(level_data_supercycles) & $1F | $A0
 	.byte .hibyte(level_data_xx) & $1F | $A0
 	.byte .hibyte(level_data_problematic) & $1F | $A0
@@ -464,10 +464,10 @@ _level_list_bank:
 	.byte .lobyte(level_data_tetrix >> 13)
 	.byte .lobyte(level_data_highlife >> 13)
 	.byte .lobyte(level_data_extraordinaryexcitement >> 13)
-	.byte .lobyte(level_data_wavepark >> 13)
 	.byte .lobyte(level_data_thelightningroad >> 13)
 	.byte .lobyte(level_data_nightmare >> 13)
 	.byte .lobyte(level_data_demonpark >> 13)
+	.byte .lobyte(level_data_wavepark >> 13)
 	.byte .lobyte(level_data_supercycles >> 13)
 	.byte .lobyte(level_data_xx >> 13)
 	.byte .lobyte(level_data_problematic >> 13)
@@ -747,10 +747,10 @@ _level_lengths_lo:
 	.byte .lobyte($000137)		; tetrix
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
-	.byte .lobyte($0000A2)		; wavepark
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A0)		; demonpark
+	.byte .lobyte($0000A2)		; wavepark
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($000090)		; xx
 	.byte .lobyte($000068)		; problematic
@@ -924,10 +924,10 @@ _level_lengths_md:
 	.byte .hibyte($000137)		; tetrix
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
-	.byte .hibyte($0000A2)		; wavepark
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A0)		; demonpark
+	.byte .hibyte($0000A2)		; wavepark
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($000090)		; xx
 	.byte .hibyte($000068)		; problematic
@@ -1101,10 +1101,10 @@ _level_lengths_hi:
 	.byte .bankbyte($000137)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
-	.byte .bankbyte($0000A2)		; wavepark
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A0)		; demonpark
+	.byte .bankbyte($0000A2)		; wavepark
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($000068)		; problematic
