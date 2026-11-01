@@ -132,15 +132,15 @@
 	.align 8192
 
 
-; Data bank 08, total bank size: 8102 bytes
+; Data bank 08, total bank size: 8057 bytes
 	sprite_data_astronomicalexpedition:	; Size: 7531
 		.incbin "EXPORTS/sprite/astronomicalexpedition.bin"
-	sprite_data_nicktoons:	; Size: 571
-		.incbin "EXPORTS/sprite/nicktoons.bin"
+	sprite_data_madness:	; Size: 526
+		.incbin "EXPORTS/sprite/madness.bin"
 	.align 8192
 
 
-; Data bank 09, total bank size: 7985 bytes
+; Data bank 09, total bank size: 8075 bytes
 	.export level_data_chaozimpact
 	level_data_chaozimpact:
 	; Header
@@ -161,12 +161,12 @@
 	; Level data
 		.incbin "EXPORTS/level/chaozimpact.lz.bin" ; Size: 7245
 
-	sprite_data_trolledfix:	; Size: 726
-		.incbin "EXPORTS/sprite/trolledfix.bin"
+	sprite_data_short_kings:	; Size: 816
+		.incbin "EXPORTS/sprite/short_kings.bin"
 	.align 8192
 
 
-; Data bank 0A, total bank size: 8181 bytes
+; Data bank 0A, total bank size: 7952 bytes
 	.export level_data_rotd
 	level_data_rotd:
 	; Header
@@ -187,32 +187,12 @@
 	; Level data
 		.incbin "EXPORTS/level/rotd.lz.bin" ; Size: 7177
 
-	sprite_data_doubletripletrial:	; Size: 676
-		.incbin "EXPORTS/sprite/doubletripletrial.bin"
-	.export level_data_thetripletrial
-	level_data_thetripletrial:
-	; Header
-		.byte <sprite_data_thetripletrial ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_thetripletrial) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_thetripletrial >> 13) ;_________ Sprite data bank
-		.byte song_dastardly ;______________________________ Song ID
-		.byte (0 << 4) | 0 ;________________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
-		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (0 << 1) ;_________________________ Force platformer, Disable parallax
-		.byte (1 << 7) | _DECO1 ;___________________________ Max Fall Speed is 7?, Deco type
-		.byte _SPIKESA ;____________________________________ Spike set
-		.byte _BLOCKSB ;____________________________________ Block set
-		.byte $00 ;_________________________________________ Starting background color
-		.byte $00 ;_________________________________________ Starting ground color
-		.byte 27 ;__________________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/thetripletrial.lz.bin" ; Size: 300
-
+	sprite_data_movie:	; Size: 761
+		.incbin "EXPORTS/sprite/movie.bin"
 	.align 8192
 
 
-; Data bank 0B, total bank size: 7091 bytes
+; Data bank 0B, total bank size: 8184 bytes
 	.export level_data_ninecircleseasy
 	level_data_ninecircleseasy:
 	; Header
@@ -232,6 +212,13 @@
 		.byte 27 ;___________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/level/ninecircleseasy.lz.bin" ; Size: 7077
+
+	sprite_data_trolledfix:	; Size: 726
+		.incbin "EXPORTS/sprite/trolledfix.bin"
+	.export level_data_astronomicalexpedition_3
+	level_data_astronomicalexpedition_3:
+	; Level data
+		.incbin "EXPORTS/level/astronomicalexpedition.lz.3.bin" ; Size: 367
 
 	.align 8192
 
@@ -446,7 +433,7 @@
 	.align 8192
 
 
-; Data bank 12, total bank size: 8056 bytes
+; Data bank 12, total bank size: 8161 bytes
 	.export level_data_dorabaebasic7
 	level_data_dorabaebasic7:
 	; Header
@@ -467,10 +454,10 @@
 	; Level data
 		.incbin "EXPORTS/level/dorabaebasic7.lz.bin" ; Size: 5690
 
-	sprite_data_overawed:	; Size: 1826
-		.incbin "EXPORTS/sprite/overawed.bin"
-	sprite_data_madness:	; Size: 526
-		.incbin "EXPORTS/sprite/madness.bin"
+	sprite_data_storymadness:	; Size: 1781
+		.incbin "EXPORTS/sprite/storymadness.bin"
+	sprite_data_doubletripletrial:	; Size: 676
+		.incbin "EXPORTS/sprite/doubletripletrial.bin"
 	.align 8192
 
 
@@ -526,17 +513,17 @@
 	.align 8192
 
 
-; Data bank 15, total bank size: 8103 bytes
+; Data bank 15, total bank size: 8153 bytes
 	sprite_data_rotd:	; Size: 5506
 		.incbin "EXPORTS/sprite/rotd.bin"
-	sprite_data_storymadness:	; Size: 1781
-		.incbin "EXPORTS/sprite/storymadness.bin"
-	sprite_data_short_kings:	; Size: 816
-		.incbin "EXPORTS/sprite/short_kings.bin"
+	sprite_data_unity:	; Size: 1411
+		.incbin "EXPORTS/sprite/unity.bin"
+	sprite_data_dastardly:	; Size: 1236
+		.incbin "EXPORTS/sprite/dastardly.bin"
 	.align 8192
 
 
-; Data bank 16, total bank size: 8141 bytes
+; Data bank 16, total bank size: 8179 bytes
 	.export level_data_dorabaebasic8
 	level_data_dorabaebasic8:
 	; Header
@@ -557,10 +544,31 @@
 	; Level data
 		.incbin "EXPORTS/level/dorabaebasic8.lz.bin" ; Size: 5480
 
-	sprite_data_unity:	; Size: 1411
-		.incbin "EXPORTS/sprite/unity.bin"
-	sprite_data_dastardly:	; Size: 1236
-		.incbin "EXPORTS/sprite/dastardly.bin"
+	.export level_data_somewhereinaforest_0
+	level_data_somewhereinaforest_0:
+	; Level data
+		.incbin "EXPORTS/level/somewhereinaforest.lz.1.bin" ; Size: 1356
+
+	.export level_data_trolledfix
+	level_data_trolledfix:
+	; Header
+		.byte <sprite_data_trolledfix ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_trolledfix) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_trolledfix >> 13) ;_________ Sprite data bank
+		.byte song_youve_been_trolled ;_________________ Song ID
+		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
+		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
+		.byte ($CF) ;___________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;_____________________ Force platformer, Disable parallax
+		.byte (0 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
+		.byte _SPIKESC ;________________________________ Spike set
+		.byte _BLOCKSC ;________________________________ Block set
+		.byte $0F ;_____________________________________ Starting background color
+		.byte $0F ;_____________________________________ Starting ground color
+		.byte 27 ;______________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/trolledfix.lz.bin" ; Size: 1315
+
 	.align 8192
 
 
@@ -744,7 +752,7 @@
 	.align 8192
 
 
-; Data bank 1D, total bank size: 8172 bytes
+; Data bank 1D, total bank size: 7998 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -765,6 +773,12 @@
 	; Level data
 		.incbin "EXPORTS/level/greif.lz.bin" ; Size: 4233
 
+	sprite_data_dorabaebasic7:	; Size: 3751
+		.incbin "EXPORTS/sprite/dorabaebasic7.bin"
+	.align 8192
+
+
+; Data bank 1E, total bank size: 8007 bytes
 	.export level_data_outerspace
 	level_data_outerspace:
 	; Header
@@ -783,26 +797,20 @@
 		.byte $04 ;_____________________________________ Starting ground color
 		.byte 27 ;______________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/level/outerspace.lz.bin" ; Size: 3911
+		.incbin "EXPORTS/level/outerspace.lz.bin" ; Size: 4012
 
-	.align 8192
-
-
-; Data bank 1E, total bank size: 7937 bytes
 	sprite_data_ninecircleseasy:	; Size: 3981
 		.incbin "EXPORTS/sprite/ninecircleseasy.bin"
-	sprite_data_reincarnation:	; Size: 3956
-		.incbin "EXPORTS/sprite/reincarnation.bin"
 	.align 8192
 
 
-; Data bank 1F, total bank size: 8158 bytes
-	sprite_data_dorabaebasic7:	; Size: 3751
-		.incbin "EXPORTS/sprite/dorabaebasic7.bin"
+; Data bank 1F, total bank size: 8173 bytes
+	sprite_data_reincarnation:	; Size: 3956
+		.incbin "EXPORTS/sprite/reincarnation.bin"
 	sprite_data_cosmicdolphin:	; Size: 3646
 		.incbin "EXPORTS/sprite/cosmicdolphin.bin"
-	sprite_data_movie:	; Size: 761
-		.incbin "EXPORTS/sprite/movie.bin"
+	sprite_data_nicktoons:	; Size: 571
+		.incbin "EXPORTS/sprite/nicktoons.bin"
 	.align 8192
 
 
@@ -862,62 +870,19 @@
 	.align 8192
 
 
-; Data bank 22, total bank size: 7788 bytes
+; Data bank 22, total bank size: 7928 bytes
+	sprite_data_outerspace:	; Size: 3191
+		.incbin "EXPORTS/sprite/outerspace.bin"
 	sprite_data_solarcircles:	; Size: 2911
 		.incbin "EXPORTS/sprite/solarcircles.bin"
-	sprite_data_dreamer:	; Size: 2791
-		.incbin "EXPORTS/sprite/dreamer.bin"
-	sprite_data_outerspace:	; Size: 1821
-		.incbin "EXPORTS/sprite/outerspace.bin"
-	.export level_data_doubletripletrial
-	level_data_doubletripletrial:
-	; Header
-		.byte <sprite_data_doubletripletrial ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_doubletripletrial) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_doubletripletrial >> 13) ;_________ Sprite data bank
-		.byte song_dastardly ;_________________________________ Song ID
-		.byte (4 << 4) | 0 ;___________________________________ Starting game mode and speed
-		.byte ($B0) ;__________________________________________ Spawn Y Position (high byte)
-		.byte ($CF) ;__________________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (0 << 1) ;____________________________ Force platformer, Disable parallax
-		.byte (1 << 7) | _DECO1 ;______________________________ Max Fall Speed is 7?, Deco type
-		.byte _SPIKESA ;_______________________________________ Spike set
-		.byte _BLOCKSB ;_______________________________________ Block set
-		.byte $00 ;____________________________________________ Starting background color
-		.byte $00 ;____________________________________________ Starting ground color
-		.byte 27 ;_____________________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/doubletripletrial.lz.bin" ; Size: 251
-
+	sprite_data_overawed:	; Size: 1826
+		.incbin "EXPORTS/sprite/overawed.bin"
 	.align 8192
 
 
-; Data bank 23, total bank size: 8126 bytes
-	.export level_data_somewhereinaforest_0
-	level_data_somewhereinaforest_0:
-	; Level data
-		.incbin "EXPORTS/level/somewhereinaforest.lz.1.bin" ; Size: 1356
-
-	.export level_data_trolledfix
-	level_data_trolledfix:
-	; Header
-		.byte <sprite_data_trolledfix ;_________________ Sprite data ptr, low byte
-		.byte >(sprite_data_trolledfix) & $1F | $A0 ;___ Sprite data ptr, high byte
-		.byte <(sprite_data_trolledfix >> 13) ;_________ Sprite data bank
-		.byte song_youve_been_trolled ;_________________ Song ID
-		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
-		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($CF) ;___________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (0 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte (0 << 7) | _DECO1 ;_______________________ Max Fall Speed is 7?, Deco type
-		.byte _SPIKESC ;________________________________ Spike set
-		.byte _BLOCKSC ;________________________________ Block set
-		.byte $0F ;_____________________________________ Starting background color
-		.byte $0F ;_____________________________________ Starting ground color
-		.byte 27 ;______________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/level/trolledfix.lz.bin" ; Size: 1315
-
+; Data bank 23, total bank size: 8179 bytes
+	sprite_data_dreamer:	; Size: 2791
+		.incbin "EXPORTS/sprite/dreamer.bin"
 	sprite_data_hungrymanadventures:	; Size: 1321
 		.incbin "EXPORTS/sprite/hungrymanadventures.bin"
 	sprite_data_thetripletrial:	; Size: 1301
@@ -944,12 +909,51 @@
 	; Level data
 		.incbin "EXPORTS/level/madness.lz.bin" ; Size: 1207
 
-	.export level_data_astronomicalexpedition_3
-	level_data_astronomicalexpedition_3:
+	.export level_data_thetripletrial
+	level_data_thetripletrial:
+	; Header
+		.byte <sprite_data_thetripletrial ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_thetripletrial) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_thetripletrial >> 13) ;_________ Sprite data bank
+		.byte song_dastardly ;______________________________ Song ID
+		.byte (0 << 4) | 0 ;________________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
+		.byte ($CF) ;_______________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;_________________________ Force platformer, Disable parallax
+		.byte (1 << 7) | _DECO1 ;___________________________ Max Fall Speed is 7?, Deco type
+		.byte _SPIKESA ;____________________________________ Spike set
+		.byte _BLOCKSB ;____________________________________ Block set
+		.byte $00 ;_________________________________________ Starting background color
+		.byte $00 ;_________________________________________ Starting ground color
+		.byte 27 ;__________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/level/astronomicalexpedition.lz.3.bin" ; Size: 367
+		.incbin "EXPORTS/level/thetripletrial.lz.bin" ; Size: 300
 
 	.align 8192
 
 
-LEVEL_BANK_COUNT = 36
+; Data bank 24, total bank size: 265 bytes
+	.export level_data_doubletripletrial
+	level_data_doubletripletrial:
+	; Header
+		.byte <sprite_data_doubletripletrial ;_________________ Sprite data ptr, low byte
+		.byte >(sprite_data_doubletripletrial) & $1F | $A0 ;___ Sprite data ptr, high byte
+		.byte <(sprite_data_doubletripletrial >> 13) ;_________ Sprite data bank
+		.byte song_dastardly ;_________________________________ Song ID
+		.byte (4 << 4) | 0 ;___________________________________ Starting game mode and speed
+		.byte ($B0) ;__________________________________________ Spawn Y Position (high byte)
+		.byte ($CF) ;__________________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;____________________________ Force platformer, Disable parallax
+		.byte (1 << 7) | _DECO1 ;______________________________ Max Fall Speed is 7?, Deco type
+		.byte _SPIKESA ;_______________________________________ Spike set
+		.byte _BLOCKSB ;_______________________________________ Block set
+		.byte $00 ;____________________________________________ Starting background color
+		.byte $00 ;____________________________________________ Starting ground color
+		.byte 27 ;_____________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/level/doubletripletrial.lz.bin" ; Size: 251
+
+	.align 8192
+
+
+LEVEL_BANK_COUNT = 37
