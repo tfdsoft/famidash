@@ -162,20 +162,6 @@ void state_game(){
 			}
 		#endif
 
-		if (((forced_trails == 2) || trails == 2 || !(kandoframecnt & 0x1))) {
-			if (!(kandoframecnt & 1)) {
-				tmp6 = old_trail_scroll_y - scroll_y;
-				tmp3 = 7;
-				do {
-					tmp5 = player_old_rely[tmp3] + tmp6;
-					if (high_byte(tmp5) != 0) low_byte(tmp5) = 0;
-					(&player_old_rely[1])[tmp3] = tmp5;
-					--tmp3;
-				} while ((int8_t)tmp3 >= 0);
-				player_old_rely[0] = high_byte(player_rely[0]);
-				old_trail_scroll_y = scroll_y;
-			}
-		}
 		if (discomode && !(kandoframecnt & discorefreshrate)) {
 
 			tmp3 = G_Table[discoframe] + 0x80;
@@ -214,6 +200,25 @@ void state_game(){
 			everything_else();				//do the normal state_game stuff
 		}
    //     check_spr_objects();
+
+		tmpA = old_trail_scroll_x - low_word(scroll_x);
+		tmp6 = old_trail_scroll_y - scroll_y;
+		tmp3 = 8;
+		do {
+			tmp2 = tmp3 - (kandoframecnt & 1);
+			tmp5 = player_old_relx[tmp2] + tmpA;
+			if (high_byte(tmp5) || !player_old_relx[tmp2]) low_byte(tmp5) = 0;
+			player_old_relx[tmp3] = tmp5;
+			tmp5 = player_old_rely[tmp2] + tmp6;
+			if (tmp5 >= 240 || !player_old_rely[tmp2]) low_byte(tmp5) = 0;
+			player_old_rely[tmp3] = tmp5;
+		} while ((int8_t)--tmp3 >= (kandoframecnt & 1));
+		if (kandoframecnt & 1) {
+			player_old_relx[0] = high_byte(player_relx[0]);
+			player_old_rely[0] = high_byte(player_rely[0]);
+		}
+		old_trail_scroll_x = low_word(scroll_x);
+		old_trail_scroll_y = scroll_y;
 
   		oam_clear();
 
