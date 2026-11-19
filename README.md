@@ -56,24 +56,24 @@ Comment: wiki has died
 
 |contributor|role (in no particular order)|
 |---|---|
-|[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|project creator, former lead developer, code, music, graphics|
-|[kandowontu](https://github.com/kandowontu)|director, current lead developer, maintainer|
-|[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
-|[dajinkosa](https://github.com/dajinkosa)|code, asm, code optimisation, codebase unification, music|
-|[ElAngel378](https://github.com/ElAngel378)|music|
-|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
-|[KawaiiDawn](https://github.com/Astroclimber26)|levels|
+|[UserSniper](https://github.com/usersniper)|project creator, lead developer, code, music, graphics|
+|[dajinkosa](https://github.com/dajinkosa)|lead developer, code, asm, optimization, codebase unification, music|
+|[kandowontu](https://github.com/kandowontu)|former director, lead developer, and maintainer|
+|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music, graphics|
 
 ### additional staff
 
 |contributor|role (in no particular order)|
 |---|---|
+|[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
+|[ElAngel378](https://github.com/ElAngel378)|music|
+|[KawaiiDawn](https://github.com/Astroclimber26)|levels|
 |Aquamarine|music|
 |[vikrinox](https://github.com/Vickerinox)|music|
 |[adrluc096](https://github.com/123456oil)|icons, graphics|
 |Zee_Scott|icons, graphics|
 |[StudsX](https://github.com/smbhacks)|asm, music, pcm code|
-|cloud54|various music tracks and art|
+|[Cloud54](https://github.com/Cloud54)|various music tracks and art|
 |[RedGD](https://github.com/RedGeometryDash)|icons, graphics|
 |[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression asm|
 |[sussysy](https://github.com/VECTREX45)|music|
