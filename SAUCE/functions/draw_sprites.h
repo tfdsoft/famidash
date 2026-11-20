@@ -197,23 +197,17 @@ void draw_sprites(){
 			// So I had to do it myself
 			#define subA(sym, off) (__asm__("sec \n sbc %v+%w", sym, off))
 			#define aSubB(a, sym, off) (__A__ = a, subA(sym, off), __A__)
-			// Signed divide by 2
-			__A__ = high_byte(currplayer_vel_x);
-			__A__ <<= 1;
-			do_if_c_set({__asm__("ora #$80");});
-			tmp2 = __A__;
-			
-			low_byte(cc65_sreg) = playerSpriteFirst.x -= tmp2;
+			low_byte(cc65_sreg) = playerSpriteFirst.x += aSubB(player_old_relx[0], player_relx, 1);
 			high_byte(cc65_sreg) = playerSpriteFirst.y += aSubB(player_old_rely[0], player_rely, 1);
 
-			crossPRGBankJump0(renderPlayerSpriteOne);
+			if (player_old_relx[0] && player_old_rely[0] >= 4 && player_old_rely[0] < 240) crossPRGBankJump0(renderPlayerSpriteOne);
 			
-			low_byte(cc65_sreg) = playerSpriteFirst.x = aSubB(playerSpriteFirst.x, tmp2, 0);
+			low_byte(cc65_sreg) = playerSpriteFirst.x += aSubB(player_old_relx[1], player_old_relx, 0);
 			high_byte(cc65_sreg) = playerSpriteFirst.y += aSubB(player_old_rely[1], player_old_rely, 0);
 
-			crossPRGBankJump0(renderPlayerSpriteOne);
+			if (player_old_relx[1] && player_old_rely[1] >= 4 && player_old_rely[1] < 240) crossPRGBankJump0(renderPlayerSpriteOne);
 
-			low_byte(cc65_sreg) = playerSpriteFirst.x = aSubB(playerSpriteFirst.x, tmp2, 0);
+			low_byte(cc65_sreg) = playerSpriteFirst.x += aSubB(player_old_relx[2], player_old_relx, 1);
 			high_byte(cc65_sreg) = playerSpriteFirst.y += aSubB(player_old_rely[2], player_old_rely, 1);
 
 			if (gamemode == GAMEMODE_CUBE && !currplayer_mini) {
@@ -223,7 +217,7 @@ void draw_sprites(){
 			}
 
 			// __A__ and sreg are already complete and I am squeezing every byte here
-			crossPRGBankJump0(renderPlayerSpriteOne);
+			if (player_old_relx[2] && player_old_rely[2] >= 4 && player_old_rely[2] < 240) crossPRGBankJump0(renderPlayerSpriteOne);
 			}
 		}
 	}
@@ -233,34 +227,27 @@ void draw_sprites(){
 
 void trail_loop() {
 	if (kandoframecnt & 1) {
-		tmp6 = currplayer_vel_x << 1;
 		tmp1 = 1;
-		tmp5 = currplayer_relx - tmp6;
 		do {
-			if (trail_sprites_visible[tmp1]) {	
+			if (trail_sprites_visible[tmp1] && player_old_relx[tmp1] && player_old_rely[tmp1] >= 4 && player_old_rely[tmp1] < 240) {
 				oam_spr(
-					high_byte(tmp5) + Trail_Circ_X,
+					player_old_relx[tmp1] + Trail_Circ_X,
 					player_old_rely[tmp1] + Trail_Circ_Y,
 					Trail_Circ_CHR, Trail_Circ_Attr);
 			}
 			
-			tmp5 = tmp5 - tmp6;
 			tmp1++;
 		} while (tmp1 < 8);
 	} else {
 		tmp1 = 7;
-		// the following 2 lines of code are equal to tmp5 -= (tmp6 * 7)
-		tmp5 = currplayer_vel_x << 4;
-		tmp5 = (currplayer_vel_x << 1) + currplayer_relx - tmp5;
 		do {
-			if (trail_sprites_visible[tmp1]) {
+			if (trail_sprites_visible[tmp1] && player_old_relx[tmp1] && player_old_rely[tmp1] >= 4 && player_old_rely[tmp1] < 240) {
 				oam_spr(
-					high_byte(tmp5) + Trail_Circ_X,
+					player_old_relx[tmp1] + Trail_Circ_X,
 					player_old_rely[tmp1] + Trail_Circ_Y,
 					Trail_Circ_CHR, Trail_Circ_Attr);
 			}
 			
-			tmp5 = tmp5 + tmp6;
 			tmp1--;
 		} while (tmp1 > 0);
 	}	

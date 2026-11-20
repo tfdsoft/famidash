@@ -472,6 +472,7 @@ uint8_t invincible_counter;
 uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
 uint8_t scroll_y_subpx;
+uint16_t old_trail_scroll_x;
 uint16_t old_trail_scroll_y;
 uint16_t target_scroll_y;
 //uint16_t reload_target_scroll_y;
@@ -538,6 +539,7 @@ uint8_t iconbank;
 uint8_t dblocked[2];
 
 
+uint8_t player_old_relx[9];
 uint8_t player_old_rely[9];
 uint8_t discorefreshrate;
 uint8_t discoframe;

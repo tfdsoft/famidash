@@ -169,11 +169,10 @@ void reset_level() {
 
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;
-	if (!practice_point_count) {
-		memfill(player_old_rely, 0, sizeof(player_old_rely));
-		memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
-		invincible_counter = 8;
-	}
+	memfill(player_old_relx, 0, sizeof(player_old_relx));
+	memfill(player_old_rely, 0, sizeof(player_old_rely));
+	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
+	if (!practice_point_count) invincible_counter = 8;
 	update_currplayer_table_idx();
 
 	crossPRGBankJump0(unrle_first_screen);	// For bank saving
